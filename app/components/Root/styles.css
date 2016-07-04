@@ -1,0 +1,11 @@
+.wrap{
+  lost-center: flex;
+}
+
+.menu{
+  lost-column: 1/7 2 0 flex;
+}
+
+.builder{
+  lost-column: 6/7 2 0 flex;
+}
