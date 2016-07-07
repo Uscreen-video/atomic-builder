@@ -1,0 +1,45 @@
+.wrap{
+  padding-top: 60px;
+  box-sizing: border-box;
+  min-height: 100vh;
+  position: relative;
+}
+
+.BlankState{
+  position: absolute;
+  border-radius: 5px;
+  left: 7px;
+  top: 67px;
+  right: 7px;
+  bottom: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: color(#78B2D1 a(70%));
+  &:before{
+    content: ' ';
+    position: absolute;
+    left: -4px;
+    right: -4px;
+    top: -4px;
+    bottom: -4px;
+    border: 2px dashed #7CC9F3;
+      border-radius: 5px;
+  }
+  & .content{
+    text-align: center;
+    padding: 50px;
+    background: color(white a(10%));
+    color: white;
+    text-shadow: 1px 1px 0px color(#333 a(10%));
+    & h3{
+      font-weight: 500;
+      font-size: 20px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    & p{
+      font-weight: 300;
+    }
+  }
+}

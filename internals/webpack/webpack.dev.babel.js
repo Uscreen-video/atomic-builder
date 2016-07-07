@@ -15,8 +15,12 @@ const dllPlugin = pkg.dllPlugin;
 const cssnext = require('postcss-cssnext');
 const postcssFocus = require('postcss-focus');
 const postcssReporter = require('postcss-reporter');
+const lost = require('lost');
 
 const plugins = [
+  new webpack.ProvidePlugin({
+    React: 'react'
+  }),
   new webpack.HotModuleReplacementPlugin(), // Tell webpack we want hot reloading
   new webpack.NoErrorsPlugin(),
   new HtmlWebpackPlugin({
@@ -28,7 +32,6 @@ const plugins = [
 module.exports = require('./webpack.base.babel')({
   // Add hot reloading in development
   entry: [
-    'eventsource-polyfill', // Necessary for hot reloading with IE
     'webpack-hot-middleware/client',
     path.join(process.cwd(), 'app/app.js'), // Start with js/app.js
   ],
@@ -47,6 +50,7 @@ module.exports = require('./webpack.base.babel')({
 
   // Process the CSS with PostCSS
   postcssPlugins: [
+    lost(),
     postcssFocus(), // Add a :focus to every :hover
     cssnext({ // Allow future CSS features to be used, also auto-prefixes the CSS...
       browsers: ['last 2 versions', 'IE > 10'], // ...based on this browser list
@@ -58,7 +62,8 @@ module.exports = require('./webpack.base.babel')({
 
   // Tell babel that we want to hot-reload
   babelQuery: {
-    presets: ['react-hmre'],
+    cacheDirectory: true,
+    presets: ['react-hmre']
   },
 
   // Emit a source map for easier debugging

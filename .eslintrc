@@ -1,0 +1,68 @@
+{
+  "extends": "airbnb",
+  "parser": "babel-eslint",
+
+  "env": {
+    "browser": true,
+    "node": true,
+    "mocha": true
+  },
+
+  "plugins": [
+    "prefer-object-spread"
+  ],
+
+  "rules": {
+    "comma-dangle": [1, "never"],
+
+    "space-before-function-paren": [2, {
+      "anonymous": "always",
+      "named": "never"
+    }],
+
+    "no-use-before-define": 0,
+    "no-else-return": 0,
+    "no-return-assign": 0,
+    "react/jsx-key": 1,
+    "react/jsx-no-literals": 0,
+    "react/prop-types": 0,
+    "react/no-direct-mutation-state": 2,
+    "jsx-a11y/img-uses-alt": 0,
+    "jsx-a11y/redundant-alt": 0,
+    "jsx-a11y/valid-aria-role": 0,
+    "jsx-quotes": [2, "prefer-single"],
+
+    "react/require-render-return": 0,
+    "react/jsx-no-undef": 0,
+    "react/react-in-jsx-scope": 0,
+    "react/jsx-closing-bracket-location": 0,
+    "react/jsx-pascal-case": 0,
+    "react/jsx-no-bind": [1, {
+      "ignoreRefs": true
+    }],
+    "react/sort-comp": 0,
+
+    "no-underscore-dangle": 0,
+
+    "no-undef": 2,
+    "import/no-unresolved": 0,
+    "no-unused-vars": [2, {
+      "args": "after-used",
+      "argsIgnorePattern": "^_"
+    }],
+
+    "id-length": 0,
+
+    "prefer-object-spread/prefer-object-spread": 2
+  },
+
+  "settings": {
+    "import/parser": "babel-eslint",
+    "import/resolve": {
+      "moduleDirectory": [
+        "node_modules",
+        "app"
+      ]
+    }
+  },
+}

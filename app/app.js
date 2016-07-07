@@ -12,6 +12,7 @@ import { Provider } from 'react-redux';
 import configureStore from './store';
 
 
+
 // Create redux store with history
 // this uses the singleton browserHistory provided by react-router
 // Optionally, this could be changed to leverage a created history
@@ -20,7 +21,7 @@ const initialState = {};
 const store = configureStore(initialState);
 
 // Set up the router, wrapping all Routes in the App component
-import Root from 'components/Root/';
+import Root from './components/Root/';
 
 ReactDOM.render(
   <Provider store={store}>
@@ -28,5 +29,19 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('app')
 );
+
+if (module.hot) {
+  module.hot.accept('./components/Root/', () => {
+    // If you use Webpack 2 in ES modules mode, you can
+    // use <App /> here rather than require() a <NextApp />.
+    const NextApp = require('./components/Root/').default;
+    ReactDOM.render(
+      <Provider store={store}>
+        <NextApp />
+      </Provider>,
+      document.getElementById('app')
+    );
+  });
+}
 
 window.Perf = require('react-addons-perf');

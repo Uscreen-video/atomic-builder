@@ -1,11 +1,12 @@
 .wrap{
-  lost-center: flex;
+  width: 100%;
+  min-height: 100vh;
 }
-
 .menu{
-  lost-column: 1/7 2 0 flex;
+  position: fixed;
+  width: 100%;
+  z-index: 2;
 }
 
 .builder{
-  lost-column: 6/7 2 0 flex;
 }
