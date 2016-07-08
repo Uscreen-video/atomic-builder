@@ -1,7 +1,14 @@
 export default ({
-  theme
-}) => (
-  <div>
-    awfawfawf
-  </div>
-);
+  theme,
+  children,
+  atoms
+}) => {
+  console.log(children);
+  return (
+    <div className={theme.wrap}>
+      <div className={theme.container}>
+        {children}
+      </div>
+    </div>
+  );
+}

@@ -2,7 +2,12 @@
   width: 100%;
   background-color: #EDEDED;
 }
+
 .container{
   padding: 50px 10px;
   lost-center: 1000px;
+}
+
+.moleculeWrap{
+  min-height: 300px;
 }

@@ -2,16 +2,19 @@ import { compose, withState, withHandlers, mapProps, lifecycle, getContext } fro
 import cx from 'classnames';
 import { PropTypes } from 'react';
 import * as organisms from 'Atomic/Organisms';
+import * as atoms from 'Atomic/Atoms';
 
 import styles from './styles.css';
 
 const { object } = PropTypes;
 
 const organismsArray = Object.keys(organisms).map(key => organisms[key].Preview);
+const atomsArray = Object.keys(atoms).map(key => atoms[key].Preview);
+
 const types = {
   organism: organismsArray,
   molecule: [],
-  atom: []
+  atom: atomsArray
 };
 
 const Button = compose(

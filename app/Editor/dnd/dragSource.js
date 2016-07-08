@@ -10,7 +10,7 @@ export const block = {
 
 export const preview = {
   beginDrag({ drag, props, name }) {
-    drag(props)
+    drag(props);
     return ({ props, name });
   },
   endDrag({ drop }) {

@@ -33,9 +33,18 @@ export const eraser = {
 
 export const template = {
   drop(props, monitor) {
-    props.addMolecule(0, monitor.getItem().props);
+    props.add(0, monitor.getItem().props);
   },
   canDrop(props) {
     return !props.organisms.size;
+  }
+};
+
+export const molecule = {
+  drop(props, monitor) {
+    props.add(0, monitor.getItem().props);
+  },
+  canDrop(props) {
+    return !props.atoms.size;
   }
 };

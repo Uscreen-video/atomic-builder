@@ -1,0 +1,7 @@
+.wrap{
+  padding: 5px;
+  border: 1px solid color(#eee shade(5%));
+  border-radius: 3px;
+  min-height: 100px;
+  background-color: white;
+}

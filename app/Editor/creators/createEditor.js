@@ -1,49 +1,22 @@
 import {
   compose, withReducer, withHandlers,
-  withPropsOnChange, createEagerElement
+  withPropsOnChange, createEagerElement, setDisplayName
 } from 'recompose';
-import { createReducer, createAction } from 'redux-act';
 import { DropTarget as target } from 'react-dnd';
-import UUID from 'uuid-js';
 import { fromJS } from 'immutable';
+import withActions from '../dnd/actions';
 
 import * as organisms from 'Atomic/Organisms';
 
 import { template as targetSpec } from '../dnd/dragTarget';
 import EditorWrap from '../components/EditorWrap';
 
-const initialState = props => fromJS(props.data);
-
-const addItem = createAction('template:addMolecule', (index, data) =>
-  ({ index, data: data.set('id', UUID.create().toString()) })
-);
-
-const moveItem = createAction('template:moveMolecule', (index, movedIndex) =>
-  ({ index, movedIndex })
-);
-
-const removeItem = createAction('template:removeMolecule', (index) =>
-  ({ index })
-);
-
-const reducer = createReducer({
-  [addItem]: (s, { index, data }) => s.insert(index, data),
-  [moveItem]: (s, { index, movedIndex }) => s.delete(movedIndex).insert(index, s.get(movedIndex)),
-  [removeItem]: (s, { index }) => s.delete(index)
-});
 
 export default () =>
 compose(
-  withReducer('organisms', 'updateTemplate', reducer, initialState),
+  setDisplayName('Editor'),
 
-  withHandlers({
-    moveMolecule: props => (index, movedIndex) =>
-      props.updateTemplate(moveItem(index, movedIndex)),
-    addMolecule: props => (index, data) =>
-      props.updateTemplate(addItem(index, data)),
-    removeMolecule: props => (index) =>
-      props.updateTemplate(removeItem(index))
-  }),
+  withActions('organisms', 'data'),
 
   withPropsOnChange(['organisms'], props => ({
     children: props.organisms.map((organism, index) =>

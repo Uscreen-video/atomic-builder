@@ -6,7 +6,7 @@ export default organism({
   props: {
     type: 'type1',
     molecules: {
-      main: {
+      Main: {
         type: 'static'
       }
     },

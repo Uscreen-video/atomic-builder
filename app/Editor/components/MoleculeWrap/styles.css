@@ -1,0 +1,28 @@
+.wrap{
+  position: relative;
+}
+
+.placeholder{
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  color: color(#78B2D1 a(70%));
+  border-radius: 3px;
+}
+
+.placeholderBorder{
+  border-radius: 3px;
+  position: absolute;
+  left: -3px;
+  top: -3px;
+  bottom: -3px;
+  right: -3px;
+  border: 2px dashed color(#78B2D1 a(70%));
+}
