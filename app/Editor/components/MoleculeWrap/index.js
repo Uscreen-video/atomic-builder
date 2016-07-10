@@ -1,5 +1,6 @@
 import styles from './styles.css';
 import cx from 'classnames';
+import Highlight from '../Highlight/';
 
 const Placeholder = ({ atoms }) => !atoms.size && (
   <div className={styles.placeholder}>
@@ -15,8 +16,10 @@ export default ({
 }) => {
   return connectDropTarget(
     <div className={cx(styles.wrap)}>
-      <Placeholder {...props} />
-      <Molecule {...props} />
+      <Highlight title='Molecule' outside>
+        <Placeholder {...props} />
+        <Molecule {...props} />
+      </Highlight>
     </div>
   );
 }

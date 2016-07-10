@@ -1,35 +1,45 @@
 import {
-  compose, defaultProps, createEagerFactory,
+  compose, defaultProps,
   withPropsOnChange, createEagerElement, withProps,
   setDisplayName
 } from 'recompose';
-import MoleculeWrap from '../components/MoleculeWrap';
 import { DropTarget as target } from 'react-dnd';
 
-import { molecule as targetSpec } from '../dnd/dragTarget';
-import withActions from '../dnd/actions';
-import * as Atoms from 'Atomic/Atoms';
+import MoleculeWrap from '../components/MoleculeWrap';
 
-const mapAtoms = atoms => atoms.map((atom, key) =>
-  createEagerElement(Atoms[atom.get('type')].Component, { atom, key })
+import { molecule as targetSpec } from '../dnd/dragTarget';
+import dndState from '../helpers/dndState';
+import * as Atoms from 'Atomic/Atoms';
+import editorState from '../helpers/editorState';
+import disableUpdate from '../helpers/disableUpdate';
+
+const mapAtoms = (atoms, moleculeProps) => atoms.map((atom, key) =>
+  createEagerElement(
+    Atoms[atom.get('type')].Component,
+    { atom, key, Cursor: moleculeProps.Cursor.push(key) }
+  )
 );
 
 export default ({ component, props: { type } }) =>
 compose(
+  disableUpdate,
+
   setDisplayName(`Molecule:${type}`),
 
   defaultProps({
     Molecule: component
   }),
 
-  withActions('atoms', 'molecule'),
+  editorState,
+
+  dndState('atoms', 'molecule'),
 
   withPropsOnChange(['molecule'], props => ({
     settings: props.molecule.get('settings')
   })),
 
   withProps(props => ({
-    children: mapAtoms(props.atoms)
+    atoms: mapAtoms(props.atoms, props)
   })),
 
   target('atom', targetSpec, (connect, monitor) => ({

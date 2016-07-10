@@ -1,9 +1,12 @@
+import Highlight from '../Highlight/';
+
 export default ({
   Atom,
   ...rest
-}) => {
-  console.log(Atom);
-  return (
-    <div><Atom {...rest} /></div>
-  );
-}
+}) => (
+  <div>
+    <Highlight title='atom' outside>
+      <Atom {...rest} />
+    </Highlight>
+  </div>
+);

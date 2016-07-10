@@ -6,14 +6,14 @@ import BlankState from './BlankState';
 
 export default ({
   connectDropTarget,
-  children,
+  organisms,
   isOver
 }) => connectDropTarget(
   <div className={styles.wrap}>
     {
-      !children.size
+      !organisms.size
       && <BlankState isOver={isOver} />
-      || children
+      || organisms
     }
   </div>
 );

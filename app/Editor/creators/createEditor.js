@@ -1,28 +1,33 @@
 import {
-  compose, withReducer, withHandlers,
+  compose, withContext, defaultProps, withProps,
   withPropsOnChange, createEagerElement, setDisplayName
 } from 'recompose';
 import { DropTarget as target } from 'react-dnd';
-import { fromJS } from 'immutable';
-import withActions from '../dnd/actions';
-
+import { PropTypes } from 'react';
+import { List } from 'immutable';
+import dndState from '../helpers/dndState';
 import * as organisms from 'Atomic/Organisms';
-
 import { template as targetSpec } from '../dnd/dragTarget';
 import EditorWrap from '../components/EditorWrap';
 
+const { object, func } = PropTypes;
 
 export default () =>
 compose(
   setDisplayName('Editor'),
+  defaultProps({ Cursor: List([]) }),
 
-  withActions('organisms', 'data'),
+  dndState('organisms', 'data', false),
+
+  withContext({ updateEditorState: func }, props => ({
+    updateEditorState: (key, state) => props.update(props.organisms.setIn(key, state))
+  })),
 
   withPropsOnChange(['organisms'], props => ({
-    children: props.organisms.map((organism, index) =>
+    organisms: props.organisms.map((organism, index) =>
       createEagerElement(
         organisms[organism.get('type')].Component,
-        { key: index, organism }
+        { key: index, index, organism, Cursor: props.Cursor.push(index) }
       )
     )
   })),
