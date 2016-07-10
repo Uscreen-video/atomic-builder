@@ -1,3 +1,5 @@
 import { shouldUpdate } from 'recompose';
 
-export default shouldUpdate((prev, next) => prev.get('settings') !== next.get('settings'));
+export default key => shouldUpdate((prev, next) =>
+  prev[key].get('settings') !== next[key].get('settings')
+);

@@ -1,6 +1,5 @@
 import {
-  compose, defaultProps, withProps,
-  setDisplayName
+  compose, defaultProps, withProps, withState
 } from 'recompose';
 import AtomWrap from '../components/AtomWrap';
 
@@ -9,18 +8,20 @@ import disableUpdate from '../helpers/disableUpdate';
 
 export default ({ component, props: { type } }) =>
 compose(
-  disableUpdate,
 
-  setDisplayName(`Atom:${type}`),
+  // Prevent component update from editor state
+  disableUpdate('atom'),
 
+  // Set Component to render
   defaultProps({
     Atom: component
   }),
 
+  // Connect to EditorState
   editorState,
 
-  withProps(props => ({
-    Cursor: props.Cursor.push(props.index)
-  })),
+
+  // Show controlls only on active element
+  withState('active', 'setActive', false),
 
 )(AtomWrap);
