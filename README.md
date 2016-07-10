@@ -1,4 +1,4 @@
-<img src="https://raw.githubusercontent.com/bitaru/atomic-builder/master/docs/atomic.png" alt="react atomic builder" align="center" />
+<img src="https://raw.githubusercontent.com/Bitaru/atomic-builder/master/docs/Atomic.png" alt="react atomic builder" align="center" />
 
 ## API
 > coming soon...
