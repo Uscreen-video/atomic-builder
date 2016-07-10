@@ -1,5 +1,5 @@
 import {
-  compose, withContext, defaultProps,
+  compose, withContext, defaultProps, withHandlers,
   withPropsOnChange, createEagerElement
 } from 'recompose';
 import { DropTarget as target } from 'react-dnd';
@@ -13,13 +13,14 @@ import { template as targetSpec } from '../dnd/dragTarget';
 import EditorWrap from '../components/EditorWrap';
 
 const { func } = PropTypes;
+const Cursor = List([]); // eslint-disable-line new-cap
 
 export default () =>
 compose(
 
-  // Create initial curesor,
-  // Cursor will be expanded in each level
-  defaultProps({ Cursor: List([]) }), // eslint-disable-line new-cap
+  // Create initial cursor,
+  // Cursor must will be expanded in each level
+  defaultProps({ Cursor }),
 
   // We allow to drag&drop organisms inside editor
   // Also we dont fire commit of changes, because its own state
@@ -27,16 +28,18 @@ compose(
 
   // EditorState from [dndState] and updater
   // Updater recieve an array of nesting and mutation
-  withContext({ updateEditorState: func }, props => ({
-    updateEditorState: (key, state) => props.update(props.organisms.setIn(key, state))
-  })),
+  withHandlers({
+    updateEditorState: props => (key, state) => props.update(props.organisms.setIn(key, state))
+  }),
+
+  withContext({ updateEditorState: func }, ({ updateEditorState }) => ({ updateEditorState })),
 
   // We map organisns to to components
-  withPropsOnChange(['organisms'], props => ({
-    organisms: props.organisms.map((organism, index) =>
+  withPropsOnChange(['organisms'], ({ move, add, ...props }) => ({
+    children: props.organisms.map((organism, index) =>
       createEagerElement(
         Organisms[organism.get('type')].Component,
-        { key: index, index, organism, Cursor: props.Cursor.push(index) }
+        { key: organism.get('id'), index, organism, Cursor: props.Cursor.push(index), move, add }
       )
     )
   })),

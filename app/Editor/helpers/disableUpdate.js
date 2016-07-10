@@ -1,5 +1,5 @@
 import { shouldUpdate } from 'recompose';
 
-export default key => shouldUpdate((prev, next) =>
-  prev[key].get('settings') !== next[key].get('settings')
-);
+export default key => shouldUpdate((prev, next) => {
+  return !prev.Cursor.equals(next.Cursor)
+});

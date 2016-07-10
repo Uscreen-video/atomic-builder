@@ -1,8 +1,8 @@
 {
-  "name": "react-boilerplate",
-  "description": "A highly scalable, offline-first foundation with the best DX and a focus on performance and best practices",
-  "version": "3.0.0",
-  "author": "Max Stoiber",
+  "name": "atomic-builder",
+  "description": "React.js + Atomic Design = Atomic Builder",
+  "version": "0.0.2",
+  "author": "Vitaly Danilov",
   "babel": {
     "presets": [
       "es2015-webpack",

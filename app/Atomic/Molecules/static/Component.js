@@ -1,10 +1,10 @@
 export default ({
   theme,
-  atoms
+  children
 }) => (
   <div className={theme.wrap}>
     <div className={theme.container}>
-      {atoms}
+      {children}
     </div>
   </div>
 );

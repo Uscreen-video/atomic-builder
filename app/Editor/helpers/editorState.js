@@ -6,6 +6,10 @@ const { func } = PropTypes;
 export default compose(
   getContext({ updateEditorState: func }),
   withPropsOnChange(['Cursor'], props => ({
-    updateEditor: (key, state) => props.updateEditorState(props.Cursor.push(key).toArray(), state)
+    updateEditor: (key, state) => {
+      const cursor = props.Cursor.push(key);
+      console.log(cursor.join(' > '));
+      return props.updateEditorState(cursor, state)
+    }
   }))
 );

@@ -1,5 +1,5 @@
 import {
-  compose, defaultProps,
+  compose, defaultProps, pure,
   withPropsOnChange, createEagerElement, withProps
 } from 'recompose';
 import { DropTarget as target } from 'react-dnd';
@@ -12,18 +12,17 @@ import dndState from '../helpers/dndState';
 import editorState from '../helpers/editorState';
 import disableUpdate from '../helpers/disableUpdate';
 
-const mapAtoms = (atoms, moleculeProps) => atoms.map((atom, key) =>
+const mapAtoms = (atoms, { Cursor, add, move }) => atoms.map((atom, key) =>
   createEagerElement(
     Atoms[atom.get('type')].Component,
-    { atom, key, Cursor: moleculeProps.Cursor.push(key) }
+    { atom, key, add, move, Cursor: Cursor.push('molecules', key) }
   )
 );
 
 export default ({ component, props: { type } }) =>
 compose(
-
   // Prevent updates from parent state
-  disableUpdate('molecule'),
+  disableUpdate(),
 
   // Set Component to render
   defaultProps({ Molecule: component }),
@@ -35,14 +34,17 @@ compose(
   dndState('atoms', 'molecule'),
 
   //
-  withPropsOnChange(['molecule'], props => ({
-    settings: props.molecule.get('settings')
-  })),
+  withPropsOnChange(['molecule'], props => {
+    // console.log(props);
+    return ({
+      settings: props.molecule.get('settings')
+    })
+  }),
 
 
   // Map atoms from state to components
   withProps(props => ({
-    atoms: mapAtoms(props.atoms, props)
+    children: mapAtoms(props.atoms, props)
   })),
 
   // If molecule is empty we give ability to drop there atoms
