@@ -1,5 +1,5 @@
 import {
-  compose, defaultProps, withProps, withState
+  compose, defaultProps, withState, withHandlers
 } from 'recompose';
 import { DropTarget as target, DragSource as source } from 'react-dnd';
 
@@ -24,8 +24,16 @@ compose(
   // Connect to EditorState
   editorState,
 
+  withState('content', 'setContent', props => props.atom.get('content')),
+
   // Show controlls only on active element
   withState('active', 'setActive', false),
+
+  withHandlers({
+    activate: props => () => props.setActive(true),
+    deactivate: props => () => props.setActive(false),
+    onChange: props => data => props.setContent(data, props.updateEditor('content', data))
+  }),
 
   // If molecules has atoms we handle other atoms dragging hovering
   target('atom', targetSpec, (connect, monitor) => ({

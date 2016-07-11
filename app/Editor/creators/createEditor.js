@@ -29,7 +29,8 @@ compose(
   // EditorState from [dndState] and updater
   // Updater recieve an array of nesting and mutation
   withHandlers({
-    updateEditorState: props => (key, state) => props.update(props.organisms.setIn(key, state))
+    updateEditorState: props => (key, state) =>
+    props.update(props.organisms.setIn(key, state), console.log(props.organisms.toJS()))
   }),
 
   withContext({ updateEditorState: func }, ({ updateEditorState }) => ({ updateEditorState })),

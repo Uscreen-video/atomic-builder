@@ -20,10 +20,16 @@ export default compose(
   over,
   title,
   mouseOver,
+  isDragging,
   mouseOut
 }) => (
-  <div className={styles.wrap} onMouseOver={mouseOver} onMouseOut={mouseOut}>
-    {children}
+  <div
+    className={styles.wrap}
+    onMouseOver={mouseOver}
+    onMouseOut={mouseOut}>
+    <div>
+      {children}
+    </div>
     <div className={cx(styles.border, over && styles.over)}>
       <div className={styles.vertiacalBorder} />
       <div className={styles.horizontalBorder} />

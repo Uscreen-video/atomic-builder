@@ -10,19 +10,18 @@ import MoleculeWrap from '../components/MoleculeWrap';
 import { molecule as targetSpec } from '../dnd/dragTarget';
 import dndState from '../helpers/dndState';
 import editorState from '../helpers/editorState';
-import disableUpdate from '../helpers/disableUpdate';
 
-const mapAtoms = (atoms, { Cursor, add, move }) => atoms.map((atom, key) =>
+const mapAtoms = (atoms, { Cursor, add, move }) => atoms.map((atom, index) =>
   createEagerElement(
     Atoms[atom.get('type')].Component,
-    { atom, key, add, move, Cursor: Cursor.push('molecules', key) }
+    { index, atom, key: atom.get('id'), add, move, Cursor: Cursor.push('atoms', index) }
   )
 );
 
 export default ({ component, props: { type } }) =>
 compose(
   // Prevent updates from parent state
-  disableUpdate(),
+  // disableUpdate(),
 
   // Set Component to render
   defaultProps({ Molecule: component }),

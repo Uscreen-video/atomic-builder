@@ -64,6 +64,8 @@ description	package.json	/^  "description": "React.js + Atomic Design = Atomic B
 devDependencies	package.json	/^  "devDependencies": {$/;"	f
 dllPlugin	package.json	/^  "dllPlugin": {$/;"	f
 draft-js	package.json	/^    "draft-js": "^0.7.0",$/;"	f
+draft-js-export-html	package.json	/^    "draft-js-export-html": "^0.4.0",$/;"	f
+draft-js-import-html	package.json	/^    "draft-js-import-html": "^0.2.0",$/;"	f
 engines	package.json	/^  "engines": {$/;"	f
 env	package.json	/^    "env": {$/;"	f
 enzyme	package.json	/^    "enzyme": "2.2.0",$/;"	f
@@ -127,6 +129,7 @@ lodash	package.json	/^    "lodash": "4.13.1",$/;"	f
 log	internals/scripts/pagespeed.js	/^function log(string) {$/;"	f
 lost	package.json	/^    "lost": "^7.0.3",$/;"	f
 max-len	package.json	/^      "max-len": 0,$/;"	f
+megadraft	package.json	/^    "megadraft": "^0.1.5",$/;"	f
 minimist	package.json	/^    "minimist": "1.2.0",$/;"	f
 mocha	package.json	/^      "mocha": true$/;"	f
 mocha	package.json	/^    "mocha": "2.4.5",$/;"	f

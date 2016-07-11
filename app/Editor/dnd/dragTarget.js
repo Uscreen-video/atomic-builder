@@ -51,14 +51,13 @@ export const atom = {
     const position = getPosition(props, monitor, component);
     if (item.isPreview) {
       props.add(position, item.props);
-    } else if (position !== props.index) {
-      props.move(position, props.index);
+    } else if (position !== item.index) {
+      props.move(position, item.index);
     }
     return;
   },
   canDrop(props, monitor) {
-    const item = monitor.getItem()
-    return item.isPreview ? true : props.index !== item.index;
+    return monitor.getItem().isPreview || props.index !== monitor.getItem().index;
   }
 };
 
