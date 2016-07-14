@@ -1,0 +1,169 @@
+.toolbarWrap{
+  background: yellow;
+  height: 0;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  willChange: bottom, left;
+  z-index: 10;
+  display: none;
+  opacity: 1;
+  user-select: none;
+}
+
+.toolbarVisible{
+  display: block;
+}
+
+.toolbar{
+  position: relative;
+  bottom: 100%;
+  background-color: #181818;
+  border-radius: 4px;
+  box-shadow: 0px 5px 7px 0px rgba(0, 0, 0, 0.2);
+  transform: translate3d(-50%, -100%, 0);
+  bottom: 10px;
+}
+
+.list{
+  padding: 0 5px;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.item{
+  display: inline-block;
+}
+
+.button{
+  padding: 0;
+  color: inherit;
+  cursor: pointer;
+  border: 0;
+  background: transparent;
+  position: relative;
+  outline: none;
+  line-height: 40px;
+}
+
+.separator{
+  vertical-align: middle;
+  display: inline-block;
+  border-right: 1px dotted #333;
+  height: 20px;
+  margin: 0 8px;
+}
+
+.icon{
+  display: inline-block;
+  vertical-align: middle;
+  height: 25px;
+  width: 25px;
+  margin: 0 3px;
+  fill: #ccc;
+  transition: fill .1s ease-in;
+  .item:hover &{
+    fill: #fff;
+  }
+  .item.active &{
+    fill: #3192e7;
+  }
+  .item.active:hover &{
+    fill: #3192e7;
+  }
+}
+
+.overlay{
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  display: none;
+  background: #181818;
+  border-radius: 4px;
+  padding: 0 5px;
+  align-items: center;
+  &.active{
+    display: flex;
+  }
+}
+
+.backIcon{
+  background: transparent;
+  border: none;
+  padding: 0;
+  width: auto;
+  height: auto;
+  line-height: 40px;
+  cursor: pointer;
+  outline: none;
+  svg{
+    display: inline-block;
+    vertical-align: -7px;
+    height: 25px;
+    width: 25px;
+    fill: #ccc;
+  }
+  &:hover svg{
+    fill: #fff;
+  }
+}
+
+.link{
+  border: none;
+  border-left: 1px dotted #333;
+  padding: 0 10px;
+  margin-left: 5px;
+  width: 100%;
+  background: transparent;
+  color: white;
+  outline: none;
+  box-sizing: border-box;
+  &::placeholder{
+    font-weight: 200;
+  }
+}
+
+.linkWrap{
+  width: 100%;
+}
+
+.overlayContent{
+  flex-grow: 2;
+}
+
+.colors{
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 100%;
+  margin-bottom: -3px;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  padding: 5px 12px;
+  background: #181818;
+  white-space: nowrap;
+}
+
+.color{
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 1px solid white;
+  border-radius: 50%;
+  cursor: pointer;
+  opacity: .8;
+  margin: 3px;
+  transition: opacity .1s ease-in;
+  &:hover{
+    opacity: 1;
+  }
+}
+.colorsTitle{
+  text-transform: uppercase;
+  font-weight: 200;
+  font-size: 12px;
+  margin-bottom: 10px;
+  color: color(white a(80%));
+}

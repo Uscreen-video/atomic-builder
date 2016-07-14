@@ -32,7 +32,10 @@ compose(
   withHandlers({
     activate: props => () => props.setActive(true),
     deactivate: props => () => props.setActive(false),
-    onChange: props => data => props.setContent(data, props.updateEditor('content', data))
+    onChange: props => data => {
+      console.log(data);
+      props.setContent(data, props.updateEditor('content', data))
+    }
   }),
 
   // If molecules has atoms we handle other atoms dragging hovering

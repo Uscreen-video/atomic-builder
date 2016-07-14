@@ -10,7 +10,6 @@ import { connect } from 'react-redux';
 import selector from 'modules/builder/selectors';
 
 import styles from './styles.css';
-
 const Editor = createEditor({ edit: true });
 
 export default compose(
@@ -21,6 +20,7 @@ export default compose(
     <section className={styles.menu}>
       <Menu />
     </section>
+
     <Editor data={blocks} />
   </div>
 ));

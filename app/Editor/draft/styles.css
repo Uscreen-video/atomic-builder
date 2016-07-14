@@ -1,0 +1,15 @@
+.wrap{
+  margin: 0 auto;
+  position: relative;
+}
+
+:global .public-DraftEditorPlaceholder-root{
+  position: absolute;
+  color: color(#333 a(70%));
+  z-index: 1;
+}
+
+:global .DraftEditor-editorContainer{
+  position: relative;
+  z-index: 2;
+}

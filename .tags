@@ -128,8 +128,8 @@ lint:staged	package.json	/^    "lint:staged": "lint-staged",$/;"	f
 lodash	package.json	/^    "lodash": "4.13.1",$/;"	f
 log	internals/scripts/pagespeed.js	/^function log(string) {$/;"	f
 lost	package.json	/^    "lost": "^7.0.3",$/;"	f
+manageColors	app/Editor/draft/Toolbar/ColorPicker.js	/^function manageColors(color) {$/;"	f
 max-len	package.json	/^      "max-len": 0,$/;"	f
-megadraft	package.json	/^    "megadraft": "^0.1.5",$/;"	f
 minimist	package.json	/^    "minimist": "1.2.0",$/;"	f
 mocha	package.json	/^      "mocha": true$/;"	f
 mocha	package.json	/^    "mocha": "2.4.5",$/;"	f
@@ -161,6 +161,7 @@ plugins	package.json	/^        "plugins": [$/;"	f
 postcss-cssnext	package.json	/^    "postcss-cssnext": "2.5.2",$/;"	f
 postcss-focus	package.json	/^    "postcss-focus": "1.0.0",$/;"	f
 postcss-loader	package.json	/^    "postcss-loader": "0.9.1",$/;"	f
+postcss-nested	package.json	/^    "postcss-nested": "^1.0.0",$/;"	f
 postcss-reporter	package.json	/^    "postcss-reporter": "1.3.3",$/;"	f
 postinstall	package.json	/^    "postinstall": "npm run build:dll",$/;"	f
 postsetup	package.json	/^    "postsetup": "npm run build:dll",$/;"	f
@@ -170,6 +171,8 @@ preinstall	package.json	/^    "preinstall": "npm run npmcheckversion",$/;"	f
 presets	package.json	/^    "presets": [$/;"	f
 presetup	package.json	/^    "presetup": "npm i chalk",$/;"	f
 pretest	package.json	/^    "pretest": "npm run lint",$/;"	f
+prevent	app/Editor/draft/Toolbar/Overlay.js	/^function prevent(e) {$/;"	f
+preventClick	app/Editor/draft/Toolbar/Buttons.js	/^function preventClick(e) {$/;"	f
 production	package.json	/^      "production": {$/;"	f
 progress	internals/scripts/analyze.js	/^var progress = animateProgress('Generating stats');$/;"	v
 psi	internals/scripts/pagespeed.js	/^var psi = require('psi');$/;"	v
@@ -179,6 +182,8 @@ react-addons-perf	package.json	/^    "react-addons-perf": "^15.2.0",$/;"	f
 react-dnd	package.json	/^    "react-dnd": "^2.1.4",$/;"	f
 react-dnd-html5-backend	package.json	/^    "react-dnd-html5-backend": "^2.1.2",$/;"	f
 react-dom	package.json	/^    "react-dom": "15.1.0",$/;"	f
+react-height	package.json	/^    "react-height": "^2.1.1",$/;"	f
+react-ink	package.json	/^    "react-ink": "^5.1.1",$/;"	f
 react-motion	package.json	/^    "react-motion": "^0.4.4",$/;"	f
 react-redux	package.json	/^    "react-redux": "4.4.5",$/;"	f
 react-router	package.json	/^    "react-router": "2.5.2",$/;"	f
@@ -214,6 +219,8 @@ stylelint	package.json	/^    "stylelint": "*.css"$/;"	f
 stylelint	package.json	/^    "stylelint": "6.7.1",$/;"	f
 stylelint	package.json	/^  "stylelint": {$/;"	f
 stylelint-config-standard	package.json	/^    "stylelint-config-standard": "9.0.0",$/;"	f
+svg-sprite	package.json	/^    "svg-sprite": "^1.3.3",$/;"	f
+svg-sprite-loader	package.json	/^    "svg-sprite-loader": "0.0.25",$/;"	f
 templateContent	internals/webpack/webpack.dev.babel.js	/^function templateContent() {$/;"	f
 test	package.json	/^    "test": "cross-env NODE_ENV=test karma start internals\/testing\/karma.conf.js --single-run",$/;"	f
 test:firefox	package.json	/^    "test:firefox": "npm run test -- --browsers Firefox",$/;"	f
