@@ -3,35 +3,29 @@ import styles from './styles.css';
 export default ({
   settings,
   molecules
-}) => {
-  const Main = molecules.get('Main');
-  const Second = molecules.get('Second');
-  const Third = molecules.get('Third');
-  const Forth = molecules.get('Forth');
-  return (
-    <div className={styles.wrap} styles={{ backgroundColor: settings.background }}>
-      <div className={styles.container}>
-        <div className={styles.side}>
-          <div className={styles.rightSideComtainer}>
-            <Main theme={{ wrap: styles.moleculeWrap, container: styles.moleculeContainer }} />
-          </div>
+}) => (
+  <div className={styles.wrap} style={{ backgroundColor: settings.background }}>
+    <div className={styles.container}>
+      <div className={styles.side}>
+        <div className={styles.rightSideComtainer}>
+          {molecules.get('Main')}
         </div>
-        <div className={styles.side}>
-          <div className={styles.rightSideComtainer}>
-            <Second theme={{ wrap: styles.moleculeWrap, container: styles.moleculeContainer }} />
-          </div>
+      </div>
+      <div className={styles.side}>
+        <div className={styles.rightSideComtainer}>
+          {molecules.get('Second')}
         </div>
-        <div className={styles.side}>
-          <div className={styles.rightSideComtainer}>
-            <Third theme={{ wrap: styles.moleculeWrap, container: styles.moleculeContainer }} />
-          </div>
+      </div>
+      <div className={styles.side}>
+        <div className={styles.rightSideComtainer}>
+          {molecules.get('Third')}
         </div>
-        <div className={styles.side}>
-          <div className={styles.rightSideComtainer}>
-            <Forth theme={{ wrap: styles.moleculeWrap, container: styles.moleculeContainer }} />
-          </div>
+      </div>
+      <div className={styles.side}>
+        <div className={styles.rightSideComtainer}>
+          {molecules.get('Forth')}
         </div>
       </div>
     </div>
-  );
-};
+  </div>
+);

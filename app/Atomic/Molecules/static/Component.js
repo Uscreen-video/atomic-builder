@@ -1,4 +1,9 @@
-export default ({
+import { defaultProps } from 'recompose';
+import styles from './styles.css';
+
+export default defaultProps({
+  theme: styles
+})(({
   theme,
   children
 }) => (
@@ -7,4 +12,4 @@ export default ({
       {children}
     </div>
   </div>
-);
+));

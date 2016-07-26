@@ -20,7 +20,6 @@ export default compose(
   over,
   title,
   mouseOver,
-  isDragging,
   mouseOut
 }) => (
   <div

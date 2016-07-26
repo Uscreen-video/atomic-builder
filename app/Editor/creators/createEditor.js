@@ -1,15 +1,14 @@
 import {
   compose, withContext, defaultProps, withHandlers,
-  withPropsOnChange, createEagerElement
+  withProps, createEagerElement
 } from 'recompose';
-import { DropTarget as target } from 'react-dnd';
 import { PropTypes } from 'react';
 import { List } from 'immutable';
 
 import * as Organisms from 'Atomic/Organisms';
 
 import dndState from '../helpers/dndState';
-import { template as targetSpec } from '../dnd/dragTarget';
+import dndHandler from '../dnd/handler';
 import EditorWrap from '../components/EditorWrap';
 
 const { func } = PropTypes;
@@ -29,26 +28,27 @@ compose(
   // EditorState from [dndState] and updater
   // Updater recieve an array of nesting and mutation
   withHandlers({
-    updateEditorState: props => (key, state) =>
-    props.update(props.organisms.setIn(key, state), console.log(props.organisms.toJS()))
+    updateEditorState: props => (key, state) => props.update(props.organisms.setIn(key, state))
   }),
 
   withContext({ updateEditorState: func }, ({ updateEditorState }) => ({ updateEditorState })),
 
+
   // We map organisns to to components
-  withPropsOnChange(['organisms'], ({ move, add, ...props }) => ({
+  withProps(({ move, add, hover, hoverIndex, ...props }) => ({
     children: props.organisms.map((organism, index) =>
       createEagerElement(
         Organisms[organism.get('type')].Component,
-        { key: organism.get('id'), index, organism, Cursor: props.Cursor.push(index), move, add }
+        {
+          key: organism.get('id'),
+          index, organism,
+          Cursor: props.Cursor.push(index),
+          move, add, hover, hoverIndex
+        }
       )
     )
   })),
 
-  // We allow to drop organisms in editor if its empty
-  target('organism', targetSpec, (connect, monitor) => ({
-    connectDropTarget: connect.dropTarget(),
-    isOver: monitor.isOver(),
-    canDrop: monitor.canDrop()
-  }))
+  dndHandler('template'),
+
 )(EditorWrap);

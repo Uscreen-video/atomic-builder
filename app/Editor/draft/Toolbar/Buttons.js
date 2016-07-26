@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import { RichUtils, Entity } from "draft-js";
+import { RichUtils, Entity } from 'draft-js';
 import cx from 'classnames';
 
 import styles from './styles.css';
@@ -12,6 +12,7 @@ function preventClick(e) {
 
 class Mapper extends Component {
   _key = void 0;
+  _content = void 0;
 
   get startKey() {
     return this.selection.getStartKey();
@@ -37,7 +38,7 @@ class Mapper extends Component {
   }
 
   get color() {
-    return Entity.get(this.entityKey).getData();
+    return Entity.get(this.key).getData();
   }
 
   get currentBlock() {
@@ -50,6 +51,7 @@ class Mapper extends Component {
 
   initialize() {
     this._key = this.entityKey;
+    this._content = this.props.editorState.getCurrentContent();
   }
 
   has(key) {

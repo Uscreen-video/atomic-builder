@@ -4,9 +4,9 @@ export default ({ isOver }) => (
   <div className={styles.BlankState}>
     {
       isOver &&
-      <div className={styles.content}>
-        <h3>Now drop it</h3>
-      </div>
+        <div className={styles.content}>
+          <h3>Now drop it</h3>
+        </div>
     }
     {
       !isOver &&

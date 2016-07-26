@@ -1,30 +1,20 @@
 export const atom = {
-  beginDrag({ index, drag, props }) {
-    // drag(props);
-    return { index, props };
+  beginDrag({ index, props, ...rest }) {
+    return { index, props: props || rest.atom.set('content', rest.content), type: 'atom' };
   },
-  endDrag({ drop }) {
-    // drop(false);
+  canDrag({ editingItem }) {
+    return !editingItem;
   }
 };
 
-
 export const organism = {
-  beginDrag({ index, drag, props }) {
-    // drag(props);
-    return { index, props };
-  },
-  endDrag({ drop }) {
-    // drop(false);
+  beginDrag({ index, props }) {
+    return { index, props, type: 'organism' };
   }
 };
 
 export const preview = {
-  beginDrag({ drag, props }) {
-    drag(props);
-    return ({ props, isPreview: true });
-  },
-  endDrag({ drop }) {
-    drop(false);
+  beginDrag({ props, type }) {
+    return ({ props, isPreview: true, type });
   }
 };

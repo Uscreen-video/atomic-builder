@@ -1,6 +1,6 @@
 import { EditorState, Editor } from 'draft-js';
 import { stateFromHTML } from 'draft-js-import-html';
-import { compose, withState, withHandlers } from 'recompose';
+import { compose, withState, withHandlers, shouldUpdate } from 'recompose';
 
 import Toolbar from './Toolbar';
 import blockRenderMap from './helpers/blockRenderer';
@@ -10,6 +10,7 @@ import decorator from './helpers/decorator';
 let editor = void 0;
 
 export default compose(
+  shouldUpdate(() => false),
   withState('content', 'setContent', ({ value }) =>
     !value
     && EditorState.createEmpty(decorator)

@@ -10,13 +10,13 @@ function createId() {
 }
 
 export default (type, key = type, shouldCommit = true) => compose(
-  getContext({ drag: func, drop: func }),
-
   withState(type, 'update', props =>
     props[key] instanceof List
     && props[key].get(type) || List([]) // eslint-disable-line new-cap
     || fromJS(props[key])
   ),
+
+  withState('hoverIndex', 'hover', void 0),
 
   withHandlers({
     move: ({ update, updateEditor, ...props }) => (index, movedIndex) => {
@@ -29,9 +29,14 @@ export default (type, key = type, shouldCommit = true) => compose(
       console.log(`[${type}] Add:`, mutation);
       update(mutation, shouldCommit && updateEditor(type, mutation));
     },
+    append: ({ update, updateEditor, ...props }) => (data) => {
+      const mutation = props[type].push(data.set('id', createId()));
+      console.log(`[${type}] Append:`, mutation);
+      update(mutation, shouldCommit && updateEditor(type, mutation));
+    },
     remove: ({ update, updateEditor, ...props }) => (index) => {
       const mutation = props[type].delete(index);
       update(mutation, shouldCommit && updateEditor(type, mutation));
     }
-  })
+  }),
 );

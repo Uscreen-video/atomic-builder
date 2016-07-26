@@ -1,28 +1,27 @@
 import {
-  compose, defaultProps, shouldUpdate,
-  createEagerFactory, createEagerElement, withProps
+  compose, defaultProps, createEagerFactory,
+  createEagerElement, withProps
 } from 'recompose';
-import { DropTarget as target, DragSource as source } from 'react-dnd';
 
 import * as Molecules from 'Atomic/Molecules';
 
 import OrganismWrap from '../components/OrganismWrap';
 import editorState from '../helpers/editorState';
-import disableUpdate from '../helpers/disableUpdate';
-import { organism as targetSpec } from '../dnd/dragTarget';
-import { organism as sourceSpec } from '../dnd/dragSource';
+import dndHandler from '../dnd/handler';
 
-const mapMolecules = (molecules, Cursor) => molecules.map((molecule, key) => props =>
+const mapMolecules = (molecules, Cursor) => molecules.map((molecule, key) =>
   createEagerElement(
     Molecules[molecule.get('type')].Component,
-    { ...props, key, molecule, Cursor: Cursor.push('molecules', key) }
+    {
+      key, molecule,
+      theme: molecule.has('theme') && molecule.get('theme').toJS() || void 0,
+      Cursor: Cursor.push('molecules', key)
+    }
   )
 );
 
-export default ({ component, props: { type } }) =>
+export default ({ component }) =>
 compose(
-  // Prevent updates from parent
-  // disableUpdate(),
 
   // Create lazy-evaluating component to render
   defaultProps({ Organism: createEagerFactory(component) }),
@@ -36,21 +35,6 @@ compose(
     molecules: mapMolecules(props.organism.get('molecules'), props.Cursor)
   })),
 
+  dndHandler('organism'),
 
-  // If editor has molecules we handle other organsm dragging hovering
-  target('organism', targetSpec, (connect, monitor) => ({
-    connectDropTarget: connect.dropTarget(),
-    isOver: monitor.isOver(),
-    canDrop: monitor.canDrop()
-  })),
-
-  // We allow to sort organisms my drag and drop
-  source('organism', sourceSpec, (connect, monitor) => ({
-    connectDragSource: connect.dragSource(),
-    isDragging: monitor.isDragging()
-  })),
-
-  shouldUpdate((prev, next) => {
-    return false
-  }),
 )(OrganismWrap);

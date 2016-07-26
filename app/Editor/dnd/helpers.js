@@ -12,5 +12,5 @@ export const getPosition = (props, monitor, component) => {
   if (hoverClientY > hoverMiddleY) {
     position = 1;
   }
-  return position;
+  return props.index + position;
 };

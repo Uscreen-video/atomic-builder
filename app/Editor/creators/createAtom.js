@@ -1,20 +1,16 @@
 import {
-  compose, defaultProps, withState, withHandlers
+  compose, defaultProps, withState, withHandlers, withProps
 } from 'recompose';
 import { DropTarget as target, DragSource as source } from 'react-dnd';
 
 import AtomWrap from '../components/AtomWrap';
 
 import editorState from '../helpers/editorState';
-import disableUpdate from '../helpers/disableUpdate';
 import { atom as targetSpec } from '../dnd/dragTarget';
 import { atom as sourceSpec } from '../dnd/dragSource';
 
 export default ({ component, props: { type } }) =>
 compose(
-
-  // Prevent component update from editor state
-  // disableUpdate('atom'),
 
   // Set Component to render
   defaultProps({
@@ -24,18 +20,25 @@ compose(
   // Connect to EditorState
   editorState,
 
-  withState('content', 'setContent', props => props.atom.get('content')),
+  withState('content', 'setContent', props => {
+    console.log('New atom has been created!');
+    props.atom.get('content')
+  }),
 
   // Show controlls only on active element
   withState('active', 'setActive', false),
 
   withHandlers({
-    activate: props => () => props.setActive(true),
-    deactivate: props => () => props.setActive(false),
-    onChange: props => data => {
-      console.log(data);
-      props.setContent(data, props.updateEditor('content', data))
-    }
+    activate: props => () => {
+      props.editItem(true);
+      props.setActive(true)
+    },
+    deactivate: props => () => {
+      props.releaseItem();
+      props.setActive(false);
+      props.updateEditor('content', props.content);
+    },
+    onChange: props => props.setContent,
   }),
 
   // If molecules has atoms we handle other atoms dragging hovering

@@ -1,17 +1,18 @@
-import styles from './styles.css';
 import cx from 'classnames';
 import Draft from 'Editor/draft';
 import { stateToHTML } from 'draft-js-export-html';
 import { EditorState } from 'draft-js';
-import decorator from 'Editor/draft/helpers/decorator';
+
+import styles from './styles.css';
+import typo from './typo.css';
 
 const Content = ({ content }) => {
-  if (!content) return <div className={styles.placeholder}>Enter text here</div>;
+  if (!content) return <p className={styles.placeholder}>Enter text here</p>;
   if (content instanceof EditorState) {
-    const __html = stateToHTML(content.getCurrentContent(decorator));
+    const __html = stateToHTML(content.getCurrentContent());
     return <div dangerouslySetInnerHTML={{ __html }} />;
   }
-  return <div>{content}</div>;
+  return content;
 };
 
 export default ({
@@ -22,7 +23,7 @@ export default ({
   <div className={cx('editor-text', styles.wrap)}>
   {
     !active
-    ? <Content content={content} />
+    ? <div className={typo.content}><Content content={content} /></div>
     : <Draft value={content} onChange={onChange} />
   }
   </div>

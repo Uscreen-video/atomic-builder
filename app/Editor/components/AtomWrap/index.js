@@ -3,14 +3,12 @@ import styles from './styles.css';
 
 export default ({
   Atom,
-  connectDropTarget,
-  connectDragSource,
   activate,
   deactivate,
   isDragging,
   ...props
-}) => connectDragSource(connectDropTarget(
-  <div onDoubleClick={!props.active && !isDragging && activate}>
+}) => (
+  <div onClick={!props.active && !isDragging && activate}>
     <Highlight title='atom' outside>
       <Atom {...props} />
     </Highlight>
@@ -19,4 +17,4 @@ export default ({
         <button className={styles.button} onClick={deactivate}>Save changes</button>
     }
   </div>
-));
+);

@@ -1,10 +1,16 @@
 import { compose, getContext, withPropsOnChange } from 'recompose';
 import { PropTypes } from 'react';
 
-const { func } = PropTypes;
+const { func, bool } = PropTypes;
 
 export default compose(
-  getContext({ updateEditorState: func }),
+  getContext({
+    updateEditorState: func,
+    editItem: func,
+    releaseItem: func,
+    editingItem: bool,
+  }),
+
   withPropsOnChange(['Cursor'], props => ({
     updateEditor: (key, state) => {
       const cursor = props.Cursor.push(key);

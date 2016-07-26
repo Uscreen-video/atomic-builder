@@ -2,14 +2,13 @@ import {
   compose, defaultProps, pure,
   withPropsOnChange, createEagerElement, withProps
 } from 'recompose';
-import { DropTarget as target } from 'react-dnd';
 
 import * as Atoms from 'Atomic/Atoms';
 
 import MoleculeWrap from '../components/MoleculeWrap';
-import { molecule as targetSpec } from '../dnd/dragTarget';
 import dndState from '../helpers/dndState';
 import editorState from '../helpers/editorState';
+import dndHandler from '../dnd/handler';
 
 const mapAtoms = (atoms, { Cursor, add, move }) => atoms.map((atom, index) =>
   createEagerElement(
@@ -33,23 +32,19 @@ compose(
   dndState('atoms', 'molecule'),
 
   //
-  withPropsOnChange(['molecule'], props => {
-    // console.log(props);
-    return ({
-      settings: props.molecule.get('settings')
-    })
-  }),
+  // withPropsOnChange(['molecule'], props => {
+  //   // console.log(props);
+  //   return ({
+  //     settings: props.molecule.get('settings')
+  //   })
+  // }),
 
 
   // Map atoms from state to components
   withProps(props => ({
-    children: mapAtoms(props.atoms, props)
+    children: mapAtoms(props.atoms, props),
   })),
 
-  // If molecule is empty we give ability to drop there atoms
-  target('atom', targetSpec, (connect, monitor) => ({
-    connectDropTarget: connect.dropTarget(),
-    isOver: monitor.isOver(),
-    canDrop: monitor.canDrop()
-  }))
+  dndHandler('molecule')
+
 )(MoleculeWrap);
