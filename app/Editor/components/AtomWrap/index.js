@@ -1,4 +1,4 @@
-import Highlight from '../Highlight/';
+import Customizer from '../Customizer/';
 import styles from './styles.css';
 
 export default ({
@@ -9,9 +9,9 @@ export default ({
   ...props
 }) => (
   <div onClick={!props.active && !isDragging && activate}>
-    <Highlight title='atom' outside>
+    <Customizer title='atom' outside>
       <Atom {...props} />
-    </Highlight>
+    </Customizer>
     {
       props.active &&
         <button className={styles.button} onClick={deactivate}>Save changes</button>

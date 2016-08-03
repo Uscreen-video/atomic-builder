@@ -2,6 +2,8 @@ import styles from './styles.css';
 import cx from 'classnames';
 import { compose, withState, withHandlers } from 'recompose';
 
+import Button from './button';
+
 export default compose(
   withState('over', 'setOver', false),
   withHandlers({
@@ -30,9 +32,9 @@ export default compose(
       {children}
     </div>
     <div className={cx(styles.border, over && styles.over)}>
-      <div className={styles.vertiacalBorder} />
+      <div className={styles.verticalBorder} />
       <div className={styles.horizontalBorder} />
-      <div className={cx(styles.title, outside && styles.outside)}>{title}</div>
+      <Button title={title} className={cx(styles.title, styles.title_settings, outside && styles.outside)} />
     </div>
   </div>
 ));

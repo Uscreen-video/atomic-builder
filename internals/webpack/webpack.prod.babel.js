@@ -9,6 +9,7 @@ const OfflinePlugin = require('offline-plugin');
 const cssnext = require('postcss-cssnext');
 const postcssFocus = require('postcss-focus');
 const postcssReporter = require('postcss-reporter');
+const postcssColor = require('postcss-color-function');
 
 module.exports = require('./webpack.base.babel')({
   // In production, we skip all hot-reloading stuff
@@ -31,6 +32,7 @@ module.exports = require('./webpack.base.babel')({
 
   // In production, we minify our CSS with cssnano
   postcssPlugins: [
+    postcssColor(),
     postcssFocus(),
     cssnext({
       browsers: ['last 2 versions', 'IE > 10'],
