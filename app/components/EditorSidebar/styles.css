@@ -1,0 +1,49 @@
+.sidebar {
+  position: fixed;
+  top: 58px;
+  left: 0;
+  width: 200px;
+  height: 100vh;
+  background: #39B6B3;
+  transform: translateX(-200px);
+  color: #fff;
+  font-size: 11px;
+  z-index: 999;
+  opacity: 0;
+
+  will-change: transform;
+  transition: transform .3s ease-in;
+  
+  &_active {
+    display: block;
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  &__header {
+    display: block;
+    text-align: center;
+    padding: 10px 0;
+    margin: 0;
+    background: color(#39B6B3 l(40%));
+    font-size: 12px;
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  li {
+    display: block;
+    text-align: center;
+    padding: 10px 0;
+    border-top: 1px solid color(#39B6B3 l(60%));
+    cursor: pointer;
+    &:hover {
+      background: color(#39B6B3 l(60%));
+    }
+  }
+}

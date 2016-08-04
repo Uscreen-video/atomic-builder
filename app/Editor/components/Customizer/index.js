@@ -1,7 +1,6 @@
 import styles from './styles.css';
 import cx from 'classnames';
 import { compose, withState, withHandlers } from 'recompose';
-
 import Button from './button';
 
 export default compose(
@@ -32,9 +31,15 @@ export default compose(
       {children}
     </div>
     <div className={cx(styles.border, over && styles.over)}>
-      <div className={styles.verticalBorder} />
-      <div className={styles.horizontalBorder} />
-      <Button title={title} className={cx(styles.title, styles.title_settings, outside && styles.outside)} />
+      <div className={cx(styles.verticalBorder, title && styles[`verticalBorder_${title}`])} />
+      <div className={cx(styles.horizontalBorder, title && styles[`horizontalBorder_${title}`])} />
+      <Button
+        title={title}
+        className={cx(
+          styles.title,
+          styles.titleSettings,
+          outside && styles.outside
+        )} />
     </div>
   </div>
 ));

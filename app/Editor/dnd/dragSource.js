@@ -3,7 +3,7 @@ export const atom = {
     return { index, props: props || rest.atom.set('content', rest.content), type: 'atom' };
   },
   canDrag({ editingItem }) {
-    return !editingItem;
+    return { ...editingItem, active: !editingItem.active };
   }
 };
 

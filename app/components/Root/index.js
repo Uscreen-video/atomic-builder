@@ -2,6 +2,7 @@ import 'normalize.css/normalize.css';
 
 // import Builder from '../Builder';
 import { Menu } from '../Menu';
+import EditorSidebar from '../EditorSidebar';
 
 import { withEditorContext } from 'Editor/editorContext';
 import { compose } from 'recompose';
@@ -20,7 +21,7 @@ export default compose(
     <section className={styles.menu}>
       <Menu />
     </section>
-
     <Editor data={blocks} />
+    <EditorSidebar />
   </div>
 ));
