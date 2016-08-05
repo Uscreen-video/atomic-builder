@@ -44,7 +44,6 @@ export const organism = {
   drop(props, monitor, component) {
     const item = monitor.getItem();
     const position = getPosition(props, monitor, component);
-    props.hover(void 0);
     if (item.isPreview) {
       props.add(position, item.props);
     } else if (position !== item.index) {
@@ -60,7 +59,7 @@ export const organism = {
 };
 
 export const molecule = {
-  hover(){
+  hover() {
     console.log('atom is over');
   },
 

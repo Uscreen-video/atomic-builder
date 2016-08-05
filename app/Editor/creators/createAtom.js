@@ -1,13 +1,11 @@
 import {
   compose, defaultProps, withState, withHandlers, withProps
 } from 'recompose';
-import { DropTarget as target, DragSource as source } from 'react-dnd';
 
 import AtomWrap from '../components/AtomWrap';
 
 import editorState from '../helpers/editorState';
-import { atom as targetSpec } from '../dnd/dragTarget';
-import { atom as sourceSpec } from '../dnd/dragSource';
+import dndHandler from '../dnd/handler';
 
 export default ({ component, props: { type } }) =>
 compose(
@@ -21,7 +19,6 @@ compose(
   editorState,
 
   withState('content', 'setContent', props => {
-    console.log('New atom has been created!');
     props.atom.get('content')
   }),
 
@@ -41,17 +38,7 @@ compose(
     onChange: props => props.setContent,
   }),
 
-  // If molecules has atoms we handle other atoms dragging hovering
-  target('atom', targetSpec, (connect, monitor) => ({
-    connectDropTarget: connect.dropTarget(),
-    isOver: monitor.isOver(),
-    canDrop: monitor.canDrop()
-  })),
 
-  // We allow to sort atoms my drag and drop
-  source('atom', sourceSpec, (connect, monitor) => ({
-    connectDragSource: connect.dragSource(),
-    isDragging: monitor.isDragging()
-  })),
+  dndHandler('atom')
 
 )(AtomWrap);

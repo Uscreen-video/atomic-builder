@@ -23,13 +23,14 @@ export default compose(
       props.setContent(state, props.onChange(state))
     }
   })
-)(({ content, onChange }) => (
+)(({ content, onChange, onBlur }) => (
   <div className={styles.wrap} ref={r => editor = r}>
     <Editor
       blockRenderMap={blockRenderMap}
       editorState={content}
       placeholder='Start writing text'
-      onChange={onChange} />
+      onChange={onChange}
+      onBlur={onBlur} />
     <Toolbar onChange={onChange} editorState={content} editor={editor} />
   </div>
 ));

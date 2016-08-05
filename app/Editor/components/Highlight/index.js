@@ -1,8 +1,10 @@
 import styles from './styles.css';
 import cx from 'classnames';
+import withEditorState from '../../helpers/editorState';
 import { compose, withState, withHandlers } from 'recompose';
 
 export default compose(
+  withEditorState,
   withState('over', 'setOver', false),
   withHandlers({
     mouseOver: props => e => {
@@ -17,6 +19,7 @@ export default compose(
 )(({
   outside,
   children,
+  preview,
   over,
   title,
   mouseOver,
@@ -27,7 +30,7 @@ export default compose(
     onMouseOver={mouseOver}
     onMouseOut={mouseOut}>
     <div>
-      {children}
+      {preview && preview(<div>{children}</div>) || children}
     </div>
     <div className={cx(styles.border, over && styles.over)}>
       <div className={styles.vertiacalBorder} />

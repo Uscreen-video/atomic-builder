@@ -86,8 +86,10 @@ exec	internals/scripts/npmcheckversion.js	/^var exec = require('child_process').
 expect	package.json	/^    "expect": "1.20.2",$/;"	f
 expect-jsx	package.json	/^    "expect-jsx": "2.6.0",$/;"	f
 export.Component.children	internals/templates/appContainer.js	/^  static propTypes = {$/;"	p
+export.source	app/Editor/dnd/spec.js	/^  target: 'atom',$/;"	p
 export.source	app/Editor/dnd/spec.js	/^  target: 'organism',$/;"	p
 export.source	app/Editor/dnd/spec.js	/^export const preview = {$/;"	p
+export.target	app/Editor/dnd/spec.js	/^export const atom = {$/;"	p
 export.target	app/Editor/dnd/spec.js	/^export const molecule = {$/;"	p
 export.target	app/Editor/dnd/spec.js	/^export const organism = {$/;"	p
 export.target	app/Editor/dnd/spec.js	/^export const template = {$/;"	p

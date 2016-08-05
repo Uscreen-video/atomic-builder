@@ -2,6 +2,7 @@ import { compose, withHandlers, withState, lifecycle } from 'recompose';
 import { EditorState, RichUtils, Entity } from 'draft-js';
 import styles from './styles.css';
 
+
 export default compose(
   withState('link', 'setLink', ''),
   withHandlers({
@@ -20,6 +21,7 @@ export default compose(
 }) => (
   <form onSubmit={onSubmit} styles={styles.linkWrap}>
     <input
+      ref={ref => ref && ref.focus()}
       className={styles.link}
       onChange={updateLink}
       placeholder='Enter link and click enter' />

@@ -4,17 +4,13 @@ import styles from './styles.css';
 export default ({
   Atom,
   activate,
-  deactivate,
+  connectDragPreview,
   isDragging,
   ...props
 }) => (
   <div onClick={!props.active && !isDragging && activate}>
-    <Highlight title='atom' outside>
+    <Highlight title='atom' outside preview={connectDragPreview}>
       <Atom {...props} />
     </Highlight>
-    {
-      props.active &&
-        <button className={styles.button} onClick={deactivate}>Save changes</button>
-    }
   </div>
 );

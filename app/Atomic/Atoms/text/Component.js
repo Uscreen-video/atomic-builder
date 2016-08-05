@@ -18,13 +18,14 @@ const Content = ({ content }) => {
 export default ({
   content,
   active,
+  deactivate,
   onChange
 }) => (
   <div className={cx('editor-text', styles.wrap)}>
   {
     !active
     ? <div className={typo.content}><Content content={content} /></div>
-    : <Draft value={content} onChange={onChange} />
+    : <Draft value={content} onChange={onChange} onBlur={deactivate} />
   }
   </div>
 );

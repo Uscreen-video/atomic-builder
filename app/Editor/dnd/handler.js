@@ -1,6 +1,6 @@
 import { PropTypes } from 'react';
 import { flowRight, compact } from 'lodash';
-import { createEagerFactory, getContext, withProps } from 'recompose';
+import { createEagerFactory, getContext, withHandlers } from 'recompose';
 import { DropTarget as dropTarget, DragSource as dragSource } from 'react-dnd';
 import { Motion, spring } from 'react-motion';
 
@@ -12,37 +12,59 @@ const springConfig = { stiffness: 300, damping: 50 };
 
 const defaultMotions = {
   scale: spring(1, springConfig),
-  shadow: spring(1, springConfig),
   y: spring(0, springConfig),
-  opacity: spring(1, springConfig),
+  opacity: spring(1, springConfig)
 };
 
-const getMotionStyle = (isDragging, dragingItem, canDrop, hoverIndex, index) => {
+const getMotionStyle = (isDragging, canDrop, index, hoverIndex, cursor, dragingItem) => {
+  const monitor = dragingItem;
+  const height = monitor.get('height');
+
   if (isDragging) {
     return {
       ...defaultMotions,
-      opacity: spring(0, springConfig),
+      opacity: spring(0, springConfig)
     };
   }
-  if (dragingItem && canDrop) {
-    if (hoverIndex + 1 > index) {
-      return defaultMotions;
+
+  if (monitor.isDragging && canDrop) {
+    if (monitor.isMounted) {
+      if (monitor.originalIndex < index && hoverIndex > index) {
+        return {
+          ...defaultMotions,
+          y: spring(height * -1, springConfig)
+        };
+      }
+      if (monitor.originalIndex > index && hoverIndex <= index) {
+        return {
+          ...defaultMotions,
+          y: spring(height, springConfig)
+        };
+      }
+    } else {
+      if (hoverIndex <= index) {
+        return {
+          ...defaultMotions,
+          y: spring(height, springConfig)
+        };
+      }
     }
-    if (hoverIndex === index) {
-      return {
-        ...defaultMotions,
-        y: spring(dragingItem, springConfig)
-      };
-    }
+  }
+
+  if (!monitor.isDragging) {
+    return {
+      ...defaultMotions,
+      y: 0
+    };
   }
   return defaultMotions;
 };
 
-const getStyles = ({ scale, shadow, y, ...rest }) => ({
-  boxShadow: `rgba(0, 0, 0, 0.2) 0px ${shadow}px ${2 * shadow}px 0px`,
+const getStyles = ({ scale, y, ...rest }) => ({
   transform: `translate3d(0, ${y}px, 0) scale(${scale})`,
   WebkitTransform: `translate3d(0, ${y}px, 0) scale(${scale})`,
   overflow: 'visible',
+  position: 'relative',
   ...rest
 });
 
@@ -55,7 +77,7 @@ export default (type, baseType) => baseComponent => {
     getContext({
       drag: PropTypes.func,
       drop: PropTypes.func,
-      dragingItem: PropTypes.number
+      dragingItem: PropTypes.object
     }),
 
     target && dropTarget(target, targetSpec[type], (connect, monitor) => ({
@@ -67,17 +89,25 @@ export default (type, baseType) => baseComponent => {
     // We allow to sort organisms my drag and drop
     source && dragSource(source, sourceSpec[type], (connect, monitor) => ({
       connectDragSource: connect.dragSource(),
+      connectDragPreview: connect.dragPreview(),
       isDragging: monitor.isDragging()
     })),
 
+    withHandlers({
+      drag: props => e => {
+        const { height } = e.target.getBoundingClientRect();
+        const { index, Cursor: cursor } = props;
+        props.drag({ height, index, cursor });
+      }
+    })
   ]);
 
   return flowRight(dndDecorators)(({
     connectDropTarget,
     connectDragSource,
     isDragging,
-    hoverIndex,
     dragingItem,
+    hoverIndex,
     canDrop,
     index,
     drag,
@@ -85,6 +115,7 @@ export default (type, baseType) => baseComponent => {
     ...rest
   }) => {
     const Component = factory({ ...rest, isDragging });
+
     if (!source) {
       return connectDropTarget(
         <div style={{ position: 'relative' }}>{Component}</div>
@@ -97,7 +128,7 @@ export default (type, baseType) => baseComponent => {
       );
     }
 
-    const motion = getMotionStyle(isDragging, dragingItem, canDrop, hoverIndex, index);
+    const motion = getMotionStyle(isDragging, canDrop, index, hoverIndex, rest.Cursor, dragingItem);
     return connectDragSource(connectDropTarget(
       <div onDragStart={drag} onDragEnd={drop}>
         <Motion style={motion}>

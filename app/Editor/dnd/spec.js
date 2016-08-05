@@ -11,6 +11,11 @@ export const molecule = {
   target: 'atom'
 };
 
+export const atom = {
+  target: 'atom',
+  source: 'atom'
+};
+
 export const preview = {
   source: 'organism'
 };

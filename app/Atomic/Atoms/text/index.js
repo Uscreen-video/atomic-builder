@@ -6,6 +6,5 @@ export default atom({
   props: {
     type: 'text',
     content: '',
-    settings: {}
   }
 });
