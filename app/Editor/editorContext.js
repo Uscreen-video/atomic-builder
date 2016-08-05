@@ -9,7 +9,6 @@ const { func, object, bool, number } = PropTypes;
 export const withEditorContext = BaseComponent =>
 compose(
   DragDropContext(HTML5Backend), // eslint-disable-line new-cap
-
   withState('dragingItem', 'setDraggingItem', 0),
   withState('editingItem', 'setEditingItem', { active: false, type: '' }),
 
@@ -18,7 +17,9 @@ compose(
       const { height } = e.target.getBoundingClientRect();
       return props.setDraggingItem(height);
     },
-    drop: props => () => props.setDraggingItem(0),
+    drop: props => () => (
+      props.setDraggingItem(0)
+    ),
     editItem: props => () => props.setEditingItem({
       ...props.editingItem,
       active: true

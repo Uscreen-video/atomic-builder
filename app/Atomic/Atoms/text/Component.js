@@ -18,9 +18,12 @@ const Content = ({ content }) => {
 export default ({
   content,
   active,
+  settings,
   onChange
-}) => (
-  <div className={cx('editor-text', styles.wrap)}>
+}) => {
+  console.log(settings);
+return (
+  <div className={cx('editor-text', styles.wrap)} style={{ backgroundColor: settings.get('backgroundColor') }}>
   {
     !active
     ? <div className={typo.content}><Content content={content} /></div>
@@ -28,3 +31,5 @@ export default ({
   }
   </div>
 );
+
+}

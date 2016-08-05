@@ -4,7 +4,7 @@ export default ({
   settings,
   molecules
 }) => (
-  <div className={styles.wrap} style={{ backgroundColor: settings.background }}>
+  <div className={styles.wrap} style={{ backgroundColor: settings.get('background') }}>
     <div className={styles.container}>
       <div className={styles.leftSide} />
       <div className={styles.rightSide}>

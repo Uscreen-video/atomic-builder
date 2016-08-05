@@ -9,7 +9,7 @@ export default ({
   ...props
 }) => (
   <div onClick={!props.active && !isDragging && activate}>
-    <Customizer title='atom' outside>
+    <Customizer {...props} title='atom' outside>
       <Atom {...props} />
     </Customizer>
     {

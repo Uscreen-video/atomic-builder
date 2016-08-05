@@ -11,7 +11,8 @@ export default compose(
       props.setItem({
         ...props.editingItem,
         active: true,
-        type: props.title
+        type: props.title,
+        Cursor: props.Cursor.push('settings')
       });
     }
   })

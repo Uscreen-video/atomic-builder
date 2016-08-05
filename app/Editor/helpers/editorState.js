@@ -9,14 +9,14 @@ export default compose(
     editItem: func,
     releaseItem: func,
     setItem: func,
-    editingItem: object,
+    editingItem: object
   }),
 
   withPropsOnChange(['Cursor'], props => ({
     updateEditor: (key, state) => {
       const cursor = props.Cursor.push(key);
       console.log(cursor.join(' > '));
-      return props.updateEditorState(cursor, state)
+      return props.updateEditorState(cursor, state);
     }
   }))
 );

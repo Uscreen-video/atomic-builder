@@ -21,7 +21,8 @@ export default compose(
   over,
   title,
   mouseOver,
-  mouseOut
+  mouseOut,
+  ...props
 }) => (
   <div
     className={styles.wrap}
@@ -34,6 +35,7 @@ export default compose(
       <div className={cx(styles.verticalBorder, title && styles[`verticalBorder_${title}`])} />
       <div className={cx(styles.horizontalBorder, title && styles[`horizontalBorder_${title}`])} />
       <Button
+        {...props}
         title={title}
         className={cx(
           styles.title,

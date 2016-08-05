@@ -2,10 +2,10 @@
   position: fixed;
   top: 58px;
   left: 0;
-  width: 200px;
+  width: 300px;
   height: 100vh;
   background: #39B6B3;
-  transform: translateX(-200px);
+  transform: translateX(-300px);
   color: #fff;
   font-size: 11px;
   z-index: 999;
