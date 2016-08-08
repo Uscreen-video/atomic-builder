@@ -16,6 +16,7 @@ const mapAtoms = (atoms, props) => atoms.map((atom, index) =>
     {
       ...props,
       index, atom,
+      content: props.molecule.getIn(['atoms', index, 'content']),
       key: atom.get('id'),
       Cursor: props.Cursor.push('atoms', index)
     }

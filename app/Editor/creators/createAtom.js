@@ -18,9 +18,7 @@ compose(
   // Connect to EditorState
   editorState,
 
-  withState('content', 'setContent', props => {
-    props.atom.get('content')
-  }),
+  withState('content', 'setContent', props => props.content || props.atom.get('content')),
 
   // Show controlls only on active element
   withState('active', 'setActive', false),
