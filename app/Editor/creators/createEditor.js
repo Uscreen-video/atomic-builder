@@ -7,7 +7,7 @@ import { List } from 'immutable';
 
 import * as Organisms from 'Atomic/Organisms';
 
-import dndState from '../helpers/dndState';
+import dndState from '../dnd/state';
 import dndHandler from '../dnd/handler';
 import EditorWrap from '../components/EditorWrap';
 

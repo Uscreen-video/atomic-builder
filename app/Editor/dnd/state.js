@@ -1,9 +1,6 @@
 import UUID from 'uuid-js';
-import { compose, withState, withHandlers, getContext } from 'recompose';
+import { compose, withState, withHandlers } from 'recompose';
 import { fromJS, List } from 'immutable';
-import { PropTypes } from 'react';
-
-const { func } = PropTypes;
 
 function createId() {
   return UUID.create().toString();
@@ -21,22 +18,23 @@ export default (type, key = type, shouldCommit = true) => compose(
   withHandlers({
     move: ({ update, updateEditor, ...props }) => (index, movedIndex) => {
       const mutation = props[type].delete(movedIndex).insert(index, props[type].get(movedIndex));
-      console.log(`[${type}] Move:`, mutation);
+      console.log(`[${type}] Move:`, mutation.toJS());
       update(mutation, shouldCommit && updateEditor(type, mutation));
     },
     add: ({ update, updateEditor, ...props }) => (index, data) => {
       const mutation = props[type].insert(index, data.set('id', createId()));
-      console.log(`[${type}] Add:`, mutation);
+      console.log(`[${type}] Add:`, mutation.toJS());
       update(mutation, shouldCommit && updateEditor(type, mutation));
     },
     append: ({ update, updateEditor, ...props }) => (data) => {
       const mutation = props[type].push(data.set('id', createId()));
-      console.log(`[${type}] Append:`, mutation);
+      console.log(`[${type}] Append:`, mutation.toJS());
       update(mutation, shouldCommit && updateEditor(type, mutation));
     },
     remove: ({ update, updateEditor, ...props }) => (index) => {
       const mutation = props[type].delete(index);
+      console.log(`[${type}] Remove:`, mutation.toJS());
       update(mutation, shouldCommit && updateEditor(type, mutation));
-    }
+    },
   }),
 );

@@ -8,7 +8,7 @@ export default compose(
     updateEditorState: func,
     editItem: func,
     releaseItem: func,
-    editingItem: bool,
+    editingItem: bool
   }),
 
   withPropsOnChange(['Cursor'], props => ({
