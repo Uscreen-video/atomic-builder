@@ -10,12 +10,16 @@ import dndState from '../helpers/dndState';
 import editorState from '../helpers/editorState';
 import dndHandler from '../dnd/handler';
 
-const mapAtoms = (atoms, { Cursor, add, move }) => atoms.map((atom, index) =>
+const mapAtoms = (atoms, { Cursor, add, move, molecule }) => atoms.map((atom, index) => (
   createEagerElement(
     Atoms[atom.get('type')].Component,
-    { index, atom, key: atom.get('id'), add, move, Cursor: Cursor.push('atoms', index), settings: atom.get('settings') }
+    {
+      index, atom, key: atom.get('id'),
+      add, move, Cursor: Cursor.push('atoms', index),
+      settings: molecule.getIn(['atoms', index, 'settings'])
+    }
   )
-);
+));
 
 export default ({ component, props: { type } }) =>
 compose(

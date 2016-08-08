@@ -20,9 +20,7 @@ export default ({
   active,
   settings,
   onChange
-}) => {
-  console.log(settings);
-return (
+}) => (
   <div className={cx('editor-text', styles.wrap)} style={{ backgroundColor: settings.get('backgroundColor') }}>
   {
     !active
@@ -31,5 +29,3 @@ return (
   }
   </div>
 );
-
-}

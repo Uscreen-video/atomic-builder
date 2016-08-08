@@ -9,12 +9,13 @@ import editorState from '../helpers/editorState';
 import { atom as targetSpec } from '../dnd/dragTarget';
 import { atom as sourceSpec } from '../dnd/dragSource';
 
-export default ({ component, props: { type } }) =>
+export default ({ component, props: { type, settings } }) =>
 compose(
 
   // Set Component to render
   defaultProps({
-    Atom: component
+    Atom: component,
+    settings
   }),
 
   // Connect to EditorState
