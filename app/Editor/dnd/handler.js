@@ -2,62 +2,39 @@ import { PropTypes } from 'react';
 import { flowRight, compact } from 'lodash';
 import { createEagerFactory, getContext, withHandlers } from 'recompose';
 import { DropTarget as dropTarget, DragSource as dragSource } from 'react-dnd';
-import { Motion, spring } from 'react-motion';
+import { Motion } from 'react-motion';
+import { Animation } from './immutable';
 
 import * as targetSpec from './dragTarget';
 import * as sourceSpec from './dragSource';
 import * as spec from './spec';
 
-const springConfig = { stiffness: 300, damping: 50 };
-
-const defaultMotions = {
-  scale: spring(1, springConfig),
-  y: spring(0, springConfig),
-  opacity: spring(1, springConfig)
-};
 
 const getMotionStyle = (isDragging, canDrop, index, hoverIndex, cursor, dragingItem) => {
   const monitor = dragingItem;
   const height = monitor.get('height');
+  const animation = new Animation();
 
   if (isDragging) {
-    return {
-      ...defaultMotions,
-      opacity: spring(0, springConfig)
-    };
+    return animation.animate('opacity', 0);
   }
 
   if (monitor.isDragging && canDrop) {
     if (monitor.isMounted) {
       if (monitor.originalIndex < index && hoverIndex > index) {
-        return {
-          ...defaultMotions,
-          y: spring(height * -1, springConfig)
-        };
+        return animation.animate('y', - height);
       }
       if (monitor.originalIndex > index && hoverIndex <= index) {
-        return {
-          ...defaultMotions,
-          y: spring(height, springConfig)
-        };
+        return animation.animate('y', height);
       }
     } else {
       if (hoverIndex <= index) {
-        return {
-          ...defaultMotions,
-          y: spring(height, springConfig)
-        };
+        return animation.animate('y', height);
       }
     }
   }
 
-  if (!monitor.isDragging) {
-    return {
-      ...defaultMotions,
-      y: 0
-    };
-  }
-  return defaultMotions;
+  return animation.animate('y', 0, false);
 };
 
 const getStyles = ({ scale, y, ...rest }) => ({

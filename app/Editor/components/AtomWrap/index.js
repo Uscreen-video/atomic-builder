@@ -1,5 +1,4 @@
 import Highlight from '../Highlight/';
-import styles from './styles.css';
 
 export default ({
   Atom,
@@ -9,7 +8,7 @@ export default ({
   ...props
 }) => (
   <div onClick={!props.active && !isDragging && activate}>
-    <Highlight title='atom' outside preview={connectDragPreview}>
+    <Highlight title='atom' outside isDragging={isDragging} preview={connectDragPreview}>
       <Atom {...props} />
     </Highlight>
   </div>

@@ -14,3 +14,7 @@ export const getPosition = (props, monitor, component) => {
   }
   return props.index + position;
 };
+
+
+export const isNested = (initial, extended) =>
+  void 0 === initial.find((x, index) => x !== extended.get(index));

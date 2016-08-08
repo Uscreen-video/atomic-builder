@@ -42,11 +42,19 @@
       position: absolute;
       width: 0;
       z-index: 10;
+      transition: opacity .2s ease-in;
+    }
+  }
+  &.hidden{
+    &:after{
+      opacity: 0;
     }
   }
 }
 
 .listWrap{
+  position: absolute;
+  width: 100%;
   display: flex;
   justify-content: center;
   background: #485562;

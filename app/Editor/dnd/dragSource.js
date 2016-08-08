@@ -1,6 +1,12 @@
 export const atom = {
-  beginDrag({ index, props, ...rest }) {
-    return { index, props: props || rest.atom.set('content', rest.content), type: 'atom' };
+  beginDrag({ index, props, Cursor, remove, ...rest }) {
+    return {
+      index,
+      Cursor,
+      remove, // Add posiability to remove atom thought atom
+      props: props || rest.atom.set('content', rest.content),
+      type: 'atom'
+    };
   },
   canDrag({ editingItem }) {
     return !editingItem;
@@ -8,8 +14,13 @@ export const atom = {
 };
 
 export const organism = {
-  beginDrag({ index, props }) {
-    return { index, props, type: 'organism' };
+  beginDrag({ index, props, Cursor }) {
+    return {
+      index,
+      props,
+      Cursor,
+      type: 'organism'
+    };
   }
 };
 

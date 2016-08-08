@@ -38,7 +38,6 @@ compose(
     onChange: props => props.setContent,
   }),
 
-
   dndHandler('atom')
 
 )(AtomWrap);

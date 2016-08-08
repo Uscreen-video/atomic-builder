@@ -48,17 +48,16 @@ compression	package.json	/^    "compression": "1.6.2",$/;"	f
 config	package.json	/^          "config": ".\/internals\/webpack\/webpack.test.babel.js"$/;"	f
 const.childRoutes	internals/templates/app.js	/^  component: App,$/;"	p
 const.component	internals/templates/app.js	/^const rootRoute = {$/;"	p
-const.damping	app/Editor/dnd/handler.js	/^const springConfig = { stiffness: 300, damping: 50 };$/;"	p
+const.damping	app/Editor/dnd/immutable.js	/^const springConfig = { stiffness: 300, damping: 50 };$/;"	p
 const.dllPlugin	internals/config.js	/^  version: '3.0.0',$/;"	p
 const.error	server/logger.js	/^const logger = {$/;"	p
 const.molecule	app/components/Menu/index.js	/^  organism: organismsArray,$/;"	p
 const.organism	app/components/Menu/index.js	/^const types = {$/;"	p
-const.scale	app/Editor/dnd/handler.js	/^const defaultMotions = {$/;"	p
-const.stiffness	app/Editor/dnd/handler.js	/^const springConfig = { stiffness: 300, damping: 50 };$/;"	p
+const.stiffness	app/Editor/dnd/immutable.js	/^const springConfig = { stiffness: 300, damping: 50 };$/;"	p
 const.version	internals/config.js	/^const ReactBoilerplate = {$/;"	p
 coveralls	package.json	/^    "coveralls": "2.11.11",$/;"	f
 coveralls	package.json	/^    "coveralls": "cat .\/coverage\/lcov\/lcov.info | coveralls",$/;"	f
-createId	app/Editor/helpers/dndState.js	/^function createId() {$/;"	f
+createId	app/Editor/dnd/state.js	/^function createId() {$/;"	f
 cross-env	package.json	/^    "cross-env": "2.0.0",$/;"	f
 css-loader	package.json	/^    "css-loader": "0.23.1",$/;"	f
 dependencies	package.json	/^  "dependencies": {$/;"	f
