@@ -1,6 +1,5 @@
 import {
-  compose, defaultProps, pure,
-  withPropsOnChange, createEagerElement, withProps
+  compose, defaultProps, createEagerElement, withProps
 } from 'recompose';
 
 import * as Atoms from 'Atomic/Atoms';
@@ -10,19 +9,22 @@ import dndState from '../dnd/state';
 import editorState from '../helpers/editorState';
 import dndHandler from '../dnd/handler';
 
-const mapAtoms = (atoms, props) => atoms.map((atom, index) =>
+const mapAtoms = (atoms, {
+  Cursor, add, move, hover, remove, hoverIndex, molecule
+}) => atoms.map((atom, index) =>
   createEagerElement(
     Atoms[atom.get('type')].Component,
     {
-      ...props,
-      index, atom,
-      key: atom.get('id'),
-      Cursor: props.Cursor.push('atoms', index)
+      index, atom, key: atom.get('id'),
+      add, move, remove, hover, hoverIndex,
+      Cursor: Cursor.push('atoms', index),
+      content: molecule.getIn(['atoms', index, 'content']),
+      settings: molecule.getIn(['atoms', index, 'settings']) || atom.get('settings')
     }
   )
 );
 
-export default ({ component, props: { type } }) =>
+export default ({ component }) =>
 compose(
   // Prevent updates from parent state
   // disableUpdate(),
@@ -47,7 +49,7 @@ compose(
 
   // Map atoms from state to components
   withProps(props => ({
-    children: mapAtoms(props.atoms, props),
+    children: mapAtoms(props.atoms, props)
   })),
 
   dndHandler('molecule')

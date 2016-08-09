@@ -2,6 +2,7 @@ import styles from './styles.css';
 import cx from 'classnames';
 import withEditorState from '../../helpers/editorState';
 import { compose, withState, withHandlers } from 'recompose';
+import Button from './button';
 
 export default compose(
   withEditorState,
@@ -23,7 +24,8 @@ export default compose(
   over,
   title,
   mouseOver,
-  mouseOut
+  mouseOut,
+  ...props
 }) => (
   <div
     className={styles.wrap}
@@ -33,9 +35,16 @@ export default compose(
       {preview && preview(<div>{children}</div>) || children}
     </div>
     <div className={cx(styles.border, over && styles.over)}>
-      <div className={styles.vertiacalBorder} />
-      <div className={styles.horizontalBorder} />
-      <div className={cx(styles.title, outside && styles.outside)}>{title}</div>
+      <div className={cx(styles.verticalBorder, title && styles[`verticalBorder_${title}`])} />
+      <div className={cx(styles.horizontalBorder, title && styles[`horizontalBorder_${title}`])} />
+      <Button
+        {...props}
+        title={title}
+        className={cx(
+          styles.title,
+          styles.titleSettings,
+          outside && styles.outside
+        )} />
     </div>
   </div>
 ));

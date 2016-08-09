@@ -1,5 +1,5 @@
 import styles from './styles.css';
-import Highlight from '../Highlight/';
+import Customizer from '../Customizer/';
 
 const Placeholder = ({ atoms }) => !atoms.size && (
   <div className={styles.placeholder}>
@@ -12,8 +12,8 @@ export default ({
   Molecule,
   ...props
 }) => (
-  <Highlight title='Molecule' outside>
+  <Customizer title='Molecule' outside>
     <Placeholder {...props} />
     <Molecule {...props} />
-  </Highlight>
+  </Customizer>
 );

@@ -1,4 +1,4 @@
-import Highlight from '../Highlight/';
+import Customizer from '../Customizer/';
 
 export default ({
   Organism,
@@ -6,7 +6,7 @@ export default ({
   connectDragPreview,
   ...rest
 }) => (
-  <Highlight title='Organism' isDragging={isDragging} preview={connectDragPreview}>
+  <Customizer title='Organism' isDragging={isDragging} preview={connectDragPreview}>
     <Organism {...rest} />
-  </Highlight>
+  </Customizer>
 );

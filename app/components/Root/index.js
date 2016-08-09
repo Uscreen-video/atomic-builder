@@ -20,7 +20,6 @@ export default compose(
     <section className={styles.menu}>
       <Menu />
     </section>
-
     <Editor data={blocks} />
   </div>
 ));

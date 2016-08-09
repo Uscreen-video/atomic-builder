@@ -16,7 +16,8 @@ const cssnext = require('postcss-cssnext');
 const postcssFocus = require('postcss-focus');
 const postcssReporter = require('postcss-reporter');
 const lost = require('lost');
-const nested = require('postcss-nested')
+const nested = require('postcss-nested');
+const postcssColor = require('postcss-color-function');
 
 const plugins = [
   new webpack.ProvidePlugin({
@@ -51,6 +52,7 @@ module.exports = require('./webpack.base.babel')({
 
   // Process the CSS with PostCSS
   postcssPlugins: [
+    postcssColor(),
     lost(),
     nested(),
     postcssFocus(), // Add a :focus to every :hover

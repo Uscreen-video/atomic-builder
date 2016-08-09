@@ -167,6 +167,7 @@ parser	package.json	/^    "parser": "babel-eslint",$/;"	f
 path	package.json	/^    "path": "node_modules\/react-boilerplate-dlls",$/;"	f
 plop	package.json	/^    "plop": "1.5.0",$/;"	f
 plugins	package.json	/^        "plugins": [$/;"	f
+postcss-color-function	package.json	/^    "postcss-color-function": "^2.0.1",$/;"	f
 postcss-cssnext	package.json	/^    "postcss-cssnext": "2.7.0",$/;"	f
 postcss-focus	package.json	/^    "postcss-focus": "1.0.0",$/;"	f
 postcss-loader	package.json	/^    "postcss-loader": "0.9.1",$/;"	f
@@ -188,6 +189,7 @@ psi	internals/scripts/pagespeed.js	/^var psi = require('psi');$/;"	v
 psi	package.json	/^    "psi": "2.0.4",$/;"	f
 react	package.json	/^    "react": "15.2.1",$/;"	f
 react-addons-perf	package.json	/^    "react-addons-perf": "^15.2.0",$/;"	f
+react-color	package.json	/^    "react-color": "^2.2.2",$/;"	f
 react-dnd	package.json	/^    "react-dnd": "^2.1.4",$/;"	f
 react-dnd-html5-backend	package.json	/^    "react-dnd-html5-backend": "^2.1.2",$/;"	f
 react-dom	package.json	/^    "react-dom": "15.2.1",$/;"	f

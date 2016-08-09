@@ -19,9 +19,12 @@ export default ({
   content,
   active,
   deactivate,
+  settings,
   onChange
 }) => (
-  <div className={cx('editor-text', styles.wrap)}>
+  <div
+    className={cx('editor-text', styles.wrap)}
+    style={{ backgroundColor: settings.get('backgroundColor') }}>
   {
     !active
     ? <div className={typo.content}><Content content={content} /></div>
