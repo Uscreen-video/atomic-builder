@@ -1,15 +1,15 @@
 export const atom = {
-  beginDrag({ index, props, Cursor, remove, ...rest }) {
+  beginDrag({ index, Cursor, remove, settings, content, ...rest }) {
     return {
       index,
       Cursor,
       remove, // Add posiability to remove atom thought atom
-      props: props || rest.atom.set('content', rest.content),
+      props: rest.atom.set('content', content).set('settings', settings),
       type: 'atom'
     };
   },
   canDrag({ editingItem }) {
-    return !editingItem;
+    return { ...editingItem, active: !editingItem.active };
   }
 };
 

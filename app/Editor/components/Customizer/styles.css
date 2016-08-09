@@ -1,0 +1,124 @@
+.wrap {
+  position: relative;
+}
+
+.border {
+  opacity: 0;
+  transition: opacity .1s ease-in-out;
+}
+
+.horizontalBorder {
+  &:before, &:after{
+    content: ' ';
+    position: absolute;
+    left: 0;
+    right: 0;
+    border-top: 2px dashed #39B6B3;
+  }
+  &:before {
+    top: 0;
+  }
+  &:after {
+    bottom: 0;
+  }
+
+  &_Molecule {
+    &:before, &:after {
+      left: -10px;
+      right: -10px;
+    }
+    &:before {
+      top: -20px;
+    }
+    &:after {
+      bottom: -20px;
+    }
+  }
+}
+
+.verticalBorder {
+  &:before, &:after {
+    content: ' ';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    border-left: 2px dashed #39B6B3;
+  }
+  &:before {
+    left: 0;
+  }
+  &:after {
+    right: 0;
+  }
+
+  &_Molecule {
+    &:before, &:after {
+      top: -10px;
+      bottom: -10px;
+    }
+    &:before {
+      left: -10px;
+    }
+    &:after {
+      right: -10px;
+    }
+  }
+}
+
+.title { 
+  position: absolute;
+  left: -1px;
+  top: -1px;
+  text-transform: uppercase;
+  font-size: 11px;
+  padding: 3px;
+  color: white;
+  background-color: #39B6B3;
+  box-shadow: none;
+  border: none;
+  transition: width .4s ease-out, background .3s ease-out;
+  cursor: pointer;
+  &:focus {
+    outline: none;
+  }
+  &.outside {
+    top: auto;
+    bottom: 100%;
+    margin-bottom: -2px;
+  }
+}
+
+.titleSettings {
+    padding: 4px 25px 4px 10px;
+    & i {
+    position: absolute;
+    top: 3px;
+    right: 6px;
+    display: block;
+    width: 13px;
+    height: 13px;
+    font-style: normal;
+    & svg {
+      width: 100%;
+      height: 100%;
+      fill: #fff;
+    }
+  }
+  &_active {
+    background: color(#39B6B3 l(40%));
+    text-align: center;
+    & i {
+      display: none;
+    }
+  }
+}
+
+.buttonContainer_Molecule {
+  & .title.outside {
+    margin: 0 0 18px -9px;
+  }
+}
+
+.over{
+  opacity: 1;
+}

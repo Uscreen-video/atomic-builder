@@ -12,22 +12,32 @@ compose(
   DragDropContext(HTML5Backend), // eslint-disable-line new-cap
 
   withState('dragingItem', 'setDraggingItem', monitor),
-  withState('editingItem', 'setEditingItem', false),
+  withState('editingItem', 'setEditingItem', { active: false, type: '' }),
 
   withHandlers({
     drag: props => dragItem => props.setDraggingItem(props.dragingItem.init(dragItem)),
     drop: props => () => props.setDraggingItem(props.dragingItem.reset()),
     hover: props => index => props.setDraggingItem(props.dragingItem.hover(index)),
-    editItem: props => () => props.setEditingItem(true),
-    releaseItem: props => () => props.setEditingItem(false)
+    editItem: props => () => props.setEditingItem({
+      ...props.editingItem,
+      active: true
+    }),
+    releaseItem: props => () => props.setEditingItem({
+      ...props.editingItem,
+      active: false
+    }),
+    setItem: props => obj => props.setEditingItem({
+      ...props.editingItem,
+      ...obj
+    })
   }),
 
   withContext(
     {
-      dragingItem: object, drag: func, drop: func, hover: func,
-      editItem: func, releaseItem: func, editingItem: bool
+      dragingItem: object, drag: func, drop: func,
+      editItem: func, releaseItem: func, setItem: func, editingItem: object
     },
-    ({ dragingItem, drag, drop, hover, editItem, releaseItem, editingItem }) =>
-    ({ dragingItem, drag, drop, hover, editItem, releaseItem, editingItem })
+    ({ dragingItem, drag, drop, editItem, releaseItem, setItem, editingItem }) =>
+    ({ dragingItem, drag, drop, editItem, releaseItem, setItem, editingItem })
   )
 )(BaseComponent);

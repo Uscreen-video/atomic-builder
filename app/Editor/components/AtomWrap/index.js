@@ -1,4 +1,4 @@
-import Highlight from '../Highlight/';
+import Customizer from '../Customizer/';
 
 export default ({
   Atom,
@@ -8,8 +8,13 @@ export default ({
   ...props
 }) => (
   <div onClick={!props.active && !isDragging && activate}>
-    <Highlight title='atom' outside isDragging={isDragging} preview={connectDragPreview}>
+    <Customizer
+      {...props}
+      title='atom'
+      outside
+      isDragging={isDragging}
+      preview={connectDragPreview}>
       <Atom {...props} />
-    </Highlight>
+    </Customizer>
   </div>
 );
