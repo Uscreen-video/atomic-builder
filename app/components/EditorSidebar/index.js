@@ -5,7 +5,7 @@ const { func, bool, object } = PropTypes;
 
 import editorState from 'Editor/helpers/editorState';
 import ColorPicker from 'Editor/components/ColorPicker';
-
+import BoxSpacing from 'Editor/components/BoxSpacing';
 
 import styles from './styles.css';
 
@@ -16,9 +16,9 @@ export default compose(
       e.stopPropagation();
       props.releaseItem();
     },
-    setSettings: props => data => {
-      const cursor = props.editingItem.Cursor.push('backgroundColor');
-      props.updateEditorState(cursor, data);
+    setSettings: props => (key, value) => {
+      const cursor = props.editingItem.Cursor.push(key);
+      props.updateEditorState(cursor, value);
     }
   })
 )(({
@@ -35,9 +35,9 @@ export default compose(
       <li>
         <ColorPicker setSettings={setSettings} color='#1343bd' label='Background color:' />
       </li>
-      <li>item2</li>
-      <li>item3</li>
-      <li>item4</li>
+      <li>
+        <BoxSpacing label='Paddings:' />
+      </li>
     </ul>
   </div>
 ));
