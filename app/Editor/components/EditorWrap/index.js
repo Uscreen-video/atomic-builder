@@ -15,6 +15,6 @@ export default ({
         || children
       }
     </div>
-    <EditorSidebar />
+    <EditorSidebar organisms={organisms}/>
   </div>
 );

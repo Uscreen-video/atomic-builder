@@ -16,10 +16,10 @@
     position: relative;
     display: inline-block;
     background: #EDEDED;
-    width: 140px;
+    width: 160px;
     height: 60px;
     border: 1px solid #888;
-    padding: 40px;
+    padding: 40px 60px;
   }
   &__content {
     background: #fff;
@@ -35,11 +35,11 @@
     }
     &_top {
       top: 8px;
-      left: 77px
+      left: 106px
     }
     &_right {
       top: 50px;
-      right: 6px;
+      right: 3px;
       & > label {
         display: block;
         margin-right: 0;
@@ -47,11 +47,11 @@
     }
     &_bottom {
       bottom: 6px;
-      left: 60px;
+      left: 100px;
     }
     &_left {
       top: 50px;
-      left: 8px;
+      left: 10px;
       & > label {
         display: block;
         margin-right: 0;

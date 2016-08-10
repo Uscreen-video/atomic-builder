@@ -8,7 +8,8 @@ export default atom({
     type: 'text',
     content: '',
     settings: {
-      backgroundColor: Shape.color('#fff')
+      backgroundColor: Shape.color('#fff'),
+      padding: Shape.padding([0, 0, 0, 0])
     }
   }
 });

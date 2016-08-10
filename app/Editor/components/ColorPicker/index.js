@@ -9,7 +9,7 @@ import styles from './styles.css';
 export default compose(
   editorState,
   withState('active', 'setActive', false),
-  withState('color', 'setColor', props => (props.color)),
+  withState('color', 'setColor', props => props.color),
   withHandlers({
     onClick: props => e => {
       e.stopPropagation();
@@ -17,7 +17,7 @@ export default compose(
     },
     onColorChange: props => color => {
       props.setColor(color.hex);
-      props.setSettings && props.setSettings('backgroundColor', color.hex);
+      props.setSettings && props.setSettings(props.settingKey, color.hex);
     }
   })
 )(({

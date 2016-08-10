@@ -25,9 +25,8 @@ export default compose(
         ...props.spacing,
         [key]: `${value}px`
       };
-      console.log(spacing);
       props.setSpacing(spacing);
-      props.setSettings && props.setSettings('padding', `${spacing.top} ${spacing.right} ${spacing.bottom} ${spacing.left}`);
+      props.setSettings && props.setSettings(props.settingKey, `${spacing.top} ${spacing.right} ${spacing.bottom} ${spacing.left}`);
     }
   })
 )(({
@@ -56,7 +55,7 @@ export default compose(
                     styles.boxSpacing__inputbox,
                     styles.boxSpacing__inputbox_top,
                 )}>
-                  <label>Top:</label>
+                  <label>Top (px):</label>
                   <input
                     type='text'
                     data-type='top'
@@ -69,7 +68,7 @@ export default compose(
                     styles.boxSpacing__inputbox,
                     styles.boxSpacing__inputbox_right,
                 )}>
-                  <label>Right:</label>
+                  <label>Right (px):</label>
                   <input
                     type='text'
                     data-type='right'
@@ -82,7 +81,7 @@ export default compose(
                     styles.boxSpacing__inputbox,
                     styles.boxSpacing__inputbox_bottom,
                 )}>
-                  <label>Bottom:</label>
+                  <label>Bottom (px):</label>
                   <input
                     type='text'
                     data-type='bottom'
@@ -95,7 +94,7 @@ export default compose(
                     styles.boxSpacing__inputbox,
                     styles.boxSpacing__inputbox_left,
                 )}>
-                  <label>Left:</label>
+                  <label>Left (px):</label>
                   <input
                     type='text'
                     data-type='left'
