@@ -45,6 +45,7 @@ compose(
         {
           key: organism.get('id'),
           index, organism,
+          settings: organism.has('settings') && organism.get('settings') || {},
           Cursor: props.Cursor.push(index),
           move, add, hover, hoverIndex
         }

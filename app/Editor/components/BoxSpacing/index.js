@@ -18,9 +18,16 @@ export default compose(
       e.stopPropagation();
       props.setActive(!props.active);
     },
-    onSpacingChange: props => spacing => {
+    onSpacingChange: props => e => {
+      const key = e.target.dataset.type;
+      const value = e.target.value || 0;
+      const spacing = {
+        ...props.spacing,
+        [key]: `${value}px`
+      };
+      console.log(spacing);
       props.setSpacing(spacing);
-      // props.setSettings && props.setSettings(color.hex);
+      props.setSettings && props.setSettings('padding', `${spacing.top} ${spacing.right} ${spacing.bottom} ${spacing.left}`);
     }
   })
 )(({
@@ -45,30 +52,58 @@ export default compose(
           <div className={styles.boxSpacing__component}>
             <div className={styles.boxSpacing__box}>
               <div className={styles.boxSpacing__content}>
-                <input
-                  type='text'
-                  className={cx(
-                    styles.boxSpacing__input,
-                    styles.boxSpacing__input_top
+                <div className={cx(
+                    styles.boxSpacing__inputbox,
+                    styles.boxSpacing__inputbox_top,
+                )}>
+                  <label>Top:</label>
+                  <input
+                    type='text'
+                    data-type='top'
+                    onChange={onSpacingChange}
+                    className={cx(
+                      styles.boxSpacing__input
+                    )} />
+                </div>
+                <div className={cx(
+                    styles.boxSpacing__inputbox,
+                    styles.boxSpacing__inputbox_right,
+                )}>
+                  <label>Right:</label>
+                  <input
+                    type='text'
+                    data-type='right'
+                    onChange={onSpacingChange}
+                    className={cx(
+                      styles.boxSpacing__input
                   )} />
-                <input
-                  type='text'
-                  className={cx(
-                    styles.boxSpacing__input,
-                    styles.boxSpacing__input_right
-                  )} />
-                <input
-                  type='text'
-                  className={cx(
-                    styles.boxSpacing__input,
-                    styles.boxSpacing__input_bottom
-                  )} />
-                <input
-                  type='text'
-                  className={cx(
-                    styles.boxSpacing__input,
-                    styles.boxSpacing__input_left
-                  )} />
+                </div>
+                <div className={cx(
+                    styles.boxSpacing__inputbox,
+                    styles.boxSpacing__inputbox_bottom,
+                )}>
+                  <label>Bottom:</label>
+                  <input
+                    type='text'
+                    data-type='bottom'
+                    onChange={onSpacingChange}
+                    className={cx(
+                      styles.boxSpacing__input
+                    )} />
+                </div>
+                <div className={cx(
+                    styles.boxSpacing__inputbox,
+                    styles.boxSpacing__inputbox_left,
+                )}>
+                  <label>Left:</label>
+                  <input
+                    type='text'
+                    data-type='left'
+                    onChange={onSpacingChange}
+                    className={cx(
+                      styles.boxSpacing__input
+                    )} />
+                </div>
               </div>
             </div>
           </div>

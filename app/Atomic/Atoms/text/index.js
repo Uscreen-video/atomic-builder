@@ -1,4 +1,5 @@
 import atom from 'Editor/atom';
+import { shape as Shape } from 'Editor/creators/createShape';
 
 export default atom({
   preview: require('./preview.png'),
@@ -7,10 +8,7 @@ export default atom({
     type: 'text',
     content: '',
     settings: {
-      backgroundColor: Shape.color('#fff'),
-      secondColor: Shape.color('#ddd'),
-      backgroundImage: Shape.link('...'),
-      padding: '0 0 0 0'
+      backgroundColor: Shape.color('#fff')
     }
   }
 });

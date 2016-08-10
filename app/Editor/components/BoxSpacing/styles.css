@@ -6,7 +6,7 @@
     user-select: none
   }
   &__component {
-    background: #EDEDED;
+    background: #fff;
     padding: 20px 0 15px;
     margin-top: 8px;
     box-shadow: 1px 1px 5px 0 #aaa inset;
@@ -15,41 +15,56 @@
   &__box {
     position: relative;
     display: inline-block;
-    width: 100px;
+    background: #EDEDED;
+    width: 140px;
     height: 60px;
     border: 1px solid #888;
     padding: 40px;
   }
   &__content {
+    background: #fff;
     width: 100%;
     height: 100%;
     border: 1px solid #888;
-    background: #fff;
+  }
+  &__inputbox {
+    position: absolute;
+    color: #333;
+    & > label {
+      margin-right: 5px;
+    }
+    &_top {
+      top: 8px;
+      left: 77px
+    }
+    &_right {
+      top: 50px;
+      right: 6px;
+      & > label {
+        display: block;
+        margin-right: 0;
+      }
+    }
+    &_bottom {
+      bottom: 6px;
+      left: 60px;
+    }
+    &_left {
+      top: 50px;
+      left: 8px;
+      & > label {
+        display: block;
+        margin-right: 0;
+      }
+    }    
   }
   &__input {
-    position: absolute;
     width: 20px;
     height: 20px;
     line-height: 20px;
     text-align: center;
     &:focus {
       outline: none;
-    }
-    &_top {
-      top: 7px;
-      left: 77px
-    }
-    &_right {
-      top: 58px;
-      right: 6px
-    }
-    &_bottom {
-      bottom: 6px;
-      left: 77px
-    }
-    &_left {
-      top: 58px;
-      left: 8px;
     }
   }
 }

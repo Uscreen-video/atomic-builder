@@ -1,6 +1,7 @@
 import {
   compose, defaultProps, createEagerElement, withProps
 } from 'recompose';
+import Immutable from 'immutable';
 
 import * as Atoms from 'Atomic/Atoms';
 
@@ -30,7 +31,10 @@ compose(
   // disableUpdate(),
 
   // Set Component to render
-  defaultProps({ Molecule: component }),
+  defaultProps({
+    Molecule: component,
+    settings: Immutable.Map({})
+  }),
 
   // Connect to EditorState
   editorState,
@@ -49,6 +53,7 @@ compose(
 
   // Map atoms from state to components
   withProps(props => ({
+    settings: props.molecule.get('settings') || Immutable.Map({}),
     children: mapAtoms(props.atoms, props)
   })),
 

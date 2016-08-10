@@ -36,7 +36,7 @@ export default compose(
         <ColorPicker setSettings={setSettings} color='#1343bd' label='Background color:' />
       </li>
       <li>
-        <BoxSpacing label='Paddings:' />
+        <BoxSpacing setSettings={setSettings} label='Paddings:' />
       </li>
     </ul>
   </div>

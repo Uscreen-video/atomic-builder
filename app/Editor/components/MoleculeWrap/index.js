@@ -12,7 +12,11 @@ export default ({
   Molecule,
   ...props
 }) => (
-  <Customizer title='Molecule' outside>
+  <Customizer
+    {...props}
+    title='Molecule'
+    outside
+  >
     <Placeholder {...props} />
     <Molecule {...props} />
   </Customizer>

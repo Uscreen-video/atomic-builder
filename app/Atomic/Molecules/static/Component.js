@@ -5,9 +5,15 @@ export default defaultProps({
   theme: styles
 })(({
   theme,
-  children
+  children,
+  settings
 }) => (
-  <div className={theme.wrap}>
+  <div
+    className={theme.wrap}
+    style={{
+      backgroundColor: settings.get('backgroundColor'),
+      padding: settings.get('padding')
+    }}>
     <div className={theme.container}>
       {children}
     </div>
