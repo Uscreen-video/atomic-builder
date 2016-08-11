@@ -25,6 +25,7 @@ export default ({
   <div
     className={cx('editor-text', styles.wrap)}
     style={{
+      background: settings.get('backgroundImage') && settings.get('backgroundImage') + '0 0 no-repeat',
       backgroundColor: settings.get('backgroundColor'),
       padding: settings.get('padding')
     }}>

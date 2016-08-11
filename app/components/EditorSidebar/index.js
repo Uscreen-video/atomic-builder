@@ -6,6 +6,7 @@ const { func, bool, object } = PropTypes;
 import editorState from 'Editor/helpers/editorState';
 import ColorPicker from 'Editor/components/ColorPicker';
 import BoxSpacing from 'Editor/components/BoxSpacing';
+import FileUploader from 'Editor/components/FileUploader';
 
 import styles from './styles.css';
 
@@ -41,12 +42,13 @@ export default compose(
             const settings = organisms.getIn(editingItem.Cursor, 'settings');
             const value = settings.get(key);
 
-            console.log(value);
+            
 
             switch (defaultSetting.get('type')) {
               case 'color':
                 component =  <ColorPicker
-                              setSettings={setSettings}
+                              onSettingsChange={setSettings}
+                              onSettingsChange={setSettings}
                               defaultColor={value}
                               label={defaultSetting.get('title')}
                               settingKey={key}
@@ -54,7 +56,14 @@ export default compose(
                 break;
               case 'padding':
                 component = <BoxSpacing
-                              setSettings={setSettings}
+                              onSettingsChange={setSettings}
+                              label={defaultSetting.get('title')}
+                              settingKey={key}
+                            />;
+                break;
+              case 'url':
+                component = <FileUploader
+                              onSettingsChange={setSettings}
                               label={defaultSetting.get('title')}
                               settingKey={key}
                             />;

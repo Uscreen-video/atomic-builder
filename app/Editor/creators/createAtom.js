@@ -27,11 +27,11 @@ compose(
   withState('active', 'setActive', false),
   withHandlers({
     activate: props => () => {
-      props.editItem(true);
+      // props.editItem(true);
       props.setActive(true);
     },
     deactivate: props => () => {
-      props.releaseItem();
+      // props.releaseItem();
       props.setActive(false);
       props.updateEditor('content', props.content);
     },

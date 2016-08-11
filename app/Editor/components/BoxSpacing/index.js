@@ -26,7 +26,7 @@ export default compose(
         [key]: `${value}px`
       };
       props.setSpacing(spacing);
-      props.setSettings && props.setSettings(props.settingKey, `${spacing.top} ${spacing.right} ${spacing.bottom} ${spacing.left}`);
+      props.onSettingsChange && props.onSettingsChange(props.settingKey, `${spacing.top} ${spacing.right} ${spacing.bottom} ${spacing.left}`);
     }
   })
 )(({
