@@ -9,15 +9,17 @@ import OrganismWrap from '../components/OrganismWrap';
 import editorState from '../helpers/editorState';
 import dndHandler from '../dnd/handler';
 
-const mapMolecules = (molecules, Cursor) => molecules.map((molecule, key) =>
-  createEagerElement(
+const mapMolecules = (molecules, Cursor) => molecules.map((molecule, key) => {
+  return createEagerElement(
     Molecules[molecule.get('type')].Component,
     {
       key, molecule,
+      settings: molecule.has('settings') && molecule.get('settings') || {},
       theme: molecule.has('theme') && molecule.get('theme').toJS() || void 0,
       Cursor: Cursor.push('molecules', key)
     }
-  )
+  );
+}
 );
 
 export default ({ component }) =>

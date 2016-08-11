@@ -1,4 +1,5 @@
 import atom from 'Editor/atom';
+import { shape as Shape } from 'Editor/creators/createShape';
 
 export default atom({
   preview: require('./preview.png'),
@@ -6,6 +7,9 @@ export default atom({
   props: {
     type: 'text',
     content: '',
-    settings: {}
+    settings: {
+      backgroundColor: Shape.color('#fff'),
+      padding: Shape.padding([0, 0, 0, 0])
+    }
   }
 });

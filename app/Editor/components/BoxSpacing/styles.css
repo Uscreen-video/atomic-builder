@@ -1,0 +1,70 @@
+.boxSpacing {
+  &__container {
+  }
+  &__label {
+    margin-right: 10px;
+    user-select: none
+  }
+  &__component {
+    background: #fff;
+    padding: 20px 0 15px;
+    margin-top: 8px;
+    box-shadow: 1px 1px 5px 0 #aaa inset;
+    border-top: 1px solid color(#39B6B3 l(50%))
+  }
+  &__box {
+    position: relative;
+    display: inline-block;
+    background: #EDEDED;
+    width: 160px;
+    height: 60px;
+    border: 1px solid #888;
+    padding: 40px 60px;
+  }
+  &__content {
+    background: #fff;
+    width: 100%;
+    height: 100%;
+    border: 1px solid #888;
+  }
+  &__inputbox {
+    position: absolute;
+    color: #333;
+    & > label {
+      margin-right: 5px;
+    }
+    &_top {
+      top: 8px;
+      left: 106px
+    }
+    &_right {
+      top: 50px;
+      right: 3px;
+      & > label {
+        display: block;
+        margin-right: 0;
+      }
+    }
+    &_bottom {
+      bottom: 6px;
+      left: 100px;
+    }
+    &_left {
+      top: 50px;
+      left: 10px;
+      & > label {
+        display: block;
+        margin-right: 0;
+      }
+    }    
+  }
+  &__input {
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    &:focus {
+      outline: none;
+    }
+  }
+}

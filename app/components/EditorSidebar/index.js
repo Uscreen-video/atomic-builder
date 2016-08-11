@@ -5,7 +5,7 @@ const { func, bool, object } = PropTypes;
 
 import editorState from 'Editor/helpers/editorState';
 import ColorPicker from 'Editor/components/ColorPicker';
-
+import BoxSpacing from 'Editor/components/BoxSpacing';
 
 import styles from './styles.css';
 
@@ -16,28 +16,63 @@ export default compose(
       e.stopPropagation();
       props.releaseItem();
     },
-    setSettings: props => data => {
-      const cursor = props.editingItem.Cursor.push('backgroundColor');
-      props.updateEditorState(cursor, data);
+    setSettings: props => (key, value) => {
+      const cursor = props.editingItem.Cursor.push(key);
+      props.updateEditorState(cursor, value);
     }
   })
 )(({
   editingItem,
   mouseLeave,
-  setSettings
-}) => (
-  <div
-    className={cx(styles.sidebar, editingItem.active && styles.sidebar_active)}
-    onMouseLeave={mouseLeave}
-  >
-    <h2 className={styles.sidebar__header}>Settings for {editingItem.type}</h2>
-    <ul>
-      <li>
-        <ColorPicker setSettings={setSettings} color='#1343bd' label='Background color:' />
-      </li>
-      <li>item2</li>
-      <li>item3</li>
-      <li>item4</li>
-    </ul>
-  </div>
-));
+  setSettings,
+  organisms
+}) => {
+  return (
+    <div
+      className={cx(styles.sidebar, editingItem.active && styles.sidebar_active)}
+      onMouseLeave={mouseLeave}
+    >
+      <h2 className={styles.sidebar__header}>Settings for {editingItem.type}</h2>
+      <ul>
+        {
+          editingItem.defaultSettings && editingItem.defaultSettings.entrySeq().map(setting => {
+            let component = null;
+            const [key, defaultSetting] = setting;
+            const settings = organisms.getIn(editingItem.Cursor, 'settings');
+            const value = settings.get(key);
+
+            console.log(value);
+
+            switch (defaultSetting.get('type')) {
+              case 'color':
+                component =  <ColorPicker
+                              setSettings={setSettings}
+                              defaultColor={value}
+                              label={defaultSetting.get('title')}
+                              settingKey={key}
+                            />;
+                break;
+              case 'padding':
+                component = <BoxSpacing
+                              setSettings={setSettings}
+                              label={defaultSetting.get('title')}
+                              settingKey={key}
+                            />;
+                break;
+              default:
+                component = null;
+            }
+
+            return (
+              component &&
+                <li key={defaultSetting.get('title')}>
+                  {component}
+                </li>
+            );
+          })
+        }
+      </ul>
+    </div>
+  );
+}
+);

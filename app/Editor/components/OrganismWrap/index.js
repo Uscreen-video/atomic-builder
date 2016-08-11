@@ -6,7 +6,12 @@ export default ({
   connectDragPreview,
   ...rest
 }) => (
-  <Customizer title='Organism' isDragging={isDragging} preview={connectDragPreview}>
+  <Customizer
+    {...rest}
+    title='Organism'
+    isDragging={isDragging}
+    preview={connectDragPreview}
+  >
     <Organism {...rest} />
   </Customizer>
 );

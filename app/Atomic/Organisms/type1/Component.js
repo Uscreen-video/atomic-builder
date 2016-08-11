@@ -1,10 +1,13 @@
 import styles from './styles.css';
 
 export default ({
-  settings,
-  molecules
+  molecules,
+  settings
 }) => (
-  <div className={styles.wrap} style={{ backgroundColor: settings.get('background') }}>
+  <div className={styles.wrap} style={{
+    backgroundColor: settings.get('backgroundColor'),
+    padding: settings.get('padding')
+  }}>
     <div className={styles.container}>
       {molecules.get('Main')}
     </div>

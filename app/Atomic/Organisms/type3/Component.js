@@ -4,25 +4,28 @@ export default ({
   settings,
   molecules
 }) => (
-  <div className={styles.wrap} style={{ backgroundColor: settings.get('background') }}>
+  <div className={styles.wrap} style={{
+    backgroundColor: settings.get('backgroundColor'),
+    padding: settings.get('padding')
+  }}>
     <div className={styles.container}>
       <div className={styles.side}>
-        <div className={styles.rightSideComtainer}>
+        <div className={styles.rightSideContainer}>
           {molecules.get('Main')}
         </div>
       </div>
       <div className={styles.side}>
-        <div className={styles.rightSideComtainer}>
+        <div className={styles.rightSideContainer}>
           {molecules.get('Second')}
         </div>
       </div>
       <div className={styles.side}>
-        <div className={styles.rightSideComtainer}>
+        <div className={styles.rightSideContainer}>
           {molecules.get('Third')}
         </div>
       </div>
       <div className={styles.side}>
-        <div className={styles.rightSideComtainer}>
+        <div className={styles.rightSideContainer}>
           {molecules.get('Forth')}
         </div>
       </div>

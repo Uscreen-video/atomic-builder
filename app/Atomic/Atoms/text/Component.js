@@ -24,7 +24,10 @@ export default ({
 }) => (
   <div
     className={cx('editor-text', styles.wrap)}
-    style={{ backgroundColor: settings.get('backgroundColor') }}>
+    style={{
+      backgroundColor: settings.get('backgroundColor'),
+      padding: settings.get('padding')
+    }}>
   {
     !active
     ? <div className={typo.content}><Content content={content} /></div>

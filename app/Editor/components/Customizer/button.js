@@ -1,6 +1,6 @@
 import styles from './styles.css';
 import cx from 'classnames';
-import { compose, withState, withHandlers } from 'recompose';
+import { compose, withHandlers } from 'recompose';
 import editorState from 'Editor/helpers/editorState';
 
 export default compose(
@@ -12,7 +12,8 @@ export default compose(
         ...props.editingItem,
         active: true,
         type: props.title,
-        Cursor: props.Cursor.push('settings')
+        Cursor: props.Cursor.push('settings'),
+        defaultSettings: props.defaultSettings
       });
     }
   })
