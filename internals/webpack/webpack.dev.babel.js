@@ -34,6 +34,7 @@ const plugins = [
 module.exports = require('./webpack.base.babel')({
   // Add hot reloading in development
   entry: [
+    'babel-polyfill',
     'webpack-hot-middleware/client',
     path.join(process.cwd(), 'app/app.js'), // Start with js/app.js
   ],

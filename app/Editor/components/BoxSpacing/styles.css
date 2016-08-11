@@ -17,7 +17,7 @@
     display: inline-block;
     background: #EDEDED;
     width: 160px;
-    height: 60px;
+    height: 100px;
     border: 1px solid #888;
     padding: 40px 60px;
   }
@@ -38,8 +38,9 @@
       left: 106px
     }
     &_right {
-      top: 50px;
+      top: 50%;
       right: 3px;
+      transform: translateY(-50%);
       & > label {
         display: block;
         margin-right: 0;
@@ -50,8 +51,9 @@
       left: 100px;
     }
     &_left {
-      top: 50px;
+      top: 50%;
       left: 10px;
+      transform: translateY(-50%);
       & > label {
         display: block;
         margin-right: 0;
