@@ -21,6 +21,15 @@ class Shape extends Record({ // eslint-disable-line new-cap
       ...extendObject
     };
   }
+  url(value, extendObject) {
+    return {
+      type: 'url',
+      description: 'Some description',
+      title: 'Background image:',
+      value,
+      ...extendObject
+    };
+  }
 }
 
 export const shape = new Shape;

@@ -9,7 +9,7 @@ import OrganismWrap from '../components/OrganismWrap';
 import editorState from '../helpers/editorState';
 import dndHandler from '../dnd/handler';
 
-const mapMolecules = (molecules, Cursor) => molecules.map((molecule, key) => {
+const mapMolecules = (molecules, { Cursor }) => molecules.map((molecule, key) => {
   return createEagerElement(
     Molecules[molecule.get('type')].Component,
     {
@@ -34,7 +34,7 @@ compose(
   // We pass molecules as props to organism
   withProps(props => ({
     settings: props.organism.get('settings'),
-    molecules: mapMolecules(props.organism.get('molecules'), props.Cursor)
+    molecules: mapMolecules(props.organism.get('molecules'), props)
   })),
 
   dndHandler('organism'),

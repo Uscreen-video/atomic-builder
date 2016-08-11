@@ -17,7 +17,7 @@ export default compose(
     },
     onColorChange: props => color => {
       props.setColor(color.hex);
-      props.setSettings && props.setSettings(props.settingKey, color.hex);
+      props.onSettingsChange && props.onSettingsChange(props.settingKey, color.hex);
     }
   })
 )(({

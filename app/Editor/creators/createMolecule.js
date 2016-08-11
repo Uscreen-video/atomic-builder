@@ -27,7 +27,7 @@ const mapAtoms = (atoms, {
 }
 );
 
-export default ({ component }) =>
+export default ({ component, props: { settings } }) =>
 compose(
   // Prevent updates from parent state
   // disableUpdate(),
@@ -35,6 +35,7 @@ compose(
   // Set Component to render
   defaultProps({
     Molecule: component,
+    settings
   }),
 
   // Connect to EditorState
