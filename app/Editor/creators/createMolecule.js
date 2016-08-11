@@ -19,8 +19,8 @@ const mapAtoms = (atoms, {
       index, atom, key: atom.get('id'),
       add, move, remove, hover, hoverIndex,
       Cursor: Cursor.push('atoms', index),
-      content: molecule.getIn(['atoms', index, 'content']),
-      settings: molecule.getIn(['atoms', index, 'settings']),
+      content: molecule.getIn(['atoms', index, 'content']) || atom.get('content'),
+      settings: molecule.getIn(['atoms', index, 'settings']) || atom.get('settings'),
       defaultSettings: atom.get('settings')
     }
   );

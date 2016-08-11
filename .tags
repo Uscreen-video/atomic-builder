@@ -39,6 +39,7 @@ chalk	internals/scripts/pagespeed.js	/^var chalk = require('chalk');$/;"	v
 chalk	package.json	/^    "chalk": "1.1.3",$/;"	f
 checkStatus	app/utils/request.js	/^function checkStatus(response) {$/;"	f
 cheerio	package.json	/^    "cheerio": "0.20.0",$/;"	f
+class.width	app/Atomic/Atoms/image/Editor/index.js	/^  state = {$/;"	p
 classnames	package.json	/^    "classnames": "^2.2.5",$/;"	f
 clean	package.json	/^    "clean": "shjs .\/internals\/scripts\/clean.js",$/;"	f
 color-hex-case	package.json	/^      "color-hex-case": "upper",$/;"	f
@@ -196,7 +197,9 @@ react-dom	package.json	/^    "react-dom": "15.2.1",$/;"	f
 react-height	package.json	/^    "react-height": "^2.1.1",$/;"	f
 react-ink	package.json	/^    "react-ink": "^5.1.1",$/;"	f
 react-motion	package.json	/^    "react-motion": "^0.4.4",$/;"	f
+react-onclickoutside	package.json	/^    "react-onclickoutside": "^5.3.3",$/;"	f
 react-redux	package.json	/^    "react-redux": "4.4.5",$/;"	f
+react-resizable-box	package.json	/^    "react-resizable-box": "^1.4.3",$/;"	f
 react-router	package.json	/^    "react-router": "2.6.0",$/;"	f
 react-router-redux	package.json	/^    "react-router-redux": "4.0.5",$/;"	f
 react-router-scroll	package.json	/^    "react-router-scroll": "0.2.1",$/;"	f
