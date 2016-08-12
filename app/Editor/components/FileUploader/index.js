@@ -1,9 +1,12 @@
 import { compose, withState, withHandlers } from 'recompose';
+
 import cx from 'classnames';
 
 import Dropzone from 'react-dropzone';
 
 import editorState from 'Editor/helpers/editorState';
+import imagesToBase64 from 'Editor/helpers/imagesToBase64';
+
 import styles from './styles.css';
 
 export default compose(
@@ -15,21 +18,13 @@ export default compose(
       e.stopPropagation();
       props.setActive(!props.active);
     },
-    onDrop: props => files => {
-      props.editItem();
-      console.log(files);
-      // const value = e.target.value || 0;
-      // const spacing = {
-      //   ...props.spacing,
-      //   [key]: `${value}px`
-      // };
-      // props.setSpacing(spacing);
-      // props.setSettings && props.setSettings(props.settingKey, `${spacing.top} ${spacing.right} ${spacing.bottom} ${spacing.left}`);
+    onDrop: props => async files => {
+      const images = await imagesToBase64(files);
+      props.onSettingsChange && props.onSettingsChange(props.settingKey, images[0]);
     }
   })
 )(({
   label,
-  url,
   active,
   onClick,
   onDrop

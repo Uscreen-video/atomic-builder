@@ -30,6 +30,15 @@ class Shape extends Record({ // eslint-disable-line new-cap
       ...extendObject
     };
   }
+  size(value, extendObject) {
+    return {
+      type: 'size',
+      description: 'Some description',
+      title: 'Box size:',
+      value,
+      ...extendObject
+    };
+  }
 }
 
 export const shape = new Shape;

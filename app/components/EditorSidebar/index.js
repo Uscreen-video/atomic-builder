@@ -1,7 +1,7 @@
-import { PropTypes } from 'react';
-import { compose, getContext, withState, withHandlers } from 'recompose';
+import { Component, PropTypes } from 'react';
+import { compose, toClass, withHandlers } from 'recompose';
 import cx from 'classnames';
-const { func, bool, object } = PropTypes;
+import withClickHandler from 'react-onclickoutside';
 
 import editorState from 'Editor/helpers/editorState';
 import ColorPicker from 'Editor/components/ColorPicker';
@@ -10,13 +10,8 @@ import FileUploader from 'Editor/components/FileUploader';
 
 import styles from './styles.css';
 
-export default compose(
-  editorState,
+const EditorSidebar = compose(
   withHandlers({
-    mouseLeave: props => e => {
-      e.stopPropagation();
-      props.releaseItem();
-    },
     setSettings: props => (key, value) => {
       const cursor = props.editingItem.Cursor.push(key);
       props.updateEditorState(cursor, value);
@@ -24,14 +19,12 @@ export default compose(
   })
 )(({
   editingItem,
-  mouseLeave,
   setSettings,
   organisms
 }) => {
   return (
     <div
       className={cx(styles.sidebar, editingItem.active && styles.sidebar_active)}
-      onMouseLeave={mouseLeave}
     >
       <h2 className={styles.sidebar__header}>Settings for {editingItem.type}</h2>
       <ul>
@@ -42,12 +35,9 @@ export default compose(
             const settings = organisms.getIn(editingItem.Cursor, 'settings');
             const value = settings.get(key);
 
-            
-
             switch (defaultSetting.get('type')) {
               case 'color':
                 component =  <ColorPicker
-                              onSettingsChange={setSettings}
                               onSettingsChange={setSettings}
                               defaultColor={value}
                               label={defaultSetting.get('title')}
@@ -85,3 +75,19 @@ export default compose(
   );
 }
 );
+
+export default editorState(withClickHandler(
+  class OutsideClickHandler extends Component {
+    handleClickOutside() {
+      this.props.releaseItem();
+    }
+
+    render() {
+      const { ...props } = this.props;
+      return (
+        <EditorSidebar {...props} />
+      );
+    }
+  }
+));
+
