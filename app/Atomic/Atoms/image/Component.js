@@ -2,6 +2,18 @@ import cx from 'classnames';
 import styles from './styles.css';
 import Editor from './Editor/';
 
+const Component = ({ settings, content }) => (
+  <div className={cx(styles.wrap, styles[`align_${settings.get('align')}`])}>
+    <img
+      src={content}
+      role='presentation'
+      style={{
+        width: settings.get('width'),
+        height: settings.get('height')
+      }} />
+  </div>
+);
+
 export default ({
   content,
   active,
@@ -14,13 +26,7 @@ export default ({
     className={styles.wrap}>
     {
       !active
-      ? <img
-        src={content}
-        role='presentation'
-        style={{
-          width: settings.get('width'),
-          height: settings.get('height')
-        }} />
+      ? <Component {... { settings, content }} />
       : <Editor {...{ content, deactivate, onChange, updateSettings, settings }} />
     }
   </div>
