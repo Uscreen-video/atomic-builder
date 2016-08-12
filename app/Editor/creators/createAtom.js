@@ -34,6 +34,11 @@ compose(
       props.setActive(false);
       props.updateEditor('content', props.content);
     },
+    updateSettings: props => data => {
+      console.log(data);
+      const mutation = props.settings.merge(data);
+      props.updateEditor('settings', mutation);
+    },
     onChange: props => props.setContent
   }),
 
