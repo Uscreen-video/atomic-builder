@@ -26,6 +26,11 @@
     box-shadow: 1px 1px 5px 0 #aaa inset;
     border-top: 1px solid color(#39B6B3 l(50%));
   }
+  &__inputBox {
+    & > label {
+      color: #333;
+    }
+  }
   &__dropzoneMessage {
     color: #333;
     display: inline-block;
@@ -39,5 +44,24 @@
     box-sizing: border-box;
     border: 1px dashed #333;
     border-radius: 5px;
+  }
+  &__previewContainer {
+    display: flex;
+    padding: 10px;
+    & figure {
+      width: 50%;
+      margin: 0 10px 0 0;
+    }
+  }
+  &__preview {
+    max-width: 100%;
+    vertical-align: top;
+    border-radius: 5px;
+  }
+  &__optionsLabel {
+    color: #333;
+    font-size: .8rem;
+    font-weight: 600;
+    margin: 0 0 3px;
   }
 }

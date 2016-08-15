@@ -22,6 +22,7 @@ export default (type, key = type, shouldCommit = true) => compose(
       update(mutation, shouldCommit && updateEditor(type, mutation));
     },
     add: ({ update, updateEditor, ...props }) => (index, data) => {
+      console.log('DROP', data)
       const mutation = props[type].insert(index, data.set('id', createId()));
       console.log(`[${type}] Add:`, mutation.toJS());
       update(mutation, shouldCommit && updateEditor(type, mutation));

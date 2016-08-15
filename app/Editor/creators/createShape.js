@@ -21,9 +21,9 @@ class Shape extends Record({ // eslint-disable-line new-cap
       ...extendObject
     };
   }
-  url(value, extendObject) {
+  background(value, extendObject) {
     return {
-      type: 'url',
+      type: 'background',
       description: 'Some description',
       title: 'Background image:',
       value,

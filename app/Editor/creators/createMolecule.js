@@ -27,7 +27,7 @@ const mapAtoms = (atoms, {
 }
 );
 
-export default ({ component, props: { settings } }) =>
+export default ({ component, props: { settings: settingsMapper } }) =>
 compose(
   // Prevent updates from parent state
   // disableUpdate(),
@@ -35,7 +35,7 @@ compose(
   // Set Component to render
   defaultProps({
     Molecule: component,
-    settings
+    settingsMapper
   }),
 
   // Connect to EditorState
@@ -55,7 +55,6 @@ compose(
 
   // Map atoms from state to components
   withProps(props => ({
-    settings: props.molecule.get('settings') || Immutable.Map({}),
     children: mapAtoms(props.atoms, props)
   })),
 

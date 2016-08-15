@@ -1,4 +1,5 @@
 import organism from 'Editor/organism';
+import { shape as Shape } from 'Editor/creators/createShape';
 
 export default organism({
   preview: require('./preview.png'),
@@ -19,6 +20,10 @@ export default organism({
         type: 'static'
       }
     },
-    settings: {}
+    settings: {
+      backgroundColor: Shape.color('#fff'),
+      backgroundImage: Shape.background(['', 'auto']),
+      padding: Shape.padding([0, 0, 0, 0])
+    }
   }
 });

@@ -22,6 +22,7 @@ const EditorSidebar = compose(
   setSettings,
   organisms
 }) => {
+  const { mapper } = editingItem;
   return (
     <div
       className={cx(styles.sidebar, editingItem.active && styles.sidebar_active)}
@@ -29,32 +30,32 @@ const EditorSidebar = compose(
       <h2 className={styles.sidebar__header}>Settings for {editingItem.type}</h2>
       <ul>
         {
-          editingItem.defaultSettings && editingItem.defaultSettings.entrySeq().map(setting => {
+          mapper && Object.keys(mapper).map(key => {
             let component = null;
-            const [key, defaultSetting] = setting;
+            const { type, title, value: defaultValue } = mapper[key];
             const settings = organisms.getIn(editingItem.Cursor, 'settings');
             const value = settings.get(key);
 
-            switch (defaultSetting.get('type')) {
+            switch (type) {
               case 'color':
                 component =  <ColorPicker
                               onSettingsChange={setSettings}
-                              defaultColor={value}
-                              label={defaultSetting.get('title')}
+                              defaultColor={value || defaultValue}
+                              label={title}
                               settingKey={key}
                             />;
                 break;
               case 'padding':
                 component = <BoxSpacing
                               onSettingsChange={setSettings}
-                              label={defaultSetting.get('title')}
+                              label={title}
                               settingKey={key}
                             />;
                 break;
-              case 'url':
+              case 'background':
                 component = <FileUploader
                               onSettingsChange={setSettings}
-                              label={defaultSetting.get('title')}
+                              label={title}
                               settingKey={key}
                             />;
                 break;
@@ -64,7 +65,7 @@ const EditorSidebar = compose(
 
             return (
               component &&
-                <li key={defaultSetting.get('title')}>
+                <li key={title}>
                   {component}
                 </li>
             );

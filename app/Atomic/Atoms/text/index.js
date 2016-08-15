@@ -9,7 +9,7 @@ export default atom({
     content: '',
     settings: {
       backgroundColor: Shape.color('#fff'),
-      backgroundImage: Shape.url(''),
+      backgroundImage: Shape.background(['', 'auto']),
       padding: Shape.padding([0, 0, 0, 0])
     }
   }

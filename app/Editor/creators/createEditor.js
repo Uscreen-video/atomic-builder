@@ -3,7 +3,7 @@ import {
   withProps, createEagerElement
 } from 'recompose';
 import { PropTypes } from 'react';
-import { List } from 'immutable';
+import { List, Map } from 'immutable';
 
 import * as Organisms from 'Atomic/Organisms';
 
@@ -45,7 +45,7 @@ compose(
         {
           key: organism.get('id'),
           index, organism,
-          settings: organism.has('settings') && organism.get('settings') || {},
+          settings: organism.has('settings') && organism.get('settings') || Map({}),
           Cursor: props.Cursor.push(index),
           move, add, hover, hoverIndex
         }

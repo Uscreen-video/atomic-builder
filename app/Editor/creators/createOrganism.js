@@ -4,6 +4,7 @@ import {
 } from 'recompose';
 
 import * as Molecules from 'Atomic/Molecules';
+import { Map } from 'immutable';
 
 import OrganismWrap from '../components/OrganismWrap';
 import editorState from '../helpers/editorState';
@@ -14,7 +15,7 @@ const mapMolecules = (molecules, { Cursor }) => molecules.map((molecule, key) =>
     Molecules[molecule.get('type')].Component,
     {
       key, molecule,
-      settings: molecule.has('settings') && molecule.get('settings') || {},
+      settings: molecule.get('settings') || Map({}),
       theme: molecule.has('theme') && molecule.get('theme').toJS() || void 0,
       Cursor: Cursor.push('molecules', key)
     }
@@ -22,18 +23,20 @@ const mapMolecules = (molecules, { Cursor }) => molecules.map((molecule, key) =>
 }
 );
 
-export default ({ component }) =>
+export default ({ component, props: { settings: settingsMapper } }) =>
 compose(
 
   // Create lazy-evaluating component to render
-  defaultProps({ Organism: createEagerFactory(component) }),
+  defaultProps({
+    settingsMapper,
+    Organism: createEagerFactory(component)
+  }),
 
   // Connect to EditorState
   editorState,
 
   // We pass molecules as props to organism
   withProps(props => ({
-    settings: props.organism.get('settings'),
     molecules: mapMolecules(props.organism.get('molecules'), props)
   })),
 

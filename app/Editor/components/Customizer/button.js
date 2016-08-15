@@ -12,8 +12,8 @@ export default compose(
         ...props.editingItem,
         active: true,
         type: props.title,
-        Cursor: props.Cursor.push('settings'),
-        defaultSettings: props.defaultSettings
+        mapper: props.settingsMapper,
+        Cursor: props.Cursor.push('settings')
       });
     }
   })
