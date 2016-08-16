@@ -80,15 +80,13 @@ const EditorSidebar = compose(
 export default editorState(withClickHandler(
   class OutsideClickHandler extends Component {
     handleClickOutside() {
-      this.props.releaseItem();
+      if (!this.props.editingItem.isAnyEditing) this.props.releaseItem();
     }
 
     render() {
-      const { ...props } = this.props;
       return (
-        <EditorSidebar {...props} />
+        <EditorSidebar {...this.props} />
       );
     }
   }
 ));
-

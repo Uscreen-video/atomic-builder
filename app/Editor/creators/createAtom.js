@@ -26,7 +26,7 @@ compose(
   withState('active', 'setActive', false),
   withHandlers({
     activate: props => () => {
-      // props.editItem(true);
+      props.editItem();
       props.setActive(true);
     },
     deactivate: props => () => {
@@ -38,7 +38,7 @@ compose(
       const mutation = props.settings.merge(data);
       props.updateEditor('settings', mutation);
     },
-    onChange: props => props.setContent
+    onChange: props => props.setContent,
   }),
 
   dndHandler('atom', 'atom')

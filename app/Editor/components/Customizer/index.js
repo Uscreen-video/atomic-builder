@@ -10,7 +10,8 @@ export default compose(
   withHandlers({
     mouseOver: props => e => {
       e.stopPropagation();
-      props.setOver(true);
+      if (props.editingItem.isAnyEditing) return false;
+      return props.setOver(true);
     },
     mouseOut: props => e => {
       e.stopPropagation();

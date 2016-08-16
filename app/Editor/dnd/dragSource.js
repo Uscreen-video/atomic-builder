@@ -8,8 +8,9 @@ export const atom = {
       type: 'atom'
     };
   },
-  canDrag({ editingItem }) {
-    return { ...editingItem, active: !editingItem.active };
+  canDrag(props) {
+    console.log(props.canDrag);
+    return props.canDrag;
   }
 };
 
@@ -21,6 +22,9 @@ export const organism = {
       Cursor,
       type: 'organism'
     };
+  },
+  canDrag(props) {
+    return props.canDrag;
   }
 };
 

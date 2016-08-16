@@ -1,7 +1,7 @@
 import cx from 'classnames';
-import Draft from 'Editor/draft';
 import { stateToHTML } from 'draft-js-export-html';
 import { EditorState } from 'draft-js';
+import Editor from './Editor';
 
 import styles from './styles.css';
 import typo from './typo.css';
@@ -36,9 +36,8 @@ export default ({
     {
       !active
       ? <div className={typo.content}><Content content={content} /></div>
-      : <Draft value={content} onChange={onChange} onBlur={deactivate} />
+      : <Editor value={content} onChange={onChange} deactivate={deactivate} />
     }
     </div>
   );
 };
-

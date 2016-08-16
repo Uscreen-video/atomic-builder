@@ -118,7 +118,7 @@ export default compose(
                       )}
                       id='optionCover'
                     >
-                      <input type='checkbox' onChange={onCoverChange}  />
+                      <input type='checkbox' onChange={onCoverChange} />
                       <label htmlFor='optionCover'>Stretch background</label>
                     </div>
 

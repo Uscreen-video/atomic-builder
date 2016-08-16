@@ -31,7 +31,8 @@
     "jsx-a11y/redundant-alt": 0,
     "jsx-a11y/valid-aria-role": 0,
     "jsx-quotes": [2, "prefer-single"],
-
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "no-void": 0,
     "react/require-render-return": 0,
     "react/jsx-no-undef": 0,
     "react/react-in-jsx-scope": 0,
@@ -50,6 +51,8 @@
       "args": "after-used",
       "argsIgnorePattern": "^_"
     }],
+
+    "jsx-sort-props": 0,
 
     "id-length": 0,
 

@@ -1,7 +1,7 @@
 import { compose, withState, withContext, withHandlers } from 'recompose';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
-import monitor from './dnd/monitor';
+import { monitor } from './dnd/immutable';
 
 import { PropTypes } from 'react';
 
@@ -12,7 +12,7 @@ compose(
   DragDropContext(HTML5Backend), // eslint-disable-line new-cap
 
   withState('dragingItem', 'setDraggingItem', monitor),
-  withState('editingItem', 'setEditingItem', { active: false, type: '' }),
+  withState('editingItem', 'setEditingItem', { active: false, type: '', isAnyEditing: false }),
 
   withHandlers({
     drag: props => dragItem => props.setDraggingItem(props.dragingItem.init(dragItem)),
@@ -20,12 +20,16 @@ compose(
     hover: props => index => props.setDraggingItem(props.dragingItem.hover(index)),
     editItem: props => () => props.setEditingItem({
       ...props.editingItem,
-      active: true
+      isAnyEditing: true
     }),
-    releaseItem: props => () => props.setEditingItem({
-      ...props.editingItem,
-      active: false
-    }),
+    releaseItem: props => () => {
+      console.log('RELEASE');
+      props.setEditingItem({
+        ...props.editingItem,
+        active: false,
+        isAnyEditing: false
+      })
+    },
     setItem: props => obj => props.setEditingItem({
       ...props.editingItem,
       ...obj
@@ -34,8 +38,13 @@ compose(
 
   withContext(
     {
-      dragingItem: object, drag: func, drop: func,
-      editItem: func, releaseItem: func, setItem: func, editingItem: object
+      dragingItem: object,
+      drag: func,
+      drop: func,
+      editItem: func,
+      releaseItem: func,
+      setItem: func,
+      editingItem: object
     },
     ({ dragingItem, drag, drop, editItem, releaseItem, setItem, editingItem }) =>
     ({ dragingItem, drag, drop, editItem, releaseItem, setItem, editingItem })
