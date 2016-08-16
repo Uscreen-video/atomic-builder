@@ -18,6 +18,20 @@ export const template = {
   }
 };
 
+export const eraser = {
+  drop(props, monitor) {
+    if (!monitor.isOver()) return;
+    const item = monitor.getItem();
+    item.remove(item.index);
+    return;
+  },
+
+  canDrop(_, monitor) {
+    if (!monitor.getItem().isPreview) return false;
+    return true;
+  }
+};
+
 export const atom = {
   hover(props, monitor, component) {
     if (!monitor.isOver()) return;
