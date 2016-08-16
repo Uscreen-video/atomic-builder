@@ -13,8 +13,8 @@ export default organism({
     },
     settings: {
       backgroundColor: Shape.color('#fff'),
-      backgroundImage: Shape.background(['', 'auto']),
-      padding: Shape.padding([0, 0, 0, 0])
+      backgroundImage: Shape.background(['', 'auto', { x: 0, y: 0 }, 'no-repeat']),
+      padding: Shape.padding({ top: 0, right: 0, bottom: 0, left: 0 })
     }
 
   }

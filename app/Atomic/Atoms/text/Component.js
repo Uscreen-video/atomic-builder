@@ -22,22 +22,23 @@ export default ({
   settings,
   onChange
 }) => {
-console.log(settings.get('backgroundImage')[1]);
-return (
-  <div
-    className={cx('editor-text', styles.wrap)}
-    style={{
-      background: settings.get('backgroundImage') && `url(${settings.get('backgroundImage')[0]}) 0 0 no-repeat`,
-      backgroundSize: settings.get('backgroundImage') && settings.get('backgroundImage')[1],
-      backgroundColor: settings.get('backgroundColor'),
-      padding: settings.get('padding')
-    }}>
-  {
-    !active
-    ? <div className={typo.content}><Content content={content} /></div>
-    : <Draft value={content} onChange={onChange} onBlur={deactivate} />
-  }
-  </div>
-);
+  const [url, cover, { x, y }, repeat] = settings.get('backgroundImage');
+
+  return (
+    <div
+      className={cx('editor-text', styles.wrap)}
+      style={{
+        background: settings.get('backgroundImage') && `url(${url}) ${x} ${y} ${repeat}`,
+        backgroundSize: settings.get('backgroundImage') && cover,
+        backgroundColor: settings.get('backgroundColor'),
+        padding: settings.get('padding')
+      }}>
+    {
+      !active
+      ? <div className={typo.content}><Content content={content} /></div>
+      : <Draft value={content} onChange={onChange} onBlur={deactivate} />
+    }
+    </div>
+  );
 };
 

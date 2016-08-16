@@ -3,6 +3,12 @@
   box-sizing: border-box;
   min-height: 100vh;
   position: relative;
+  will-change: transform;
+  transition: transform .3s ease-in;
+  
+  &_shifted {
+    transform: translateX(350px);
+  }
 }
 
 .BlankState{
@@ -24,7 +30,7 @@
     top: -4px;
     bottom: -4px;
     border: 2px dashed #7CC9F3;
-      border-radius: 5px;
+    border-radius: 5px;
   }
   & .content{
     text-align: center;

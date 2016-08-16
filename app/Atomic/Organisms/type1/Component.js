@@ -5,7 +5,7 @@ export default ({
   settings
 }) => (
   <div className={styles.wrap} style={{
-    background: settings.get('backgroundImage') && `url(${settings.get('backgroundImage')[0]}) 0 0 no-repeat`,
+    background: settings.get('backgroundImage') && `url(${settings.get('backgroundImage')[0]}) 0 0 ${settings.get('backgroundImage')[2]}`,
     backgroundColor: settings.get('backgroundColor'),
     padding: settings.get('padding')
   }}>
