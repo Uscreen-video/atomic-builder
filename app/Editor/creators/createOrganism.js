@@ -1,6 +1,6 @@
 import {
   compose, defaultProps, createEagerFactory,
-  createEagerElement, withProps
+  createEagerElement, withProps, lifecycle
 } from 'recompose';
 
 import * as Molecules from 'Atomic/Molecules';
@@ -34,6 +34,20 @@ compose(
 
   // Connect to EditorState
   editorState,
+
+  lifecycle({
+    componentWillMount() {
+      const { organism, updateEditor } = this.props;
+      if (!!organism.get('molecules').findKey(_molecule => !_molecule.has('settings'))) {
+        // const settings = settingsToObject(settingsMapper);
+        const mutation = organism.get('molecules').map(_molecule => {
+          if (_molecule.has('settings')) return _molecule;
+          return _molecule.set('settings', Map({})); // eslint-disable-line new-cap
+        });
+        updateEditor('molecules', mutation);
+      }
+    }
+  }),
 
   // We pass molecules as props to organism
   withProps(props => ({

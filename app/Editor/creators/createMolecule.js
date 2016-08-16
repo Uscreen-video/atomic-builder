@@ -1,7 +1,6 @@
 import {
   compose, defaultProps, createEagerElement, withProps
 } from 'recompose';
-import Immutable from 'immutable';
 
 import * as Atoms from 'Atomic/Atoms';
 
@@ -43,15 +42,6 @@ compose(
 
   // We allow to move atoms inside molece
   dndState('atoms', 'molecule'),
-
-  //
-  // withPropsOnChange(['molecule'], props => {
-  //   // console.log(props);
-  //   return ({
-  //     settings: props.molecule.get('settings')
-  //   })
-  // }),
-
 
   // Map atoms from state to components
   withProps(props => ({
