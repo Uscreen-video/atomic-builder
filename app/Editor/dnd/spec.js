@@ -19,3 +19,7 @@ export const atom = {
 export const preview = {
   source: 'organism'
 };
+
+export const eraser = {
+  target: ['organism', 'atom']
+};
