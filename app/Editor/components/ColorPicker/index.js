@@ -48,7 +48,7 @@ export default compose(
     {
       active &&
         <div className={styles.colorpicker__component}>
-          <SliderPicker
+          <ChromePicker
             color={color}
             onChangeComplete={onColorChange}
           />
