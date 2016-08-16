@@ -24,6 +24,8 @@ export default compose(
         || children
       }
     </div>
-    <EditorSidebar organisms={organisms} />
+    {
+      editingItem.active && <EditorSidebar organisms={organisms} />
+    }
   </div>
 ));

@@ -10,6 +10,7 @@ import * as Organisms from 'Atomic/Organisms';
 import dndState from '../dnd/state';
 import dndHandler from '../dnd/handler';
 import EditorWrap from '../components/EditorWrap';
+import Eraser from '../components/Eraser';
 
 const { func } = PropTypes;
 const Cursor = List([]); // eslint-disable-line new-cap
