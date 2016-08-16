@@ -71,3 +71,29 @@
     vertical-align: -6px;
   }
 }
+
+.dropzone{
+  position: relative;
+  display: inline-block;
+  line-height: 1;
+  img{
+    filter: blur(5px);
+  }
+}
+
+.dropzoneHint{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: white;
+  background-color: color(#5DB2DF a(50%));
+  text-shadow: 1px 1px 1px color(#333 a(40%));
+  cursor: pointer;
+  line-height: 1.3;
+}

@@ -29,8 +29,7 @@ export default compose(
       blockRenderMap={blockRenderMap}
       editorState={content}
       placeholder='Start writing text'
-      onChange={onChange}
-      onBlur={onBlur} />
+      onChange={onChange} />
     <Toolbar onChange={onChange} editorState={content} editor={editor} />
   </div>
 ));

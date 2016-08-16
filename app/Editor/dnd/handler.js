@@ -1,6 +1,6 @@
 import { PropTypes } from 'react';
 import { flowRight, compact } from 'lodash';
-import { createEagerFactory, getContext, withHandlers } from 'recompose';
+import { createEagerFactory, getContext, withHandlers, withProps } from 'recompose';
 import { DropTarget as dropTarget, DragSource as dragSource } from 'react-dnd';
 import { Motion } from 'react-motion';
 import { Animation } from './immutable';
@@ -54,8 +54,13 @@ export default (type, baseType) => baseComponent => {
     getContext({
       drag: PropTypes.func,
       drop: PropTypes.func,
-      dragingItem: PropTypes.object
+      dragingItem: PropTypes.object,
+      editingItem: PropTypes.object
     }),
+
+    withProps(props => ({
+      canDrag: !props.editingItem.isAnyEditing
+    })),
 
     target && dropTarget(target, targetSpec[type], (connect, monitor) => ({
       connectDropTarget: connect.dropTarget(),
@@ -67,7 +72,8 @@ export default (type, baseType) => baseComponent => {
     source && dragSource(source, sourceSpec[type], (connect, monitor) => ({
       connectDragSource: connect.dragSource(),
       connectDragPreview: connect.dragPreview(),
-      isDragging: monitor.isDragging()
+      isDragging: monitor.isDragging(),
+      canDrag: monitor.canDrag()
     })),
 
     withHandlers({
@@ -76,7 +82,8 @@ export default (type, baseType) => baseComponent => {
         const { index, Cursor: cursor } = props;
         props.drag({ height, index, cursor });
       }
-    })
+    }),
+
   ]);
 
   return flowRight(dndDecorators)(({
@@ -92,7 +99,6 @@ export default (type, baseType) => baseComponent => {
     ...rest
   }) => {
     const Component = factory({ ...rest, isDragging });
-
     if (!source) {
       return connectDropTarget(
         <div style={{ position: 'relative' }}>{Component}</div>

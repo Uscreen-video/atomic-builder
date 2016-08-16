@@ -12,16 +12,15 @@ animateProgress	internals/scripts/analyze.js	/^var animateProgress = require('.\
 animateProgress	internals/scripts/helpers/progress.js	/^function animateProgress(message, amountOfDots) {$/;"	f
 author	package.json	/^  "author": "Vitaly Danilov",$/;"	f
 babel	package.json	/^  "babel": {$/;"	f
-babel-core	package.json	/^    "babel-core": "6.11.4",$/;"	f
+babel-core	package.json	/^    "babel-core": "6.13.2",$/;"	f
 babel-eslint	package.json	/^    "babel-eslint": "6.1.2",$/;"	f
 babel-loader	package.json	/^    "babel-loader": "6.2.4",$/;"	f
 babel-plugin-react-transform	package.json	/^    "babel-plugin-react-transform": "2.0.2",$/;"	f
 babel-plugin-transform-react-constant-elements	package.json	/^    "babel-plugin-transform-react-constant-elements": "6.9.1",$/;"	f
 babel-plugin-transform-react-inline-elements	package.json	/^    "babel-plugin-transform-react-inline-elements": "6.8.0",$/;"	f
-babel-plugin-transform-react-remove-prop-types	package.json	/^    "babel-plugin-transform-react-remove-prop-types": "0.2.7",$/;"	f
-babel-polyfill	package.json	/^    "babel-polyfill": "6.9.1",$/;"	f
-babel-preset-es2015	package.json	/^    "babel-preset-es2015": "6.9.0",$/;"	f
-babel-preset-es2015-webpack	package.json	/^    "babel-preset-es2015-webpack": "6.4.2",$/;"	f
+babel-plugin-transform-react-remove-prop-types	package.json	/^    "babel-plugin-transform-react-remove-prop-types": "0.2.9",$/;"	f
+babel-polyfill	package.json	/^    "babel-polyfill": "6.13.0",$/;"	f
+babel-preset-es2015	package.json	/^    "babel-preset-es2015": "6.13.2",$/;"	f
 babel-preset-react	package.json	/^    "babel-preset-react": "6.11.1",$/;"	f
 babel-preset-react-hmre	package.json	/^    "babel-preset-react-hmre": "^1.1.1",$/;"	f
 babel-preset-stage-0	package.json	/^    "babel-preset-stage-0": "6.5.0",$/;"	f
@@ -56,7 +55,7 @@ const.molecule	app/components/Menu/index.js	/^  organism: organismsArray,$/;"	p
 const.organism	app/components/Menu/index.js	/^const types = {$/;"	p
 const.stiffness	app/Editor/dnd/immutable.js	/^const springConfig = { stiffness: 300, damping: 50 };$/;"	p
 const.version	internals/config.js	/^const ReactBoilerplate = {$/;"	p
-coveralls	package.json	/^    "coveralls": "2.11.11",$/;"	f
+coveralls	package.json	/^    "coveralls": "2.11.12",$/;"	f
 coveralls	package.json	/^    "coveralls": "cat .\/coverage\/lcov\/lcov.info | coveralls",$/;"	f
 createId	app/Editor/dnd/state.js	/^function createId() {$/;"	f
 cross-env	package.json	/^    "cross-env": "2.0.0",$/;"	f
@@ -66,19 +65,19 @@ dependencyHandlers	internals/webpack/webpack.dev.babel.js	/^function dependencyH
 description	package.json	/^  "description": "React.js + Atomic Design = Atomic Builder",$/;"	f
 devDependencies	package.json	/^  "devDependencies": {$/;"	f
 dllPlugin	package.json	/^  "dllPlugin": {$/;"	f
-draft-js	package.json	/^    "draft-js": "^0.7.0",$/;"	f
+draft-js	package.json	/^    "draft-js": "^0.8.0",$/;"	f
 draft-js-export-html	package.json	/^    "draft-js-export-html": "^0.4.0",$/;"	f
 draft-js-import-html	package.json	/^    "draft-js-import-html": "^0.2.0",$/;"	f
 engines	package.json	/^  "engines": {$/;"	f
 env	package.json	/^    "env": {$/;"	f
 enzyme	package.json	/^    "enzyme": "2.4.1",$/;"	f
-eslint	package.json	/^    "eslint": "3.1.1",$/;"	f
-eslint-config-airbnb	package.json	/^    "eslint-config-airbnb": "9.0.1",$/;"	f
-eslint-import-resolver-webpack	package.json	/^    "eslint-import-resolver-webpack": "0.4.0",$/;"	f
-eslint-plugin-import	package.json	/^    "eslint-plugin-import": "1.11.1",$/;"	f
-eslint-plugin-jsx-a11y	package.json	/^    "eslint-plugin-jsx-a11y": "2.0.1",$/;"	f
+eslint	package.json	/^    "eslint": "3.3.1",$/;"	f
+eslint-config-airbnb	package.json	/^    "eslint-config-airbnb": "10.0.1",$/;"	f
+eslint-import-resolver-webpack	package.json	/^    "eslint-import-resolver-webpack": "0.5.1",$/;"	f
+eslint-plugin-import	package.json	/^    "eslint-plugin-import": "1.13.0",$/;"	f
+eslint-plugin-jsx-a11y	package.json	/^    "eslint-plugin-jsx-a11y": "2.1.0",$/;"	f
 eslint-plugin-prefer-object-spread	package.json	/^    "eslint-plugin-prefer-object-spread": "^1.1.0",$/;"	f
-eslint-plugin-react	package.json	/^    "eslint-plugin-react": "5.2.2",$/;"	f
+eslint-plugin-react	package.json	/^    "eslint-plugin-react": "6.1.1",$/;"	f
 eslintConfig	package.json	/^  "eslintConfig": {$/;"	f
 eventsource-polyfill	package.json	/^    "eventsource-polyfill": "0.9.6",$/;"	f
 exclude	package.json	/^    "exclude": [$/;"	f
@@ -90,6 +89,7 @@ export.source	app/Editor/dnd/spec.js	/^  target: 'atom',$/;"	p
 export.source	app/Editor/dnd/spec.js	/^  target: 'organism',$/;"	p
 export.source	app/Editor/dnd/spec.js	/^export const preview = {$/;"	p
 export.target	app/Editor/dnd/spec.js	/^export const atom = {$/;"	p
+export.target	app/Editor/dnd/spec.js	/^export const eraser = {$/;"	p
 export.target	app/Editor/dnd/spec.js	/^export const molecule = {$/;"	p
 export.target	app/Editor/dnd/spec.js	/^export const organism = {$/;"	p
 export.target	app/Editor/dnd/spec.js	/^export const template = {$/;"	p
@@ -116,33 +116,33 @@ ip	package.json	/^    "ip": "1.1.3",$/;"	f
 isparta	package.json	/^    "isparta": "4.0.0",$/;"	f
 isparta-loader	package.json	/^    "isparta-loader": "2.0.0",$/;"	f
 json-loader	package.json	/^    "json-loader": "0.5.4",$/;"	f
-karma	package.json	/^    "karma": "1.1.1",$/;"	f
+karma	package.json	/^    "karma": "1.2.0",$/;"	f
 karma-chrome-launcher	package.json	/^    "karma-chrome-launcher": "1.0.1",$/;"	f
 karma-coverage	package.json	/^    "karma-coverage": "1.1.1",$/;"	f
 karma-firefox-launcher	package.json	/^    "karma-firefox-launcher": "1.0.0",$/;"	f
 karma-ie-launcher	package.json	/^    "karma-ie-launcher": "1.0.0",$/;"	f
 karma-mocha	package.json	/^    "karma-mocha": "1.1.1",$/;"	f
-karma-mocha-reporter	package.json	/^    "karma-mocha-reporter": "2.0.4",$/;"	f
+karma-mocha-reporter	package.json	/^    "karma-mocha-reporter": "2.1.0",$/;"	f
 karma-safari-launcher	package.json	/^    "karma-safari-launcher": "1.0.0",$/;"	f
 karma-sourcemap-loader	package.json	/^    "karma-sourcemap-loader": "0.3.7",$/;"	f
-karma-webpack	package.json	/^    "karma-webpack": "1.7.0",$/;"	f
+karma-webpack	package.json	/^    "karma-webpack": "1.8.0",$/;"	f
 license	package.json	/^  "license": "MIT",$/;"	f
 lint	package.json	/^    "lint": "npm run lint:js && npm run lint:css",$/;"	f
-lint-staged	package.json	/^    "lint-staged": "2.0.2",$/;"	f
+lint-staged	package.json	/^    "lint-staged": "2.0.3",$/;"	f
 lint-staged	package.json	/^  "lint-staged": {$/;"	f
 lint:css	package.json	/^    "lint:css": "stylelint .\/app\/**\/*.css",$/;"	f
 lint:eslint	package.json	/^    "lint:eslint": "*.js",$/;"	f
 lint:eslint	package.json	/^    "lint:eslint": "eslint --ignore-path .gitignore --ignore-pattern internals\/scripts",$/;"	f
 lint:js	package.json	/^    "lint:js": "npm run lint:eslint -- . ",$/;"	f
 lint:staged	package.json	/^    "lint:staged": "lint-staged",$/;"	f
-lodash	package.json	/^    "lodash": "4.14.0",$/;"	f
+lodash	package.json	/^    "lodash": "4.15.0",$/;"	f
 log	internals/scripts/pagespeed.js	/^function log(string) {$/;"	f
-lost	package.json	/^    "lost": "^7.0.3",$/;"	f
+lost	package.json	/^    "lost": "^7.0.4",$/;"	f
 manageColors	app/Editor/draft/Toolbar/ColorPicker.js	/^function manageColors(color) {$/;"	f
 max-len	package.json	/^      "max-len": 0,$/;"	f
 minimist	package.json	/^    "minimist": "1.2.0",$/;"	f
 mocha	package.json	/^      "mocha": true$/;"	f
-mocha	package.json	/^    "mocha": "2.5.3",$/;"	f
+mocha	package.json	/^    "mocha": "3.0.2",$/;"	f
 module.exports.context	internals/webpack/webpack.dll.babel.js	/^module.exports = {$/;"	p
 module.exports.description	internals/generators/component/index.js	/^module.exports = {$/;"	p
 module.exports.description	internals/generators/container/index.js	/^module.exports = {$/;"	p
@@ -171,7 +171,7 @@ plugins	package.json	/^        "plugins": [$/;"	f
 postcss-color-function	package.json	/^    "postcss-color-function": "^2.0.1",$/;"	f
 postcss-cssnext	package.json	/^    "postcss-cssnext": "2.7.0",$/;"	f
 postcss-focus	package.json	/^    "postcss-focus": "1.0.0",$/;"	f
-postcss-loader	package.json	/^    "postcss-loader": "0.9.1",$/;"	f
+postcss-loader	package.json	/^    "postcss-loader": "0.10.0",$/;"	f
 postcss-nested	package.json	/^    "postcss-nested": "^1.0.0",$/;"	f
 postcss-reporter	package.json	/^    "postcss-reporter": "1.4.1",$/;"	f
 postinstall	package.json	/^    "postinstall": "npm run build:dll",$/;"	f
@@ -188,28 +188,29 @@ production	package.json	/^      "production": {$/;"	f
 progress	internals/scripts/analyze.js	/^var progress = animateProgress('Generating stats');$/;"	v
 psi	internals/scripts/pagespeed.js	/^var psi = require('psi');$/;"	v
 psi	package.json	/^    "psi": "2.0.4",$/;"	f
-react	package.json	/^    "react": "15.2.1",$/;"	f
-react-addons-perf	package.json	/^    "react-addons-perf": "^15.2.0",$/;"	f
+react	package.json	/^    "react": "15.3.0",$/;"	f
+react-addons-perf	package.json	/^    "react-addons-perf": "^15.3.0",$/;"	f
 react-color	package.json	/^    "react-color": "^2.2.2",$/;"	f
 react-dnd	package.json	/^    "react-dnd": "^2.1.4",$/;"	f
 react-dnd-html5-backend	package.json	/^    "react-dnd-html5-backend": "^2.1.2",$/;"	f
-react-dom	package.json	/^    "react-dom": "15.2.1",$/;"	f
+react-dom	package.json	/^    "react-dom": "15.3.0",$/;"	f
+react-dropzone	package.json	/^    "react-dropzone": "^3.5.3",$/;"	f
 react-height	package.json	/^    "react-height": "^2.1.1",$/;"	f
 react-ink	package.json	/^    "react-ink": "^5.1.1",$/;"	f
 react-motion	package.json	/^    "react-motion": "^0.4.4",$/;"	f
 react-onclickoutside	package.json	/^    "react-onclickoutside": "^5.3.3",$/;"	f
 react-redux	package.json	/^    "react-redux": "4.4.5",$/;"	f
 react-resizable-box	package.json	/^    "react-resizable-box": "^1.4.3",$/;"	f
-react-router	package.json	/^    "react-router": "2.6.0",$/;"	f
+react-router	package.json	/^    "react-router": "2.6.1",$/;"	f
 react-router-redux	package.json	/^    "react-router-redux": "4.0.5",$/;"	f
-react-router-scroll	package.json	/^    "react-router-scroll": "0.2.1",$/;"	f
+react-router-scroll	package.json	/^    "react-router-scroll": "0.3.1",$/;"	f
 react/react-in-jsx-scope	package.json	/^      "react\/react-in-jsx-scope": 0,$/;"	f
 readline	internals/scripts/helpers/progress.js	/^var readline = require('readline');$/;"	v
 recompose	package.json	/^    "recompose": "^0.20.2",$/;"	f
 reducerExists	internals/generators/route/index.js	/^function reducerExists(comp) {$/;"	f
 redux	package.json	/^    "redux": "3.5.2",$/;"	f
 redux-act	package.json	/^    "redux-act": "^0.5.0",$/;"	f
-redux-actions	package.json	/^    "redux-actions": "^0.10.0",$/;"	f
+redux-actions	package.json	/^    "redux-actions": "^0.10.1",$/;"	f
 repository	package.json	/^  "repository": {$/;"	f
 reselect	package.json	/^    "reselect": "2.5.3",$/;"	f
 rimraf	package.json	/^    "rimraf": "2.5.4",$/;"	f
@@ -220,7 +221,7 @@ scripts	package.json	/^  "scripts": {$/;"	f
 selector-pseudo-class-no-unknown	package.json	/^      "selector-pseudo-class-no-unknown": [$/;"	f
 settings	package.json	/^    "settings": {$/;"	f
 setup	package.json	/^    "setup": "node .\/internals\/scripts\/setup.js",$/;"	f
-shelljs	package.json	/^    "shelljs": "0.7.2",$/;"	f
+shelljs	package.json	/^    "shelljs": "0.7.3",$/;"	f
 sinon	package.json	/^    "sinon": "2.0.0-pre",$/;"	f
 start	package.json	/^    "start": "cross-env NODE_ENV=development node server",$/;"	f
 start:prod	package.json	/^    "start:prod": "cross-env NODE_ENV=production node server",$/;"	f
@@ -230,10 +231,10 @@ startTunnel	internals/scripts/pagespeed.js	/^function startTunnel(cb) {$/;"	f
 string-quotes	package.json	/^      "string-quotes": "single",$/;"	f
 style-loader	package.json	/^    "style-loader": "0.13.1",$/;"	f
 stylelint	package.json	/^    "stylelint": "*.css"$/;"	f
-stylelint	package.json	/^    "stylelint": "7.0.3",$/;"	f
+stylelint	package.json	/^    "stylelint": "7.1.0",$/;"	f
 stylelint	package.json	/^  "stylelint": {$/;"	f
-stylelint-config-standard	package.json	/^    "stylelint-config-standard": "11.0.0",$/;"	f
-svg-sprite	package.json	/^    "svg-sprite": "^1.3.3",$/;"	f
+stylelint-config-standard	package.json	/^    "stylelint-config-standard": "12.0.0",$/;"	f
+svg-sprite	package.json	/^    "svg-sprite": "^1.3.5",$/;"	f
 svg-sprite-loader	package.json	/^    "svg-sprite-loader": "0.0.26",$/;"	f
 templateContent	internals/webpack/webpack.dev.babel.js	/^function templateContent() {$/;"	f
 test	package.json	/^    "test": "cross-env NODE_ENV=test karma start internals\/testing\/karma.conf.js --single-run",$/;"	f
@@ -249,4 +250,4 @@ version	package.json	/^  "version": "0.0.2",$/;"	f
 webpack	package.json	/^        "webpack": {$/;"	f
 webpack	package.json	/^    "webpack": "2.1.0-beta.13",$/;"	f
 webpack-dev-middleware	package.json	/^    "webpack-dev-middleware": "1.6.1",$/;"	f
-webpack-hot-middleware	package.json	/^    "webpack-hot-middleware": "2.12.1"$/;"	f
+webpack-hot-middleware	package.json	/^    "webpack-hot-middleware": "2.12.2"$/;"	f
