@@ -37,9 +37,8 @@ compose(
 
   withContext({ updateEditorState: func }, ({ updateEditorState }) => ({ updateEditorState })),
 
-
   // We map organisns to to components
-  withProps(({ move, add, hover, hoverIndex, ...props }) => ({
+  withProps(({ move, add, hover, remove, hoverIndex, ...props }) => ({
     children: props.organisms.map((organism, index) =>
       createEagerElement(
         Organisms[organism.get('type')].Component,
@@ -49,7 +48,7 @@ compose(
           organism,
           settings: organism.has('settings') && organism.get('settings') || Map({}),
           Cursor: props.Cursor.push(index),
-          move, add, hover, hoverIndex
+          move, add, hover, remove, hoverIndex
         }
       )
     )

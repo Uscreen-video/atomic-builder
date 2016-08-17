@@ -1,7 +1,8 @@
-import styles from './styles.css';
 import cx from 'classnames';
 import { compose, withHandlers } from 'recompose';
 import editorState from 'Editor/helpers/editorState';
+
+import styles from './styles.css';
 
 export default compose(
   editorState,

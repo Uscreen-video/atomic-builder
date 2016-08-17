@@ -45,7 +45,8 @@ export default compose(
         className={cx(
           styles.title,
           styles.titleSettings,
-          outside && styles.outside
+          outside && styles.outside,
+          props.editingItem.isContentEditing && styles.button_hidden,
         )} />
     </div>
   </div>

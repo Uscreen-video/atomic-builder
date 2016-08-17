@@ -27,7 +27,6 @@ export const eraser = {
   },
 
   canDrop(_, monitor) {
-    if (!monitor.getItem().isPreview) return false;
     return true;
   }
 };

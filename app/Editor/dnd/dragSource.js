@@ -14,10 +14,11 @@ export const atom = {
 };
 
 export const organism = {
-  beginDrag({ index, props, Cursor }) {
+  beginDrag({ index, props, remove, Cursor }) {
     return {
       index,
       props,
+      remove,
       Cursor,
       type: 'organism'
     };
