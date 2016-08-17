@@ -1,5 +1,5 @@
 import UUID from 'uuid-js';
-import { compose, withState, withHandlers } from 'recompose';
+import { compose, withState, withHandlers, lifecycle } from 'recompose';
 import { fromJS, List } from 'immutable';
 
 function createId() {
@@ -13,6 +13,19 @@ export default (type, key = type, shouldCommit = true) => compose(
     || fromJS(props[key])
   ),
 
+  lifecycle({
+    componentWillReceiveProps(next) {
+      const entityInStore = next[key].get(type)
+      if (
+        type === 'atoms'
+        && entityInStore
+        && !entityInStore.equals(this.props[type])
+      ) {
+        this.props.update(entityInStore);
+      }
+    }
+  }),
+
   withState('hoverIndex', 'hover', void 0),
 
   withHandlers({
@@ -22,7 +35,7 @@ export default (type, key = type, shouldCommit = true) => compose(
       update(mutation, shouldCommit && updateEditor(type, mutation));
     },
     add: ({ update, updateEditor, ...props }) => (index, data) => {
-      console.log('DROP', data)
+      console.log('DROP', props[type].toJS())
       const mutation = props[type].insert(index, data.set('id', createId()));
       console.log(`[${type}] Add:`, mutation.toJS());
       update(mutation, shouldCommit && updateEditor(type, mutation));
