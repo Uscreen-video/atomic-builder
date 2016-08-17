@@ -8,9 +8,7 @@ export default compose(
   withHandlers({
     onClick: props => e => {
       e.stopPropagation();
-      props.setItem({
-        ...props.editingItem,
-        active: true,
+      props.editSettings({
         type: props.title,
         mapper: props.settingsMapper,
         Cursor: props.Cursor.push('settings')

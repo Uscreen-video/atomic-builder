@@ -1,39 +1,29 @@
+import { PropTypes } from 'react';
+
 import { compose, withState, withContext, withHandlers } from 'recompose';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
-import { monitor } from './dnd/immutable';
 
-import { PropTypes } from 'react';
+import Monitor from './immutable/dndMonitor';
+import EditingItem from './immutable/editingItem';
 
-const { func, object, bool } = PropTypes;
+const { func, object } = PropTypes;
 
 export const withEditorContext = BaseComponent =>
 compose(
   DragDropContext(HTML5Backend), // eslint-disable-line new-cap
 
-  withState('dragingItem', 'setDraggingItem', monitor),
-  withState('editingItem', 'setEditingItem', { active: false, type: '', isAnyEditing: false }),
+  withState('dragingItem', 'setDraggingItem', Monitor),
+  withState('editingItem', 'editItem', EditingItem),
 
   withHandlers({
     drag: props => dragItem => props.setDraggingItem(props.dragingItem.init(dragItem)),
     drop: props => () => props.setDraggingItem(props.dragingItem.reset()),
     hover: props => index => props.setDraggingItem(props.dragingItem.hover(index)),
-    editItem: props => () => props.setEditingItem({
-      ...props.editingItem,
-      isAnyEditing: true
-    }),
-    releaseItem: props => () => {
-      console.log('RELEASE');
-      props.setEditingItem({
-        ...props.editingItem,
-        active: false,
-        isAnyEditing: false
-      })
-    },
-    setItem: props => obj => props.setEditingItem({
-      ...props.editingItem,
-      ...obj
-    })
+
+    editContent: props => data => props.editItem(props.editingItem.editContent(data)),
+    editSettings: props => data => props.editItem(props.editingItem.editSettings(data)),
+    releaseItem: props => () => props.editItem(props.editingItem.release())
   }),
 
   withContext(
@@ -41,12 +31,12 @@ compose(
       dragingItem: object,
       drag: func,
       drop: func,
-      editItem: func,
+      editContent: func,
+      editSettings: func,
       releaseItem: func,
-      setItem: func,
       editingItem: object
     },
-    ({ dragingItem, drag, drop, editItem, releaseItem, setItem, editingItem }) =>
-    ({ dragingItem, drag, drop, editItem, releaseItem, setItem, editingItem })
+    ({ dragingItem, drag, drop, releaseItem, editContent, editSettings, editingItem }) =>
+    ({ dragingItem, drag, drop, releaseItem, editContent, editSettings, editingItem })
   )
 )(BaseComponent);

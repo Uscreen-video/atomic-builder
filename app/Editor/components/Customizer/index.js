@@ -1,7 +1,8 @@
-import styles from './styles.css';
 import cx from 'classnames';
-import withEditorState from '../../helpers/editorState';
 import { compose, withState, withHandlers } from 'recompose';
+
+import styles from './styles.css';
+import withEditorState from '../../helpers/editorState';
 import Button from './button';
 
 export default compose(
@@ -10,7 +11,7 @@ export default compose(
   withHandlers({
     mouseOver: props => e => {
       e.stopPropagation();
-      if (props.editingItem.isAnyEditing) return false;
+      if (props.editingItem.isContentEditing) return false;
       return props.setOver(true);
     },
     mouseOut: props => e => {

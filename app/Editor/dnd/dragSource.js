@@ -9,7 +9,6 @@ export const atom = {
     };
   },
   canDrag(props) {
-    console.log(props.canDrag);
     return props.canDrag;
   }
 };

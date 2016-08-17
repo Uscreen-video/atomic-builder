@@ -3,7 +3,7 @@ import { flowRight, compact } from 'lodash';
 import { createEagerFactory, getContext, withHandlers, withProps } from 'recompose';
 import { DropTarget as dropTarget, DragSource as dragSource } from 'react-dnd';
 import { Motion } from 'react-motion';
-import { Animation } from './immutable';
+import Animation from '../immutable/animation';
 
 import * as targetSpec from './dragTarget';
 import * as sourceSpec from './dragSource';
@@ -22,7 +22,7 @@ const getMotionStyle = (isDragging, canDrop, index, hoverIndex, cursor, dragingI
   if (monitor.isDragging && canDrop) {
     if (monitor.isMounted) {
       if (monitor.originalIndex < index && hoverIndex > index) {
-        return animation.animate('y', - height);
+        return animation.animate('y', -height);
       }
       if (monitor.originalIndex > index && hoverIndex <= index) {
         return animation.animate('y', height);
@@ -59,7 +59,7 @@ export default (type, baseType) => baseComponent => {
     }),
 
     withProps(props => ({
-      canDrag: !props.editingItem.isAnyEditing
+      canDrag: !props.editingItem.canDrag
     })),
 
     target && dropTarget(target, targetSpec[type], (connect, monitor) => ({

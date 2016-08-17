@@ -14,10 +14,7 @@ export default compose(
   isOver
 }) => (
   <div>
-    <div className={cx(
-        styles.wrap,
-        editingItem.active && styles.wrap_shifted
-    )}>
+    <div className={cx(styles.wrap, editingItem.active && styles.wrap_shifted)}>
       {
         !organisms.size
         && <BlankState isOver={isOver} />
@@ -25,7 +22,7 @@ export default compose(
       }
     </div>
     {
-      editingItem.active && <EditorSidebar organisms={organisms} />
+      editingItem.isSidebarOpen && <EditorSidebar organisms={organisms} editingItem={editingItem} />
     }
   </div>
 ));
