@@ -45,7 +45,8 @@ compose(
         Organisms[organism.get('type')].Component,
         {
           key: organism.get('id'),
-          index, organism,
+          index,
+          organism,
           settings: organism.has('settings') && organism.get('settings') || Map({}),
           Cursor: props.Cursor.push(index),
           move, add, hover, hoverIndex
