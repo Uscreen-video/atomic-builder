@@ -13,7 +13,7 @@ import styles from './styles.css';
 const EditorSidebar = compose(
   withHandlers({
     setSettings: props => (key, value) => {
-      const cursor = props.editingItem.Cursor.push(key);
+      const cursor = props.editingItem.get('Cursor').push(key);
       props.updateEditorState(cursor, value);
     }
   })
@@ -22,25 +22,24 @@ const EditorSidebar = compose(
   setSettings,
   organisms
 }) => {
-  const { mapper } = editingItem;
+  const mapper = editingItem.get('mapper');
+  const cursor = editingItem.get('Cursor');
   return (
-    <div
-      className={cx(styles.sidebar, editingItem.active && styles.sidebar_active)}
-    >
+    <div className={cx(styles.sidebar, styles.sidebar_active)}>
       <h2 className={styles.sidebar__header}>Settings for {editingItem.type}</h2>
       <ul>
         {
-          mapper && Object.keys(mapper).map(key => {
+          Object.keys(mapper).map(key => {
             let component = null;
             const { type, title, value: defaultValue } = mapper[key];
-            const settings = organisms.getIn(editingItem.Cursor, 'settings');
-            const value = settings.get(key);
+            const settings = organisms.getIn(cursor, 'settings');
+            const value = settings.get(key) || defaultValue;
 
             switch (type) {
               case 'color':
                 component =  <ColorPicker
                               onSettingsChange={setSettings}
-                              defaultColor={value || defaultValue}
+                              defaultColor={value}
                               label={title}
                               settingKey={key}
                             />;
@@ -80,7 +79,8 @@ const EditorSidebar = compose(
 export default editorState(withClickHandler(
   class OutsideClickHandler extends Component {
     handleClickOutside() {
-      if (!this.props.editingItem.isAnyEditing) this.props.releaseItem();
+      console.log('click utside');
+      if (this.props.editingItem.isSidebarOpen) this.props.releaseItem();
     }
 
     render() {

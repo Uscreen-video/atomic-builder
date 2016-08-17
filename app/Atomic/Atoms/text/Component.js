@@ -6,6 +6,22 @@ import Editor from './Editor';
 import styles from './styles.css';
 import typo from './typo.css';
 
+const getStyles = settings => {
+  const res = {
+    backgroundColor: settings.get('backgroundColor'),
+    padding: settings.get('padding')
+  };
+
+  const backgroundImage = settings.get('backgroundImage');
+  if (backgroundImage) {
+    const [url, cover, { x, y }, repeat] = backgroundImage;
+    res.background = `url(${url}) ${x} ${y} ${repeat}`;
+    res.backgroundSize = cover;
+  }
+
+  return res;
+};
+
 const Content = ({ content }) => {
   if (!content) return <p className={styles.placeholder}>Enter text here</p>;
   if (content instanceof EditorState) {
@@ -21,23 +37,12 @@ export default ({
   deactivate,
   settings,
   onChange
-}) => {
-  const [url, cover, { x, y }, repeat] = settings.get('backgroundImage');
-
-  return (
-    <div
-      className={cx('editor-text', styles.wrap)}
-      style={{
-        background: settings.get('backgroundImage') && `url(${url}) ${x} ${y} ${repeat}`,
-        backgroundSize: settings.get('backgroundImage') && cover,
-        backgroundColor: settings.get('backgroundColor'),
-        padding: settings.get('padding')
-      }}>
-    {
-      !active
-      ? <div className={typo.content}><Content content={content} /></div>
-      : <Editor value={content} onChange={onChange} deactivate={deactivate} />
-    }
-    </div>
-  );
-};
+}) => (
+  <div className={cx('editor-text', styles.wrap)} style={getStyles(settings)}>
+  {
+    !active
+    ? <div className={typo.content}><Content content={content} /></div>
+    : <Editor value={content} onChange={onChange} deactivate={deactivate} />
+  }
+  </div>
+);

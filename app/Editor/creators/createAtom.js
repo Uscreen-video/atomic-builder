@@ -1,5 +1,4 @@
 import { compose, defaultProps, withState, withHandlers } from 'recompose';
-import { DropTarget as target, DragSource as source } from 'react-dnd';
 
 import AtomWrap from '../components/AtomWrap';
 
@@ -26,11 +25,11 @@ compose(
   withState('active', 'setActive', false),
   withHandlers({
     activate: props => () => {
-      props.editItem();
+      props.editContent(props.Cursor);
       props.setActive(true);
     },
     deactivate: props => () => {
-      // props.releaseItem();
+      props.releaseItem();
       props.setActive(false);
       props.updateEditor('content', props.content);
     },
@@ -38,7 +37,7 @@ compose(
       const mutation = props.settings.merge(data);
       props.updateEditor('settings', mutation);
     },
-    onChange: props => props.setContent,
+    onChange: props => props.setContent
   }),
 
   dndHandler('atom', 'atom')

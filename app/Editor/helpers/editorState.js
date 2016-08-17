@@ -1,12 +1,13 @@
 import { compose, getContext, withPropsOnChange } from 'recompose';
 import { PropTypes } from 'react';
 
-const { func, bool, object } = PropTypes;
+const { func, object } = PropTypes;
 
 export default compose(
   getContext({
     updateEditorState: func,
-    editItem: func,
+    editContent: func,
+    editSettings: func,
     releaseItem: func,
     setItem: func,
     editingItem: object
