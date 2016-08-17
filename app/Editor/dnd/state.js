@@ -15,9 +15,10 @@ export default (type, key = type, shouldCommit = true) => compose(
 
   lifecycle({
     componentWillReceiveProps(next) {
+      if (!next[key].get) return;
+
       const entityInStore = next[key].get(type)
-      if (
-        type === 'atoms'
+      if (type === 'atoms'
         && entityInStore
         && !entityInStore.equals(this.props[type])
       ) {
