@@ -23,6 +23,7 @@ export const eraser = {
     if (!monitor.isOver()) return;
     const item = monitor.getItem();
     item.remove(item.index);
+    props.drop();
     return;
   },
 
