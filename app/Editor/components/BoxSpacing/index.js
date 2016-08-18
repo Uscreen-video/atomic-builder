@@ -51,58 +51,26 @@ export default compose(
           <div className={styles.boxSpacing__component}>
             <div className={styles.boxSpacing__box}>
               <div className={styles.boxSpacing__content}>
-                <div className={cx(
-                    styles.boxSpacing__inputbox,
-                    styles.boxSpacing__inputbox_top,
-                )}>
-                  <label>Top (px):</label>
-                  <input
-                    type='text'
-                    data-type='top'
-                    onChange={onSpacingChange}
-                    className={cx(
-                      styles.boxSpacing__input
-                    )} />
-                </div>
-                <div className={cx(
-                    styles.boxSpacing__inputbox,
-                    styles.boxSpacing__inputbox_right,
-                )}>
-                  <label>Right (px):</label>
-                  <input
-                    type='text'
-                    data-type='right'
-                    onChange={onSpacingChange}
-                    className={cx(
-                      styles.boxSpacing__input
-                  )} />
-                </div>
-                <div className={cx(
-                    styles.boxSpacing__inputbox,
-                    styles.boxSpacing__inputbox_bottom,
-                )}>
-                  <label>Bottom (px):</label>
-                  <input
-                    type='text'
-                    data-type='bottom'
-                    onChange={onSpacingChange}
-                    className={cx(
-                      styles.boxSpacing__input
-                    )} />
-                </div>
-                <div className={cx(
-                    styles.boxSpacing__inputbox,
-                    styles.boxSpacing__inputbox_left,
-                )}>
-                  <label>Left (px):</label>
-                  <input
-                    type='text'
-                    data-type='left'
-                    onChange={onSpacingChange}
-                    className={cx(
-                      styles.boxSpacing__input
-                    )} />
-                </div>
+                {
+                  ['top', 'right', 'bottom', 'left'].map((position) => (
+                    <div
+                      key={`padding-${position}`}
+                      className={cx(
+                        styles.boxSpacing__inputbox,
+                        styles[`boxSpacing__inputbox_${position}`]
+                    )}>
+                      <label htmlFor={`id-${position}`}>{position} (px):</label>
+                      <input
+                        type='text'
+                        data-type={position}
+                        onChange={onSpacingChange}
+                        id={`id-${position}`}
+                        className={cx(
+                          styles.boxSpacing__input
+                        )} />
+                    </div>
+                  ))
+                }
               </div>
             </div>
           </div>

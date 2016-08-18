@@ -3,18 +3,16 @@ import { compose, withState, withHandlers } from 'recompose';
 import cx from 'classnames';
 import Dropzone from 'react-dropzone';
 
-import editorState from 'Editor/helpers/editorState';
 import imagesToBase64 from 'Editor/helpers/imagesToBase64';
 
 import styles from './styles.css';
 
 export default compose(
-  editorState,
   withState('active', 'setActive', false),
-  withState('image', 'setImage', props => props.editingItem.mapper.backgroundImage.value[0]) || '',
-  withState('cover', 'setCover', props => props.editingItem.mapper.backgroundImage.value[1]) || 'auto',
-  withState('position', 'setPostion', props => props.editingItem.mapper.backgroundImage.value[2]) || { x: 0, y: 0 },
-  withState('repeat', 'setRepeat', props => props.editingItem.mapper.backgroundImage.value[3]) || 'no-repeat',
+  withState('image', 'setImage', props => props.background[0] || ''),
+  withState('cover', 'setCover', props => props.background[1] || 'auto'),
+  withState('position', 'setPostion', props => props.background[2] || { x: 0, y: 0 }),
+  withState('repeat', 'setRepeat', props => props.background[3] || 'no-repeat'),
   withHandlers({
     onClick: props => e => {
       e.stopPropagation();
@@ -127,13 +125,15 @@ export default compose(
                       {
                         ['no-repeat', 'repeat', 'repeat-x', 'repeat-y'].map((repeatMode) => (
 
-                          <div className={styles.fileUploader__inputBox}>
+                          <div
+                            key={`repeat-${repeatMode}`}
+                            className={styles.fileUploader__inputBox}
+                          >
                             <input
                               type='radio'
                               onChange={onRepeatChange}
                               name='bgr-repeat'
                               value={repeatMode}
-                              key={repeatMode}
                               id={`id-${repeatMode}`}
                               checked={repeatMode === repeat}
                             />
@@ -149,12 +149,14 @@ export default compose(
                       {
                         ['x', 'y'].map((position) => (
 
-                          <div className={cx(styles.fileUploader__inputBox, styles.fileUploader__inputBox_stack)}>
+                          <div
+                            key={`bgrPosition-${position}`}
+                            className={cx(styles.fileUploader__inputBox, styles.fileUploader__inputBox_stack)}
+                          >
                             <label htmlFor={`id-${position}`}>{position === 'x' ? 'Left:' : 'Top:'}</label>
                             <input
                               type='text'
                               onChange={onPositionChange}
-                              key={position}
                               id={`id-${position}`}
                               data-type={position}
                             />

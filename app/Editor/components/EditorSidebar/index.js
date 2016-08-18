@@ -8,6 +8,8 @@ import ColorPicker from 'Editor/components/ColorPicker';
 import BoxSpacing from 'Editor/components/BoxSpacing';
 import FileUploader from 'Editor/components/FileUploader';
 
+import Immutable from 'immutable';
+
 import styles from './styles.css';
 
 const EditorSidebar = compose(
@@ -33,13 +35,14 @@ const EditorSidebar = compose(
             let component = null;
             const { type, title, value: defaultValue } = mapper[key];
             const settings = organisms.getIn(cursor, 'settings');
-            const value = settings.get(key) || defaultValue;
+            const settingValue = settings.get(key);
+            const value = (Immutable.Iterable.isIterable(settingValue) ? settingValue.toJS() : settingValue) || defaultValue;
 
             switch (type) {
               case 'color':
                 component =  <ColorPicker
                               onSettingsChange={setSettings}
-                              defaultColor={value}
+                              color={value}
                               label={title}
                               settingKey={key}
                             />;
@@ -48,6 +51,7 @@ const EditorSidebar = compose(
                 component = <BoxSpacing
                               onSettingsChange={setSettings}
                               label={title}
+                              spacing={value}
                               settingKey={key}
                             />;
                 break;
@@ -55,6 +59,7 @@ const EditorSidebar = compose(
                 component = <FileUploader
                               onSettingsChange={setSettings}
                               label={title}
+                              background={value}
                               settingKey={key}
                             />;
                 break;

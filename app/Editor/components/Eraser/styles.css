@@ -9,9 +9,11 @@
   box-sizing: border-box;
   border-radius: 50px;
   transition: background .5s ease-out;
-  box-shadow: 3px 4px 10px 0 #666 inset;
+  box-shadow: 3px 3px 0 #666 inset;
+  z-index: 9999;
   &_over {
     background: #333;
+    box-shadow: none;
   }
 }
 
