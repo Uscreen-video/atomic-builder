@@ -10,7 +10,15 @@ export const base = [
     ]
   },
   { type: 'entity', label: 'Color', style: 'color', icon: 'color' },
+
   { type: 'separator' },
+
+  { type: 'inlineBlock', label: 'textAlign', style: 'left', icon: 'align_left' },
+  { type: 'inlineBlock', label: 'textAlign', style: 'center', icon: 'align_center' },
+  { type: 'inlineBlock', label: 'textAlign', style: 'right', icon: 'align_right' },
+
+  { type: 'separator' },
+
   { type: 'block', label: 'UL', style: 'unordered-list-item', icon: 'ul' },
   { type: 'block', label: 'OL', style: 'ordered-list-item', icon: 'ol' },
   { type: 'block', label: 'QT', style: 'blockquote', icon: 'quote' }

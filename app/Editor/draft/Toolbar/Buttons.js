@@ -98,6 +98,13 @@ class Mapper extends Component {
     };
   }
 
+  inlineBlock(style) {
+    return {
+      onChange: this.toggleBlockStyle(style),
+      active: style === this.currentBlock
+    };
+  }
+
   entity(type, collection) {
     const entityKey = this.key;
     switch (type) {

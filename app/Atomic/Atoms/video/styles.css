@@ -1,7 +1,12 @@
 .wrap{
-  img{
-    width: 100%;
+  video{
     max-width: 100%;
+  }
+}
+
+.videoWrap{
+  & > div {
+    display: inline-block;
   }
 }
 

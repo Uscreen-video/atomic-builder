@@ -1,0 +1,25 @@
+.toogler{
+  width: 36px;
+  height: 36px;
+  border: none;
+  z-index: 2;
+  position: relative;
+  border-radius: 50%;
+  cursor: pointer;
+  background-color: #f58577;
+  outline: none;
+  transform: rotate(45deg);
+  transition: transform .3s ease-in-out, background-color .2s linear;
+  svg{
+    width: 24px;
+    display: inline-block;
+    height: 25px;
+    vertical-align: -5px;
+    fill: white;
+  }
+  &.active{
+    transform: rotate(0deg);
+    background-color: #51d4ac;
+    transition: transform .3s ease-in, background-color .2s linear;
+  }
+}

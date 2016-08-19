@@ -9,14 +9,11 @@ import styles from './styles.css';
 import AlignButtons from './AlignButtons';
 import imagesToBase64 from 'Editor/helpers/imagesToBase64';
 
-let _maxWidth = 200;
-
 class Editor extends Component {
 
   state = {
     width: 200,
     height: 200,
-    dimention: 1,
     align: 'left',
     isResizing: false
   }
@@ -26,7 +23,7 @@ class Editor extends Component {
     const width = settings.get('width') || this.state.width;
     const height = settings.get('height') || this.state.height;
     const align = settings.get('align') || this.state.align;
-    this.setState({ width, height, align, dimention: height / width });
+    this.setState({ width, height, align });
   }
 
   handleClickOutside() {
@@ -34,8 +31,7 @@ class Editor extends Component {
   }
 
   resize = (_, size) => {
-    const height = size.width * this.state.dimention;
-    this.setState({ width: size.width, height, isResizing: true });
+    this.setState({ ...size, isResizing: false });
   }
 
   stopResize = () => {
@@ -54,9 +50,7 @@ class Editor extends Component {
     const images = await imagesToBase64(files);
     const img = new Image();
     img.onload = function () {
-      const dimention = this.height / this.width;
-      const width = this.width > 200 ? 200 : this.width;
-      _self.setState({ dimention, width });
+      _self.setState({ width: `${this.width}px`, height: `${this.height}px` });
       _self.props.onChange(images[0]);
     };
     img.src = images[0];
@@ -64,21 +58,19 @@ class Editor extends Component {
 
   render() {
     const { content } = this.props;
-    const { width, dimention, align, isResizing } = this.state;
+    const { width, height, align, isResizing } = this.state;
     return (
-      <div
-        className={cx(styles.wrap, styles[`align_${align}`])}
-        ref={r => _maxWidth = r && r.offsetWidth || 200}>
+      <div className={cx(styles.wrap, styles[`align_${align}`])}>
         <Resizable
           onResize={this.resize}
           onResizeStop={this.stopResize}
           handleClass={{ bottomRight: styles.handle }}
           isResizable={{ bottomRight: true }}
-          maxWidth={_maxWidth}
           width={width}
+          height={height}
           customClass={styles.resizable}>
           <Dropzone onDrop={this.onDrop} disableClick={isResizing} className={styles.dropzone}>
-            <img src={content} role='presentation' />
+            <img style={{ width, height }} src={content} role='presentation' />
             <span className={styles.dropzoneHint}>
               Try dropping some files here, or click to select files to upload.
             </span>

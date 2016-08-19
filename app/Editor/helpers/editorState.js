@@ -9,7 +9,6 @@ export default compose(
     editContent: func,
     editSettings: func,
     releaseItem: func,
-    setItem: func,
     editingItem: object
   }),
 

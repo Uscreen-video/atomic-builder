@@ -27,6 +27,7 @@ export default compose(
   title,
   mouseOver,
   mouseOut,
+  isActive,
   ...props
 }) => (
   <div

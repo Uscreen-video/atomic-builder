@@ -38,6 +38,8 @@
     "react/react-in-jsx-scope": 0,
     "react/jsx-closing-bracket-location": 0,
     "react/jsx-pascal-case": 0,
+    "import/no-extraneous-dependencies": 0,
+    "no-mixed-operators": 0,
     "react/jsx-no-bind": [1, {
       "ignoreRefs": true
     }],
