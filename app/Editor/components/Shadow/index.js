@@ -6,10 +6,9 @@ import styles from './styles.css';
 
 export default compose(
   withState('active', 'setActive', false),
-  withState('color', 'setColor', props => props.boxShadow.color),
-  withState('position', 'setPosition', props => ({ x: props.boxShadow.x, y: props.boxShadow.y })),
-  withState('blur', 'setBlur', props => props.boxShadow.blur),
-  withState('spread', 'setSpread', props => props.boxShadow.spread),
+  withState('color', 'setColor', props => props.value.color),
+  withState('position', 'setPosition', props => ({ x: props.value.x, y: props.value.y })),
+  withState('blur', 'setBlur', props => props.value.blur),
   withHandlers({
     onClick: props => e => {
       e.stopPropagation();
@@ -18,7 +17,7 @@ export default compose(
     onColorChange: props => color => {
       props.setColor(color.hex);
       props.onSettingsChange && props.onSettingsChange(props.settingKey, {
-        ...props.boxShadow,
+        ...props.value,
         color: color.hex
       });
     },
@@ -32,7 +31,7 @@ export default compose(
       };
       props.setPosition(position);
       props.onSettingsChange && props.onSettingsChange(props.settingKey, {
-        ...props.boxShadow,
+        ...props.value,
         x: position.x,
         y: position.y
       });
@@ -42,7 +41,7 @@ export default compose(
       const value = e.target.value || 0;
       props.setBlur(value);
       props.onSettingsChange && props.onSettingsChange(props.settingKey, {
-        ...props.boxShadow,
+        ...props.value,
         blur: value
       });
     },
@@ -51,7 +50,7 @@ export default compose(
       const value = e.target.value || 0;
       props.setSpread(value);
       props.onSettingsChange && props.onSettingsChange(props.settingKey, {
-        ...props.boxShadow,
+        ...props.value,
         spread: value
       });
     }

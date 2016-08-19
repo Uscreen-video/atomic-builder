@@ -7,7 +7,7 @@ import styles from './styles.css';
 export default compose(
   editorState,
   withState('active', 'setActive', false),
-  withState('spacing', 'setSpacing', props => props.spacing || {
+  withState('spacing', 'setSpacing', props => props.value || {
     top: 0,
     right: 0,
     bottom: 0,

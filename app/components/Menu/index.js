@@ -41,8 +41,8 @@ const Button = compose(
       active === type && styles.active
     )
   }))
-)(props => (
-  <Motion style={getButtonAnimation(props.type, props.visible)}>
+)(({ visible, ...props }) => (
+  <Motion style={getButtonAnimation(props.type, visible)}>
     { motion => <button style={computeStyles(motion)} {...props} /> }
   </Motion>
 ));
@@ -54,7 +54,7 @@ const List = ({ active, visible }) => (
     ({ opacity }) => (
       <div style={{ opacity, display: opacity <= 0.3 && 'none' }}>
         { Object.keys(types).map(type =>
-          <div className={cx(styles.listWrap, active === type && styles.activeList)}>
+          <div key={type} className={cx(styles.listWrap, active === type && styles.activeList)}>
             <div className={styles.list}>
               {
                 types[type].map((Preview, index) => <Preview key={index} />)

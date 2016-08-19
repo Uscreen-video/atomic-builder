@@ -9,10 +9,10 @@ import styles from './styles.css';
 
 export default compose(
   withState('active', 'setActive', false),
-  withState('image', 'setImage', props => props.background[0] || ''),
-  withState('cover', 'setCover', props => props.background[1] || 'auto'),
-  withState('position', 'setPostion', props => props.background[2] || { x: 0, y: 0 }),
-  withState('repeat', 'setRepeat', props => props.background[3] || 'no-repeat'),
+  withState('image', 'setImage', props => props.value[0] || ''),
+  withState('cover', 'setCover', props => props.value[1] || 'auto'),
+  withState('position', 'setPostion', props => props.value[2] || { x: 0, y: 0 }),
+  withState('repeat', 'setRepeat', props => props.value[3] || 'no-repeat'),
   withHandlers({
     onClick: props => e => {
       e.stopPropagation();

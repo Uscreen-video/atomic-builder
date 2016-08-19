@@ -12,6 +12,15 @@ class Shape extends Record({ // eslint-disable-line new-cap
       ...extendObject
     };
   }
+  link(value, extendObject) {
+    return {
+      type: 'link',
+      description: 'Some description',
+      title: 'Url:',
+      value,
+      ...extendObject
+    };
+  }
   padding(value, extendObject) {
     return {
       type: 'padding',

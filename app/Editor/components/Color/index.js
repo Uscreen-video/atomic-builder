@@ -6,7 +6,7 @@ import styles from './styles.css';
 
 export default compose(
   withState('active', 'setActive', false),
-  withState('color', 'setColor', props => props.color),
+  withState('color', 'setColor', props => props.value),
   withHandlers({
     onClick: props => e => {
       e.stopPropagation();
