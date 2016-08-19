@@ -20,22 +20,22 @@ export default compose(
   drop,
   dragingItem
 }) => {
-return (
-  <div>
-    <div className={cx(styles.wrap, editingItem.active && styles.wrap_shifted)}>
+  return (
+    <div>
+      <div className={cx(styles.wrap, editingItem.isSidebarOpen && styles.wrap_shifted)}>
+        {
+          !organisms.size
+          && <BlankState isOver={isOver} />
+          || children
+        }
+      </div>
       {
-        !organisms.size
-        && <BlankState isOver={isOver} />
-        || children
+        editingItem.isSidebarOpen
+        && <EditorSidebar organisms={organisms} editingItem={editingItem} />
+      }
+      {
+        dragingItem.isDragging && <Eraser drop={drop} />
       }
     </div>
-    {
-      editingItem.isSidebarOpen && <EditorSidebar organisms={organisms} editingItem={editingItem} />
-    }
-    {
-      dragingItem.isDragging && <Eraser drop={drop} />
-    }
-  </div>
-);
-}
-);
+  );
+});

@@ -1,54 +1,48 @@
 import { compose, withState, withHandlers } from 'recompose';
 import cx from 'classnames';
-
-import editorState from 'Editor/helpers/editorState';
-import { ChromePicker, SliderPicker } from 'react-color';
+import { SketchPicker } from 'react-color';
 
 import styles from './styles.css';
 
 export default compose(
-  editorState,
-  withState('active', 'setActive', false),
+  withState('active', 'setActive', true),
   withState('color', 'setColor', props => props.color),
   withHandlers({
     onClick: props => e => {
       e.stopPropagation();
       props.setActive(!props.active);
+      props.transparent && props.active && props.onColorChange('transparent');
     },
     onColorChange: props => color => {
-      props.setColor(color.hex);
-      props.onSettingsChange && props.onSettingsChange(props.settingKey, color.hex);
+      props.setColor(color);
+      props.onColorChange(color);
     }
   })
 )(({
-  label,
-  color,
   active,
   onClick,
+  color,
+  transparent,
   onColorChange
 }) => (
   <div className={styles.colorpicker}>
-    <div className={styles.colorpicker__container}>
-      {
-        label &&
-          <span
-            className={styles.colorpicker__label}
-            onClick={onClick}>
-            {label}
-          </span>
-      }
-      <div
-        className={cx(styles.colorpicker__button)}
-        onClick={onClick}>
-        <div
-          className={styles.colorpicker__placeholder}
-          style={{ backgroundColor: color }} />
+    {
+      transparent &&
+        <div className={cx(styles.colorpicker__inputBox)}>
+        <input
+          type='checkbox'
+          onChange={onClick}
+          id='colorId-checkbox'
+        />
+        <label className={styles.colorpicker__label} htmlFor='colorId-checkbox'>
+          Use a transparent color:
+        </label>
       </div>
-    </div>
+    }
     {
       active &&
         <div className={styles.colorpicker__component}>
-          <ChromePicker
+          <SketchPicker
             color={color}
             onChangeComplete={onColorChange}
           />

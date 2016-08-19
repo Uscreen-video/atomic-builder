@@ -19,6 +19,25 @@ const getStyles = settings => {
     res.backgroundSize = cover;
   }
 
+  const border = settings.get('border');
+  if (border) {
+    const { width, style, color, radius } = border;
+    if (style !== 'none') {
+      res.border = `${width}px ${style} ${color}`;
+      if (radius) {
+        res.borderRadius = `${radius}px`;
+      }
+    } else {
+      res.border = 'none';
+    }
+  }
+
+  const shadow = settings.get('shadow');
+  if (shadow) {
+    const { x, y, blur, spread, color } = shadow;
+    res.boxShadow = `${x}px ${y}px ${blur}px ${spread}px ${color}`;
+  }
+
   return res;
 };
 

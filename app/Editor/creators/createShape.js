@@ -39,6 +39,24 @@ class Shape extends Record({ // eslint-disable-line new-cap
       ...extendObject
     };
   }
+  border(value, extendObject) {
+    return {
+      type: 'border',
+      description: 'Some description',
+      title: 'Border settings:',
+      value,
+      ...extendObject
+    };
+  }
+  shadow(value, extendObject) {
+    return {
+      type: 'shadow',
+      description: 'Some description',
+      title: 'Shadow settings:',
+      value,
+      ...extendObject
+    };
+  }
 }
 
 export const shape = new Shape;
