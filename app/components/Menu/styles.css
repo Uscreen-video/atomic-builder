@@ -1,6 +1,27 @@
 .wrap{
+  position: fixed;
+  top: -60px;
   width: 100%;
-  background-color: color(#485562 a(80%));
+  z-index: 2;
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &:before{
+    content: ' ';
+    position: absolute;
+    top: 0;
+    bottom: -60px;
+    left: 0;
+    right: 0;
+    visibility: hidden;
+    background-color: color(#2E353D a(0%));
+    transition: background-color .1s ease-in;
+  }
+}
+.wrapActive:before{
+  visibility: visible;
+  background-color: color(#2E353D a(100%));
 }
 .buttonsWrap{
   margin: 0 auto;
@@ -12,9 +33,16 @@
   padding: 15px 0;
 }
 
+.tabs{
+  position: relative;
+  top: 60px;
+}
+
 .button{
-  color: color(white a(70%));
+  color: color(white a(60%));
   border: 0;
+  z-index: 1;
+  margin-top: 5px;
   padding: 5px 10px;
   background: transparent;
   text-transform: uppercase;
@@ -24,26 +52,12 @@
   letter-spacing: 1px;
   transition: color .2s ease-in-out;
   outline: none;
+  position: absolute!important;
   &:hover{
     color: white;
   }
   &.active{
     color: white;
-    &:after{
-      content: ' ';
-      position: absolute;
-      border-color: transparent transparent #485562;
-      border-style: solid;
-      border-width: 0 10px 9px;
-      bottom: -15px;
-      height: 0;
-      left: 50%;
-      margin-left: -10px;
-      position: absolute;
-      width: 0;
-      z-index: 10;
-      transition: opacity .2s ease-in;
-    }
   }
   &.hidden{
     &:after{
@@ -52,12 +66,26 @@
   }
 }
 
+.button_organism{
+  right: 100%;
+}
+.button_atom{
+  left: 100%;
+}
+
 .listWrap{
   position: absolute;
   width: 100%;
+  left: 0;
+  top: 100%;
+  margin-top: 60px;
   display: flex;
   justify-content: center;
   background: #485562;
+  visibility: hidden;
+}
+.activeList{
+  visibility: visible;
 }
 
 .list{

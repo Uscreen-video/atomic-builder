@@ -1,11 +1,10 @@
 .wrap{
-  padding-top: 60px;
   box-sizing: border-box;
   min-height: 100vh;
   position: relative;
   will-change: transform;
   transition: transform .3s ease-in;
-  
+
   &_shifted {
     transform: translateX(350px);
   }
@@ -15,7 +14,7 @@
   position: absolute;
   border-radius: 5px;
   left: 7px;
-  top: 67px;
+  top: 7px;
   right: 7px;
   bottom: 7px;
   display: flex;

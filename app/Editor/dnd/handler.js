@@ -16,25 +16,25 @@ const getMotionStyle = (isDragging, canDrop, index, hoverIndex, cursor, dragingI
   const animation = new Animation();
 
   if (isDragging) {
-    return animation.animate('opacity', 0);
+    return animation.animate('opacity', 0).run;
   }
 
   if (monitor.isDragging && canDrop) {
     if (monitor.isMounted) {
       if (monitor.originalIndex < index && hoverIndex > index) {
-        return animation.animate('y', -height);
+        return animation.animate('y', -height).run;
       }
       if (monitor.originalIndex > index && hoverIndex <= index) {
-        return animation.animate('y', height);
+        return animation.animate('y', height).run;
       }
     } else {
       if (hoverIndex <= index) {
-        return animation.animate('y', height);
+        return animation.animate('y', height).run;
       }
     }
   }
 
-  return animation.animate('y', 0, false);
+  return animation.animate('y', 0, false).run;
 };
 
 const getStyles = ({ scale, y, ...rest }) => ({
@@ -59,7 +59,10 @@ export default (type, baseType) => baseComponent => {
     }),
 
     withProps(props => ({
-      canDrag: !props.editingItem.canDrag
+      canDrag: !props.editingItem.canDrag,
+      isActive: props.Cursor
+        && props.editingItem.isContentEditing
+        && props.Cursor.equals(props.editingItem.Cursor)
     })),
 
     target && dropTarget(target, targetSpec[type], (connect, monitor) => ({
@@ -96,6 +99,7 @@ export default (type, baseType) => baseComponent => {
     index,
     drag,
     drop,
+    isActive,
     ...rest
   }) => {
     const Component = factory({ ...rest, isDragging });
@@ -113,7 +117,10 @@ export default (type, baseType) => baseComponent => {
 
     const motion = getMotionStyle(isDragging, canDrop, index, hoverIndex, rest.Cursor, dragingItem);
     return connectDragSource(connectDropTarget(
-      <div onDragStart={drag} onDragEnd={drop}>
+      <div
+        onDragStart={drag}
+        onDragEnd={drop}
+        style={{ position: 'relative', zIndex: isActive ? 3 : 2 }}>
         <Motion style={motion}>
           {
             motionStyles =>

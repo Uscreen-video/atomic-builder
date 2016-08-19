@@ -4,6 +4,7 @@ import { compose, withState, withHandlers, shouldUpdate } from 'recompose';
 
 import Toolbar from './Toolbar';
 import blockRenderMap from './helpers/blockRenderer';
+import customStyleFn from './helpers/customStyleFn';
 import styles from './styles.css';
 import decorator from './helpers/decorator';
 
@@ -27,6 +28,7 @@ export default compose(
   <div className={styles.wrap} ref={r => editor = r}>
     <Editor
       blockRenderMap={blockRenderMap}
+      customStyleFn={customStyleFn}
       editorState={content}
       placeholder='Start writing text'
       onChange={onChange} />

@@ -8,7 +8,8 @@ const Component = ({ settings, content }) => (
       src={content}
       role='presentation'
       style={{
-        width: settings.get('width') || 200
+        width: settings.get('width'),
+        height: settings.get('height')
       }} />
   </div>
 );

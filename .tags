@@ -14,7 +14,7 @@ author	package.json	/^  "author": "Vitaly Danilov",$/;"	f
 babel	package.json	/^  "babel": {$/;"	f
 babel-core	package.json	/^    "babel-core": "6.13.2",$/;"	f
 babel-eslint	package.json	/^    "babel-eslint": "6.1.2",$/;"	f
-babel-loader	package.json	/^    "babel-loader": "6.2.4",$/;"	f
+babel-loader	package.json	/^    "babel-loader": "6.2.5",$/;"	f
 babel-plugin-react-transform	package.json	/^    "babel-plugin-react-transform": "2.0.2",$/;"	f
 babel-plugin-transform-react-constant-elements	package.json	/^    "babel-plugin-transform-react-constant-elements": "6.9.1",$/;"	f
 babel-plugin-transform-react-inline-elements	package.json	/^    "babel-plugin-transform-react-inline-elements": "6.8.0",$/;"	f
@@ -38,7 +38,19 @@ chalk	internals/scripts/pagespeed.js	/^var chalk = require('chalk');$/;"	v
 chalk	package.json	/^    "chalk": "1.1.3",$/;"	f
 checkStatus	app/utils/request.js	/^function checkStatus(response) {$/;"	f
 cheerio	package.json	/^    "cheerio": "0.20.0",$/;"	f
+class.align	app/Atomic/Atoms/button/Editor/index.js	/^    height: 200,$/;"	p
+class.align	app/Atomic/Atoms/image/Editor/index.js	/^    dimention: 1,$/;"	p
+class.align	app/Atomic/Atoms/video/Editor/index.js	/^    height: 200,$/;"	p
+class.dimention	app/Atomic/Atoms/image/Editor/index.js	/^    height: 200,$/;"	p
+class.height	app/Atomic/Atoms/button/Editor/index.js	/^    width: 200,$/;"	p
+class.height	app/Atomic/Atoms/image/Editor/index.js	/^    width: 200,$/;"	p
+class.height	app/Atomic/Atoms/video/Editor/index.js	/^    width: 200,$/;"	p
+class.isResizing	app/Atomic/Atoms/button/Editor/index.js	/^    align: 'left',$/;"	p
+class.isResizing	app/Atomic/Atoms/image/Editor/index.js	/^    align: 'left',$/;"	p
+class.isResizing	app/Atomic/Atoms/video/Editor/index.js	/^    align: 'left',$/;"	p
+class.width	app/Atomic/Atoms/button/Editor/index.js	/^  state = {$/;"	p
 class.width	app/Atomic/Atoms/image/Editor/index.js	/^  state = {$/;"	p
+class.width	app/Atomic/Atoms/video/Editor/index.js	/^  state = {$/;"	p
 classnames	package.json	/^    "classnames": "^2.2.5",$/;"	f
 clean	package.json	/^    "clean": "shjs .\/internals\/scripts\/clean.js",$/;"	f
 color-hex-case	package.json	/^      "color-hex-case": "upper",$/;"	f
@@ -66,7 +78,7 @@ dependencyHandlers	internals/webpack/webpack.dev.babel.js	/^function dependencyH
 description	package.json	/^  "description": "React.js + Atomic Design = Atomic Builder",$/;"	f
 devDependencies	package.json	/^  "devDependencies": {$/;"	f
 dllPlugin	package.json	/^  "dllPlugin": {$/;"	f
-draft-js	package.json	/^    "draft-js": "^0.8.0",$/;"	f
+draft-js	package.json	/^    "draft-js": "^0.8.1",$/;"	f
 draft-js-export-html	package.json	/^    "draft-js-export-html": "^0.4.0",$/;"	f
 draft-js-import-html	package.json	/^    "draft-js-import-html": "^0.2.0",$/;"	f
 engines	package.json	/^  "engines": {$/;"	f
@@ -108,6 +120,8 @@ html-loader	package.json	/^    "html-loader": "0.4.3",$/;"	f
 html-webpack-plugin	package.json	/^    "html-webpack-plugin": "2.22.0",$/;"	f
 ignorePseudoClasses	package.json	/^          "ignorePseudoClasses": [$/;"	f
 image-webpack-loader	package.json	/^    "image-webpack-loader": "2.0.0",$/;"	f
+img.onload	app/Atomic/Atoms/button/Editor/index.js	/^    const img = new Image();$/;"	f
+img.onload	app/Atomic/Atoms/image/Editor/index.js	/^    const img = new Image();$/;"	f
 immutable	package.json	/^    "immutable": "3.8.1",$/;"	f
 import/resolver	package.json	/^      "import\/resolver": {$/;"	f
 imports-loader	package.json	/^    "imports-loader": "0.6.5",$/;"	f
@@ -172,7 +186,7 @@ plugins	package.json	/^        "plugins": [$/;"	f
 postcss-color-function	package.json	/^    "postcss-color-function": "^2.0.1",$/;"	f
 postcss-cssnext	package.json	/^    "postcss-cssnext": "2.7.0",$/;"	f
 postcss-focus	package.json	/^    "postcss-focus": "1.0.0",$/;"	f
-postcss-loader	package.json	/^    "postcss-loader": "0.10.0",$/;"	f
+postcss-loader	package.json	/^    "postcss-loader": "0.10.1",$/;"	f
 postcss-nested	package.json	/^    "postcss-nested": "^1.0.0",$/;"	f
 postcss-reporter	package.json	/^    "postcss-reporter": "1.4.1",$/;"	f
 postinstall	package.json	/^    "postinstall": "npm run build:dll",$/;"	f
@@ -200,7 +214,9 @@ react-height	package.json	/^    "react-height": "^2.1.1",$/;"	f
 react-ink	package.json	/^    "react-ink": "^5.1.1",$/;"	f
 react-motion	package.json	/^    "react-motion": "^0.4.4",$/;"	f
 react-onclickoutside	package.json	/^    "react-onclickoutside": "^5.3.3",$/;"	f
+react-player	package.json	/^    "react-player": "^0.9.0",$/;"	f
 react-redux	package.json	/^    "react-redux": "4.4.5",$/;"	f
+react-resizable	package.json	/^    "react-resizable": "^1.4.2",$/;"	f
 react-resizable-box	package.json	/^    "react-resizable-box": "^1.4.3",$/;"	f
 react-router	package.json	/^    "react-router": "2.6.1",$/;"	f
 react-router-redux	package.json	/^    "react-router-redux": "4.0.5",$/;"	f

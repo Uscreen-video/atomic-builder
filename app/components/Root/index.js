@@ -17,9 +17,7 @@ export default compose(
   withEditorContext
 )(({ blocks }) => (
   <div className={styles.wrap}>
-    <section className={styles.menu}>
-      <Menu />
-    </section>
+    <Menu />
     <Editor data={blocks} />
   </div>
 ));

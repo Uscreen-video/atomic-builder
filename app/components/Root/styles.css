@@ -2,11 +2,3 @@
   width: 100%;
   min-height: 100vh;
 }
-.menu{
-  position: fixed;
-  width: 100%;
-  z-index: 2;
-}
-
-.builder{
-}

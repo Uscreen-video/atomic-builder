@@ -1,9 +1,9 @@
 .sidebar {
   position: fixed;
-  top: 58px;
+  top: 0;
+  bottom: 0; 
   left: 0;
   width: 350px;
-  height: calc(100% - 58px);
   background: #39B6B3;
   transform: translateX(-350px);
   color: #fff;
@@ -14,7 +14,7 @@
   will-change: transform;
   transition: transform .3s ease-in;
   overflow-Y: scroll;
-  
+
   &_active {
     display: block;
     opacity: 1;

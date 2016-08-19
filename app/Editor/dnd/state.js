@@ -9,19 +9,17 @@ function createId() {
 export default (type, key = type, shouldCommit = true) => compose(
   withState(type, 'update', props =>
     props[key] instanceof List
-    && props[key].get(type) || List([]) // eslint-disable-line new-cap
-    || fromJS(props[key])
+      && props[key].get(type) || List([]) // eslint-disable-line new-cap
+      || fromJS(props[key])
   ),
 
+  // Update local state if something has been changed outside
   lifecycle({
     componentWillReceiveProps(next) {
       if (!next[key].get) return;
 
-      const entityInStore = next[key].get(type)
-      if (type === 'atoms'
-        && entityInStore
-        && !entityInStore.equals(this.props[type])
-      ) {
+      const entityInStore = next[key].get(type);
+      if (entityInStore && !entityInStore.equals(this.props[type])) {
         this.props.update(entityInStore);
       }
     }

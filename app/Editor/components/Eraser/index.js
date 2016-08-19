@@ -10,7 +10,6 @@ export default compose(
 )(({
   isOver
 }) => {
-  console.log(isOver);
   return (
     <div className={cx(
         styles.eraserWrap,
