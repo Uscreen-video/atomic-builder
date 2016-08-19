@@ -53,6 +53,9 @@ export default compose(
 )(({
   label,
   color,
+  width,
+  style,
+  radius,
   active,
   onClick,
   onColorChange,
@@ -77,20 +80,21 @@ export default compose(
           <h2 className={styles.border__title}>Border options:</h2>
           <div className={styles.border__options}>
               {
-                ['solid', 'dashed', 'dotted', 'none'].map((style) => (
+                ['solid', 'dashed', 'dotted', 'none'].map((styleValue) => (
 
                   <div
-                    key={`borderStyle-${style}`}
+                    key={`borderStyle-${styleValue}`}
                     className={cx(styles.border__inputBox, styles.border__inputBox_radio)}
                   >
                     <input
                       type='radio'
                       onChange={onStyleChange}
-                      id={`borderId-${style}`}
+                      id={`borderId-${styleValue}`}
                       value={style}
                       name='borderStyle'
+                      checked={style === styleValue}
                     />
-                    <label htmlFor={`borderId-${style}`} className={cx(styles.border__labelOptions, styles[`border__labelOptions_${style}`])}>{style === 'none' ? 'none' : ''}</label>
+                    <label htmlFor={`borderId-${styleValue}`} className={cx(styles.border__labelOptions, styles[`border__labelOptions_${styleValue}`])}>{styleValue === 'none' ? 'none' : ''}</label>
                   </div>
                 ))
               }
@@ -102,6 +106,7 @@ export default compose(
                 type='number'
                 onChange={onWidthChange}
                 id='borderId-width'
+                value={width}
               />
             </div>
             <div className={cx(styles.border__inputBox)}>
@@ -110,6 +115,7 @@ export default compose(
                 type='number'
                 onChange={onRadiusChange}
                 id='borderId-radius'
+                value={radius}
               />
             </div>
           </div>

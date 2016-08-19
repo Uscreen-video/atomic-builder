@@ -8,9 +8,14 @@ import typo from './typo.css';
 
 const getStyles = settings => {
   const res = {
-    backgroundColor: settings.get('backgroundColor'),
-    padding: settings.get('padding')
+    backgroundColor: settings.get('backgroundColor')
   };
+
+  const padding = settings.get('padding');
+  if (padding) {
+    const { top, right, bottom, left } = padding;
+    res.padding = `${top}px ${right} ${bottom} ${left}`;
+  }
 
   const backgroundImage = settings.get('backgroundImage');
   if (backgroundImage) {

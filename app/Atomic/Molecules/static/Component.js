@@ -1,6 +1,20 @@
 import { defaultProps } from 'recompose';
 import styles from './styles.css';
 
+const getStyles = settings => {
+  const res = {
+    backgroundColor: settings.get('backgroundColor')
+  };
+
+  const padding = settings.get('padding');
+  if (padding) {
+    const { top, right, bottom, left } = padding;
+    res.padding = `${top}px ${right} ${bottom} ${left}`;
+  }
+
+  return res;
+};
+
 export default defaultProps({
   theme: styles
 })(({
@@ -10,10 +24,7 @@ export default defaultProps({
 }) => (
   <div
     className={theme.wrap}
-    style={{
-      backgroundColor: settings.get('backgroundColor'),
-      padding: settings.get('padding')
-    }}>
+    style={getStyles(settings)}>
     <div className={theme.container}>
       {children}
     </div>

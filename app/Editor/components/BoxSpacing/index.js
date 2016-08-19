@@ -23,10 +23,10 @@ export default compose(
       const value = e.target.value || 0;
       const spacing = {
         ...props.spacing,
-        [key]: `${value}px`
+        [key]: value
       };
       props.setSpacing(spacing);
-      props.onSettingsChange && props.onSettingsChange(props.settingKey, `${spacing.top} ${spacing.right} ${spacing.bottom} ${spacing.left}`);
+      props.onSettingsChange && props.onSettingsChange(props.settingKey, spacing);
     }
   })
 )(({
@@ -61,10 +61,11 @@ export default compose(
                     )}>
                       <label htmlFor={`id-${position}`}>{position} (px):</label>
                       <input
-                        type='text'
+                        type='number'
                         data-type={position}
                         onChange={onSpacingChange}
                         id={`id-${position}`}
+                        value={spacing[position]}
                         className={cx(
                           styles.boxSpacing__input
                         )} />

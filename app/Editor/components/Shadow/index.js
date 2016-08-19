@@ -58,6 +58,9 @@ export default compose(
 )(({
   label,
   color,
+  position,
+  blur,
+  spread,
   active,
   onClick,
   onColorChange,
@@ -82,18 +85,19 @@ export default compose(
             <h2 className={styles.shadow__title}>Shadow options:</h2>
             <div className={styles.shadow__options}>
                 {
-                  ['x', 'y'].map((position) => (
+                  ['x', 'y'].map((positionKey) => (
 
                     <div
-                      key={`shadowPosition-${position}`}
+                      key={`shadowPosition-${positionKey}`}
                       className={cx(styles.shadow__inputBox)}
                     >
-                      <label htmlFor={`shadowId-${position}`}>{position === 'x' ? 'Offset-x:' : 'Offset-y:'}</label>
+                      <label htmlFor={`shadowId-${position}`}>{positionKey === 'x' ? 'Offset-x:' : 'Offset-y:'}</label>
                       <input
                         type='number'
                         onChange={onPositionChange}
-                        id={`shadowId-${position}`}
-                        data-type={position}
+                        id={`shadowId-${positionKey}`}
+                        data-type={positionKey}
+                        value={position[positionKey]}
                       />
                     </div>
                   ))
@@ -104,6 +108,7 @@ export default compose(
                         type='number'
                         onChange={onBlurChange}
                         id='shadowId-blur'
+                        value={blur}
                       />
                     </div>
                     <div className={cx(styles.shadow__inputBox)}>
@@ -112,6 +117,7 @@ export default compose(
                         type='number'
                         onChange={onSpreadChange}
                         id='shadowId-spread'
+                        value={spread}
                       />
                     </div>
             </div>
