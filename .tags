@@ -38,17 +38,13 @@ chalk	internals/scripts/pagespeed.js	/^var chalk = require('chalk');$/;"	v
 chalk	package.json	/^    "chalk": "1.1.3",$/;"	f
 checkStatus	app/utils/request.js	/^function checkStatus(response) {$/;"	f
 cheerio	package.json	/^    "cheerio": "0.20.0",$/;"	f
-class.align	app/Atomic/Atoms/button/Editor/index.js	/^    height: 200,$/;"	p
 class.align	app/Atomic/Atoms/image/Editor/index.js	/^    dimention: 1,$/;"	p
 class.align	app/Atomic/Atoms/video/Editor/index.js	/^    height: 200,$/;"	p
 class.dimention	app/Atomic/Atoms/image/Editor/index.js	/^    height: 200,$/;"	p
-class.height	app/Atomic/Atoms/button/Editor/index.js	/^    width: 200,$/;"	p
 class.height	app/Atomic/Atoms/image/Editor/index.js	/^    width: 200,$/;"	p
 class.height	app/Atomic/Atoms/video/Editor/index.js	/^    width: 200,$/;"	p
-class.isResizing	app/Atomic/Atoms/button/Editor/index.js	/^    align: 'left',$/;"	p
 class.isResizing	app/Atomic/Atoms/image/Editor/index.js	/^    align: 'left',$/;"	p
 class.isResizing	app/Atomic/Atoms/video/Editor/index.js	/^    align: 'left',$/;"	p
-class.width	app/Atomic/Atoms/button/Editor/index.js	/^  state = {$/;"	p
 class.width	app/Atomic/Atoms/image/Editor/index.js	/^  state = {$/;"	p
 class.width	app/Atomic/Atoms/video/Editor/index.js	/^  state = {$/;"	p
 classnames	package.json	/^    "classnames": "^2.2.5",$/;"	f
@@ -120,7 +116,6 @@ html-loader	package.json	/^    "html-loader": "0.4.3",$/;"	f
 html-webpack-plugin	package.json	/^    "html-webpack-plugin": "2.22.0",$/;"	f
 ignorePseudoClasses	package.json	/^          "ignorePseudoClasses": [$/;"	f
 image-webpack-loader	package.json	/^    "image-webpack-loader": "2.0.0",$/;"	f
-img.onload	app/Atomic/Atoms/button/Editor/index.js	/^    const img = new Image();$/;"	f
 img.onload	app/Atomic/Atoms/image/Editor/index.js	/^    const img = new Image();$/;"	f
 immutable	package.json	/^    "immutable": "3.8.1",$/;"	f
 import/resolver	package.json	/^      "import\/resolver": {$/;"	f

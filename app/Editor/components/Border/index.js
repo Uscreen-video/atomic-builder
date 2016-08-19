@@ -6,10 +6,10 @@ import styles from './styles.css';
 
 export default compose(
   withState('active', 'setActive', false),
-  withState('color', 'setColor', props => props.border.color),
-  withState('width', 'setWidth', props => props.border.width),
-  withState('style', 'setStyle', props => props.border.style),
-  withState('radius', 'setRadius', props => props.border.radius),
+  withState('color', 'setColor', props => props.value.color),
+  withState('width', 'setWidth', props => props.value.width),
+  withState('style', 'setStyle', props => props.value.style),
+  withState('radius', 'setRadius', props => props.value.radius),
   withHandlers({
     onClick: props => e => {
       e.stopPropagation();
@@ -18,7 +18,7 @@ export default compose(
     onColorChange: props => color => {
       props.setColor(color.hex);
       props.onSettingsChange && props.onSettingsChange(props.settingKey, {
-        ...props.border,
+        ...props.value,
         color: color.hex
       });
     },
@@ -27,7 +27,7 @@ export default compose(
       const value = e.target.value || 0;
       props.setWidth(value);
       props.onSettingsChange && props.onSettingsChange(props.settingKey, {
-        ...props.border,
+        ...props.value,
         width: value
       });
     },
@@ -36,7 +36,7 @@ export default compose(
       const value = e.target.value || 0;
       props.setStyle(value);
       props.onSettingsChange && props.onSettingsChange(props.settingKey, {
-        ...props.border,
+        ...props.value,
         style: value
       });
     },
@@ -45,7 +45,7 @@ export default compose(
       const value = e.target.value || 0;
       props.setRadius(value);
       props.onSettingsChange && props.onSettingsChange(props.settingKey, {
-        ...props.border,
+        ...props.value,
         radius: value
       });
     }

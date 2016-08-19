@@ -4,13 +4,11 @@ import Editor from './Editor/';
 
 const Component = ({ settings, content }) => (
   <div className={cx(styles.wrap, styles[`align_${settings.get('align')}`])}>
-    <img
-      src={content}
-      role='presentation'
-      style={{
-        width: settings.get('width'),
-        height: settings.get('height')
-      }} />
+    <a
+      href={settings.get('url')}
+      className={cx(styles.button, styles[`button_${settings.get('type')}`])}>
+      { content }
+    </a>
   </div>
 );
 
@@ -22,8 +20,7 @@ export default ({
   onChange,
   updateSettings
 }) => (
-  <div
-    className={styles.wrap}>
+  <div>
     {
       !active
       ? <Component {... { settings, content }} />

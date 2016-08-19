@@ -6,9 +6,10 @@ export default atom({
   component: require('./Component').default,
   props: {
     type: 'button',
-    content: '',
+    content: 'Your text',
     settings: {
-      padding: shape.padding()
+      padding: shape.padding(),
+      url: shape.link(),
     }
   }
 });

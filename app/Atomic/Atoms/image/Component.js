@@ -7,9 +7,7 @@ const Component = ({ settings, content }) => (
     <img
       src={content}
       role='presentation'
-      style={{
-        width: settings.get('width') || 200
-      }} />
+      style={{ width: settings.get('width') || 200 }} />
   </div>
 );
 

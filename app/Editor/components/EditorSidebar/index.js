@@ -4,11 +4,7 @@ import cx from 'classnames';
 import withClickHandler from 'react-onclickoutside';
 
 import editorState from 'Editor/helpers/editorState';
-import ColorPicker from 'Editor/components/Color';
-import BoxSpacing from 'Editor/components/BoxSpacing';
-import FileUploader from 'Editor/components/FileUploader';
-import Shadow from 'Editor/components/Shadow';
-import Border from 'Editor/components/Border';
+import * as components from './components';
 
 import Immutable from 'immutable';
 
@@ -38,59 +34,22 @@ const EditorSidebar = compose(
             const { type, title, value: defaultValue } = mapper[key];
             const settings = organisms.getIn(cursor, 'settings');
             const settingValue = settings.get(key);
-            const value = (Immutable.Iterable.isIterable(settingValue) ? settingValue.toJS() : settingValue) || defaultValue;
-
-            switch (type) {
-              case 'color':
-                component =  <ColorPicker
-                              onSettingsChange={setSettings}
-                              color={value}
-                              label={title}
-                              settingKey={key}
-                            />;
-                break;
-              case 'padding':
-                component = <BoxSpacing
-                              onSettingsChange={setSettings}
-                              label={title}
-                              spacing={value}
-                              settingKey={key}
-                            />;
-                break;
-              case 'background':
-                component = <FileUploader
-                              onSettingsChange={setSettings}
-                              label={title}
-                              background={value}
-                              settingKey={key}
-                            />;
-                break;
-              case 'shadow':
-                component = <Shadow
-                              onSettingsChange={setSettings}
-                              label={title}
-                              boxShadow={value}
-                              settingKey={key}
-                            />;
-                break;
-              case 'border':
-                component = <Border
-                              onSettingsChange={setSettings}
-                              label={title}
-                              border={value}
-                              settingKey={key}
-                            />;
-                break;
-              default:
-                component = null;
-            }
-
+            const value = (
+                Immutable.Iterable.isIterable(settingValue)
+                ? settingValue.toJS()
+                : settingValue
+              ) || defaultValue;
+            const SettingsComponent = components[type];
+            if (!SettingsComponent) return null;
             return (
-              component &&
-                <li key={title}>
-                  {component}
-                </li>
-            );
+              <li key={title}>
+                <SettingsComponent
+                  onSettingsChange={setSettings}
+                  value={value}
+                  label={title}
+                  settingKey={key} />
+              </li>
+              );
           })
         }
       </ul>
@@ -102,7 +61,6 @@ const EditorSidebar = compose(
 export default editorState(withClickHandler(
   class OutsideClickHandler extends Component {
     handleClickOutside() {
-      console.log('click utside');
       if (this.props.editingItem.isSidebarOpen) this.props.releaseItem();
     }
 
