@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import Resizable from 'react-resizable-box';
-import withClickHandler from 'react-onclickoutside';
+import withClickHandler from 'Editor/helpers/onClickOutside';
 import cx from 'classnames';
 import { Map } from 'immutable';
 import Dropzone from 'react-dropzone';
@@ -27,10 +27,6 @@ class Editor extends Component {
     const height = settings.get('height') || this.state.height;
     const align = settings.get('align') || this.state.align;
     this.setState({ width, height, align, dimention: height / width });
-  }
-
-  handleClickOutside() {
-    this.props.deactivate();
   }
 
   resize = (_, size) => {
@@ -90,4 +86,4 @@ class Editor extends Component {
   }
 }
 
-export default withClickHandler(Editor);
+export default withClickHandler(props => props.deactivate())(Editor);
