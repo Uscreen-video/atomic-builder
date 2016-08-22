@@ -1,5 +1,5 @@
 import styles from './styles.css';
-import Customizer from '../Customizer/';
+import Customizer from '../../Customizer/';
 
 const Placeholder = ({ atoms }) => !atoms.size && (
   <div className={styles.placeholder}>

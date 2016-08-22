@@ -9,7 +9,7 @@ import * as Organisms from 'Atomic/Organisms';
 
 import dndState from '../dnd/state';
 import dndHandler from '../dnd/handler';
-import EditorWrap from '../components/EditorWrap';
+import EditorWrap from '../components/Wrappers/EditorWrap';
 // import Eraser from '../components/Eraser';
 
 const { func } = PropTypes;

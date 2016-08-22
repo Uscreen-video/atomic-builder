@@ -6,7 +6,7 @@ import {
 import * as Molecules from 'Atomic/Molecules';
 import { Map } from 'immutable';
 
-import OrganismWrap from '../components/OrganismWrap';
+import OrganismWrap from '../components/Wrappers/OrganismWrap';
 import editorState from '../helpers/editorState';
 import dndHandler from '../dnd/handler';
 

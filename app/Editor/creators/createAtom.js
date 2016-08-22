@@ -1,6 +1,6 @@
 import { compose, defaultProps, withState, withHandlers } from 'recompose';
 
-import AtomWrap from '../components/AtomWrap';
+import AtomWrap from '../components/Wrappers/AtomWrap';
 
 import editorState from '../helpers/editorState';
 import dndHandler from '../dnd/handler';

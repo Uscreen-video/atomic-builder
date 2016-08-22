@@ -1,4 +1,4 @@
-import Customizer from '../Customizer/';
+import Customizer from '../../Customizer/';
 
 export default ({
   Organism,

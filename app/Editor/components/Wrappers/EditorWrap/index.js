@@ -1,11 +1,12 @@
 import { PropTypes } from 'react';
 import cx from 'classnames';
-import { compose, getContext, withState, lifecycle } from 'recompose';
-import styles from './styles.css';
-import BlankState from './BlankState';
-import EditorSidebar from '../EditorSidebar';
-import Eraser from '../Eraser';
+import { compose, getContext } from 'recompose';
 import editorState from 'Editor/helpers/editorState';
+import BlankState from './BlankState';
+import Eraser from '../../Eraser';
+import PagePreview from '../../PagePreview';
+import EditorSidebar from '../../EditorSidebar';
+import styles from './styles.css';
 
 const { object, func } = PropTypes;
 
@@ -29,6 +30,9 @@ export default compose(
           || children
         }
       </div>
+      {
+        isOver && <PagePreview />
+      }
       {
         editingItem.isSidebarOpen
         && <EditorSidebar organisms={organisms} editingItem={editingItem} />

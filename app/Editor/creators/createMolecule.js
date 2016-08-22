@@ -4,7 +4,7 @@ import {
 
 import * as Atoms from 'Atomic/Atoms';
 
-import MoleculeWrap from '../components/MoleculeWrap';
+import MoleculeWrap from '../components/Wrappers/MoleculeWrap';
 import dndState from '../dnd/state';
 import editorState from '../helpers/editorState';
 import dndHandler from '../dnd/handler';
