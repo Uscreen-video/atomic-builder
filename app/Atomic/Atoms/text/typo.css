@@ -295,4 +295,14 @@ kbd {
   h2,
   h3 {
     page-break-after: avoid; } }
+  :global(.alignment--center){
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+  :global(.alignment--right){
+    display: block;
+    width: 100%;
+    text-align: right;
+  }
 }

@@ -1,8 +1,7 @@
 import { Component } from 'react';
 import Resizable from 'react-resizable-box';
-import withClickHandler from 'Editor/helpers/onClickOutside';
+import onClickOutside from 'Editor/helpers/onClickOutside';
 import cx from 'classnames';
-import { Map } from 'immutable';
 import Dropzone from 'react-dropzone';
 
 import styles from './styles.css';
@@ -86,4 +85,4 @@ class Editor extends Component {
   }
 }
 
-export default withClickHandler(props => props.deactivate())(Editor);
+export default onClickOutside(props => props.deactivate())(Editor);

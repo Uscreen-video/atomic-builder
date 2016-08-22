@@ -1,17 +1,4 @@
-import { Component } from 'react';
-import withClickHandler from 'react-onclickoutside';
-
+import onClickOutside from 'Editor/helpers/onClickOutside';
 import Draft from 'Editor/draft';
 
-class Editor extends Component {
-
-  handleClickOutside() {
-    this.props.deactivate(); // eslint-disable-line new-cap
-  }
-
-  render() {
-    return <Draft {...this.props} />;
-  }
-}
-
-export default withClickHandler(Editor);
+export default onClickOutside(props => props.deactivate())(Draft);

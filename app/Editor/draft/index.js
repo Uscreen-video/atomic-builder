@@ -1,14 +1,18 @@
 import { EditorState, Editor } from 'draft-js';
-import { stateFromHTML } from 'draft-js-import-html';
+import { convertFromHTML } from 'Editor/draft/convert';
 import { compose, withState, withHandlers, shouldUpdate } from 'recompose';
+
+import renderOptions from 'Editor/draft/helpers/renderOptions';
 
 import Toolbar from './Toolbar';
 import blockRenderMap from './helpers/blockRenderer';
-import customStyleFn from './helpers/customStyleFn';
+import blockStyleFn from './helpers/blockStyleFn';
 import styles from './styles.css';
 import decorator from './helpers/decorator';
 
 let editor = void 0;
+
+const converter = convertFromHTML(renderOptions);
 
 export default compose(
   shouldUpdate(() => false),
@@ -17,18 +21,18 @@ export default compose(
     && EditorState.createEmpty(decorator)
     || value instanceof EditorState
       && value
-      || EditorState.createWithContent(stateFromHTML(value), decorator)
+      || EditorState.createWithContent(converter(value), decorator)
   ),
   withHandlers({
     onChange: props => state => {
       props.setContent(state, props.onChange(state))
     }
   })
-)(({ content, onChange, onBlur }) => (
+)(({ content, onChange }) => (
   <div className={styles.wrap} ref={r => editor = r}>
     <Editor
       blockRenderMap={blockRenderMap}
-      customStyleFn={customStyleFn}
+      blockStyleFn={blockStyleFn}
       editorState={content}
       placeholder='Start writing text'
       onChange={onChange} />

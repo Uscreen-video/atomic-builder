@@ -19,25 +19,29 @@ const createClickHandler = callback => (componentNode, props) => e => {
 
 const onClickOutside = handler => BaseComponent => {
   const handlerCreator = createClickHandler(handler);
-  let fn = void 0;
 
   return class HandleComponent extends Component {
+    fn = void 0;
     componentDidMount() {
-      fn = handlerCreator(findDOMNode(this.instance), this.props);
+      this.fn = handlerCreator(findDOMNode(this.instance), this.props);
       if (typeof document !== 'undefined') {
-        EVENTS.forEach(eventName => document.addEventListener(eventName, fn));
+        EVENTS.forEach(eventName => document.addEventListener(eventName, this.fn));
       }
     }
 
     componentWillUnmount() {
       if (typeof document !== 'undefined') {
-        EVENTS.forEach(eventName => document.removeEventListener(eventName, fn));
-        fn = void 0;
+        EVENTS.forEach(eventName => document.removeEventListener(eventName, this.fn));
+        this.fn = void 0;
       }
     }
 
     render() {
-      return <BaseComponent {...this.props} ref={r => this.instance = r} />;
+      return (
+        <div ref={r => this.instance = r}>
+          <BaseComponent {...this.props} />
+        </div>
+      );
     }
   };
 };
