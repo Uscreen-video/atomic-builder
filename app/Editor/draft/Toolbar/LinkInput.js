@@ -10,7 +10,7 @@ export default compose(
     onSubmit: ({ editorState, onChange, link, onCancel }) => e => {
       e.preventDefault();
       onCancel(false);
-      const entityKey = Entity.create('LINK', 'MUTABLE', link);
+      const entityKey = Entity.create('LINK', 'MUTABLE', { link });
       const newState = RichUtils.toggleLink(editorState, editorState.getSelection(), entityKey);
       onChange(EditorState.forceSelection(newState, editorState.getSelection()));
     }

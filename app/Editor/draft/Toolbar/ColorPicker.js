@@ -32,7 +32,7 @@ export default compose(
       e.preventDefault();
       onCancel(false);
       manageColors(color);
-      const entityKey = Entity.create('COLOR', 'MUTABLE', color);
+      const entityKey = Entity.create('COLOR', 'MUTABLE', { color });
       const newState = RichUtils.toggleLink(editorState, editorState.getSelection(), entityKey);
       onChange(EditorState.forceSelection(newState, editorState.getSelection()));
     }
@@ -40,7 +40,7 @@ export default compose(
   lifecycle({
     componentWillReceiveProps(next) {
       if (!next.entityKey) return;
-      const nextColor = Entity.get(next.entityKey).getData();
+      const nextColor = Entity.get(next.entityKey).getData().color;
       if (!!nextColor && nextColor !== this.props.color) {
         this.props.setColor(nextColor);
       }

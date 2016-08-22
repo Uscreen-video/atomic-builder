@@ -2,8 +2,8 @@ import { Entity, CompositeDecorator } from 'draft-js';
 import findEntity from './findEntity';
 
 const Link = ({ children, entityKey }) => {
-  const url = Entity.get(entityKey).getData();
-  return <a href={url} title={url}>{children}</a>;
+  const { link } = Entity.get(entityKey).getData();
+  return <a href={link} title={link}>{children}</a>;
 };
 
 const Color = ({ children, entityKey }) => {

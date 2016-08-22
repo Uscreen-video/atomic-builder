@@ -1,10 +1,13 @@
 import cx from 'classnames';
-import { stateToHTML } from 'draft-js-export-html';
-import { EditorState } from 'draft-js';
+import { convertToHTML } from 'Editor/draft/convert';
+import { EditorState, convertToRaw } from 'draft-js';
 import Editor from './Editor';
+import renderOptions from 'Editor/draft/helpers/renderOptions';
 
 import styles from './styles.css';
 import typo from './typo.css';
+
+const toHTML = convertToHTML(renderOptions);
 
 const getStyles = settings => {
   const res = {
@@ -49,7 +52,7 @@ const getStyles = settings => {
 const Content = ({ content }) => {
   if (!content) return <p className={styles.placeholder}>Enter text here</p>;
   if (content instanceof EditorState) {
-    const __html = stateToHTML(content.getCurrentContent());
+    const __html = toHTML(content.getCurrentContent());
     return <div dangerouslySetInnerHTML={{ __html }} />;
   }
   return content;

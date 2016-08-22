@@ -36,8 +36,12 @@ chalk	internals/scripts/analyze.js	/^var chalk = require('chalk');$/;"	v
 chalk	internals/scripts/helpers/checkmark.js	/^var chalk = require('chalk');$/;"	v
 chalk	internals/scripts/pagespeed.js	/^var chalk = require('chalk');$/;"	v
 chalk	package.json	/^    "chalk": "1.1.3",$/;"	f
+changes.anchorOffset	app/Editor/draft/Toolbar/Buttons.js	/^        focusOffset: 0,$/;"	p
+changes.focusOffset	app/Editor/draft/Toolbar/Buttons.js	/^      changes = {$/;"	p
 checkStatus	app/utils/request.js	/^function checkStatus(response) {$/;"	f
 cheerio	package.json	/^    "cheerio": "0.20.0",$/;"	f
+child	app/Editor/draft/convert/convertFromHTML.js	/^  var child = node.firstChild;$/;"	v
+chunk.text	app/Editor/draft/convert/convertFromHTML.js	/^    chunk = {$/;"	p
 class.align	app/Atomic/Atoms/image/Editor/index.js	/^    dimention: 1,$/;"	p
 class.align	app/Atomic/Atoms/video/Editor/index.js	/^    height: 200,$/;"	p
 class.dimention	app/Atomic/Atoms/image/Editor/index.js	/^    height: 200,$/;"	p
@@ -54,16 +58,34 @@ comma-dangle	package.json	/^      "comma-dangle": 0$/;"	f
 componentExists	internals/generators/utils/componentExists.js	/^function componentExists(comp) {$/;"	f
 compression	package.json	/^    "compression": "1.6.2",$/;"	f
 config	package.json	/^          "config": ".\/internals\/webpack\/webpack.test.babel.js"$/;"	f
+const."	app/Editor/draft/convert/encodeBlock.js	/^  '>': '&gt;',$/;"	p
+const.&	app/Editor/draft/convert/encodeBlock.js	/^const ENTITY_MAP = {$/;"	p
+const.'	app/Editor/draft/convert/encodeBlock.js	/^  '"': '&quot;',$/;"	p
+const.<	app/Editor/draft/convert/encodeBlock.js	/^  '&': '&amp;',$/;"	p
+const.>	app/Editor/draft/convert/encodeBlock.js	/^  '<': '&lt;',$/;"	p
+const.`	app/Editor/draft/convert/encodeBlock.js	/^  "'": '&#x27;',$/;"	p
+const.b	app/Editor/draft/convert/convertFromHTML.js	/^const inlineTags = {$/;"	p
 const.backgroundColor	app/Atomic/Atoms/text/Component.js	/^  const res = {$/;"	p
 const.childRoutes	internals/templates/app.js	/^  component: App,$/;"	p
+const.code	app/Editor/draft/convert/convertFromHTML.js	/^  b: 'BOLD',$/;"	p
 const.component	internals/templates/app.js	/^const rootRoute = {$/;"	p
 const.damping	app/Editor/immutable/animation.js	/^const springConfig = { stiffness: 300, damping: 50 };$/;"	p
+const.del	app/Editor/draft/convert/convertFromHTML.js	/^  code: 'CODE',$/;"	p
 const.dllPlugin	internals/config.js	/^  version: '3.0.0',$/;"	p
+const.em	app/Editor/draft/convert/convertFromHTML.js	/^  del: 'STRIKETHROUGH',$/;"	p
 const.error	server/logger.js	/^const logger = {$/;"	p
+const.i	app/Editor/draft/convert/convertFromHTML.js	/^  em: 'ITALIC',$/;"	p
 const.molecule	app/components/Menu/index.js	/^  organism: organismsArray,$/;"	p
 const.organism	app/components/Menu/index.js	/^const types = {$/;"	p
+const.s	app/Editor/draft/convert/convertFromHTML.js	/^  i: 'ITALIC',$/;"	p
 const.stiffness	app/Editor/immutable/animation.js	/^const springConfig = { stiffness: 300, damping: 50 };$/;"	p
+const.strike	app/Editor/draft/convert/convertFromHTML.js	/^  s: 'STRIKETHROUGH',$/;"	p
+const.strong	app/Editor/draft/convert/convertFromHTML.js	/^  strike: 'STRIKETHROUGH',$/;"	p
+const.textAlign	app/Editor/draft/Toolbar/Buttons.js	/^const INLINE_STYLES = {$/;"	p
+const.u	app/Editor/draft/convert/convertFromHTML.js	/^  strong: 'BOLD',$/;"	p
 const.version	internals/config.js	/^const ReactBoilerplate = {$/;"	p
+containsSemanticBlockMarkup	app/Editor/draft/convert/convertFromHTML.js	/^function containsSemanticBlockMarkup(html) {$/;"	f
+convertFromHTMLtoContentBlocks	app/Editor/draft/convert/convertFromHTML.js	/^function convertFromHTMLtoContentBlocks($/;"	f
 coveralls	package.json	/^    "coveralls": "2.11.12",$/;"	f
 coveralls	package.json	/^    "coveralls": "cat .\/coverage\/lcov\/lcov.info | coveralls",$/;"	f
 createId	app/Editor/dnd/state.js	/^function createId() {$/;"	f
@@ -74,10 +96,12 @@ dependencyHandlers	internals/webpack/webpack.dev.babel.js	/^function dependencyH
 description	package.json	/^  "description": "React.js + Atomic Design = Atomic Builder",$/;"	f
 devDependencies	package.json	/^  "devDependencies": {$/;"	f
 dllPlugin	package.json	/^  "dllPlugin": {$/;"	f
+draft-convert	package.json	/^    "draft-convert": "^1.1.3",$/;"	f
 draft-js	package.json	/^    "draft-js": "^0.8.1",$/;"	f
 draft-js-export-html	package.json	/^    "draft-js-export-html": "^0.4.0",$/;"	f
 draft-js-import-html	package.json	/^    "draft-js-import-html": "^0.2.0",$/;"	f
 engines	package.json	/^  "engines": {$/;"	f
+entityId	app/Editor/draft/convert/convertFromHTML.js	/^  var entityId = null;$/;"	v
 env	package.json	/^    "env": {$/;"	f
 enzyme	package.json	/^    "enzyme": "2.4.1",$/;"	f
 eslint	package.json	/^    "eslint": "3.3.1",$/;"	f
@@ -110,8 +134,18 @@ extract-text-webpack-plugin	package.json	/^    "extract-text-webpack-plugin": "1
 file-loader	package.json	/^    "file-loader": "0.9.0",$/;"	f
 font-family-name-quotes	package.json	/^      "font-family-name-quotes": "always-where-recommended",$/;"	f
 fontfaceobserver	package.json	/^    "fontfaceobserver": "2.0.1",$/;"	f
+genFragment	app/Editor/draft/convert/convertFromHTML.js	/^function genFragment($/;"	f
 generate	package.json	/^    "generate": "plop --plopfile internals\/generators\/index.js",$/;"	f
+getBlockAlignment	app/Editor/draft/helpers/blockStyleFn.js	/^function getBlockAlignment(block) {$/;"	f
+getBlockDividerChunk	app/Editor/draft/convert/convertFromHTML.js	/^function getBlockDividerChunk(block, depth) {$/;"	f
+getBlockTypeForTag	app/Editor/draft/convert/convertFromHTML.js	/^function getBlockTypeForTag(tag, lastList) {$/;"	f
+getChunkForHTML	app/Editor/draft/convert/convertFromHTML.js	/^function getChunkForHTML(html, processCustomInlineStyles, checkEntityNode, checkEntityText, checkBlockType, DOMBuilder) {$/;"	f
+getEmptyChunk	app/Editor/draft/convert/convertFromHTML.js	/^function getEmptyChunk() {$/;"	f
+getSoftNewlineChunk	app/Editor/draft/convert/convertFromHTML.js	/^function getSoftNewlineChunk(block, depth) {$/;"	f
+getWhitespaceChunk	app/Editor/draft/convert/convertFromHTML.js	/^function getWhitespaceChunk(inEntity) {$/;"	f
+hasValidLinkText	app/Editor/draft/convert/convertFromHTML.js	/^function hasValidLinkText(link) {$/;"	f
 history	package.json	/^    "history": "3.0.0",$/;"	f
+href	app/Editor/draft/convert/convertFromHTML.js	/^  var href = null;$/;"	v
 html-loader	package.json	/^    "html-loader": "0.4.3",$/;"	f
 html-webpack-plugin	package.json	/^    "html-webpack-plugin": "2.22.0",$/;"	f
 ignorePseudoClasses	package.json	/^          "ignorePseudoClasses": [$/;"	f
@@ -125,6 +159,7 @@ indentation	package.json	/^      "indentation": 2$/;"	f
 ip	package.json	/^    "ip": "1.1.3",$/;"	f
 isparta	package.json	/^    "isparta": "4.0.0",$/;"	f
 isparta-loader	package.json	/^    "isparta-loader": "2.0.0",$/;"	f
+joinChunks	app/Editor/draft/convert/convertFromHTML.js	/^function joinChunks(A, B) {$/;"	f
 json-loader	package.json	/^    "json-loader": "0.5.4",$/;"	f
 karma	package.json	/^    "karma": "1.2.0",$/;"	f
 karma-chrome-launcher	package.json	/^    "karma-chrome-launcher": "1.0.1",$/;"	f
@@ -136,6 +171,8 @@ karma-mocha-reporter	package.json	/^    "karma-mocha-reporter": "2.1.0",$/;"	f
 karma-safari-launcher	package.json	/^    "karma-safari-launcher": "1.0.0",$/;"	f
 karma-sourcemap-loader	package.json	/^    "karma-sourcemap-loader": "0.3.7",$/;"	f
 karma-webpack	package.json	/^    "karma-webpack": "1.8.0",$/;"	f
+let.anchorOffset	app/Editor/draft/Toolbar/Buttons.js	/^    let changes = {$/;"	p
+let.focusOffset	app/Editor/draft/Toolbar/Buttons.js	/^      anchorOffset: 0,$/;"	p
 license	package.json	/^  "license": "MIT",$/;"	f
 lint	package.json	/^    "lint": "npm run lint:js && npm run lint:css",$/;"	f
 lint-staged	package.json	/^    "lint-staged": "2.0.3",$/;"	f
@@ -163,6 +200,7 @@ module.exports.prompts	internals/generators/component/index.js	/^  description: 
 module.exports.prompts	internals/generators/container/index.js	/^  description: 'Add a container component',$/;"	p
 module.exports.prompts	internals/generators/route/index.js	/^  description: 'Add a route',$/;"	p
 name	package.json	/^  "name": "atomic-builder",$/;"	f
+newChunk	app/Editor/draft/convert/convertFromHTML.js	/^  var newChunk = null;$/;"	v
 ngrok	internals/scripts/pagespeed.js	/^var ngrok = require('ngrok');$/;"	v
 ngrok	package.json	/^    "ngrok": "2.2.2",$/;"	f
 node	package.json	/^      "node": true,$/;"	f
@@ -194,6 +232,7 @@ presetup	package.json	/^    "presetup": "npm i chalk",$/;"	f
 pretest	package.json	/^    "pretest": "npm run lint",$/;"	f
 prevent	app/Editor/draft/Toolbar/Overlay.js	/^function prevent(e) {$/;"	f
 preventClick	app/Editor/draft/Toolbar/Buttons.js	/^function preventClick(e) {$/;"	f
+processInlineTag	app/Editor/draft/convert/convertFromHTML.js	/^function processInlineTag($/;"	f
 production	package.json	/^      "production": {$/;"	f
 progress	internals/scripts/analyze.js	/^var progress = animateProgress('Generating stats');$/;"	v
 psi	internals/scripts/pagespeed.js	/^var psi = require('psi');$/;"	v

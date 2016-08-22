@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import { RichUtils, Entity } from 'draft-js';
+import { RichUtils, Entity, Modifier, EditorState } from 'draft-js';
 import cx from 'classnames';
 
 import styles from './styles.css';
@@ -9,6 +9,10 @@ import Separator from './Separator';
 function preventClick(e) {
   e.preventDefault();
 }
+
+const INLINE_STYLES = {
+  textAlign: ['left', 'right', 'center']
+};
 
 class Mapper extends Component {
   _key = void 0;
@@ -84,6 +88,32 @@ class Mapper extends Component {
     return () => this.props.onChange(newState);
   }
 
+  changeInlineStyle(style, label) {
+    const availableStyles = INLINE_STYLES[label];
+    const removeStyles = availableStyles.filter(s => s !== style);
+    const focusBlock = this.content.getBlockForKey(this.selection.getFocusKey());
+    const anchorBlock = this.content.getBlockForKey(this.selection.getAnchorKey());
+    const selectionIsBackward = this.selection.getIsBackward();
+    let changes = {
+      anchorOffset: 0,
+      focusOffset: focusBlock.getLength()
+    };
+
+    if (selectionIsBackward) {
+      changes = {
+        focusOffset: 0,
+        anchorOffset: anchorBlock.getLength()
+      };
+    }
+    const selectWholeBlocks = this.selection.merge(changes);
+    const modifiedContent = Modifier.applyInlineStyle(this.content, selectWholeBlocks, style);
+    const finalContent = removeStyles.reduce((content, s) =>
+      Modifier.removeInlineStyle(content, selectWholeBlocks, s)
+    , modifiedContent);
+    const newState = EditorState.push(this.props.editorState, finalContent, 'change-inline-style');
+    return () => this.props.onChange(newState);
+  }
+
   inline(style) {
     return {
       onChange: this.toggleInlineStyle(style),
@@ -98,10 +128,10 @@ class Mapper extends Component {
     };
   }
 
-  inlineBlock(style) {
+  inlineBlock(style, _, label) {
     return {
-      onChange: this.toggleBlockStyle(style),
-      active: style === this.currentBlock
+      onChange: this.changeInlineStyle(style, label),
+      active: this.inlineStyle.has(style)
     };
   }
 
@@ -141,10 +171,10 @@ class Mapper extends Component {
     return (
       <ul className={cx(styles.list, this.props.className)} onMouseDown={preventClick}>
         {
-          this.props.actions.map(({ type, style, collection, ...rest }, key) =>
+          this.props.actions.map(({ type, style, collection, label, ...rest }, key) =>
             type === 'separator'
             && <Separator key={key} />
-            || <Button key={key} {...rest} {...this.get(type, style, collection)} />
+            || <Button key={key} {...rest} {...this.get(type, style, collection, label)} />
           )
         }
       </ul>

@@ -67,7 +67,6 @@ module.exports = require('./webpack.base.babel')({
 
   // Tell babel that we want to hot-reload
   babelQuery: {
-    cacheDirectory: true,
     presets: ['react-hmre']
   },
 
