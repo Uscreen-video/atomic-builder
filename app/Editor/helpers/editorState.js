@@ -9,7 +9,9 @@ export default compose(
     editContent: func,
     editSettings: func,
     releaseItem: func,
-    editingItem: object
+    editingItem: object,
+    disableEdit: func,
+    enableEdit: func
   }),
 
   withPropsOnChange(['Cursor'], props => ({

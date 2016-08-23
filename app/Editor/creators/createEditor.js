@@ -1,12 +1,13 @@
 import {
   compose, withContext, defaultProps, withHandlers,
-  withProps, createEagerElement
+  withProps, createEagerElement, lifecycle
 } from 'recompose';
 import { PropTypes } from 'react';
 import { List, Map } from 'immutable';
 
 import * as Organisms from 'Atomic/Organisms';
 
+import editorState from '../helpers/editorState';
 import dndState from '../dnd/state';
 import dndHandler from '../dnd/handler';
 import EditorWrap from '../components/Wrappers/EditorWrap';
@@ -17,14 +18,24 @@ const Cursor = List([]); // eslint-disable-line new-cap
 
 export default () =>
 compose(
-
+  editorState,
   // Create initial cursor,
   // Cursor must will be expanded in each level
   defaultProps({ Cursor }),
 
   // We allow to drag&drop organisms inside editor
-  // Also we dont fire commit of changes, because its own state
+  // Also we dont  fire commit of changes, because its own state
   dndState('organisms', 'data', false),
+
+  lifecycle({
+    componentWillMount() {
+      if (this.props.edit === false) {
+        this.props.disableEdit();
+      } else {
+        this.props.enableEdit();
+      }
+    }
+  }),
 
   // EditorState from [dndState] and updater
   // Updater recieve an array of nesting and mutation

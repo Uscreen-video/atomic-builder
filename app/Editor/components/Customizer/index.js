@@ -28,26 +28,33 @@ export default compose(
   mouseOver,
   mouseOut,
   ...props
-}) => (
-  <div
-    className={styles.wrap}
-    onMouseOver={mouseOver}
-    onMouseOut={mouseOut}>
-    <div>
-      {preview && preview(<div>{children}</div>) || children}
+}) => {
+  return (
+    <div
+      className={styles.wrap}
+      onMouseOver={mouseOver}
+      onMouseOut={mouseOut}>
+      <div>
+        {
+          preview && preview(<div>{children}</div>) || children}
+      </div>
+      {
+        props.editingItem.canEdit &&
+          <div className={cx(styles.border, over && styles.over)}>
+            <div className={cx(styles.verticalBorder, title && styles[`verticalBorder_${title}`])} />
+            <div className={cx(styles.horizontalBorder, title && styles[`horizontalBorder_${title}`])} />
+            <Button
+              {...props}
+              title={title}
+              className={cx(
+                styles.title,
+                styles.titleSettings,
+                outside && styles.outside,
+                props.editingItem.isContentEditing && styles.button_hidden,
+              )} />
+          </div>
+      }
     </div>
-    <div className={cx(styles.border, over && styles.over)}>
-      <div className={cx(styles.verticalBorder, title && styles[`verticalBorder_${title}`])} />
-      <div className={cx(styles.horizontalBorder, title && styles[`horizontalBorder_${title}`])} />
-      <Button
-        {...props}
-        title={title}
-        className={cx(
-          styles.title,
-          styles.titleSettings,
-          outside && styles.outside,
-          props.editingItem.isContentEditing && styles.button_hidden,
-        )} />
-    </div>
-  </div>
-));
+  )
+}
+);

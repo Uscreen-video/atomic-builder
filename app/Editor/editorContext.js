@@ -7,7 +7,7 @@ import HTML5Backend from 'react-dnd-html5-backend';
 import Monitor from './immutable/dndMonitor';
 import EditingItem from './immutable/editingItem';
 
-const { func, object } = PropTypes;
+const { func, object} = PropTypes;
 
 export const withEditorContext = BaseComponent =>
 compose(
@@ -15,7 +15,6 @@ compose(
 
   withState('dragingItem', 'setDraggingItem', Monitor),
   withState('editingItem', 'editItem', EditingItem),
-
   withHandlers({
     drag: props => dragItem => props.setDraggingItem(props.dragingItem.init(dragItem)),
     drop: props => () => props.setDraggingItem(props.dragingItem.reset()),
@@ -23,7 +22,9 @@ compose(
 
     editContent: props => data => props.editItem(props.editingItem.editContent(data)),
     editSettings: props => data => props.editItem(props.editingItem.editSettings(data)),
-    releaseItem: props => () => props.editItem(props.editingItem.release())
+    releaseItem: props => () => props.editItem(props.editingItem.release()),
+    disableEdit: props => () => props.editItem(props.editingItem.disable()),
+    enableEdit: props => () => props.editItem(props.editingItem.enable())
   }),
 
   withContext(
@@ -34,9 +35,11 @@ compose(
       editContent: func,
       editSettings: func,
       releaseItem: func,
-      editingItem: object
+      editingItem: object,
+      disableEdit: func,
+      enableEdit: func
     },
-    ({ dragingItem, drag, drop, releaseItem, editContent, editSettings, editingItem }) =>
-    ({ dragingItem, drag, drop, releaseItem, editContent, editSettings, editingItem })
+    ({ dragingItem, drag, drop, releaseItem, editContent, editSettings, editingItem, disableEdit, enableEdit }) =>
+    ({ dragingItem, drag, drop, releaseItem, editContent, editSettings, editingItem, disableEdit, enableEdit })
   )
 )(BaseComponent);

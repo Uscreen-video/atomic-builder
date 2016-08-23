@@ -1,3 +1,5 @@
+import { compose } from 'recompose';
+import withEditorState from 'Editor/helpers/editorState';
 import styles from './styles.css';
 import Customizer from '../../Customizer/';
 
@@ -8,7 +10,9 @@ const Placeholder = ({ atoms }) => !atoms.size && (
   </div>
 );
 
-export default ({
+export default compose(
+  withEditorState
+)(({
   Molecule,
   ...props
 }) => (
@@ -17,7 +21,9 @@ export default ({
     title='Molecule'
     outside
   >
-    <Placeholder {...props} />
+    {
+      props.editingItem.canEdit && <Placeholder {...props} />
+    }
     <Molecule {...props} />
   </Customizer>
-);
+));

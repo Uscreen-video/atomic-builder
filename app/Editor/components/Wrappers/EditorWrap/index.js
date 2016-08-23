@@ -31,7 +31,7 @@ export default compose(
         }
       </div>
       {
-        isOver && <PagePreview />
+        organisms.size && <PagePreview />
       }
       {
         editingItem.isSidebarOpen

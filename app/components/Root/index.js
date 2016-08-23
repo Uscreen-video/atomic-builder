@@ -1,12 +1,12 @@
 import 'normalize.css/normalize.css';
 
 // import Builder from '../Builder';
-import { Menu } from '../Menu';
-
-import { withEditorContext } from 'Editor/editorContext';
 import { compose } from 'recompose';
-import createEditor from 'Editor/creators/createEditor';
 import { connect } from 'react-redux';
+
+import { Menu } from '../Menu';
+import { withEditorContext } from 'Editor/editorContext';
+import createEditor from 'Editor/creators/createEditor';
 import selector from 'modules/builder/selectors';
 
 import styles from './styles.css';
@@ -15,9 +15,11 @@ const Editor = createEditor({ edit: true });
 export default compose(
   connect(selector),
   withEditorContext
-)(({ blocks }) => (
+)(({ blocks, ...props }) => (
   <div className={styles.wrap}>
-    <Menu />
+    {
+      props.editingItem.canEdit && <Menu />
+    }
     <Editor data={blocks} />
   </div>
 ));

@@ -6,7 +6,8 @@ class EditingItem extends Record({ // eslint-disable-line new-cap
   editingContent: false,
   sidebarOpen: false,
   mapper: void 0,
-  Cursor: void 0
+  Cursor: void 0,
+  canEdit: true
 })
 {
   editSettings({ type, mapper, Cursor }) {
@@ -30,6 +31,16 @@ class EditingItem extends Record({ // eslint-disable-line new-cap
       .set('editingContent', false);
   }
 
+  disable() {
+    return this
+      .set('canEdit', false);
+  }
+
+  enable() {
+    return this
+      .set('canEdit', true);
+  }
+
   get isSidebarOpen() {
     return this.get('sidebarOpen');
   }
@@ -39,7 +50,7 @@ class EditingItem extends Record({ // eslint-disable-line new-cap
   }
 
   get canDrag() {
-    return this.get('editingContent');
+    return this.get('canEdit') ? this.get('editingContent') : false;
   }
 }
 
