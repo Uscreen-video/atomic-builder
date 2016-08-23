@@ -1,0 +1,47 @@
+.label {
+  margin-right: 10px;
+  user-select: none
+}
+.title {
+  font-size: 14px;
+  color: #333;
+  margin: 10px 0;
+}
+.component {
+  background: #FFF;
+  padding: 10px;
+  margin-top: 8px;
+  box-shadow: 1px 1px 5px 0 #aaa inset;
+  border-top: 1px solid color(#39B6B3 l(50%));
+  & > div:first-child {
+    margin: 0 auto;
+  }
+}
+
+.alignButton{
+  background-color: color(#181818 a(90%));
+  border: 1px solid #181818;
+  border-radius: 3px;
+  margin: 3px;
+  line-height: 40px;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  cursor: pointer;
+  opacity: .2;
+  outline: none;
+  transition: opacity .1s ease-in-out;
+  &:hover{
+    opacity: .9;
+  }
+  &.active{
+    opacity: .9;
+  }
+  svg{
+    fill: white;
+    height: 25px;
+    width: 25px;
+    display: inline-block;
+    vertical-align: -6px;
+  }
+}

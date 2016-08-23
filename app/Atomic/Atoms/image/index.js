@@ -8,6 +8,7 @@ export default atom({
     type: 'image',
     content: require('./default.png'),
     settings: {
+      align: shape.align(),
       padding: shape.padding()
     }
   }

@@ -8,7 +8,6 @@ import { Map } from 'immutable';
 import Dropzone from 'react-dropzone';
 
 import styles from './styles.css';
-import AlignButtons from './AlignButtons';
 import imagesToBase64 from 'Editor/helpers/imagesToBase64';
 
 
@@ -76,7 +75,6 @@ class Editor extends Component {
               Click here, to select video
             </span>
           </div>
-          <AlignButtons onChange={this.setAlign} width={width} align={align} />
         </Resizable>
       </div>
     );

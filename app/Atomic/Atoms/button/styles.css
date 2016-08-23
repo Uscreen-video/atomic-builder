@@ -32,3 +32,11 @@
 .align_right{
   text-align: right;
 }
+
+.input > input{
+  border: none;
+  padding: 0;
+  outline: none;
+  min-width: 20px;
+  background: transparent;
+}

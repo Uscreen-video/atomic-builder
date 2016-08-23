@@ -64,9 +64,15 @@ const.'	app/Editor/draft/convert/encodeBlock.js	/^  '"': '&quot;',$/;"	p
 const.<	app/Editor/draft/convert/encodeBlock.js	/^  '&': '&amp;',$/;"	p
 const.>	app/Editor/draft/convert/encodeBlock.js	/^  '<': '&lt;',$/;"	p
 const.`	app/Editor/draft/convert/encodeBlock.js	/^  "'": '&#x27;',$/;"	p
+const.acceptCharset	app/Editor/draft/toHTML/helpers/normalizeAttributes.js	/^const ATTR_NAME_MAP: StringMap = {$/;"	p
 const.b	app/Editor/draft/convert/convertFromHTML.js	/^const inlineTags = {$/;"	p
 const.backgroundColor	app/Atomic/Atoms/text/Component.js	/^  const res = {$/;"	p
+const.backgroundColor	app/Atomic/Molecules/static/Component.js	/^  const res = {$/;"	p
+const.backgroundColor	app/Atomic/Organisms/type1/Component.js	/^  const res = {$/;"	p
+const.backgroundColor	app/Atomic/Organisms/type2/Component.js	/^  const res = {$/;"	p
+const.backgroundColor	app/Atomic/Organisms/type3/Component.js	/^  const res = {$/;"	p
 const.childRoutes	internals/templates/app.js	/^  component: App,$/;"	p
+const.className	app/Editor/draft/toHTML/helpers/normalizeAttributes.js	/^  acceptCharset: 'accept-charset',$/;"	p
 const.code	app/Editor/draft/convert/convertFromHTML.js	/^  b: 'BOLD',$/;"	p
 const.component	internals/templates/app.js	/^const rootRoute = {$/;"	p
 const.damping	app/Editor/immutable/animation.js	/^const springConfig = { stiffness: 300, damping: 50 };$/;"	p
@@ -74,6 +80,8 @@ const.del	app/Editor/draft/convert/convertFromHTML.js	/^  code: 'CODE',$/;"	p
 const.dllPlugin	internals/config.js	/^  version: '3.0.0',$/;"	p
 const.em	app/Editor/draft/convert/convertFromHTML.js	/^  del: 'STRIKETHROUGH',$/;"	p
 const.error	server/logger.js	/^const logger = {$/;"	p
+const.htmlFor	app/Editor/draft/toHTML/helpers/normalizeAttributes.js	/^  className: 'class',$/;"	p
+const.httpEquiv	app/Editor/draft/toHTML/helpers/normalizeAttributes.js	/^  htmlFor: 'for',$/;"	p
 const.i	app/Editor/draft/convert/convertFromHTML.js	/^  em: 'ITALIC',$/;"	p
 const.molecule	app/components/Menu/index.js	/^  organism: organismsArray,$/;"	p
 const.organism	app/components/Menu/index.js	/^const types = {$/;"	p
@@ -205,6 +213,7 @@ ngrok	internals/scripts/pagespeed.js	/^var ngrok = require('ngrok');$/;"	v
 ngrok	package.json	/^    "ngrok": "2.2.2",$/;"	f
 node	package.json	/^      "node": true,$/;"	f
 normalize.css	package.json	/^    "normalize.css": "^4.2.0",$/;"	f
+normalizeAttributes	app/Editor/draft/toHTML/helpers/normalizeAttributes.js	/^function normalizeAttributes(attributes: ?Attributes) {$/;"	f
 npm	package.json	/^    "npm": ">=3"$/;"	f
 npmcheckversion	package.json	/^    "npmcheckversion": "node .\/internals\/scripts\/npmcheckversion.js",$/;"	f
 null-loader	package.json	/^    "null-loader": "0.1.1",$/;"	f
@@ -246,6 +255,7 @@ react-dom	package.json	/^    "react-dom": "15.3.0",$/;"	f
 react-dropzone	package.json	/^    "react-dropzone": "^3.5.3",$/;"	f
 react-height	package.json	/^    "react-height": "^2.1.1",$/;"	f
 react-ink	package.json	/^    "react-ink": "^5.1.1",$/;"	f
+react-input-autosize	package.json	/^    "react-input-autosize": "^1.1.0",$/;"	f
 react-motion	package.json	/^    "react-motion": "^0.4.4",$/;"	f
 react-onclickoutside	package.json	/^    "react-onclickoutside": "^5.3.3",$/;"	f
 react-player	package.json	/^    "react-player": "^0.9.0",$/;"	f
@@ -280,6 +290,7 @@ start:production	package.json	/^    "start:production": "npm run build && npm ru
 start:tunnel	package.json	/^    "start:tunnel": "cross-env NODE_ENV=development ENABLE_TUNNEL=true node server",$/;"	f
 startTunnel	internals/scripts/pagespeed.js	/^function startTunnel(cb) {$/;"	f
 string-quotes	package.json	/^      "string-quotes": "single",$/;"	f
+stringifyAttrs	app/Editor/draft/toHTML/stateToHTML.js	/^function stringifyAttrs(attrs: ?Attributes) {$/;"	f
 style-loader	package.json	/^    "style-loader": "0.13.1",$/;"	f
 stylelint	package.json	/^    "stylelint": "*.css"$/;"	f
 stylelint	package.json	/^    "stylelint": "7.1.0",$/;"	f
@@ -294,6 +305,7 @@ test:ie	package.json	/^    "test:ie": "npm run test -- --browsers IE",$/;"	f
 test:safari	package.json	/^    "test:safari": "npm run test -- --browsers Safari",$/;"	f
 test:watch	package.json	/^    "test:watch": "npm run test -- --auto-watch --no-single-run"$/;"	f
 type	package.json	/^    "type": "git",$/;"	f
+type.render	app/Editor/draft/toHTML/stateToHTML.js	/^type EntityRenderer = {$/;"	p
 url	package.json	/^    "url": "git:\/\/github.com\/mxstbr\/react-boilerplate.git"$/;"	f
 url-loader	package.json	/^    "url-loader": "0.5.7",$/;"	f
 uuid-js	package.json	/^    "uuid-js": "^0.7.5"$/;"	f

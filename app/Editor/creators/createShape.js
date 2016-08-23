@@ -48,6 +48,15 @@ class Shape extends Record({ // eslint-disable-line new-cap
       ...extendObject
     };
   }
+  align(value, extendObject) {
+    return {
+      type: 'align',
+      description: 'Some description',
+      title: 'Align atoms:',
+      value,
+      ...extendObject
+    };
+  }
   border(value, extendObject) {
     return {
       type: 'border',
