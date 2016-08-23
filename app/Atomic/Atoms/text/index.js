@@ -6,7 +6,7 @@ export default atom({
   component: require('./Component').default,
   props: {
     type: 'text',
-    content: '',
+    content: '<h4>We\'re here to put a dent in the universe. Otherwise why else even be here?</h3><p>Each type of visual aid has pros and cons that must be evaluated to ensure it will be beneficial to the overall presentation. Before incorporating visual aids into speeches, the speaker should understand that if used incorrectly, the visual will not be an aid, but a distraction. Planning ahead is important when using visual aids.</p>',
     settings: {
       backgroundColor: Shape.color('#fff'),
       backgroundImage: Shape.background({ url: '', x: 0, y: 0, repeat: 'no-repeat', size: 'auto' }),

@@ -1,5 +1,5 @@
 import { EditorState, Editor } from 'draft-js';
-import { convertFromHTML } from 'Editor/draft/convert';
+import { stateFromHTML } from 'draft-js-import-html';
 import { compose, withState, withHandlers, shouldUpdate } from 'recompose';
 
 import renderOptions from 'Editor/draft/helpers/renderOptions';
@@ -12,7 +12,6 @@ import decorator from './helpers/decorator';
 
 let editor = void 0;
 
-const converter = convertFromHTML(renderOptions);
 
 export default compose(
   shouldUpdate(() => false),
@@ -21,7 +20,7 @@ export default compose(
     && EditorState.createEmpty(decorator)
     || value instanceof EditorState
       && value
-      || EditorState.createWithContent(converter(value), decorator)
+      || EditorState.createWithContent(stateFromHTML(value), decorator)
   ),
   withHandlers({
     onChange: props => state => {

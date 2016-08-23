@@ -55,7 +55,7 @@ const Content = ({ content }) => {
     const __html = toHTML(content.getCurrentContent());
     return <div dangerouslySetInnerHTML={{ __html }} />;
   }
-  return content;
+  return <div dangerouslySetInnerHTML={{ __html: content }} />;
 };
 
 export default ({
