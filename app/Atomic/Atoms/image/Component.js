@@ -2,8 +2,18 @@ import cx from 'classnames';
 import styles from './styles.css';
 import Editor from './Editor/';
 
-const Component = ({ settings, content }) => (
-  <div className={cx(styles.wrap, styles[`align_${settings.get('align')}`])}>
+const getStyles = settings => {
+  let res = {};
+  const padding = settings.get('padding');
+  if (padding) {
+    const { top, right, bottom, left } = padding;
+    res.padding = `${top}px ${right}px ${bottom}px ${left}px`;
+  }
+  return res;
+};
+
+const Component = ({ settings, content, style }) => (
+  <div styles={style} className={cx(styles.wrap, styles[`align_${settings.get('align')}`])}>
     <img
       src={content}
       role='presentation'
@@ -18,13 +28,16 @@ export default ({
   settings,
   onChange,
   updateSettings
-}) => (
-  <div
-    className={styles.wrap}>
-    {
-      !active
-      ? <Component {... { settings, content }} />
-      : <Editor {...{ content, deactivate, onChange, updateSettings, settings }} />
-    }
-  </div>
-);
+}) => {
+  const style = getStyles(settings);
+  return (
+    <div
+      className={styles.wrap}>
+      {
+        !active
+        ? <Component {... { settings, content, style }} />
+        : <Editor {...{ content, deactivate, onChange, updateSettings, settings, style }} />
+      }
+    </div>
+  );
+};

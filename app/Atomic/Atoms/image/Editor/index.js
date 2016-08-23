@@ -5,7 +5,6 @@ import cx from 'classnames';
 import Dropzone from 'react-dropzone';
 
 import styles from './styles.css';
-import AlignButtons from './AlignButtons';
 import imagesToBase64 from 'Editor/helpers/imagesToBase64';
 
 let _maxWidth = 200;
@@ -58,10 +57,11 @@ class Editor extends Component {
   }
 
   render() {
-    const { content } = this.props;
-    const { width, dimention, align, isResizing } = this.state;
+    const { content, style } = this.props;
+    const { width, align, isResizing } = this.state;
     return (
       <div
+        style={style}
         className={cx(styles.wrap, styles[`align_${align}`])}
         ref={r => _maxWidth = r && r.offsetWidth || 200}>
         <Resizable
@@ -78,7 +78,6 @@ class Editor extends Component {
               Try dropping some files here, or click to select files to upload.
             </span>
           </Dropzone>
-          <AlignButtons onChange={this.setAlign} width={width} align={align} />
         </Resizable>
       </div>
     );
