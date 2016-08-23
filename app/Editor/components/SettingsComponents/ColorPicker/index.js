@@ -5,7 +5,7 @@ import { SketchPicker } from 'react-color';
 import styles from './styles.css';
 
 export default compose(
-  withState('active', 'setActive', true),
+  withState('active', 'setActive', props => (props.transparent && props.color === 'transparent') ? false : true),
   withState('color', 'setColor', props => props.color),
   withHandlers({
     onClick: props => e => {
@@ -33,6 +33,7 @@ export default compose(
           type='checkbox'
           onChange={onClick}
           id='colorId-checkbox'
+          checked={!active}
         />
         <label className={styles.colorpicker__label} htmlFor='colorId-checkbox'>
           Use a transparent color:
