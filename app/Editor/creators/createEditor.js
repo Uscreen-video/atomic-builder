@@ -27,16 +27,6 @@ compose(
   // Also we dont  fire commit of changes, because its own state
   dndState('organisms', 'data', false),
 
-  lifecycle({
-    componentWillMount() {
-      if (this.props.edit === false) {
-        this.props.disableEdit();
-      } else {
-        this.props.enableEdit();
-      }
-    }
-  }),
-
   // EditorState from [dndState] and updater
   // Updater recieve an array of nesting and mutation
   withHandlers({

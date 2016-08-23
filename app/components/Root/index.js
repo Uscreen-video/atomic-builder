@@ -2,7 +2,9 @@ import 'normalize.css/normalize.css';
 
 // import Builder from '../Builder';
 import ReactDOMServer from 'react-dom/server';
-import { compose } from 'recompose';
+import react from 'react';
+
+import { compose, withHandlers } from 'recompose';
 import { connect } from 'react-redux';
 
 import { Menu } from '../Menu';
@@ -15,14 +17,19 @@ const Editor = createEditor({ edit: true });
 
 export default compose(
   connect(selector),
-  withEditorContext
-)(({ blocks, ...props }) => {
+  withEditorContext,
+  withHandlers({
+    exportEditor: props => () => {
+      // console.log(ReactDOMServer.renderToStaticMarkup(<Editor data={props.blocks} />));
+    }
+  })
+)(({ blocks, exportEditor, ...props }) => {
   return (
     <div className={styles.wrap}>
       {
         props.editingItem.canEdit && <Menu />
       }
-      <Editor data={blocks} />
+      <Editor data={blocks} exportEditor={exportEditor} />
     </div>
   );
 }

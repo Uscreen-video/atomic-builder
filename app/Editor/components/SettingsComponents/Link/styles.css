@@ -1,0 +1,45 @@
+.link {
+  &__radioContainer {
+    display: flex;
+    justify-content: center;
+  }
+  &__input {
+    width: 100%;
+    line-height: 26px;
+    padding: 0 10px;
+    box-sizing: border-box;
+    &:focus {
+      outline: none;
+    }
+  }
+  &__inputBox {
+    margin: 0 10px 10px 0;
+    width: 80%;
+    &_radio {
+      line-height: 30px;
+      width: auto;
+      margin: 0 10px;
+      & > input {
+        width: auto;
+      }
+    }
+  }
+  &__label {
+    display: block;
+    color: #333;
+    margin-bottom: 3px;
+    font-size: 14px;
+  }
+  &__title {
+    font-size: 14px;
+    color: #333;
+    margin: 10px 0;
+  }
+  &__labelOptions {
+    display: inline-block;
+    height: 30px;
+    margin-left: 5px;
+    vertical-align: middle;
+    color: #333;
+  }
+}

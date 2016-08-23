@@ -16,6 +16,7 @@ export default compose(
       } else {
         props.enableEdit();
       }
+      props.exportEditor();
     }
   })
 )(({

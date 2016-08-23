@@ -1,6 +1,7 @@
 import { compose, withHandlers, withProps, withState } from 'recompose';
 import cx from 'classnames';
 import Icon from 'Editor/components/Icon';
+import SettingsTitle from '../SettingsTitle';
 
 import styles from './styles.css';
 
@@ -11,7 +12,6 @@ const Button = ({ align, type, action }) => (
 );
 
 export default compose(
-  withState('active', 'setActive', false),
   withProps(props => ({
     onChange: dir => props.onSettingsChange(props.settingKey, dir)
   })),
@@ -25,31 +25,14 @@ export default compose(
   alighLeft,
   alighRight,
   alighCenter,
-  active,
   label,
-  onClick,
   ...rest
 }) => (
-  <div className={styles.wrap}>
-    <div className={styles.container}>
-      {
-        label &&
-          <span
-            className={styles.label}
-            onClick={onClick}>
-            {label}
-          </span>
-      }
+  <SettingsTitle label={label}>
+    <div className={styles.align}>
+      <Button action={alighLeft} type='left' {...rest} />
+      <Button action={alighCenter} type='center' {...rest} />
+      <Button action={alighRight} type='right' {...rest} />
     </div>
-    {
-      active &&
-        <div className={styles.component}>
-          <div className={styles.align}>
-            <Button action={alighLeft} type='left' {...rest} />
-            <Button action={alighCenter} type='center' {...rest} />
-            <Button action={alighRight} type='right' {...rest} />
-          </div>
-        </div>
-    }
-  </div>
+  </SettingsTitle>
 ));

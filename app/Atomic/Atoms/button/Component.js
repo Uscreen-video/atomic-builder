@@ -36,16 +36,21 @@ const getStyles = settings => {
   return res;
 };
 
-const Component = ({ settings, content, style }) => (
-  <div className={cx(styles.wrap, styles[`align_${settings.get('align')}`])}>
-    <a
-      style={style}
-      href={settings.get('url')}
-      className={cx(styles.button, styles[`button_${settings.get('type')}`])}>
-      { content }
-    </a>
-  </div>
-);
+const Component = ({ settings, content, style }) => {
+  const { url, target } = settings.get('url');
+
+  return (
+    <div className={cx(styles.wrap, styles[`align_${settings.get('align')}`])}>
+      <a
+        style={style}
+        href={url}
+        className={cx(styles.button, styles[`button_${settings.get('type')}`])}
+        target={target}>
+        { content }
+      </a>
+    </div>
+  );
+};
 
 export default ({
   content,

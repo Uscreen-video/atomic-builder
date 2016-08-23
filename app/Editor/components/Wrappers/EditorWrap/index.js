@@ -19,7 +19,8 @@ export default compose(
   children,
   isOver,
   drop,
-  dragingItem
+  dragingItem,
+  ...props
 }) => {
   return (
     <div>
@@ -31,7 +32,7 @@ export default compose(
         }
       </div>
       {
-        organisms.size && <PagePreview />
+        organisms.size && <PagePreview exportEditor={props.exportEditor} />
       }
       {
         editingItem.isSidebarOpen
