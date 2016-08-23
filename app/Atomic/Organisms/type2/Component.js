@@ -18,23 +18,32 @@ const getStyles = settings => {
     res.backgroundSize = cover;
   }
 
+  const leftImage = settings.get('leftImage');
+  if (leftImage) {
+    const [url, cover, { x, y }, repeat] = leftImage;
+    res.leftImage = `url(${url}) ${x} ${y} ${repeat}`;
+  }
+
   return res;
 };
 
 export default ({
   settings,
   molecules
-}) => (
-  <div
-    className={styles.wrap}
-    style={getStyles(settings)}>
-    <div className={styles.container}>
-      <div className={styles.leftSide} />
-      <div className={styles.rightSide}>
-        <div className={styles.rightSideComtainer}>
-          {molecules.get('Main')}
+}) => {
+  const { leftImage, ...style } = getStyles(settings);
+  return (
+    <div
+      className={styles.wrap}
+      style={style}>
+      <div className={styles.container}>
+        <div className={styles.leftSide} style={{ backgroundImage: leftImage }} />
+        <div className={styles.rightSide}>
+          <div className={styles.rightSideComtainer}>
+            {molecules.get('Main')}
+          </div>
         </div>
       </div>
     </div>
-  </div>
-);
+  );
+}

@@ -27,6 +27,12 @@ const getStyles = settings => {
       res.border = 'none';
     }
   }
+  const backgroundImage = settings.get('backgroundImage');
+  if (backgroundImage) {
+    const [url, cover, { x, y }, repeat] = backgroundImage;
+    res.background = `url(${url}) ${x} ${y} ${repeat} ${settings.get('backgroundColor')}`;
+    res.backgroundSize = cover;
+  }
   return res;
 };
 
