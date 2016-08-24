@@ -50,6 +50,7 @@
   }
   &__preview {
     max-width: 100%;
+    max-height: 100%;
     vertical-align: top;
     border-radius: 5px;
   }

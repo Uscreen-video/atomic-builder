@@ -27,8 +27,7 @@
     padding: 10px 0;
     margin: 0;
     background: color(#39B6B3 l(40%));
-    font-size: 12px;
-    font-weight: 400;
+    font: 700 16px 'Roboto Condensed', sans-serif;
     text-transform: uppercase;
   }
 

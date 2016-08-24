@@ -1,7 +1,8 @@
   .setting {
     &__label {
       margin-right: 10px;
-      user-select: none
+      user-select: none;
+      font: 400 14px 'Open Sans', sans-serif;
     }
     &__button {
         display: inline-block;
@@ -23,8 +24,5 @@
       margin-top: 8px;
       box-shadow: 1px 1px 5px 0 #aaa inset;
       border-top: 1px solid color(#39B6B3 l(50%));
-      & > div:first-child {
-        margin: 0 auto;
-      }
     }
   }

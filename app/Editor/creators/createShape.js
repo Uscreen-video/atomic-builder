@@ -75,6 +75,15 @@ class Shape extends Record({ // eslint-disable-line new-cap
       ...extendObject
     };
   }
+  font(value, extendObject) {
+    return {
+      type: 'font',
+      description: 'Some description',
+      title: 'Font settings:',
+      value,
+      ...extendObject
+    };
+  }
 }
 
 export const shape = new Shape;

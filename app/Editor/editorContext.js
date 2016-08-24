@@ -7,7 +7,7 @@ import HTML5Backend from 'react-dnd-html5-backend';
 import Monitor from './immutable/dndMonitor';
 import EditingItem from './immutable/editingItem';
 
-const { func, object} = PropTypes;
+const { func, object } = PropTypes;
 
 export const withEditorContext = BaseComponent =>
 compose(

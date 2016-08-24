@@ -1,8 +1,6 @@
 import 'normalize.css/normalize.css';
 
 // import Builder from '../Builder';
-import ReactDOMServer from 'react-dom/server';
-import react from 'react';
 
 import { compose, withHandlers } from 'recompose';
 import { connect } from 'react-redux';
@@ -15,13 +13,11 @@ import selector from 'modules/builder/selectors';
 import styles from './styles.css';
 const Editor = createEditor({ edit: true });
 
-export default compose(
+export const Root = compose(
   connect(selector),
   withEditorContext,
   withHandlers({
-    exportEditor: props => () => {
-      // console.log(ReactDOMServer.renderToStaticMarkup(<Editor data={props.blocks} />));
-    }
+    exportEditor: props => () => window.render(props)
   })
 )(({ blocks, exportEditor, ...props }) => {
   return (
@@ -34,3 +30,5 @@ export default compose(
   );
 }
 );
+
+export default Root;

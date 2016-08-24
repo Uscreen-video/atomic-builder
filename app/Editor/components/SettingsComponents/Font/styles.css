@@ -1,22 +1,29 @@
-.link {
-  &__radioContainer {
+.font {
+  &__controls {
     display: flex;
     justify-content: center;
+    margin-bottom: 10px;
   }
   &__input {
     width: 100%;
     line-height: 26px;
     padding: 0 10px;
+    font-family: 'Open Sans', sans-serif;
     box-sizing: border-box;
     &:focus {
       outline: none;
     }
   }
   &__inputBox {
-    margin: 0 auto;
-    width: 80%;
+    margin: 0 20px 0 0;
+    width: 70%;
+    &_size {
+      width: 20%;
+      margin-right: 0;
+      text-align: center;
+    }
     &_radio {
-      line-height: 30px;
+      line-height: 20px;
       width: auto;
       margin: 0 10px;
       & > input {
@@ -29,15 +36,16 @@
     color: #333;
     margin-bottom: 3px;
     font-size: 14px;
+    font-weight: 700;
   }
   &__title {
     font-size: 14px;
     color: #333;
-    margin: 10px 0;
+    margin: 0 0 2px;
   }
   &__labelOptions {
     display: inline-block;
-    height: 30px;
+    height: 20px;
     margin-left: 5px;
     vertical-align: middle;
     color: #333;
