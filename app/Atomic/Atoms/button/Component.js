@@ -5,9 +5,16 @@ import Editor from './Editor/';
 
 
 const getStyles = settings => {
-  const res = {
-    backgroundColor: settings.get('backgroundColor')
-  };
+  const res = {};
+
+  const colors = settings.get('colors');
+  if (colors) {
+    const { background, color } = colors;
+    res.backgroundColor = background;
+    if (color) {
+      res.color = color;
+    }
+  }
 
   const padding = settings.get('padding');
   if (padding) {

@@ -1,9 +1,10 @@
 import { compose, withState, withHandlers } from 'recompose';
 import cx from 'classnames';
-import ColorPicker from '../ColorPicker';
+import Select from 'react-select';
 import SettingsTitle from '../SettingsTitle';
 
 import styles from './styles.css';
+import './react-select.css';
 
 const weightTable = {
   300: 'thin',
@@ -11,18 +12,28 @@ const weightTable = {
   700: 'bold'
 };
 
+const options = [
+  { label: 'Open Sans', value: '"Open Sans", sans-serif' },
+  { label: 'Roboto Condensed', value: '"Roboto Condensed", sans-serif' },
+  { label: 'Arial, Helvetica', value: 'Arial, Helvetica, sans-serif' },
+  { label: 'Lucida Console', value: '"Lucida Console", Monaco, monospace' },
+  { label: 'Georgia', value: 'Georgia, serif' },
+  { label: 'Verdana', value: 'Verdana, Geneva, sans-serif' },
+  { label: 'Tahoma', value: 'Tahoma, Geneva, sans-serif' },
+  { label: 'Palatino, Book Antiqua', value: '"Palatino Linotype", "Book Antiqua", Palatino, serif' }
+];
+
 export default compose(
   withState('family', 'setFamily', props => props.value.family),
   withState('size', 'setSize', props => props.value.size),
   withState('style', 'setStyle', props => props.value.style),
   withState('weight', 'setWeight', props => props.value.weight),
   withHandlers({
-    onFamilyChange: props => e => {
-      const value = e.target.value;
-      props.setFamily(value);
+    onFamilyChange: props => option => {
+      props.setFamily(option.value);
       props.onSettingsChange && props.onSettingsChange(props.settingKey, {
         ...props.value,
-        family: value
+        family: option.value
       });
     },
     onSizeChange: props => e => {
@@ -48,7 +59,13 @@ export default compose(
         ...props.value,
         weight: value
       });
-    }
+    },
+    renderOption: props => option => (
+      <span className='react-select__option' style={{ fontFamily: option.value }}>{option.label}</span>
+    ),
+    renderValue: props => (option) => (
+      <strong style={{ color: option.color }}>{option.label}</strong>
+    )
   })
 )(({
   label,
@@ -59,7 +76,9 @@ export default compose(
   onSizeChange,
   onWeightChange,
   onFamilyChange,
-  onStyleChange
+  onStyleChange,
+  renderOption,
+  renderValue
 }) => (
   <SettingsTitle label={label}>
     <div className={styles.font__controls}>
@@ -69,23 +88,15 @@ export default compose(
           className={styles.font__label}>
           Font family
         </label>
-        <input
-          type='text'
+        <Select
+          placeholder='Please select a font family'
+          options={options}
+          optionRenderer={renderOption}
           onChange={onFamilyChange}
-          id='familyId'
           value={family}
-          placeholder='Please enter a font family'
-          className={cx(
-            styles.font__input
-          )}
-          list='familyList' />
-        <datalist id='familyList'>
-          <option>Arial</option>
-          <option>Verdana</option>
-          <option>Open Sans</option>
-          <option>Georgia</option>
-          <option>Times New Roman</option>
-        </datalist>
+          valueRenderer={renderValue}
+          clearable={false}
+        />
       </div>
       <div
         className={cx(

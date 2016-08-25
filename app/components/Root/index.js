@@ -9,7 +9,6 @@ import { Menu } from '../Menu';
 import { withEditorContext } from 'Editor/editorContext';
 import createEditor from 'Editor/creators/createEditor';
 import selector from 'modules/builder/selectors';
-import { renderToStaticMarkup } from 'react-dom/server';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 
@@ -20,7 +19,7 @@ export const Root = compose(
   connect(selector),
   withEditorContext,
   DragDropContext(HTML5Backend), // eslint-disable-line new-cap
-)(({ blocks, exportEditor, ...props }) => {
+)(({ blocks, ...props }) => {
   return (
     <div className={styles.wrap}>
       {

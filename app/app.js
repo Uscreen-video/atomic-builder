@@ -8,7 +8,6 @@
 // Import all the third party stuff
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ReactDOMServer from 'react-dom/server';
 import { Provider } from 'react-redux';
 import configureStore from './store';
 
@@ -28,14 +27,6 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('app')
 );
-
-window.render = (props) => {
-  console.log(ReactDOMServer.renderToStaticMarkup(
-  <Provider store={store}>
-    <Root {...props} />
-  </Provider>
-  ));
-};
 
 if (module.hot) {
   module.hot.accept('./components/Root/', () => {
