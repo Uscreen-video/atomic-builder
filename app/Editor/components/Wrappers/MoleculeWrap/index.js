@@ -19,8 +19,7 @@ export default compose(
   <Customizer
     {...props}
     title='Molecule'
-    outside
-  >
+    outside>
     {
       props.editingItem.canEdit && <Placeholder {...props} />
     }
