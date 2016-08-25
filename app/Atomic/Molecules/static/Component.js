@@ -21,12 +21,15 @@ export default defaultProps({
   theme,
   children,
   settings
-}) => (
-  <div
-    className={theme.wrap}
-    style={getStyles(settings)}>
-    <div className={theme.container}>
-      {children}
+}) => {
+  console.log(children);
+  return (
+    <div
+      className={theme.wrap}
+      style={getStyles(settings)}>
+      <div className={theme.container}>
+        {children}
+      </div>
     </div>
-  </div>
-));
+  );
+})

@@ -44,9 +44,14 @@ compose(
   dndState('atoms', 'molecule'),
 
   // Map atoms from state to components
-  withProps(props => ({
-    children: mapAtoms(props.atoms, props)
-  })),
+  withProps(props => {
+    const atoms = props.atoms.isEmpty()
+      ? props.molecule.has('atoms') && props.molecule.get('atoms') || props.atoms
+      : props.atoms || [];
+    return ({
+      children: mapAtoms(atoms, props)
+    })
+  }),
 
   dndHandler('molecule')
 

@@ -1,5 +1,6 @@
+import { PropTypes } from 'react';
 import cx from 'classnames';
-import { compose, withState, withHandlers } from 'recompose';
+import { compose, withState, withHandlers, getContext } from 'recompose';
 
 import styles from './styles.css';
 import withEditorState from '../../helpers/editorState';
@@ -7,6 +8,9 @@ import Button from './button';
 
 export default compose(
   withEditorState,
+  getContext({
+    editorDisabled: PropTypes.bool
+  }),
   withState('over', 'setOver', false),
   withHandlers({
     mouseOver: props => e => {
@@ -27,8 +31,10 @@ export default compose(
   title,
   mouseOver,
   mouseOut,
+  editorDisabled,
   ...props
 }) => {
+  if (editorDisabled) return <div>Trololo{children}</div>;
   return (
     <div
       className={styles.wrap}

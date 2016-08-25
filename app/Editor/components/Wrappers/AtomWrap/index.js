@@ -6,15 +6,17 @@ export default ({
   connectDragPreview,
   isDragging,
   ...props
-}) => (
-  <div onClick={!props.active && !isDragging && activate}>
-    <Customizer
-      {...props}
-      title='atom'
-      outside
-      isDragging={isDragging}
-      preview={connectDragPreview}>
-      <Atom {...props} />
-    </Customizer>
-  </div>
-);
+}) => {
+  return (
+    <div onClick={!props.active && !isDragging && activate}>
+      <Customizer
+        {...props}
+        title='atom'
+        outside
+        isDragging={isDragging}
+        preview={connectDragPreview}>
+        <Atom {...props} />
+      </Customizer>
+    </div>
+  );
+}
