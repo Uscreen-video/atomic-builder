@@ -1,0 +1,25 @@
+.wrap{
+  width: 100%;
+  background-color: #EDEDED;
+  position: relative;
+}
+
+.container{
+  lost-center: 1000px 10px flex;
+}
+
+.sideLeft{
+  lost-column: 1/3 2 20px flex;
+}
+
+.sideRight{
+  lost-column: 2/3 2 30px flex;
+}
+
+.rightSideContainer{
+  padding: 50px 0;
+}
+
+.moleculeWrap{
+  min-height: 300px;
+}

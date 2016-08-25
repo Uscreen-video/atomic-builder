@@ -61,16 +61,24 @@ config	package.json	/^          "config": ".\/internals\/webpack\/webpack.test.b
 const."	app/Editor/draft/convert/encodeBlock.js	/^  '>': '&gt;',$/;"	p
 const.&	app/Editor/draft/convert/encodeBlock.js	/^const ENTITY_MAP = {$/;"	p
 const.'	app/Editor/draft/convert/encodeBlock.js	/^  '"': '&quot;',$/;"	p
+const.300	app/Editor/components/SettingsComponents/Font/index.js	/^const weightTable = {$/;"	p
+const.400	app/Editor/components/SettingsComponents/Font/index.js	/^  300: 'thin',$/;"	p
+const.700	app/Editor/components/SettingsComponents/Font/index.js	/^  400: 'normal',$/;"	p
 const.<	app/Editor/draft/convert/encodeBlock.js	/^  '&': '&amp;',$/;"	p
 const.>	app/Editor/draft/convert/encodeBlock.js	/^  '<': '&lt;',$/;"	p
 const.`	app/Editor/draft/convert/encodeBlock.js	/^  "'": '&#x27;',$/;"	p
 const.acceptCharset	app/Editor/draft/toHTML/helpers/normalizeAttributes.js	/^const ATTR_NAME_MAP: StringMap = {$/;"	p
 const.b	app/Editor/draft/convert/convertFromHTML.js	/^const inlineTags = {$/;"	p
+const.backgroundColor	app/Atomic/Atoms/button/Component.js	/^  const res = {$/;"	p
 const.backgroundColor	app/Atomic/Atoms/text/Component.js	/^  const res = {$/;"	p
 const.backgroundColor	app/Atomic/Molecules/static/Component.js	/^  const res = {$/;"	p
 const.backgroundColor	app/Atomic/Organisms/type1/Component.js	/^  const res = {$/;"	p
 const.backgroundColor	app/Atomic/Organisms/type2/Component.js	/^  const res = {$/;"	p
 const.backgroundColor	app/Atomic/Organisms/type3/Component.js	/^  const res = {$/;"	p
+const.backgroundColor	app/Atomic/Organisms/type4/Component.js	/^  const res = {$/;"	p
+const.backgroundColor	app/Atomic/Organisms/type5/Component.js	/^  const res = {$/;"	p
+const.backgroundColor	app/Atomic/Organisms/type6/Component.js	/^  const res = {$/;"	p
+const.backgroundColor	app/Atomic/Organisms/type7/Component.js	/^  const res = {$/;"	p
 const.childRoutes	internals/templates/app.js	/^  component: App,$/;"	p
 const.className	app/Editor/draft/toHTML/helpers/normalizeAttributes.js	/^  acceptCharset: 'accept-charset',$/;"	p
 const.code	app/Editor/draft/convert/convertFromHTML.js	/^  b: 'BOLD',$/;"	p
