@@ -1,9 +1,13 @@
 import {
   compose, withContext, defaultProps, withHandlers,
-  withProps, createEagerElement, lifecycle
+  withProps, createEagerElement, lifecycle, toClass
 } from 'recompose';
 import { PropTypes } from 'react';
 import { List, Map } from 'immutable';
+import { renderToStaticMarkup } from 'react-dom/server';
+import { withEditorContext } from 'Editor/editorContext';
+import { DragDropContext } from 'react-dnd';
+import HTML5Backend from 'react-dnd-html5-backend';
 
 import * as Organisms from 'Atomic/Organisms';
 
@@ -13,7 +17,7 @@ import dndHandler from '../dnd/handler';
 import EditorWrap from '../components/Wrappers/EditorWrap';
 // import Eraser from '../components/Eraser';
 
-const { func } = PropTypes;
+const { func, bool } = PropTypes;
 const Cursor = List([]); // eslint-disable-line new-cap
 
 export default () =>
@@ -27,13 +31,11 @@ compose(
   // Also we dont  fire commit of changes, because its own state
   dndState('organisms', 'data', false),
 
-  // EditorState from [dndState] and updater
-  // Updater recieve an array of nesting and mutation
   withHandlers({
     updateEditorState: props => (key, state) => {
       const mutation = props.organisms.setIn(key, state);
       props.update(mutation);
-    }
+    },
   }),
 
   withContext({ updateEditorState: func }, ({ updateEditorState }) => ({ updateEditorState })),
@@ -52,8 +54,27 @@ compose(
           move, add, hover, remove, hoverIndex
         }
       )
-    )
+    ),
   })),
+
+  // EditorState from [dndState] and updater
+  // Updater recieve an array of nesting and mutation
+  withHandlers({
+    export: props => () => {
+      console.log(props);
+      const Component = compose(
+        withEditorContext,
+        withContext({ editorDisabled: bool }, () => ({ editorDisabled: true })),
+        // DragDropContext(HTML5Backend), // eslint-disable-line new-cap
+        withProps(ownProps => ({
+          ...props,
+          ...ownProps,
+          pure: true
+        })),
+      )(EditorWrap);
+      console.log(renderToStaticMarkup(<Component />));
+    }
+  }),
 
   dndHandler('template'),
 

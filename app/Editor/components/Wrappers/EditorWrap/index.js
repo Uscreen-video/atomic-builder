@@ -20,8 +20,10 @@ export default compose(
   isOver,
   drop,
   dragingItem,
+  pure,
   ...props
 }) => {
+  if (pure) return <div>{children}</div>;
   return (
     <div>
       <div className={cx(styles.wrap, editingItem.isSidebarOpen && styles.wrap_shifted)}>
@@ -32,7 +34,7 @@ export default compose(
         }
       </div>
       {
-        organisms.size && <PagePreview exportEditor={props.exportEditor} />
+        organisms.size && <PagePreview exportEditor={props.export} />
       }
       {
         editingItem.isSidebarOpen

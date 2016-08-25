@@ -1,6 +1,6 @@
 import { PropTypes } from 'react';
 import { flowRight, compact } from 'lodash';
-import { createEagerFactory, getContext, withHandlers, withProps } from 'recompose';
+import { compose, branch, renderComponent, createEagerFactory, getContext, withHandlers, withProps } from 'recompose';
 import { DropTarget as dropTarget, DragSource as dragSource } from 'react-dnd';
 import { Motion } from 'react-motion';
 import Animation from '../immutable/animation';
@@ -9,6 +9,7 @@ import * as targetSpec from './dragTarget';
 import * as sourceSpec from './dragSource';
 import * as spec from './spec';
 
+const identity = t => t;
 
 const getMotionStyle = (isDragging, canDrop, index, hoverIndex, cursor, dragingItem) => {
   const monitor = dragingItem;
@@ -45,7 +46,7 @@ const getStyles = ({ scale, y, ...rest }) => ({
   ...rest
 });
 
-export default (type, baseType) => baseComponent => {
+export const Handler = (type, baseType) => baseComponent => {
   const factory = createEagerFactory(baseComponent);
   const source = baseType || spec[type].source;
   const target = spec[type].target;
@@ -133,3 +134,17 @@ export default (type, baseType) => baseComponent => {
     ));
   });
 };
+
+export const Raw = BaseComponent => props => <BaseComponent {...props} />;
+
+export default (...data) =>
+compose(
+  getContext({
+    editorDisabled: PropTypes.bool
+  }),
+  branch(
+    props => !!props.editorDisabled,
+    identity,
+    Handler(...data),
+  )
+);

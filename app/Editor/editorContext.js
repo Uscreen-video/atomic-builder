@@ -1,9 +1,6 @@
 import { PropTypes } from 'react';
 
 import { compose, withState, withContext, withHandlers } from 'recompose';
-import { DragDropContext } from 'react-dnd';
-import HTML5Backend from 'react-dnd-html5-backend';
-
 import Monitor from './immutable/dndMonitor';
 import EditingItem from './immutable/editingItem';
 
@@ -11,8 +8,6 @@ const { func, object } = PropTypes;
 
 export const withEditorContext = BaseComponent =>
 compose(
-  DragDropContext(HTML5Backend), // eslint-disable-line new-cap
-
   withState('dragingItem', 'setDraggingItem', Monitor),
   withState('editingItem', 'editItem', EditingItem),
   withHandlers({

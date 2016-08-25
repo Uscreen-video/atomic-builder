@@ -1,0 +1,30 @@
+.wrap{
+  width: 100%;
+  background-color: #EDEDED;
+  position: relative;
+}
+
+.container{
+  lost-center: 1000px;
+}
+
+.leftSide{
+  background-color: white;
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+}
+
+.rightSide{
+  lost-column: 1/2 2 30px flex;
+}
+
+.rightSideComtainer{
+  padding: 50px 0;
+}
+
+.moleculeWrap{
+  min-height: 300px;
+}
