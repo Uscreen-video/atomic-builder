@@ -34,7 +34,7 @@ export default compose(
   editorDisabled,
   ...props
 }) => {
-  if (editorDisabled) return <div>Trololo{children}</div>;
+  if (editorDisabled) return <div>{children}</div>;
   return (
     <div
       className={styles.wrap}
