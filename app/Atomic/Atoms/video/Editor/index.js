@@ -68,6 +68,7 @@ class Editor extends Component {
           isResizable={{ bottomRight: true }}
           width={width}
           height={height}
+          maxWidth={_maxWidth}
           customClass={styles.resizable}>
           <div className={styles.dropzone} onClick={this.selectVideo}>
             <Player width={width} height={height} url={content} />

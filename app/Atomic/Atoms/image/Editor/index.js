@@ -27,9 +27,12 @@ class Editor extends Component {
     this.setState({ width, height, align, dimention: height / width });
   }
 
+  componentDidMount() {
+    this.resizer.updateSize(this.state);
+  }
+
   resize = (_, size) => {
-    const height = size.width * this.state.dimention;
-    this.setState({ width: size.width, height, isResizing: true });
+    this.setState({ ...size, isResizing: true });
   }
 
   stopResize = () => {
@@ -51,6 +54,7 @@ class Editor extends Component {
       const dimention = this.height / this.width;
       const width = this.width > 200 ? 200 : this.width;
       _self.setState({ dimention, width });
+      _self.resizer.updateSize({ width, height: width * dimention });
       _self.props.onChange(images[0]);
     };
     img.src = images[0];
@@ -65,12 +69,13 @@ class Editor extends Component {
         className={cx(styles.wrap, styles[`align_${align}`])}
         ref={r => _maxWidth = r && r.offsetWidth || 200}>
         <Resizable
+          ref={r => this.resizer = r}
+          lockAspectRatio
           onResize={this.resize}
           onResizeStop={this.stopResize}
           handleClass={{ bottomRight: styles.handle }}
           isResizable={{ bottomRight: true }}
           maxWidth={_maxWidth}
-          width={width}
           customClass={styles.resizable}>
           <Dropzone onDrop={this.onDrop} disableClick={isResizing} className={styles.dropzone}>
             <img src={content} role='presentation' />
