@@ -3,14 +3,21 @@ import styles from './styles.css';
 import Editor from './Editor/';
 import getStyles from 'Editor/helpers/getStyles';
 
-const Component = ({ settings, content, style }) => (
-  <div styles={style} className={cx(styles.wrap, styles[`align_${settings.get('align')}`])}>
-    <img
-      src={content}
-      role='presentation'
-      style={{ width: settings.get('width') || 200 }} />
-  </div>
-);
+const Component = ({ settings, content, style }) => {
+  const imagesStyles = {
+    ...getStyles(settings),
+    width: settings.get('width') || 200
+  };
+
+  return (
+    <div style={style} className={cx(styles.wrap, styles[`align_${settings.get('align')}`])}>
+      <img
+        src={content}
+        role='presentation'
+        style={imagesStyles} />
+    </div>
+  );
+};
 
 export default ({
   content,

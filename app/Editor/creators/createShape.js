@@ -7,7 +7,7 @@ class Shape extends Record({ // eslint-disable-line new-cap
     return {
       type: 'color',
       description: 'Some description',
-      title: 'Background color:',
+      title: 'Colors:',
       value,
       ...extendObject
     };
