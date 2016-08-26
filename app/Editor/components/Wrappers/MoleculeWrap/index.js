@@ -1,4 +1,5 @@
-import { compose } from 'recompose';
+import { PropTypes } from 'react';
+import { compose, getContext } from 'recompose';
 import withEditorState from 'Editor/helpers/editorState';
 import styles from './styles.css';
 import Customizer from '../../Customizer/';
@@ -11,18 +12,25 @@ const Placeholder = ({ atoms }) => !atoms.size && (
 );
 
 export default compose(
-  withEditorState
+  withEditorState,
+  getContext({
+    editorDisabled: PropTypes.bool
+  }),
 )(({
   Molecule,
+  editorDisabled,
   ...props
-}) => (
-  <Customizer
-    {...props}
-    title='Molecule'
-    outside>
-    {
-      props.editingItem.canEdit && <Placeholder {...props} />
-    }
-    <Molecule {...props} />
-  </Customizer>
-));
+}) => {
+  if (editorDisabled) return <Molecule {...props} />;
+  return (
+    <Customizer
+      {...props}
+      title='Molecule'
+      outside>
+      {
+        props.editingItem.canEdit && <Placeholder {...props} />
+      }
+      <Molecule {...props} />
+    </Customizer>
+  )
+});

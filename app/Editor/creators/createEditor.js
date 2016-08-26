@@ -6,8 +6,7 @@ import { PropTypes } from 'react';
 import { List, Map } from 'immutable';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { withEditorContext } from 'Editor/editorContext';
-import { DragDropContext } from 'react-dnd';
-import HTML5Backend from 'react-dnd-html5-backend';
+import previewWindow from '../helpers/previewWindow';
 
 import * as Organisms from 'Atomic/Organisms';
 
@@ -61,6 +60,7 @@ compose(
   // Updater recieve an array of nesting and mutation
   withHandlers({
     export: props => () => {
+      if (!props.editingItem.canEdit) return;
       const Component = compose(
         withEditorContext,
         withContext({ editorDisabled: bool }, () => ({ editorDisabled: true })),
@@ -71,8 +71,7 @@ compose(
           pure: true
         })),
       )(EditorWrap);
-      const exportWindow = window.open('about:blank', 'Export from Atomic Builder');
-      exportWindow.document.write(renderToStaticMarkup(<Component />));
+      previewWindow.create(renderToStaticMarkup(<Component />));
     }
   }),
 

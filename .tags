@@ -69,16 +69,6 @@ const.>	app/Editor/draft/convert/encodeBlock.js	/^  '<': '&lt;',$/;"	p
 const.`	app/Editor/draft/convert/encodeBlock.js	/^  "'": '&#x27;',$/;"	p
 const.acceptCharset	app/Editor/draft/toHTML/helpers/normalizeAttributes.js	/^const ATTR_NAME_MAP: StringMap = {$/;"	p
 const.b	app/Editor/draft/convert/convertFromHTML.js	/^const inlineTags = {$/;"	p
-const.backgroundColor	app/Atomic/Atoms/button/Component.js	/^  const res = {$/;"	p
-const.backgroundColor	app/Atomic/Atoms/text/Component.js	/^  const res = {$/;"	p
-const.backgroundColor	app/Atomic/Molecules/static/Component.js	/^  const res = {$/;"	p
-const.backgroundColor	app/Atomic/Organisms/type1/Component.js	/^  const res = {$/;"	p
-const.backgroundColor	app/Atomic/Organisms/type2/Component.js	/^  const res = {$/;"	p
-const.backgroundColor	app/Atomic/Organisms/type3/Component.js	/^  const res = {$/;"	p
-const.backgroundColor	app/Atomic/Organisms/type4/Component.js	/^  const res = {$/;"	p
-const.backgroundColor	app/Atomic/Organisms/type5/Component.js	/^  const res = {$/;"	p
-const.backgroundColor	app/Atomic/Organisms/type6/Component.js	/^  const res = {$/;"	p
-const.backgroundColor	app/Atomic/Organisms/type7/Component.js	/^  const res = {$/;"	p
 const.childRoutes	internals/templates/app.js	/^  component: App,$/;"	p
 const.className	app/Editor/draft/toHTML/helpers/normalizeAttributes.js	/^  acceptCharset: 'accept-charset',$/;"	p
 const.code	app/Editor/draft/convert/convertFromHTML.js	/^  b: 'BOLD',$/;"	p
@@ -272,6 +262,7 @@ react-resizable-box	package.json	/^    "react-resizable-box": "^1.4.3",$/;"	f
 react-router	package.json	/^    "react-router": "2.6.1",$/;"	f
 react-router-redux	package.json	/^    "react-router-redux": "4.0.5",$/;"	f
 react-router-scroll	package.json	/^    "react-router-scroll": "0.3.1",$/;"	f
+react-select	package.json	/^    "react-select": "^1.0.0-beta14",$/;"	f
 react/react-in-jsx-scope	package.json	/^      "react\/react-in-jsx-scope": 0,$/;"	f
 readline	internals/scripts/helpers/progress.js	/^var readline = require('readline');$/;"	v
 recompose	package.json	/^    "recompose": "^0.20.2",$/;"	f
