@@ -12,7 +12,7 @@ export default organism({
       }
     },
     settings: {
-      backgroundColor: Shape.color('#fff'),
+      colors: Shape.color({ background: '#fff', color: '' }),
       leftImage: Shape.background({ url: '', x: 0, y: 0, repeat: 'no-repeat', size: 'auto'
       }, { title: 'Main image:' }),
       backgroundImage: Shape.background({ url: '', x: 0, y: 0, repeat: 'no-repeat', size: 'auto' }),

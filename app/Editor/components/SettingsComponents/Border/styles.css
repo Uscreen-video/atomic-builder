@@ -4,10 +4,15 @@
     padding: 0 20px;
     justify-content: center;
     flex-wrap: wrap;
+    margin-bottom: 5px;
   }
   &__inputBox {
     margin: 0 10px 10px 0;
     width: 20%;    
+    & > label {
+      color: #333;
+      font-size: 13px;
+    }
     & > input {
       width: 100%;
       line-height: 20px;
@@ -22,8 +27,21 @@
         width: auto;
       }
     }
-    & > label {
-      color: #333;
+    &_number {
+      width: 15%;
+      margin-right: 26px;
+      text-align: center;
+      box-sizing: border-box;
+      & > input {
+        line-height: 30px;
+        padding: 0 5px;
+        text-align: center;
+      }
+      & > label {
+        display: inline-block;
+        font-weight: 700;
+        margin-bottom: 3px;
+      }
     }
   }
   &__labelOptions {
@@ -45,8 +63,8 @@
     }
   }
   &__title {
-    font-size: 14px;
+    font-size: 13px;
     color: #333;
-    margin: 10px 0;
+    margin: 0 0 10px;
   }
 }

@@ -2,7 +2,7 @@
   &__controls {
     display: flex;
     justify-content: center;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
   }
   &__input {
     width: 100%;
@@ -33,19 +33,20 @@
   }
   &__label {
     display: block;
-    color: #333;
     margin-bottom: 3px;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 700;
+    color: #333;
   }
   &__title {
-    font-size: 14px;
-    color: #333;
+    font-size: 13px;
     margin: 0 0 2px;
+    color: #333;
   }
   &__labelOptions {
     display: inline-block;
     height: 20px;
+    font-size: 13px;
     margin-left: 5px;
     vertical-align: middle;
     color: #333;

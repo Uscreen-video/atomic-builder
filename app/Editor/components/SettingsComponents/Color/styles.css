@@ -2,6 +2,7 @@
   &__options {
     display: flex;
     width: 210px;
+    background-color: #F8F8F8;
     border-radius: 10px;
     margin: 0 auto 20px;
     box-shadow: 0 0 3px #aaa inset;

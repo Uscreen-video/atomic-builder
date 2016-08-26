@@ -58,7 +58,7 @@ export default compose(
   onRadiusChange
 }) => (
   <SettingsTitle label={label}>
-    <h2 className={styles.border__title}>Border options:</h2>
+    <h2 className={styles.border__title}>Border style:</h2>
     <div className={styles.border__options}>
         {
           ['solid', 'dashed', 'dotted', 'none'].map((styleValue) => (
@@ -81,7 +81,7 @@ export default compose(
         }
     </div>
     <div className={styles.border__options}>
-      <div className={cx(styles.border__inputBox)}>
+      <div className={cx(styles.border__inputBox, styles.border__inputBox_number)}>
         <label htmlFor='borderId-width'>Width:</label>
         <input
           type='number'
@@ -90,7 +90,7 @@ export default compose(
           value={width}
         />
       </div>
-      <div className={cx(styles.border__inputBox)}>
+      <div className={cx(styles.border__inputBox, styles.border__inputBox_number)}>
         <label htmlFor='borderId-radius'>Radius:</label>
         <input
           type='number'

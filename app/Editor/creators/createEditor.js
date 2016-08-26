@@ -35,7 +35,7 @@ compose(
     updateEditorState: props => (key, state) => {
       const mutation = props.organisms.setIn(key, state);
       props.update(mutation);
-    },
+    }
   }),
 
   withContext({ updateEditorState: func }, ({ updateEditorState }) => ({ updateEditorState })),
@@ -54,14 +54,13 @@ compose(
           move, add, hover, remove, hoverIndex
         }
       )
-    ),
+    )
   })),
 
   // EditorState from [dndState] and updater
   // Updater recieve an array of nesting and mutation
   withHandlers({
     export: props => () => {
-      console.log(props);
       const Component = compose(
         withEditorContext,
         withContext({ editorDisabled: bool }, () => ({ editorDisabled: true })),
@@ -72,7 +71,8 @@ compose(
           pure: true
         })),
       )(EditorWrap);
-      console.log(renderToStaticMarkup(<Component />));
+      const exportWindow = window.open('about:blank', 'Export from Atomic Builder');
+      exportWindow.document.write(renderToStaticMarkup(<Component />));
     }
   }),
 

@@ -8,58 +8,49 @@ import SettingsTitle from '../SettingsTitle';
 import styles from './styles.css';
 
 export default compose(
-  withState('image', 'setImage', props => props.value[0] || ''),
-  withState('cover', 'setCover', props => props.value[1] || 'auto'),
-  withState('position', 'setPostion', props => props.value[2] || { x: 0, y: 0 }),
-  withState('repeat', 'setRepeat', props => props.value[3] || 'no-repeat'),
+  withState('image', 'setImage', props => props.value.url || ''),
+  withState('cover', 'setCover', props => props.value.size || 'auto'),
+  withState('position', 'setPostion', props => ({ x: props.value.x, y: props.value.y })),
+  withState('repeat', 'setRepeat', props => props.value.repeat || 'no-repeat'),
   withHandlers({
     onCoverChange: props => e => {
       e.stopPropagation();
       const status = !props.cover;
       props.setCover(status);
-      props.onSettingsChange && props.onSettingsChange(props.settingKey, [
-        props.image,
-        !status ? 'cover' : 'auto',
-        props.position,
-        props.repeat
-      ]);
+      props.onSettingsChange && props.onSettingsChange(props.settingKey, {
+        ...props.value,
+        size: !status ? 'cover' : 'auto',
+      });
     },
     onRepeatChange: props => e => {
       e.stopPropagation();
       const repeatValue = e.target.value;
       props.setRepeat(repeatValue);
-      props.onSettingsChange && props.onSettingsChange(props.settingKey, [
-        props.image,
-        !props.cover ? 'cover' : 'auto',
-        props.position,
-        repeatValue
-      ]);
+      props.onSettingsChange && props.onSettingsChange(props.settingKey, {
+        ...props.value,
+        repeat: repeatValue
+      });
     },
     onPositionChange: props => e => {
       e.stopPropagation();
       const key = e.target.dataset.type;
       const value = e.target.value || 0;
-      const position = {
+      props.setPostion({
         ...props.position,
-        [key]: `${value}px`
-      };
-      props.setPostion(position);
-      props.onSettingsChange && props.onSettingsChange(props.settingKey, [
-        props.image,
-        !props.cover ? 'cover' : 'auto',
-        position,
-        props.repeat
-      ]);
+        [key]: value
+      });
+      props.onSettingsChange && props.onSettingsChange(props.settingKey, {
+        ...props.value,
+        [key]: value
+      });
     },
     onDrop: props => async files => {
       const images = await imagesToBase64(files);
       props.setImage(images[0]);
-      props.onSettingsChange && props.onSettingsChange(props.settingKey, [
-        images[0],
-        !props.cover ? 'cover' : 'auto',
-        props.position,
-        props.repeat
-      ]);
+      props.onSettingsChange && props.onSettingsChange(props.settingKey, {
+        ...props.value, 
+        url: images[0]
+      });
     }
   })
 )(({
@@ -136,7 +127,7 @@ export default compose(
                   >
                     <label htmlFor={`id-${position}`}>{position === 'x' ? 'Left:' : 'Top:'}</label>
                     <input
-                      type='text'
+                      type='number'
                       onChange={onPositionChange}
                       id={`id-${position}`}
                       data-type={position}

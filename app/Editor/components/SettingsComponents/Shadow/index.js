@@ -9,6 +9,7 @@ export default compose(
   withState('color', 'setColor', props => props.value.color),
   withState('position', 'setPosition', props => ({ x: props.value.x, y: props.value.y })),
   withState('blur', 'setBlur', props => props.value.blur),
+  withState('spread', 'setSpread', props => props.value.spread),
   withHandlers({
     onColorChange: props => color => {
       props.setColor(color.hex);

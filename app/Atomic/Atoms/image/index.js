@@ -1,5 +1,5 @@
 import atom from 'Editor/atom';
-import { shape } from 'Editor/creators/createShape';
+import { shape as Shape } from 'Editor/creators/createShape';
 
 export default atom({
   preview: require('./preview.png'),
@@ -8,8 +8,8 @@ export default atom({
     type: 'image',
     content: require('./default.png'),
     settings: {
-      align: shape.align(),
-      padding: shape.padding()
+      align: Shape.align(),
+      padding: Shape.padding()
     }
   }
 });

@@ -7,7 +7,7 @@ export default molecule({
   props: {
     type: 'static',
     settings: {
-      backgroundColor: Shape.color('#f00'),
+      colors: Shape.color({ background: 'transparent', color: '' }),
       padding: Shape.padding({ top: 0, right: 0, bottom: 0, left: 0 })
     }
   }

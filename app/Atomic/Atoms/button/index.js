@@ -1,5 +1,5 @@
 import atom from 'Editor/atom';
-import { shape } from 'Editor/creators/createShape';
+import { shape as Shape } from 'Editor/creators/createShape';
 
 export default atom({
   preview: require('./preview.png'),
@@ -14,13 +14,13 @@ export default atom({
       url: 'Add a link:'
     },
     settings: {
-      colors: shape.color({ background: '#E6E6E6', color: '#333' }),
-      align: shape.align(),
-      padding: shape.padding(),
-      font: shape.font({ weight: 400, size: 16, style: 'normal', family: 'Arial' }),
-      border: shape.border({ width: 0, style: 'solid', color: '#000', radius: 0 }),
-      shadow: shape.shadow({ x: 0, y: 0, blur: 0, spread: 0, color: '#333' }),
-      url: shape.link({ url: '', target: '_blank' }, { title: '' })
+      colors: Shape.color({ background: '#E6E6E6', color: '#333' }),
+      align: Shape.align(),
+      padding: Shape.padding(),
+      font: Shape.font({ weight: 400, size: 16, style: 'normal', family: 'Arial' }),
+      border: Shape.border({ width: 0, style: 'solid', color: '#000', radius: 0 }),
+      shadow: Shape.shadow({ x: 0, y: 0, blur: 0, spread: 0, color: '#333' }),
+      url: Shape.link({ url: '', target: '_blank' }, { title: '' })
     }
   }
 });

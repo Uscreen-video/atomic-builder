@@ -1,5 +1,7 @@
 .colorpicker {
   &__label {
+    display: inline-block;
+    font-size: 13px;
     color: #333;
     margin-left: 10px;
     user-select: none

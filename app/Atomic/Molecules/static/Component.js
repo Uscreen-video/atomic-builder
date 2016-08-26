@@ -1,19 +1,6 @@
 import { defaultProps } from 'recompose';
+import getStyles from 'Editor/helpers/getStyles';
 import styles from './styles.css';
-
-const getStyles = settings => {
-  const res = {
-    backgroundColor: settings.get('backgroundColor')
-  };
-
-  const padding = settings.get('padding');
-  if (padding) {
-    const { top, right, bottom, left } = padding;
-    res.padding = `${top}px ${right} ${bottom} ${left}`;
-  }
-
-  return res;
-};
 
 export default defaultProps({
   theme: styles
