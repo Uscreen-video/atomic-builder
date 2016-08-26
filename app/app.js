@@ -51,4 +51,5 @@ if (module.hot) {
   });
 }
 
+window.React = React;
 window.Perf = require('react-addons-perf');

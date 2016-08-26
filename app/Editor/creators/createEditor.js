@@ -61,7 +61,6 @@ compose(
   // Updater recieve an array of nesting and mutation
   withHandlers({
     export: props => () => {
-      console.log(props);
       const Component = compose(
         withEditorContext,
         withContext({ editorDisabled: bool }, () => ({ editorDisabled: true })),

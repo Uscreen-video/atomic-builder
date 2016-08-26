@@ -9,19 +9,21 @@ const OfflinePlugin = require('offline-plugin');
 const cssnext = require('postcss-cssnext');
 const postcssFocus = require('postcss-focus');
 const postcssReporter = require('postcss-reporter');
+const lost = require('lost');
+const nested = require('postcss-nested');
 const postcssColor = require('postcss-color-function');
 
 module.exports = require('./webpack.base.babel')({
   // In production, we skip all hot-reloading stuff
   entry: [
     'babel-polyfill',
-    path.join(process.cwd(), 'app/app.js'),
+    path.join(process.cwd(), 'app/app.js')
   ],
 
   // Utilize long-term caching by adding content hashes (not compilation hashes) to compiled assets
   output: {
-    filename: '[name].[chunkhash].js',
-    chunkFilename: '[name].[chunkhash].chunk.js',
+    publicPath: 'https://s3.eu-central-1.amazonaws.com/pub-images/',
+    filename: '[name].[chunkhash].js'
   },
 
   // We use ExtractTextPlugin so we get a seperate CSS file instead
@@ -34,20 +36,19 @@ module.exports = require('./webpack.base.babel')({
   // In production, we minify our CSS with cssnano
   postcssPlugins: [
     postcssColor(),
-    postcssFocus(),
-    cssnext({
-      browsers: ['last 2 versions', 'IE > 10'],
+    lost(),
+    nested(),
+    postcssFocus(), // Add a :focus to every :hover
+    cssnext({ // Allow future CSS features to be used, also auto-prefixes the CSS...
+      browsers: ['last 2 versions', 'IE > 10'] // ...based on this browser list
     }),
-    postcssReporter({
-      clearMessages: true,
-    }),
+    postcssReporter({ // Posts messages from plugins to the terminal
+      clearMessages: true
+    })
   ],
   plugins: [
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
-      children: true,
-      minChunks: 2,
-      async: true,
+    new webpack.ProvidePlugin({
+      React: 'react'
     }),
 
     // OccurrenceOrderPlugin is needed for long-term caching to work properly.
@@ -60,8 +61,8 @@ module.exports = require('./webpack.base.babel')({
     // Minify and optimize the JavaScript
     new webpack.optimize.UglifyJsPlugin({
       compress: {
-        warnings: false, // ...but do not show warnings in the console (there is a lot of them)
-      },
+        warnings: false // ...but do not show warnings in the console (there is a lot of them)
+      }
     }),
 
     // Minify and optimize the index.html
@@ -77,9 +78,9 @@ module.exports = require('./webpack.base.babel')({
         keepClosingSlash: true,
         minifyJS: true,
         minifyCSS: true,
-        minifyURLs: true,
+        minifyURLs: true
       },
-      inject: true,
+      inject: true
     }),
 
     // Extract the CSS into a seperate file
@@ -98,7 +99,7 @@ module.exports = require('./webpack.base.babel')({
         // All chunks marked as `additional`, loaded after main section
         // and do not prevent SW to install. Change to `optional` if
         // do not want them to be preloaded at all (cached only when first loaded)
-        additional: ['*.chunk.js'],
+        additional: ['*.chunk.js']
       },
 
       // Removes warning for about `additional` section usage
@@ -107,8 +108,8 @@ module.exports = require('./webpack.base.babel')({
       AppCache: {
         // Starting from offline-plugin:v3, AppCache by default caches only
         // `main` section. This lets it use `additional` section too
-        caches: ['main', 'additional'],
-      },
-    }),
-  ],
+        caches: ['main', 'additional']
+      }
+    })
+  ]
 });
