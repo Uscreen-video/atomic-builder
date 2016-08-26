@@ -28,6 +28,8 @@ export default compose(
   withState('size', 'setSize', props => props.value.size),
   withState('style', 'setStyle', props => props.value.style),
   withState('weight', 'setWeight', props => props.value.weight),
+  withState('decoration', 'setDecoration', props => props.value.decoration),
+  withState('transform', 'setTransform', props => props.value.transform),
   withHandlers({
     onFamilyChange: props => option => {
       props.setFamily(option.value);
@@ -60,6 +62,22 @@ export default compose(
         weight: value
       });
     },
+    onDecorationChange: props => e => {
+      const value = e.target.value;
+      props.setDecoration(value);
+      props.onSettingsChange && props.onSettingsChange(props.settingKey, {
+        ...props.value,
+        decoration: value
+      });
+    },
+    onTransformChange: props => e => {
+      const value = e.target.value;
+      props.setTransform(value);
+      props.onSettingsChange && props.onSettingsChange(props.settingKey, {
+        ...props.value,
+        transform: value
+      });
+    },
     renderOption: props => option => (
       <span className='react-select__option' style={{ fontFamily: option.value }}>{option.label}</span>
     ),
@@ -73,10 +91,14 @@ export default compose(
   weight,
   family,
   style,
+  decoration,
+  transform,
   onSizeChange,
   onWeightChange,
   onFamilyChange,
   onStyleChange,
+  onDecorationChange,
+  onTransformChange,
   renderOption,
   renderValue
 }) => (
@@ -167,6 +189,58 @@ export default compose(
                 className={cx(styles.font__labelOptions)}
                 style={{ fontWeight: weightValue }}>
                   {weightTable[weightValue]}
+              </label>
+            </div>
+          ))
+        }
+    </div>
+    <h2 className={styles.font__title}>Text decoration:</h2>
+    <div className={styles.font__controls}>
+        {
+          ['line-through', 'overline', 'underline', 'none'].map((decorationValue) => (
+            <div
+              key={`decoration-${decorationValue}`}
+              className={cx(styles.font__inputBox, styles.font__inputBox_radio)}
+            >
+              <input
+                type='radio'
+                onChange={onDecorationChange}
+                id={`styleId-${decorationValue}`}
+                value={decorationValue}
+                name='fontDecoration'
+                checked={decoration === decorationValue}
+              />
+              <label
+                htmlFor={`decorationId-${decorationValue}`}
+                className={cx(styles.font__labelOptions)}
+                style={{ textDecoration: decorationValue }}>
+                  {decorationValue}
+              </label>
+            </div>
+          ))
+        }
+    </div>
+    <h2 className={styles.font__title}>Text case:</h2>
+    <div className={styles.font__controls}>
+        {
+          ['capitalize', 'lowercase', 'uppercase', 'none'].map((caseValue) => (
+            <div
+              key={`style-${caseValue}`}
+              className={cx(styles.font__inputBox, styles.font__inputBox_radio)}
+            >
+              <input
+                type='radio'
+                onChange={onTransformChange}
+                id={`caseId-${caseValue}`}
+                value={caseValue}
+                name='fontCase'
+                checked={transform === caseValue}
+              />
+              <label
+                htmlFor={`caseId-${caseValue}`}
+                className={cx(styles.font__labelOptions)}
+                style={{ textTransform: caseValue }}>
+                  {caseValue}
               </label>
             </div>
           ))

@@ -51,8 +51,14 @@ export default settings => {
 
   const font = convertSettings(convertedSettings, 'font');
   if (font) {
-    const { weight, size, family, style } = font;
+    const { weight, size, family, style, transform, decoration } = font;
     res.font = `${style} ${weight} ${size}px ${family}`;
+    if (transform) {
+      res.textTransform = transform;
+    }
+    if (decoration) {
+      res.textDecoration = decoration;
+    }
   }
 
   const shadow = convertSettings(convertedSettings, 'shadow');

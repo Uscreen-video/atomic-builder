@@ -17,7 +17,7 @@ export default atom({
       colors: Shape.color({ background: '#E6E6E6', color: '#333' }),
       align: Shape.align(),
       padding: Shape.padding({ top: 8, right: 16, bottom: 8, left: 16 }),
-      font: Shape.font({ weight: 400, size: 16, style: 'normal', family: 'Arial' }),
+      font: Shape.font({ weight: 400, size: 16, style: 'normal', family: 'Arial', transform: 'none', decoration: 'none' }),
       border: Shape.border({ width: 0, style: 'solid', color: '#000', radius: 0 }),
       shadow: Shape.shadow({ x: 0, y: 0, blur: 0, spread: 0, color: '#333' }),
       url: Shape.link({ url: '', target: '_blank' }, { title: '' })
