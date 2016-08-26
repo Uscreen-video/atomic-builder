@@ -15,11 +15,11 @@ export default compose(
   withHandlers({
     onSizeChange: props => e => {
       e.stopPropagation();
-      const status = !props.size;
-      props.setSize(status);
+      const size = e.target.checked ? 'cover' : 'auto';
+      props.setSize(size);
       props.onSettingsChange && props.onSettingsChange(props.settingKey, {
         ...props.value,
-        size: !status ? 'cover' : 'auto'
+        size
       });
     },
     onRepeatChange: props => e => {
@@ -70,7 +70,8 @@ export default compose(
         {
           image && <img className={styles.fileUploader__preview} src={image} alt='' />
         }
-        <span className={cx(
+        <span
+          className={cx(
           styles.fileUploader__dropzoneMessage,
           image && styles.fileUploader__dropzoneMessage_white,
         )}>

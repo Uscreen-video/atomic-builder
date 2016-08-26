@@ -5,13 +5,13 @@ export default ({
   settings,
   molecules
 }) => {
-  const { leftImage, ...style } = getStyles(settings);
+  const { leftImage, leftImageSize, ...style } = getStyles(settings);
   return (
     <div
       className={styles.wrap}
       style={style}>
       <div className={styles.container}>
-        <div className={styles.leftSide} style={{ background: leftImage }} />
+        <div className={styles.leftSide} style={{ background: leftImage, backgroundSize: leftImageSize }} />
         <div className={styles.rightSide}>
           <div className={styles.rightSideComtainer}>
             {molecules.get('Main')}

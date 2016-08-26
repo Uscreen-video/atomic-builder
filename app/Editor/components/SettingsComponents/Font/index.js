@@ -197,7 +197,7 @@ export default compose(
     <h2 className={styles.font__title}>Text decoration:</h2>
     <div className={styles.font__controls}>
         {
-          ['line-through', 'overline', 'underline', 'none'].map((decorationValue) => (
+          ['line-through', 'underline', 'none'].map((decorationValue) => (
             <div
               key={`decoration-${decorationValue}`}
               className={cx(styles.font__inputBox, styles.font__inputBox_radio)}
@@ -223,7 +223,7 @@ export default compose(
     <h2 className={styles.font__title}>Text case:</h2>
     <div className={styles.font__controls}>
         {
-          ['capitalize', 'lowercase', 'uppercase', 'none'].map((caseValue) => (
+          ['lowercase', 'uppercase', 'none'].map((caseValue) => (
             <div
               key={`style-${caseValue}`}
               className={cx(styles.font__inputBox, styles.font__inputBox_radio)}

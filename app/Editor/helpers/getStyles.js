@@ -33,7 +33,8 @@ export default settings => {
   const leftImage = convertSettings(convertedSettings, 'leftImage');
   if (leftImage) {
     const { url, size, x, y, repeat } = leftImage;
-    res.leftImage = `url(${url}) ${x} ${y} ${repeat}`;
+    res.leftImage = `url(${url}) ${x}px ${y}px ${repeat}`;
+    res.leftImageSize = size;
   }
 
   const border = convertSettings(convertedSettings, 'border');
