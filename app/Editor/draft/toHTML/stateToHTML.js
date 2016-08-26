@@ -183,8 +183,7 @@ class MarkupGenerator {
     let {blockRenderers} = this.options;
     let block = this.blocks[this.currentBlock];
     let blockType = block.getType();
-    debugger;
-    console.log(block);
+    
     let newWrapperTag = getWrapperTag(blockType);
     if (this.wrapperTag !== newWrapperTag) {
       if (this.wrapperTag) {
@@ -324,7 +323,6 @@ class MarkupGenerator {
         return content;
       }).join('');
 
-      console.log(entityKey);
       let entity = entityKey ? Entity.get(entityKey) : null;
       // Note: The `toUpperCase` below is for compatability with some libraries that use lower-case for image blocks.
       let entityType = (entity == null) ? null : entity.getType().toUpperCase();

@@ -242,7 +242,6 @@ postcss-reporter	package.json	/^    "postcss-reporter": "1.4.1",$/;"	f
 postinstall	package.json	/^    "postinstall": "npm run build:dll",$/;"	f
 postsetup	package.json	/^    "postsetup": "npm run build:dll",$/;"	f
 pre-commit	package.json	/^    "pre-commit": "1.1.3",$/;"	f
-prebuild	package.json	/^    "prebuild": "npm run test && npm run build:clean",$/;"	f
 preinstall	package.json	/^    "preinstall": "npm run npmcheckversion",$/;"	f
 presets	package.json	/^    "presets": [$/;"	f
 presetup	package.json	/^    "presetup": "npm i chalk",$/;"	f

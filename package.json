@@ -212,7 +212,6 @@
     "pagespeed": "node ./internals/scripts/pagespeed.js",
     "postinstall": "npm run build:dll",
     "postsetup": "npm run build:dll",
-    "prebuild": "npm run test && npm run build:clean",
     "preinstall": "npm run npmcheckversion",
     "presetup": "npm i chalk",
     "pretest": "npm run lint",

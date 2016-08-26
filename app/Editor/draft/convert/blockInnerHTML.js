@@ -57,7 +57,6 @@ const getStylesToReset = (remainingStyles, newStyles) => {
 };
 
 const appendStartMarkup = (inlineMarkup, string, styleRange) => {
-  console.log(inlineMarkup);
   return string + inlineMarkup[styleRange.style].start;
 };
 
