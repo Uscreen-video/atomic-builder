@@ -9,17 +9,17 @@ import styles from './styles.css';
 
 export default compose(
   withState('image', 'setImage', props => props.value.url || ''),
-  withState('cover', 'setCover', props => props.value.size || 'auto'),
+  withState('size', 'setSize', props => props.value.size || 'auto'),
   withState('position', 'setPostion', props => ({ x: props.value.x, y: props.value.y })),
   withState('repeat', 'setRepeat', props => props.value.repeat || 'no-repeat'),
   withHandlers({
-    onCoverChange: props => e => {
+    onSizeChange: props => e => {
       e.stopPropagation();
-      const status = !props.cover;
-      props.setCover(status);
+      const status = !props.size;
+      props.setSize(status);
       props.onSettingsChange && props.onSettingsChange(props.settingKey, {
         ...props.value,
-        size: !status ? 'cover' : 'auto',
+        size: !status ? 'cover' : 'auto'
       });
     },
     onRepeatChange: props => e => {
@@ -48,7 +48,7 @@ export default compose(
       const images = await imagesToBase64(files);
       props.setImage(images[0]);
       props.onSettingsChange && props.onSettingsChange(props.settingKey, {
-        ...props.value, 
+        ...props.value,
         url: images[0]
       });
     }
@@ -56,9 +56,11 @@ export default compose(
 )(({
   label,
   image,
+  size,
+  position,
   repeat,
   onDrop,
-  onCoverChange,
+  onSizeChange,
   onRepeatChange,
   onPositionChange
 }) => (
@@ -84,12 +86,16 @@ export default compose(
             <div
               className={cx(
                 styles.fileUploader__inputBox,
-                styles.fileUploader__inputBox_cover
+                styles.fileUploader__inputBox_size
               )}
-              id='optionCover'
+              id='optionSize'
             >
-              <input type='checkbox' onChange={onCoverChange} />
-              <label htmlFor='optionCover'>Stretch background</label>
+              <input
+                type='checkbox'
+                onChange={onSizeChange}
+                checked={size === 'cover'}
+                />
+              <label htmlFor='optionSize'>Stretch background</label>
             </div>
 
             <div className={styles.fileUploader__repeatingBox}>
@@ -119,24 +125,28 @@ export default compose(
             <p className={styles.fileUploader__title}>Background position:</p>
             <div className={styles.fileUploader__positionBox}>
               {
-                ['x', 'y'].map((position) => (
+                ['x', 'y'].map((positionValue) => (
 
                   <div
-                    key={`bgrPosition-${position}`}
-                    className={cx(styles.fileUploader__inputBox, styles.fileUploader__inputBox_stack)}
-                  >
-                    <label htmlFor={`id-${position}`}>{position === 'x' ? 'Left:' : 'Top:'}</label>
+                    key={`bgrPosition-${positionValue}`}
+                    className={cx(
+                      styles.fileUploader__inputBox,
+                      styles.fileUploader__inputBox_stack
+                    )}>
+                    <label htmlFor={`id-${positionValue}`}>
+                      {positionValue === 'x' ? 'Left (px):' : 'Top (px):'}
+                    </label>
                     <input
                       type='number'
                       onChange={onPositionChange}
-                      id={`id-${position}`}
-                      data-type={position}
+                      id={`id-${positionValue}`}
+                      data-type={positionValue}
+                      value={position[positionValue]}
                     />
                   </div>
                 ))
               }
             </div>
-
           </div>
         </div>
     }

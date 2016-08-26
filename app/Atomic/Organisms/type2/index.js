@@ -14,10 +14,9 @@ export default organism({
     settings: {
       colors: Shape.color({ background: '#fff', color: '' }),
       leftImage: Shape.background({ url: '', x: 0, y: 0, repeat: 'no-repeat', size: 'auto'
-      }, { title: 'Main image:'}),
+      }, { title: 'Main image:' }),
       backgroundImage: Shape.background({ url: '', x: 0, y: 0, repeat: 'no-repeat', size: 'auto' }),
       padding: Shape.padding({ top: 0, right: 0, bottom: 0, left: 0 })
     }
-
   }
 });

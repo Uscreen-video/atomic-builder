@@ -1,16 +1,14 @@
 import Immutable from 'immutable';
 
-const convertSettings = (settings, key) => {
-  const settingsValue = settings.get(key);
-  return Immutable.Iterable.isIterable(settingsValue)
-    ? settingsValue.toJS()
-    : settingsValue;
-};
+const convertSettings = (settings, key) => (
+  key in settings ? settings[key] : false
+);
 
 export default settings => {
+  const convertedSettings = settings.toJS();
   const res = {};
 
-  const colors = convertSettings(settings, 'colors');
+  const colors = convertSettings(convertedSettings, 'colors');
   if (colors) {
     const { background, color } = colors;
     res.backgroundColor = background;
@@ -19,26 +17,26 @@ export default settings => {
     }
   }
 
-  const padding = convertSettings(settings, 'padding');
+  const padding = convertSettings(convertedSettings, 'padding');
   if (padding) {
     const { top, right, bottom, left } = padding;
-    res.padding = `${top}px ${right} ${bottom} ${left}`;
+    res.padding = `${top}px ${right}px ${bottom}px ${left}px`;
   }
 
-  const backgroundImage = convertSettings(settings, 'backgroundImage');
+  const backgroundImage = convertSettings(convertedSettings, 'backgroundImage');
   if (backgroundImage) {
     const { url, size, x, y, repeat } = backgroundImage;
-    res.background = `url(${url}) ${x} ${y} ${repeat} ${res.backgroundColor || 'transparent'}`;
+    res.background = `url(${url}) ${x}px ${y}px ${repeat} ${res.backgroundColor || 'transparent'}`;
     res.backgroundSize = size;
   }
 
-  const leftImage = convertSettings(settings, 'leftImage');
+  const leftImage = convertSettings(convertedSettings, 'leftImage');
   if (leftImage) {
-    const [url, size, { x, y }, repeat] = leftImage;
+    const { url, size, x, y, repeat } = leftImage;
     res.leftImage = `url(${url}) ${x} ${y} ${repeat}`;
   }
 
-  const border = convertSettings(settings, 'border');
+  const border = convertSettings(convertedSettings, 'border');
   if (border) {
     const { width, style, color, radius } = border;
     if (style !== 'none') {
@@ -51,13 +49,13 @@ export default settings => {
     }
   }
 
-  const font = convertSettings(settings, 'font');
+  const font = convertSettings(convertedSettings, 'font');
   if (font) {
     const { weight, size, family, style } = font;
     res.font = `${style} ${weight} ${size}px ${family}`;
   }
 
-  const shadow = convertSettings(settings, 'shadow');
+  const shadow = convertSettings(convertedSettings, 'shadow');
   if (shadow) {
     const { x, y, blur, spread, color } = shadow;
     res.boxShadow = `${x}px ${y}px ${blur}px ${spread}px ${color}`;

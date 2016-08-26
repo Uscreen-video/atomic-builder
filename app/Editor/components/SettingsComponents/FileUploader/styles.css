@@ -8,6 +8,7 @@
         line-height: 20px;
         padding: 0 5px;
         box-sizing: border-box;
+        text-align: center;
         &:focus {
           outline: none;
         }
@@ -18,7 +19,7 @@
       color: #333;
       margin-left: 5px;
     }
-    &_cover {
+    &_size {
       margin: 10px 0 20px 8px;
     }
   }
