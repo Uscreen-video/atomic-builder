@@ -6,7 +6,11 @@ import styles from './styles.css';
 
 
 const Content = ({ settings, content }) => (
-  <div className={cx(styles.videoWrap, styles[`align_${settings.get('align')}`])}>
+  <div
+    data-url={content}
+    data-width={settings.get('width')}
+    data-height={settings.get('height')}
+    className={cx(styles.videoWrap, styles[`align_${settings.get('align')}`], 'atomic-video')}>
     <Player
       url={content}
       width={settings.get('width') || 200}

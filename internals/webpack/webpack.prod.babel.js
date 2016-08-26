@@ -15,10 +15,13 @@ const postcssColor = require('postcss-color-function');
 
 module.exports = require('./webpack.base.babel')({
   // In production, we skip all hot-reloading stuff
-  entry: [
-    'babel-polyfill',
-    path.join(process.cwd(), 'app/app.js')
-  ],
+  entry: {
+    widgets: path.join(process.cwd(), 'app/widgets.js'),
+    main: [
+      'babel-polyfill',
+      path.join(process.cwd(), 'app/app.js')
+    ]
+  },
 
   // Utilize long-term caching by adding content hashes (not compilation hashes) to compiled assets
   output: {
@@ -35,7 +38,7 @@ module.exports = require('./webpack.base.babel')({
 
   cssExternalLoaders: ExtractTextPlugin.extract(
     'style-loader',
-    'css-loader&importLoaders=1!postcss-loader'
+    'css-loader'
   ),
 
   // In production, we minify our CSS with cssnano
@@ -89,7 +92,7 @@ module.exports = require('./webpack.base.babel')({
     }),
 
     // Extract the CSS into a seperate file
-    new ExtractTextPlugin('[name].[contenthash].css'),
+    new ExtractTextPlugin('main.css'),
 
     // Put it in the end to capture all the HtmlWebpackPlugin's
     // assets manipulations and do leak its manipulations to HtmlWebpackPlugin

@@ -33,11 +33,14 @@ const plugins = [
 
 module.exports = require('./webpack.base.babel')({
   // Add hot reloading in development
-  entry: [
-    'babel-polyfill',
-    'webpack-hot-middleware/client',
-    path.join(process.cwd(), 'app/app.js'), // Start with js/app.js
-  ],
+  entry: {
+    main: [
+      'babel-polyfill',
+      'webpack-hot-middleware/client',
+      path.join(process.cwd(), 'app/app.js'), // Start with js/app.js
+    ],
+    widgets: path.join(process.cwd(), 'app/widgets.js')
+  },
 
   // Don't use hashes in dev mode for better performance
   output: {
@@ -46,7 +49,8 @@ module.exports = require('./webpack.base.babel')({
   },
 
   // Add development plugins
-  plugins: dependencyHandlers().concat(plugins), // eslint-disable-line no-use-before-define
+  plugins, // eslint-disable-line no-use-before-define
+  // plugins: dependencyHandlers().concat(plugins), // eslint-disable-line no-use-before-define
 
   // Load the CSS in a style tag in development
   cssLoaders: 'style-loader!css-loader?localIdentName=[local]__[path][name]__[hash:base64:5]&modules&importLoaders=1&sourceMap!postcss-loader',
