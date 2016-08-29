@@ -17,10 +17,13 @@ export default settings => {
     }
   }
 
-  const padding = convertSettings(convertedSettings, 'padding');
-  if (padding) {
-    const { top, right, bottom, left } = padding;
+  const spacing = convertSettings(convertedSettings, 'spacing');
+  if (spacing) {
+    const { top, right, bottom, left } = spacing.padding;
     res.padding = `${top}px ${right}px ${bottom}px ${left}px`;
+
+    const { top: topMargin, right: rightMargin, bottom: bottomMargin, left: leftMargin } = spacing.margin;
+    res.margin = `${topMargin}px ${rightMargin}px ${bottomMargin}px ${leftMargin}px`;
   }
 
   const backgroundImage = convertSettings(convertedSettings, 'backgroundImage');

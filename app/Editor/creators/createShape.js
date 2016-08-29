@@ -21,11 +21,11 @@ class Shape extends Record({ // eslint-disable-line new-cap
       ...extendObject
     };
   }
-  padding(value, extendObject) {
+  spacing(value, extendObject) {
     return {
-      type: 'padding',
+      type: 'spacing',
       description: 'Some description',
-      title: 'Paddings:',
+      title: 'Margins and paddings:',
       value,
       ...extendObject
     };

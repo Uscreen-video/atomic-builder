@@ -5,20 +5,14 @@ import Editor from './Editor/';
 import getStyles from 'Editor/helpers/getStyles';
 
 const Component = ({ settings, content, style }) => {
-  const settingValue = settings.get('url');
-  const link = (
-      Immutable.Iterable.isIterable(settingValue)
-      ? settingValue.toJS()
-      : settingValue
-    );
-  const { url, target } = link;
+  const { url, target } = settings.link;
 
   return (
-    <div className={cx(styles.wrap, styles[`align_${settings.get('align')}`])}>
+    <div className={cx(styles.wrap, styles[`align_${settings.align}`])}>
       <a
         style={style}
         href={url}
-        className={cx(styles.button, styles[`button_${settings.get('type')}`])}
+        className={cx(styles.button, styles[`button_${settings.type}`])}
         target={target}>
         { content }
       </a>
@@ -39,8 +33,8 @@ export default ({
     <div>
       {
         !active
-        ? <Component {... { settings, content, style }} />
-        : <Editor {...{ content, deactivate, onChange, updateSettings, settings, style }} />
+        ? <Component {...{ settings: settings.toJS(), content, style }} />
+        : <Editor {...{ content, deactivate, onChange, updateSettings, settings: settings.toJS(), style }} />
       }
     </div>
   );

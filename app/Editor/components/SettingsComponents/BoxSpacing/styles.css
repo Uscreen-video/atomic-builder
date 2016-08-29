@@ -9,6 +9,38 @@
     padding: 40px 60px;
     margin: 10px;
   }
+  &__options {
+    display: flex;
+    width: 210px;
+    background-color: #F8F8F8;
+    border-radius: 10px;
+    margin: 0 auto 20px;
+    box-shadow: 0 0 3px #aaa inset;
+    text-align: center;
+  }
+  &__labelOptions {
+    color: #333;
+    line-height: 30px;
+    display: inline-block;
+    padding: 0 15px;
+    text-transform: uppercase;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 10px 0 0 10px;
+  }
+  &__inputBox_radio {
+    width: 50%;
+    &:last-child label {
+      border-radius: 0 10px 10px 0;
+    }
+    & > input {
+    appearance: none;
+      &:checked + label {
+        background: linear-gradient(to bottom, #39b6b3 0%,#287f7c 50%,#287f7c 51%,#39b6b3 100%);
+        color: #fff;
+      }
+    }
+  }
   &__content {
     background: #fff;
     width: 100%;

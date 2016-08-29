@@ -10,9 +10,9 @@ export default (type, { preview, props: rawProps }) => {
     if (_props.has('settings')) {
       const _settings = _props.get('settings');
       const settings = _settings.reduce((acc, obj, key) =>
-        acc.set(key, obj.get('value'))
-      , Map({}));
-      _props.set('settings', settings)
+        acc.set(key, obj.get('value')),
+        Map({}));
+      _props.set('settings', settings);
     }
   });
 

@@ -23,7 +23,7 @@
     &:last-child label {
       border-radius: 0 10px 10px 0;
     }
-    & > input {      
+    & > input {
     appearance: none;
       &:checked + label {
         background: linear-gradient(to bottom, #39b6b3 0%,#287f7c 50%,#287f7c 51%,#39b6b3 100%);

@@ -1,6 +1,7 @@
 import { compose, withState, withHandlers } from 'recompose';
 import cx from 'classnames';
 import Select from 'react-select';
+import Icon from 'Editor/components/Icon';
 import SettingsTitle from '../SettingsTitle';
 
 import styles from './styles.css';
@@ -47,7 +48,7 @@ export default compose(
       });
     },
     onStyleChange: props => e => {
-      const value = e.target.value;
+      const value = e.target.checked ? 'italic' : 'normal';
       props.setStyle(value);
       props.onSettingsChange && props.onSettingsChange(props.settingKey, {
         ...props.value,
@@ -55,7 +56,7 @@ export default compose(
       });
     },
     onWeightChange: props => e => {
-      const value = e.target.value;
+      const value = e.target.checked ? '700' : '400';
       props.setWeight(value);
       props.onSettingsChange && props.onSettingsChange(props.settingKey, {
         ...props.value,
@@ -140,111 +141,106 @@ export default compose(
           )} />
       </div>
     </div>
-    <h2 className={styles.font__title}>Font styles:</h2>
-    <div className={styles.font__controls}>
-        {
-          ['normal', 'italic'].map((styleValue) => (
-
-            <div
-              key={`style-${styleValue}`}
-              className={cx(styles.font__inputBox, styles.font__inputBox_radio)}
-            >
-              <input
-                type='radio'
-                onChange={onStyleChange}
-                id={`styleId-${styleValue}`}
-                value={styleValue}
-                name='fontStyle'
-                checked={style === styleValue}
-              />
-              <label
-                htmlFor={`styleId-${styleValue}`}
-                className={cx(styles.font__labelOptions)}
-                style={{ fontStyle: styleValue }}>
-                  {styleValue}
-              </label>
-            </div>
-          ))
-        }
-    </div>
-    <h2 className={styles.font__title}>Font weight:</h2>
-    <div className={styles.font__controls}>
-        {
-          ['300', '400', '700'].map((weightValue) => (
-
-            <div
-              key={`weight-${weightValue}`}
-              className={cx(styles.font__inputBox, styles.font__inputBox_radio)}
-            >
-              <input
-                type='radio'
-                onChange={onWeightChange}
-                id={`weightId-${weightValue}`}
-                value={weightValue}
-                name='fontWeight'
-                checked={weight === weightValue}
-              />
-              <label
-                htmlFor={`weihgtId-${weightValue}`}
-                className={cx(styles.font__labelOptions)}
-                style={{ fontWeight: weightValue }}>
-                  {weightTable[weightValue]}
-              </label>
-            </div>
-          ))
-        }
-    </div>
-    <h2 className={styles.font__title}>Text decoration:</h2>
-    <div className={styles.font__controls}>
-        {
-          ['line-through', 'underline', 'none'].map((decorationValue) => (
-            <div
-              key={`decoration-${decorationValue}`}
-              className={cx(styles.font__inputBox, styles.font__inputBox_radio)}
-            >
-              <input
-                type='radio'
-                onChange={onDecorationChange}
-                id={`styleId-${decorationValue}`}
-                value={decorationValue}
-                name='fontDecoration'
-                checked={decoration === decorationValue}
-              />
-              <label
-                htmlFor={`decorationId-${decorationValue}`}
-                className={cx(styles.font__labelOptions)}
-                style={{ textDecoration: decorationValue }}>
-                  {decorationValue}
-              </label>
-            </div>
-          ))
-        }
-    </div>
-    <h2 className={styles.font__title}>Text case:</h2>
-    <div className={styles.font__controls}>
-        {
-          ['lowercase', 'uppercase', 'none'].map((caseValue) => (
-            <div
-              key={`style-${caseValue}`}
-              className={cx(styles.font__inputBox, styles.font__inputBox_radio)}
-            >
-              <input
-                type='radio'
-                onChange={onTransformChange}
-                id={`caseId-${caseValue}`}
-                value={caseValue}
-                name='fontCase'
-                checked={transform === caseValue}
-              />
-              <label
-                htmlFor={`caseId-${caseValue}`}
-                className={cx(styles.font__labelOptions)}
-                style={{ textTransform: caseValue }}>
-                  {caseValue}
-              </label>
-            </div>
-          ))
-        }
+    <div className={styles.font__controlsContainer}>
+      <div className={styles.font__controls}>
+        <div className={styles.font__labelBox}>
+          <span className={styles.font__title}>Font styles:</span>
+        </div>
+        <div
+          className={cx(
+            styles.font__inputBox,
+            styles.font__inputBox_checkbox
+          )}>
+          <input
+            type='checkbox'
+            onChange={onStyleChange}
+            id='styleId'
+            value='italic'
+            checked={style === 'italic'}
+          />
+          <label
+            htmlFor='styleId'
+            className={cx(styles.font__labelOptions)}>
+              <Icon width='24' height='24' value='italic' />
+          </label>
+        </div>
+        <div
+          className={cx(
+            styles.font__inputBox,
+            styles.font__inputBox_checkbox
+          )}>
+          <input
+            type='checkbox'
+            onChange={onWeightChange}
+            id='weightId'
+            value='700'
+            name='fontWeight'
+            checked={weight === '700'}
+          />
+          <label
+            htmlFor='weightId'
+            className={cx(styles.font__labelOptions)}>
+              <Icon width='24' height='24' value='bold' />
+          </label>
+        </div>
+      </div>
+      <div className={styles.font__controls}>
+        <div className={styles.font__labelBox}>
+          <span className={styles.font__title}>Text decoration:</span>
+        </div>
+          {
+            ['line-through', 'underline', 'none'].map((decorationValue) => (
+              <div
+                key={`decoration-${decorationValue}`}
+                className={cx(styles.font__inputBox, styles.font__inputBox_radio)}
+              >
+                <input
+                  type='radio'
+                  onChange={onDecorationChange}
+                  id={`decorationId-${decorationValue}`}
+                  value={decorationValue}
+                  name='fontDecoration'
+                  checked={decoration === decorationValue}
+                />
+                <label
+                  htmlFor={`decorationId-${decorationValue}`}
+                  className={cx(styles.font__labelOptions)}>
+                    {
+                      decorationValue === 'none' ? 'none' : <Icon width='24' height='24' value={decorationValue} />
+                    }
+                </label>
+              </div>
+            ))
+          }
+      </div>
+      <div className={styles.font__controls}>
+        <div className={styles.font__labelBox}>
+          <span className={styles.font__title}>Text case:</span>
+        </div>
+          {
+            ['lowercase', 'uppercase', 'none'].map((caseValue) => (
+              <div
+                key={`style-${caseValue}`}
+                className={cx(styles.font__inputBox, styles.font__inputBox_radio)}>
+                <input
+                  type='radio'
+                  onChange={onTransformChange}
+                  id={`caseId-${caseValue}`}
+                  value={caseValue}
+                  name='fontCase'
+                  checked={transform === caseValue}
+                />
+                <label
+                  htmlFor={`caseId-${caseValue}`}
+                  className={cx(styles.font__labelOptions)}>
+                    {
+                      caseValue === 'none' ? 'none' : <Icon width='24' height='24' value={caseValue} />
+                    }
+                </label>
+              </div>
+            ))
+          }
+      </div>
     </div>
   </SettingsTitle>
 ));

@@ -11,7 +11,10 @@ export default atom({
       align: Shape.align(),
       colors: Shape.color({ background: '#fff', color: '' }),
       backgroundImage: Shape.background(['', 'auto', { x: 0, y: 0 }, 'no-repeat']),
-      padding: Shape.padding({ top: 0, right: 0, bottom: 0, left: 0 })
+      spacing: Shape.spacing({
+        margin: { top: 0, right: 0, bottom: 0, left: 0 },
+        padding: { top: 0, right: 0, bottom: 0, left: 0 }
+      })
     }
   }
 });

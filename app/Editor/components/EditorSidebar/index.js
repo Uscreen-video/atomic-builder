@@ -33,6 +33,8 @@ const EditorSidebar = compose(
             let component = null;
             const { type, title, value: defaultValue } = mapper[key];
             const settings = organisms.getIn(cursor, 'settings');
+            const groups = organisms.getIn(cursor, 'groups');
+            console.log(groups);
             const settingValue = settings.get(key);
             const value = (
                 Immutable.Iterable.isIterable(settingValue)

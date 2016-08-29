@@ -17,11 +17,11 @@ const Editor = compose(
   onChange,
   style
 }) => (
-  <div className={cx(styles.wrap, styles[`align_${settings.get('align')}`])}>
+  <div className={cx(styles.wrap, styles[`align_${settings.align}`])}>
     <a
       style={style}
-      href={settings.get('url')}
-      className={cx(styles.button, styles[`button_${settings.get('type')}`])}>
+      href={settings.link.url}
+      className={cx(styles.button, styles[`button_${settings.type}`])}>
       <Input
         minWidth={20}
         ref={focus}

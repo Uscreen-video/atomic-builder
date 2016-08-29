@@ -1,42 +1,39 @@
-.wrap{
+.button {
+    font-family: inherit;
+    font-size: 100%;
+    line-height: normal;
+    display: inline-block;
+    zoom: 1;
+    box-sizing: border-box;
+    padding: .5em 1em;
+    cursor: pointer;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+    text-decoration: none;
+    color: #444;
+    color: rgba(0,0,0,.8);
+    border: 1px solid #999;
+    border: 0 rgba(0,0,0,0);
+    border-radius: 2px;
+    background-color: #e6e6e6;
 }
 
-.button{
-  font-family: inherit;
-  font-size: 100%;
-  padding: .5em 1em;
-  color: #444;
-  color: rgba(0,0,0,.8);
-  border: 1px solid #999;
-  border: 0 rgba(0,0,0,0);
-  background-color: #E6E6E6;
-  text-decoration: none;
-  border-radius: 2px;
-  display: inline-block;
-  zoom: 1;
-  line-height: normal;
-  white-space: nowrap;
-  vertical-align: middle;
-  text-align: center;
-  cursor: pointer;
-  box-sizing: border-box;
 
+.align_left {
+    text-align: left;
+}
+.align_center {
+    text-align: center;
+}
+.align_right {
+    text-align: right;
 }
 
-.align_left{
-  text-align: left;
-}
-.align_center{
-  text-align: center;
-}
-.align_right{
-  text-align: right;
-}
-
-.input > input{
-  border: none;
-  padding: 0;
-  outline: none;
-  min-width: 20px;
-  background: transparent;
+.input > input {
+    min-width: 20px;
+    padding: 0;
+    border: none;
+    outline: none;
+    background: transparent;
 }
