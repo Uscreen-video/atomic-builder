@@ -26,6 +26,7 @@ const createWindow = content => {
   const scripts = document.getElementsByTagName('script') || [];
   let css = '';
   let script = '';
+
   for (const i in styles){
     const href = styles[i].getAttribute && styles[i].getAttribute('href');
     if (href && href.includes('main')) css = href;
@@ -36,6 +37,10 @@ const createWindow = content => {
   }
   const html = mock(content, css, script);
   openWindow.document.write(html);
+  if (process.env.NODE_ENV === 'development') {
+    const style = document.head.getElementsByTagName('style')[0];
+    openWindow.document.head.appendChild(style.cloneNode(true));
+  }
   openWindow.onBeforeUnload = () => openWindow = void 0;
 };
 
