@@ -5,8 +5,8 @@ import { fromJS, Map } from 'immutable';
 import Preview from '../components/EditorPreview';
 import dndHandler from '../dnd/handler';
 
-export default (type, { preview, props: rawProps }) => {
-  const props = fromJS(rawProps).withMutations(_props => {
+export default (type, { preview, props: rawProps, data }) => {
+  const props = data ? data : fromJS(rawProps).withMutations(_props => {
     if (_props.has('settings')) {
       const _settings = _props.get('settings');
       const settings = _settings.reduce((acc, obj, key) =>

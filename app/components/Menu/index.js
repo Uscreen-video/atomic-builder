@@ -3,6 +3,7 @@ import cx from 'classnames';
 import { PropTypes } from 'react';
 import * as organisms from 'Atomic/Organisms';
 import * as atoms from 'Atomic/Atoms';
+import * as templates from 'Atomic/Templates';
 import { Motion, spring } from 'react-motion';
 import Animation, { computeStyles } from 'Editor/immutable/animation';
 
@@ -13,18 +14,22 @@ const { object } = PropTypes;
 
 const organismsArray = Object.keys(organisms).map(key => organisms[key].Preview);
 const atomsArray = Object.keys(atoms).map(key => atoms[key].Preview);
+const templatesArray = Object.keys(templates).map(key => templates[key].Preview);
 
 const types = {
   organism: organismsArray,
+  templates: templatesArray,
   molecule: [],
   atom: atomsArray
 };
 
+console.log(templates);
 
-const getButtonAnimation = (type, active) =>
+
+const getButtonContainerAnimation = (type, active) =>
   active
     && new Animation().animate('x', 0).animate('opacity', 1).run
-    || new Animation().animate('x', type === 'organism' ? 20 : -20).animate('opacity', 0).run;
+    || new Animation().animate('x', type === 'left' ? 20 : -20).animate('opacity', 0).run;
 
 const Button = compose(
   withHandlers({
@@ -42,11 +47,8 @@ const Button = compose(
     )
   }))
 )(({ visible, ...props }) => (
-  <Motion style={getButtonAnimation(props.type, visible)}>
-    { motion => <button style={computeStyles(motion)} {...props} /> }
-  </Motion>
+  <button {...props} />
 ));
-
 
 const List = ({ active, visible }) => (
   <Motion style={{ opacity: spring(visible ? 1 : 0, { stiffness: 250 }) }}>
@@ -89,9 +91,32 @@ export const Menu = compose(
   <div
     className={cx(styles.wrap, props.visible && styles.wrapActive)} onMouseLeave={props.hideList}>
     <div className={styles.tabs}>
-      <Button type='organism' title='Shapes' {...props} />
+      <Motion style={getButtonContainerAnimation('left', props.visible)}>
+          { motion =>
+            <div
+              style={computeStyles(motion)}
+              className={cx(
+                styles.button__container,
+                styles.button__container_left
+              )}>
+              <Button type='organism' title='Shapes' {...props} />
+            </div>
+          }
+      </Motion>
       <Toggler onClick={props.toggleMenu} active={props.visible} />
-      <Button type='atom' title='Elements' {...props} />
+      <Motion style={getButtonContainerAnimation('right', props.visible)}>
+          { motion =>
+            <div
+              style={computeStyles(motion)}
+              className={cx(
+                styles.button__container,
+                styles.button__container_right
+              )}>
+              <Button type='atom' title='Elements' {...props} />
+              <Button type='templates' title='Templates' {...props} />
+            </div>
+          }
+      </Motion>
     </div>
     <List active={props.active} visible={props.visible} />
   </div>

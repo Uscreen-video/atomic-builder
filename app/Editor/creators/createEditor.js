@@ -33,6 +33,7 @@ compose(
   withHandlers({
     updateEditorState: props => (key, state) => {
       const mutation = props.organisms.setIn(key, state);
+      console.log(JSON.stringify(mutation.toJS()));
       props.update(mutation);
     }
   }),

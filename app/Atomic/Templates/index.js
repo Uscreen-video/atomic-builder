@@ -1,0 +1,1 @@
+export type1 from './type1';

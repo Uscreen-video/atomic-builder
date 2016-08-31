@@ -41,18 +41,14 @@
 .button{
   color: color(white a(60%));
   border: 0;
-  z-index: 1;
   margin-top: 5px;
   padding: 5px 10px;
   background: transparent;
   text-transform: uppercase;
   cursor: pointer;
   font-weight: 300;
-  position: relative;
   letter-spacing: 1px;
-  transition: color .2s ease-in-out;
   outline: none;
-  position: absolute!important;
   &:hover{
     color: white;
   }
@@ -66,13 +62,25 @@
   }
 }
 
+.button__container {
+  position: absolute!important;
+  display: flex;
+  top: 0;
+  transition: color .2s ease-in-out;
+  z-index: 1;
+  &_left {
+    right: 100%;
+  }
+  &_right {
+    left: 100%;
+  }
+}
 .button_organism{
-  right: 100%;
 }
 .button_atom{
-  left: 100%;
 }
-
+.button_templates {
+}
 .listWrap{
   position: absolute;
   width: 100%;
