@@ -1,5 +1,6 @@
 import { compose, withState, withHandlers } from 'recompose';
 import cx from 'classnames';
+import Icon from 'Editor/components/Icon';
 import ColorPicker from '../ColorPicker';
 import SettingsTitle from '../SettingsTitle';
 
@@ -50,6 +51,21 @@ export default compose(
         ...props.value,
         spread: value
       });
+    },
+    onResetClick: props => (e) => {
+      e.stopPropagation();
+      console.log("click");
+      props.setColor('transparent');
+      props.setPosition({ x: 0, y: 0 });
+      props.setBlur(0);
+      props.setSpread(0);
+      props.onSettingsChange && props.onSettingsChange(props.settingKey, {
+        x: 0,
+        y: 0,
+        blur: 0,
+        spread: 0,
+        color: '#333'
+      });
     }
   })
 )(({
@@ -61,7 +77,8 @@ export default compose(
   onColorChange,
   onPositionChange,
   onBlurChange,
-  onSpreadChange
+  onSpreadChange,
+  onResetClick
 }) => (
   <SettingsTitle label={label}>
     <h2 className={styles.shadow__title}>Shadow options:</h2>
@@ -84,24 +101,27 @@ export default compose(
             </div>
           ))
         }
-            <div className={cx(styles.shadow__inputBox)}>
-              <label htmlFor='shadowId-blur'>Blur:</label>
-              <input
-                type='number'
-                onChange={onBlurChange}
-                id='shadowId-blur'
-                value={blur}
-              />
-            </div>
-            <div className={cx(styles.shadow__inputBox)}>
-              <label htmlFor='shadowId-spread'>Spread:</label>
-              <input
-                type='number'
-                onChange={onSpreadChange}
-                id='shadowId-spread'
-                value={spread}
-              />
-            </div>
+        <div className={cx(styles.shadow__inputBox)}>
+          <label htmlFor='shadowId-blur'>Blur:</label>
+          <input
+            type='number'
+            onChange={onBlurChange}
+            id='shadowId-blur'
+            value={blur}
+          />
+        </div>
+        <div className={cx(styles.shadow__inputBox)}>
+          <label htmlFor='shadowId-spread'>Spread:</label>
+          <input
+            type='number'
+            onChange={onSpreadChange}
+            id='shadowId-spread'
+            value={spread}
+          />
+        </div>
+        <div className={styles.shadow__resetButton} onClick={onResetClick}>
+          <Icon value='cross' />
+        </div>
     </div>
     <ColorPicker
       color={color}

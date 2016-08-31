@@ -55,13 +55,19 @@ export default settings => {
 
   const font = convertSettings(convertedSettings, 'font');
   if (font) {
-    const { weight, size, family, style, transform, decoration } = font;
+    const { weight, size, family, style, transform, decoration, lineHeight, letterSpacing } = font;
     res.font = `${style} ${weight} ${size}px ${family}`;
     if (transform) {
       res.textTransform = transform;
     }
     if (decoration) {
       res.textDecoration = decoration;
+    }
+    if (lineHeight) {
+      res.lineHeight = `${lineHeight}%`;
+    }
+    if (letterSpacing) {
+      res.letterSpacing = `${letterSpacing}px`;
     }
   }
 

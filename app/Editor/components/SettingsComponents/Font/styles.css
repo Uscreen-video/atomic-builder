@@ -18,8 +18,10 @@
     padding: 0 10px;
     font-family: 'Open Sans', sans-serif;
     box-sizing: border-box;
-    &:focus {
-      outline: none;
+    &_icon {
+      padding-left: 26px;
+      width: 100%;
+      box-sizing: border-box;
     }
   }
   &__labelOptions {
@@ -33,6 +35,14 @@
     border-radius: 5px;
     border: 1px solid transparent;
   }
+  &__labelIcon {
+    display: block;
+    height: 18px;
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+  }
   &__inputBox {
     margin: 0 20px 0 0;
     width: 70%;
@@ -40,6 +50,16 @@
       width: 20%;
       margin-right: 0;
       text-align: center;
+    }
+    &_iconInput {
+      position: relative;
+      width: 24%;
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+    & input:focus {
+      outline: none;
     }
     &_radio,
     &_checkbox {

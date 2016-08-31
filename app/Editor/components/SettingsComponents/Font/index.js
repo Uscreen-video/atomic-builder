@@ -31,6 +31,8 @@ export default compose(
   withState('weight', 'setWeight', props => props.value.weight),
   withState('decoration', 'setDecoration', props => props.value.decoration),
   withState('transform', 'setTransform', props => props.value.transform),
+  withState('lineHeight', 'setLineHeight', props => props.value.lineHeight),
+  withState('letterSpacing', 'setLetterSpacing', props => props.value.letterSpacing),
   withHandlers({
     onFamilyChange: props => option => {
       props.setFamily(option.value);
@@ -79,6 +81,22 @@ export default compose(
         transform: value
       });
     },
+    onLineHeightChange: props => e => {
+      const value = e.target.value;
+      props.setLineHeight(value);
+      props.onSettingsChange && props.onSettingsChange(props.settingKey, {
+        ...props.value,
+        lineHeight: value
+      });
+    },
+    onLetterSpacingChange: props => e => {
+      const value = e.target.value;
+      props.setLetterSpacing(value);
+      props.onSettingsChange && props.onSettingsChange(props.settingKey, {
+        ...props.value,
+        letterSpacing: value
+      });
+    },
     renderOption: props => option => (
       <span className='react-select__option' style={{ fontFamily: option.value }}>{option.label}</span>
     ),
@@ -94,12 +112,16 @@ export default compose(
   style,
   decoration,
   transform,
+  letterSpacing,
+  lineHeight,
   onSizeChange,
   onWeightChange,
   onFamilyChange,
   onStyleChange,
   onDecorationChange,
   onTransformChange,
+  onLetterSpacingChange,
+  onLineHeightChange,
   renderOption,
   renderValue
 }) => (
@@ -182,6 +204,52 @@ export default compose(
             className={cx(styles.font__labelOptions)}>
               <Icon width='24' height='24' value='bold' />
           </label>
+        </div>
+      </div>
+      <div className={styles.font__controls}>
+        <div className={styles.font__labelBox}>
+          <span className={styles.font__title}>Text spacing:</span>
+        </div>
+        <div
+          className={cx(
+            styles.font__inputBox,
+            styles.font__inputBox_iconInput
+          )}>
+          <label
+            htmlFor='lhId'
+            className={cx(styles.font__labelIcon)}>
+              <Icon width='18' height='18' value='lineHeight' />
+          </label>
+          <input
+            type='number'
+            onChange={onLineHeightChange}
+            id='lhId'
+            value={lineHeight}
+            className={cx(
+              styles.font__input_icon
+            )}
+          />
+        </div>
+        <div
+          className={cx(
+            styles.font__inputBox,
+            styles.font__inputBox_iconInput
+          )}>
+          <label
+            htmlFor='lsId'
+            className={cx(styles.font__labelIcon)}>
+              <Icon width='18' height='14' value='letterSpacing' />
+          </label>
+          <input
+            type='number'
+            onChange={onLetterSpacingChange}
+            id='lsId'
+            value={letterSpacing}
+            className={cx(
+              styles.font__input_icon
+            )}
+
+          />
         </div>
       </div>
       <div className={styles.font__controls}>

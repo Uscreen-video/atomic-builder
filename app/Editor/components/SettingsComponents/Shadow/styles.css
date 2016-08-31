@@ -31,4 +31,20 @@
     font-size: 14px;
     color: #333;
   }
+  &__resetButton {
+    height: 12px;
+    width: 12px;
+    border-radius: 20px;
+    background: #39B6B3;
+    padding: 2px;
+    text-align: center;
+    vertical-align: middle;
+    margin: 24px 0 0;
+    & svg {
+      fill: #fff;
+      height: 12px;
+      width: 12px;
+    }
+  }
+
 }

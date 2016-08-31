@@ -29,7 +29,7 @@ td {
 
 p {
   font-size: inherit;
-  line-height: 1.6;
+  line-height: inherit;
   margin-bottom: 1rem;
   text-rendering: optimizeLegibility; }
 
