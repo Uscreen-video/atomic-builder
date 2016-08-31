@@ -78,7 +78,13 @@ export const Menu = compose(
     onChange: props => key => props.setActive(key),
     hideList: props => () => props.setVisible(false),
     showList: props => () => props.setVisible(true),
-    toggleMenu: props => () => props.setVisible(!props.visible)
+    toggleMenu: props => (e) => {
+      e.preventDefault();
+      e.nativeEvent.which === 3
+      && window.templatesShape
+      && console.log(window.templatesShape);
+      return props.setVisible(!props.visible);
+    }
   }),
   lifecycle({
     componentWillReceiveProps(next) {
