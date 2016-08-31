@@ -143,11 +143,11 @@ fontfaceobserver	package.json	/^    "fontfaceobserver": "2.0.1",$/;"	f
 genFragment	app/Editor/draft/convert/convertFromHTML.js	/^function genFragment($/;"	f
 generate	package.json	/^    "generate": "plop --plopfile internals\/generators\/index.js",$/;"	f
 getBlockAlignment	app/Editor/draft/helpers/blockStyleFn.js	/^function getBlockAlignment(block) {$/;"	f
-getBlockDividerChunk	app/Editor/draft/convert/convertFromHTML.js	/^function getBlockDividerChunk(block, depth) {$/;"	f
+getBlockDividerChunk	app/Editor/draft/convert/convertFromHTML.js	/^function getBlockDividerChunk(block, depth, data = Map()) {$/;"	f
 getBlockTypeForTag	app/Editor/draft/convert/convertFromHTML.js	/^function getBlockTypeForTag(tag, lastList) {$/;"	f
 getChunkForHTML	app/Editor/draft/convert/convertFromHTML.js	/^function getChunkForHTML(html, processCustomInlineStyles, checkEntityNode, checkEntityText, checkBlockType, DOMBuilder) {$/;"	f
 getEmptyChunk	app/Editor/draft/convert/convertFromHTML.js	/^function getEmptyChunk() {$/;"	f
-getSoftNewlineChunk	app/Editor/draft/convert/convertFromHTML.js	/^function getSoftNewlineChunk(block, depth) {$/;"	f
+getSoftNewlineChunk	app/Editor/draft/convert/convertFromHTML.js	/^function getSoftNewlineChunk(block, depth, data = Map()) {$/;"	f
 getWhitespaceChunk	app/Editor/draft/convert/convertFromHTML.js	/^function getWhitespaceChunk(inEntity) {$/;"	f
 hasValidLinkText	app/Editor/draft/convert/convertFromHTML.js	/^function hasValidLinkText(link) {$/;"	f
 history	package.json	/^    "history": "3.0.0",$/;"	f
