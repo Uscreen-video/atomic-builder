@@ -1,5 +1,5 @@
 import cx from 'classnames';
-import { convertToHTML } from 'Editor/draft/convert';
+import { convertToHTML } from 'draft-convert';
 import { EditorState, convertToRaw } from 'draft-js';
 import Editor from './Editor';
 import renderOptions from 'Editor/draft/helpers/renderOptions';
