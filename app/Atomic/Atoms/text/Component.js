@@ -1,10 +1,10 @@
 import cx from 'classnames';
 import { convertToHTML } from 'draft-convert';
-import { EditorState, convertToRaw } from 'draft-js';
+import { convertFromRaw } from 'draft-js';
 import Editor from './Editor';
 import renderOptions from 'Editor/draft/helpers/renderOptions';
 import getStyles from 'Editor/helpers/getStyles';
-
+import { isObject } from 'lodash';
 import styles from './styles.css';
 import typo from './typo.css';
 
@@ -12,8 +12,9 @@ const toHTML = convertToHTML(renderOptions);
 
 const Content = ({ content }) => {
   if (!content) return <p className={styles.placeholder}>Enter text here</p>;
-  if (content instanceof EditorState) {
-    const __html = toHTML(content.getCurrentContent());
+  console.log(content);
+  if (isObject(content)) {
+    const __html = toHTML(convertFromRaw(content.toJS ? content.toJS() : content));
     return <div dangerouslySetInnerHTML={{ __html }} />;
   }
   return <div dangerouslySetInnerHTML={{ __html: content }} />;

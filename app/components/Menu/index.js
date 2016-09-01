@@ -23,8 +23,6 @@ const types = {
   atom: atomsArray
 };
 
-console.log(templates);
-
 
 const getButtonContainerAnimation = (type, active) =>
   active

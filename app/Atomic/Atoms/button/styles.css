@@ -16,7 +16,6 @@
     text-decoration: none;
     color: #444;
     border-radius: 2px;
-    background-color: #e6e6e6;
     &:hover {
       background-color: inherit!important;
     }
