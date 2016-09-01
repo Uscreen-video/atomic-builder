@@ -12,6 +12,12 @@
     text-align: left;
     margin-right: 20px;
   }
+  &__inputTip {
+    position: absolute;
+    right: 7px;
+    color: #333;
+    top: 3px;
+  }
   &__input {
     width: 100%;
     line-height: 26px;
@@ -22,6 +28,10 @@
       padding-left: 26px;
       width: 100%;
       box-sizing: border-box;
+      &:focus + .font__inputTip,
+      &:hover + .font__inputTip {
+        display: none;
+      }
     }
   }
   &__labelOptions {
@@ -49,7 +59,6 @@
     &_size {
       width: 20%;
       margin-right: 0;
-      text-align: center;
     }
     &_iconInput {
       position: relative;

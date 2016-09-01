@@ -1,21 +1,28 @@
 import cx from 'classnames';
 import Immutable from 'immutable';
+import tinycolor from 'tinycolor2';
 import styles from './styles.css';
 import Editor from './Editor/';
 import getStyles from 'Editor/helpers/getStyles';
 
 const Component = ({ settings, content, style }) => {
   const { url, target } = settings.link;
+  const { backgroundColor } = style;
 
   return (
     <div className={cx(styles.wrap, styles[`align_${settings.align}`])}>
-      <a
-        style={style}
-        href={url}
-        className={cx(styles.button, styles[`button_${settings.type}`])}
-        target={target}>
-        { content }
-      </a>
+      <div
+        style={{ backgroundColor: tinycolor(backgroundColor).darken().toString() }}
+        className={styles.buttonContainer}>
+        <a
+          style={style}
+          href={url}
+          className={cx(styles.button, styles[`button_${settings.type}`])}
+          data-hover='#333'
+          target={target}>
+          { content }
+        </a>
+      </div>
     </div>
   );
 };

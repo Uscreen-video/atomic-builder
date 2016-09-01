@@ -8,7 +8,7 @@
   }
   &__inputBox {
     margin: 0 10px 10px 0;
-    width: 20%;    
+    width: 20%;
     & > label {
       color: #333;
       font-size: 13px;

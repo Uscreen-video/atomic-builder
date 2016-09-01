@@ -157,7 +157,7 @@ export default compose(
           type='number'
           onChange={onSizeChange}
           id='sizeId'
-          value={size}
+          value={size}          
           className={cx(
             styles.font__input
           )} />
@@ -229,6 +229,7 @@ export default compose(
               styles.font__input_icon
             )}
           />
+          <span className={cx(styles.font__inputTip)}>%</span>
         </div>
         <div
           className={cx(
@@ -248,8 +249,8 @@ export default compose(
             className={cx(
               styles.font__input_icon
             )}
-
           />
+          <span className={cx(styles.font__inputTip)}>px</span>
         </div>
       </div>
       <div className={styles.font__controls}>

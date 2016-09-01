@@ -28,6 +28,12 @@
     box-sizing: border-box;
     border-radius: 10px 0 0 10px;
   }
+  &__inputTip {
+    position: absolute;
+    top: 4px;
+    right: 6px;
+    color: #333;
+  }
   &__inputBox_radio {
     width: 50%;
     &:last-child label {
@@ -52,15 +58,19 @@
     color: #333;
     & > label {
       margin-right: 5px;
+      text-transform: capitalize;
     }
     &_top {
       top: 8px;
-      left: 106px
+      left: 106px;
     }
     &_right {
       top: 50%;
-      right: 3px;
+      right: 6px;
       transform: translateY(-50%);
+      & .boxSpacing__inputTip {
+        top: 16px;
+      }
       & > label {
         display: block;
         margin-right: 0;
@@ -72,21 +82,34 @@
     }
     &_left {
       top: 50%;
-      left: 10px;
+      left: 7px;
       transform: translateY(-50%);
+      & .boxSpacing__inputTip {
+        top: 16px;
+      }
       & > label {
         display: block;
         margin-right: 0;
       }
-    }    
+    }
   }
   &__input {
-    width: 30px;
+    width: 48px;
     height: 20px;
     line-height: 20px;
-    text-align: center;
-    &:focus {
-      outline: none;
-    }
+    padding-left: 5px;
+    box-sizing: border-box;
+      &::-webkit-inner-spin-button,
+      &::-webkit-outer-spin-button {
+        /*appearance: none;*/
+      }
+      &:focus {
+        outline: none;
+      }
+
+      &:focus + .boxSpacing__inputTip,
+      &:hover + .boxSpacing__inputTip {
+        display: none;
+      }
   }
 }

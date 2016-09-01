@@ -73,7 +73,7 @@ export default compose(
                 styles.boxSpacing__inputbox,
                 styles[`boxSpacing__inputbox_${position}`]
             )}>
-              <label htmlFor={`id-${position}`}>{position} (px):</label>
+              <label htmlFor={`id-${position}`}>{position}:</label>
               <input
                 type='number'
                 data-type={position}
@@ -83,6 +83,7 @@ export default compose(
                 className={cx(
                   styles.boxSpacing__input
                 )} />
+              <span className={cx(styles.boxSpacing__inputTip)}>px</span>
             </div>
           ))
         }
