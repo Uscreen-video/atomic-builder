@@ -8,11 +8,14 @@ import getStyles from 'Editor/helpers/getStyles';
 const Component = ({ settings, content, style }) => {
   const { url, target } = settings.link;
   const { backgroundColor } = style;
+  const convertedColor = tinycolor(backgroundColor).isDark()
+    ? tinycolor(backgroundColor).brighten(20).toString()
+    : tinycolor(backgroundColor).darken().toString();
 
   return (
     <div className={cx(styles.wrap, styles[`align_${settings.align}`])}>
       <div
-        style={{ backgroundColor: tinycolor(backgroundColor).darken().toString() }}
+        style={{ backgroundColor: convertedColor }}
         className={styles.buttonContainer}>
         <a
           style={style}
