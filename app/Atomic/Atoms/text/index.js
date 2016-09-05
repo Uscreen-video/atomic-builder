@@ -10,6 +10,7 @@ export default atom({
     settings: {
       colors: Shape.color({ background: 'transparent', color: '' }),
       font: Shape.font({ weight: 400, size: 16, style: 'normal', family: 'Arial', transform: 'none', decoration: 'none', lineHeight: 150, letterSpacing: 0 }),
+      backgroundImage: Shape.background({ url: '', x: 0, y: 0, repeat: 'no-repeat', size: 'auto' }),
       spacing: Shape.spacing({
         margin: { top: 0, right: 0, bottom: 0, left: 0 },
         padding: { top: 0, right: 0, bottom: 0, left: 0 }

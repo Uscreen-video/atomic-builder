@@ -2,7 +2,6 @@ import {
   compose, withContext, defaultProps, withHandlers,
   withProps, createEagerElement, lifecycle, toClass
 } from 'recompose';
-import UUID from 'uuid-js';
 import { PropTypes } from 'react';
 import { List, Map } from 'immutable';
 import { renderToStaticMarkup } from 'react-dom/server';
@@ -34,11 +33,6 @@ compose(
   withHandlers({
     updateEditorState: props => (key, state) => {
       const mutation = props.organisms.setIn(key, state);
-      const templateShapeId = UUID.create().toString();
-      window.templatesShape = JSON.stringify({
-        ...mutation.toJS()[0],
-        id: templateShapeId
-      });
       props.update(mutation);
     }
   }),

@@ -8,22 +8,29 @@ import getStyles from 'Editor/helpers/getStyles';
 const Component = ({ settings, content, style }) => {
   const { url, target } = settings.link;
   const { backgroundColor } = style;
-  const convertedColor = tinycolor(backgroundColor).isDark()
-    ? tinycolor(backgroundColor).brighten(20).toString()
-    : tinycolor(backgroundColor).darken().toString();
+  let convertedColor;
+
+  if (backgroundColor && backgroundColor !== 'transparent') {
+    convertedColor = tinycolor(backgroundColor).isDark()
+      ? tinycolor(backgroundColor).brighten().toString()
+      : tinycolor(backgroundColor).darken().toString();
+  } else {
+    convertedColor = 'transparent';
+  }
 
   return (
     <div className={cx(styles.wrap, styles[`align_${settings.align}`])}>
-      <div
-        style={{ backgroundColor: convertedColor }}
-        className={styles.buttonContainer}>
+      <div className={styles.button__container}>
         <a
           style={style}
           href={url}
           className={cx(styles.button, styles[`button_${settings.type}`])}
-          data-hover='#333'
+          data-tips='#fff'
           target={target}>
-          { content }
+          <span className={styles.button__title}>{ content }</span>
+          <span
+            style={{ backgroundColor: convertedColor }}
+            className={styles.button__hoverOverlay} />
         </a>
       </div>
     </div>

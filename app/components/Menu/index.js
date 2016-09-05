@@ -55,7 +55,11 @@ const List = ({ active, visible }) => (
       <div style={{ opacity, display: opacity <= 0.3 && 'none' }}>
         { Object.keys(types).map(type =>
           <div key={type} className={cx(styles.listWrap, active === type && styles.activeList)}>
-            <div className={styles.list}>
+            <div
+              className={cx(
+                styles.list,
+                styles[`list__${type}`],
+              )}>
               {
                 types[type].map((Preview, index) => <Preview key={index} />)
               }
@@ -78,9 +82,6 @@ export const Menu = compose(
     showList: props => () => props.setVisible(true),
     toggleMenu: props => (e) => {
       e.preventDefault();
-      e.nativeEvent.which === 3
-      && window.templatesShape
-      && console.log(window.templatesShape);
       return props.setVisible(!props.visible);
     }
   }),

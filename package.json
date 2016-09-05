@@ -23,6 +23,7 @@
     }
   },
   "dependencies": {
+    "aws-sdk": "^2.5.5",
     "babel-polyfill": "6.13.0",
     "blob-util": "^1.2.1",
     "chalk": "1.1.3",

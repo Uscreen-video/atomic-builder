@@ -7,7 +7,7 @@ export default ({
   onClick,
   active
 }) => (
-  <button className={cx(styles.toogler, active && styles.active)} onClick={onClick} onContextMenu={onClick}>
+  <button className={cx(styles.toogler, active && styles.active)} onClick={onClick}>
     <Icon value='cross' />
   </button>
 );

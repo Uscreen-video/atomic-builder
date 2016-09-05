@@ -1,4 +1,7 @@
 .fileUploader {
+  &__dropzoneContainer {
+    position: relative;
+  }
   &__inputBox {
     margin: 0 0 5px 8px;
     &_stack {
@@ -84,5 +87,22 @@
   &__positionBox {
     display: flex;
     justify-content: space-around;
+  }
+  &__resetButton {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 12px;
+    width: 12px;
+    border-radius: 20px;
+    background: #39B6B3;
+    padding: 2px;
+    text-align: center;
+    vertical-align: middle;
+    & svg {
+      fill: #fff;
+      height: 12px;
+      width: 12px;
+    }
   }
 }

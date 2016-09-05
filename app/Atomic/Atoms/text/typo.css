@@ -31,7 +31,11 @@ p {
   font-size: inherit;
   line-height: inherit;
   margin-bottom: 1rem;
-  text-rendering: optimizeLegibility; }
+  text-rendering: optimizeLegibility;
+}
+p:only-of-type {
+  margin-bottom: 0;
+}
 
 em,
 i {
@@ -60,7 +64,11 @@ h6 {
   text-rendering: optimizeLegibility;
   margin-top: 0;
   margin-bottom: 0.5rem;
-  line-height: 1.4; }
+  line-height: 1.4;
+  &:empty {
+    display: none;
+  }
+}
   h1 small,
   h2 small,
   h3 small,

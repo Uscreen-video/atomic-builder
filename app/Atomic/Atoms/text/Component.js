@@ -12,7 +12,6 @@ const toHTML = convertToHTML(renderOptions);
 
 const Content = ({ content }) => {
   if (!content) return <p className={styles.placeholder}>Enter text here</p>;
-  console.log(content);
   if (isObject(content)) {
     const __html = toHTML(convertFromRaw(content.toJS ? content.toJS() : content));
     return <div dangerouslySetInnerHTML={{ __html }} />;

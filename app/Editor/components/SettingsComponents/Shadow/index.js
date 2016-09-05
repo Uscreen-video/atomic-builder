@@ -54,7 +54,6 @@ export default compose(
     },
     onResetClick: props => (e) => {
       e.stopPropagation();
-      console.log("click");
       props.setColor('transparent');
       props.setPosition({ x: 0, y: 0 });
       props.setBlur(0);

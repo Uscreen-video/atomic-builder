@@ -1,6 +1,7 @@
 import { compose, withState, withHandlers } from 'recompose';
 
 import cx from 'classnames';
+import Icon from 'Editor/components/Icon';
 import Dropzone from 'react-dropzone';
 import imagesToBase64 from 'Editor/helpers/imagesToBase64';
 import SettingsTitle from '../SettingsTitle';
@@ -10,7 +11,7 @@ import styles from './styles.css';
 export default compose(
   withState('image', 'setImage', props => props.value.url || ''),
   withState('size', 'setSize', props => props.value.size || 'auto'),
-  withState('position', 'setPostion', props => ({ x: props.value.x, y: props.value.y })),
+  withState('position', 'setPosition', props => ({ x: props.value.x, y: props.value.y })),
   withState('repeat', 'setRepeat', props => props.value.repeat || 'no-repeat'),
   withHandlers({
     onSizeChange: props => e => {
@@ -35,7 +36,7 @@ export default compose(
       e.stopPropagation();
       const key = e.target.dataset.type;
       const value = e.target.value || 0;
-      props.setPostion({
+      props.setPosition({
         ...props.position,
         [key]: value
       });
@@ -51,6 +52,20 @@ export default compose(
         ...props.value,
         url: images[0]
       });
+    },
+    onResetClick: props => (e) => {
+      e.stopPropagation();
+      props.setImage('');
+      props.setPosition({ x: 0, y: 0 });
+      props.setSize('auto');
+      props.setRepeat('no-repeat');
+      props.onSettingsChange && props.onSettingsChange(props.settingKey, {
+        url: '',
+        x: 0,
+        y: 0,
+        repeat: 'no-repeat',
+        size: 'auto'
+      });
     }
   })
 )(({
@@ -62,23 +77,32 @@ export default compose(
   onDrop,
   onSizeChange,
   onRepeatChange,
-  onPositionChange
+  onPositionChange,
+  onResetClick
 }) => (
   <SettingsTitle label={label}>
-    <Dropzone onDrop={onDrop} className={styles.fileUploader__dropzone}>
-      <div className={styles.fileUploader__previewContainer}>
-        {
-          image && <img className={styles.fileUploader__preview} src={image} alt='' />
-        }
-        <span
-          className={cx(
-          styles.fileUploader__dropzoneMessage,
-          image && styles.fileUploader__dropzoneMessage_white,
-        )}>
-            Try dropping some files here, or click to select files to upload.
-        </span>
-      </div>
-    </Dropzone>
+    <div className={styles.fileUploader__dropzoneContainer}>
+      <Dropzone onDrop={onDrop} className={styles.fileUploader__dropzone}>
+        <div className={styles.fileUploader__previewContainer}>
+          {
+            image && <img className={styles.fileUploader__preview} src={image} alt='' />
+          }
+          <span
+            className={cx(
+            styles.fileUploader__dropzoneMessage,
+            image && styles.fileUploader__dropzoneMessage_white,
+          )}>
+              Try dropping some files here, or click to select files to upload.
+          </span>
+          {
+            image &&
+            <div className={styles.fileUploader__resetButton} onClick={onResetClick}>
+              <Icon value='cross' />
+            </div>
+          }
+        </div>
+      </Dropzone>
+    </div>
     {
       image &&
         <div className={styles.fileUploader__backgroundOptions}>
