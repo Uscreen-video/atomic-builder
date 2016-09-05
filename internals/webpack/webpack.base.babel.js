@@ -49,6 +49,11 @@ module.exports = (options) => ({
     }, {
       test: /\.(mp4|webm)$/,
       loader: 'url-loader?limit=10000',
+    }, {
+      test: /aws-sdk/,
+      loaders: [
+          'transform?aws-sdk/dist-tools/transform'
+      ] 
     }],
   },
   plugins: options.plugins.concat([

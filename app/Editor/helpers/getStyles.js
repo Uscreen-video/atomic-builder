@@ -8,15 +8,6 @@ export default settings => {
   const convertedSettings = settings.toJS();
   const res = {};
 
-  const colors = convertSettings(convertedSettings, 'colors');
-  if (colors) {
-    const { background, color } = colors;
-    res.backgroundColor = background;
-    if (color) {
-      res.color = color;
-    }
-  }
-
   const spacing = convertSettings(convertedSettings, 'spacing');
   if (spacing) {
     const { top, right, bottom, left } = spacing.padding;
@@ -28,9 +19,14 @@ export default settings => {
 
   const backgroundImage = convertSettings(convertedSettings, 'backgroundImage');
   if (backgroundImage) {
-    const { url, size, x, y, repeat } = backgroundImage;
-    res.background = `url(${url}) ${x}px ${y}px ${repeat} ${res.backgroundColor || 'transparent'}`;
-    res.backgroundSize = size;
+    const { url, size, x, y, repeat, color } = backgroundImage;
+    if (url) {
+      res.background = `url(${url}) ${x}px ${y}px ${repeat} ${color || 'transparent'}`;      
+      res.backgroundSize = size;
+    } else {
+      res.background = 'none';
+      res.backgroundColor = color;
+    }
   }
 
   const leftImage = convertSettings(convertedSettings, 'leftImage');
@@ -55,7 +51,7 @@ export default settings => {
 
   const font = convertSettings(convertedSettings, 'font');
   if (font) {
-    const { weight, size, family, style, transform, decoration, lineHeight, letterSpacing } = font;
+    const { weight, size, family, style, transform, decoration, lineHeight, letterSpacing, color } = font;
     res.font = `${style} ${weight} ${size}px ${family}`;
     if (transform) {
       res.textTransform = transform;
@@ -68,6 +64,9 @@ export default settings => {
     }
     if (letterSpacing) {
       res.letterSpacing = `${letterSpacing}px`;
+    }
+    if (color) {
+      res.color = color;
     }
   }
 

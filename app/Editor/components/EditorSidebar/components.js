@@ -1,4 +1,3 @@
-export color from 'Editor/components/SettingsComponents/Color';
 export spacing from 'Editor/components/SettingsComponents/BoxSpacing';
 export background from 'Editor/components/SettingsComponents/FileUploader';
 export shadow from 'Editor/components/SettingsComponents/Shadow';

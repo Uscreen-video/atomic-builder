@@ -5,7 +5,7 @@ import cx from 'classnames';
 import Dropzone from 'react-dropzone';
 
 import styles from './styles.css';
-import imagesToBase64 from 'Editor/helpers/imagesToBase64';
+import imagesToBase64 from 'Editor/helpers/imagesConvert';
 
 let _maxWidth = 200;
 

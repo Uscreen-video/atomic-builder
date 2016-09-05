@@ -1,8 +1,9 @@
-import { compose, withState, withHandlers } from 'recompose';
+import { compose, withState, withProps, withHandlers } from 'recompose';
 import cx from 'classnames';
 import Select from 'react-select';
 import Icon from 'Editor/components/Icon';
 import SettingsTitle from '../SettingsTitle';
+import ColorPicker from '../ColorPicker';
 
 import styles from './styles.css';
 import './react-select.css';
@@ -33,6 +34,7 @@ export default compose(
   withState('transform', 'setTransform', props => props.value.transform),
   withState('lineHeight', 'setLineHeight', props => props.value.lineHeight),
   withState('letterSpacing', 'setLetterSpacing', props => props.value.letterSpacing),
+  withState('color', 'setColor', props => props.value.color),
   withHandlers({
     onFamilyChange: props => option => {
       props.setFamily(option.value);
@@ -97,6 +99,13 @@ export default compose(
         letterSpacing: value
       });
     },
+    onColorChange: props => color => {
+      props.setColor(color.hex);
+      props.onSettingsChange && props.onSettingsChange(props.settingKey, {
+        ...props.value,
+        color: color.hex
+      });
+    },
     renderOption: props => option => (
       <span className='react-select__option' style={{ fontFamily: option.value }}>{option.label}</span>
     ),
@@ -114,6 +123,7 @@ export default compose(
   transform,
   letterSpacing,
   lineHeight,
+  color,
   onSizeChange,
   onWeightChange,
   onFamilyChange,
@@ -122,194 +132,205 @@ export default compose(
   onTransformChange,
   onLetterSpacingChange,
   onLineHeightChange,
+  onColorChange,
   renderOption,
-  renderValue
+  renderValue,
+  ...props
 }) => (
   <SettingsTitle label={label}>
-    <div className={styles.font__controls}>
-      <div className={styles.font__inputBox}>
-        <label
-          htmlFor='familyId'
-          className={styles.font__label}>
-          Font family
-        </label>
-        <Select
-          placeholder='Please select a font family'
-          options={options}
-          optionRenderer={renderOption}
-          onChange={onFamilyChange}
-          value={family}
-          valueRenderer={renderValue}
-          clearable={false}
-        />
-      </div>
-      <div
-        className={cx(
-          styles.font__inputBox,
-          styles.font__inputBox_size
-        )}>
-        <label
-          htmlFor='sizeId'
-          className={styles.font__label}>
-          Size (px):
-        </label>
-        <input
-          type='number'
-          onChange={onSizeChange}
-          id='sizeId'
-          value={size}          
-          className={cx(
-            styles.font__input
-          )} />
-      </div>
-    </div>
-    <div className={styles.font__controlsContainer}>
-      <div className={styles.font__controls}>
-        <div className={styles.font__labelBox}>
-          <span className={styles.font__title}>Font styles:</span>
-        </div>
-        <div
-          className={cx(
-            styles.font__inputBox,
-            styles.font__inputBox_checkbox
-          )}>
-          <input
-            type='checkbox'
-            onChange={onStyleChange}
-            id='styleId'
-            value='italic'
-            checked={style === 'italic'}
-          />
-          <label
-            htmlFor='styleId'
-            className={cx(styles.font__labelOptions)}>
-              <Icon width='24' height='24' value='italic' />
-          </label>
-        </div>
-        <div
-          className={cx(
-            styles.font__inputBox,
-            styles.font__inputBox_checkbox
-          )}>
-          <input
-            type='checkbox'
-            onChange={onWeightChange}
-            id='weightId'
-            value='700'
-            name='fontWeight'
-            checked={weight === '700'}
-          />
-          <label
-            htmlFor='weightId'
-            className={cx(styles.font__labelOptions)}>
-              <Icon width='24' height='24' value='bold' />
-          </label>
-        </div>
-      </div>
-      <div className={styles.font__controls}>
-        <div className={styles.font__labelBox}>
-          <span className={styles.font__title}>Text spacing:</span>
-        </div>
-        <div
-          className={cx(
-            styles.font__inputBox,
-            styles.font__inputBox_iconInput
-          )}>
-          <label
-            htmlFor='lhId'
-            className={cx(styles.font__labelIcon)}>
-              <Icon width='18' height='18' value='lineHeight' />
-          </label>
-          <input
-            type='number'
-            onChange={onLineHeightChange}
-            id='lhId'
-            value={lineHeight}
+    {
+      !props.value.active &&
+      <div>
+        <div className={styles.font__controls}>
+          <div className={styles.font__inputBox}>
+            <label
+              htmlFor='familyId'
+              className={styles.font__label}>
+              Font family
+            </label>
+            <Select
+              placeholder='Please select a font family'
+              options={options}
+              optionRenderer={renderOption}
+              onChange={onFamilyChange}
+              value={family}
+              valueRenderer={renderValue}
+              clearable={false}
+            />
+          </div>
+          <div
             className={cx(
-              styles.font__input_icon
-            )}
-          />
-          <span className={cx(styles.font__inputTip)}>%</span>
+              styles.font__inputBox,
+              styles.font__inputBox_size
+            )}>
+            <label
+              htmlFor='sizeId'
+              className={styles.font__label}>
+              Size (px):
+            </label>
+            <input
+              type='number'
+              onChange={onSizeChange}
+              id='sizeId'
+              value={size}          
+              className={cx(
+                styles.font__input
+              )} />
+          </div>
         </div>
-        <div
-          className={cx(
-            styles.font__inputBox,
-            styles.font__inputBox_iconInput
-          )}>
-          <label
-            htmlFor='lsId'
-            className={cx(styles.font__labelIcon)}>
-              <Icon width='18' height='14' value='letterSpacing' />
-          </label>
-          <input
-            type='number'
-            onChange={onLetterSpacingChange}
-            id='lsId'
-            value={letterSpacing}
+        <div className={styles.font__controlsContainer}>
+        <div className={styles.font__controls}>
+          <div className={styles.font__labelBox}>
+            <span className={styles.font__title}>Font styles:</span>
+          </div>
+          <div
             className={cx(
-              styles.font__input_icon
-            )}
-          />
-          <span className={cx(styles.font__inputTip)}>px</span>
+              styles.font__inputBox,
+              styles.font__inputBox_checkbox
+            )}>
+            <input
+              type='checkbox'
+              onChange={onStyleChange}
+              id='styleId'
+              value='italic'
+              checked={style === 'italic'}
+            />
+            <label
+              htmlFor='styleId'
+              className={cx(styles.font__labelOptions)}>
+                <Icon width='24' height='24' value='italic' />
+            </label>
+          </div>
+          <div
+            className={cx(
+              styles.font__inputBox,
+              styles.font__inputBox_checkbox
+            )}>
+            <input
+              type='checkbox'
+              onChange={onWeightChange}
+              id='weightId'
+              value='700'
+              name='fontWeight'
+              checked={weight === '700'}
+            />
+            <label
+              htmlFor='weightId'
+              className={cx(styles.font__labelOptions)}>
+                <Icon width='24' height='24' value='bold' />
+            </label>
+          </div>
+        </div>
+        <div className={styles.font__controls}>
+          <div className={styles.font__labelBox}>
+            <span className={styles.font__title}>Text spacing:</span>
+          </div>
+          <div
+            className={cx(
+              styles.font__inputBox,
+              styles.font__inputBox_iconInput
+            )}>
+            <label
+              htmlFor='lhId'
+              className={cx(styles.font__labelIcon)}>
+                <Icon width='18' height='18' value='lineHeight' />
+            </label>
+            <input
+              type='number'
+              onChange={onLineHeightChange}
+              id='lhId'
+              value={lineHeight}
+              className={cx(
+                styles.font__input_icon
+              )}
+            />
+            <span className={cx(styles.font__inputTip)}>%</span>
+          </div>
+          <div
+            className={cx(
+              styles.font__inputBox,
+              styles.font__inputBox_iconInput
+            )}>
+            <label
+              htmlFor='lsId'
+              className={cx(styles.font__labelIcon)}>
+                <Icon width='18' height='14' value='letterSpacing' />
+            </label>
+            <input
+              type='number'
+              onChange={onLetterSpacingChange}
+              id='lsId'
+              value={letterSpacing}
+              className={cx(
+                styles.font__input_icon
+              )}
+            />
+            <span className={cx(styles.font__inputTip)}>px</span>
+          </div>
+        </div>
+        <div className={styles.font__controls}>
+          <div className={styles.font__labelBox}>
+            <span className={styles.font__title}>Text decoration:</span>
+          </div>
+            {
+              ['line-through', 'underline', 'none'].map((decorationValue) => (
+                <div
+                  key={`decoration-${decorationValue}`}
+                  className={cx(styles.font__inputBox, styles.font__inputBox_radio)}
+                >
+                  <input
+                    type='radio'
+                    onChange={onDecorationChange}
+                    id={`decorationId-${decorationValue}`}
+                    value={decorationValue}
+                    name='fontDecoration'
+                    checked={decoration === decorationValue}
+                  />
+                  <label
+                    htmlFor={`decorationId-${decorationValue}`}
+                    className={cx(styles.font__labelOptions)}>
+                      {
+                        decorationValue === 'none' ? 'none' : <Icon width='24' height='24' value={decorationValue} />
+                      }
+                  </label>
+                </div>
+              ))
+            }
+        </div>
+        <div className={styles.font__controls}>
+          <div className={styles.font__labelBox}>
+            <span className={styles.font__title}>Text case:</span>
+          </div>
+            {
+              ['lowercase', 'uppercase', 'none'].map((caseValue) => (
+                <div
+                  key={`style-${caseValue}`}
+                  className={cx(styles.font__inputBox, styles.font__inputBox_radio)}>
+                  <input
+                    type='radio'
+                    onChange={onTransformChange}
+                    id={`caseId-${caseValue}`}
+                    value={caseValue}
+                    name='fontCase'
+                    checked={transform === caseValue}
+                  />
+                  <label
+                    htmlFor={`caseId-${caseValue}`}
+                    className={cx(styles.font__labelOptions)}>
+                      {
+                        caseValue === 'none' ? 'none' : <Icon width='24' height='24' value={caseValue} />
+                      }
+                  </label>
+                </div>
+              ))
+            }
+        </div>
         </div>
       </div>
-      <div className={styles.font__controls}>
-        <div className={styles.font__labelBox}>
-          <span className={styles.font__title}>Text decoration:</span>
-        </div>
-          {
-            ['line-through', 'underline', 'none'].map((decorationValue) => (
-              <div
-                key={`decoration-${decorationValue}`}
-                className={cx(styles.font__inputBox, styles.font__inputBox_radio)}
-              >
-                <input
-                  type='radio'
-                  onChange={onDecorationChange}
-                  id={`decorationId-${decorationValue}`}
-                  value={decorationValue}
-                  name='fontDecoration'
-                  checked={decoration === decorationValue}
-                />
-                <label
-                  htmlFor={`decorationId-${decorationValue}`}
-                  className={cx(styles.font__labelOptions)}>
-                    {
-                      decorationValue === 'none' ? 'none' : <Icon width='24' height='24' value={decorationValue} />
-                    }
-                </label>
-              </div>
-            ))
-          }
-      </div>
-      <div className={styles.font__controls}>
-        <div className={styles.font__labelBox}>
-          <span className={styles.font__title}>Text case:</span>
-        </div>
-          {
-            ['lowercase', 'uppercase', 'none'].map((caseValue) => (
-              <div
-                key={`style-${caseValue}`}
-                className={cx(styles.font__inputBox, styles.font__inputBox_radio)}>
-                <input
-                  type='radio'
-                  onChange={onTransformChange}
-                  id={`caseId-${caseValue}`}
-                  value={caseValue}
-                  name='fontCase'
-                  checked={transform === caseValue}
-                />
-                <label
-                  htmlFor={`caseId-${caseValue}`}
-                  className={cx(styles.font__labelOptions)}>
-                    {
-                      caseValue === 'none' ? 'none' : <Icon width='24' height='24' value={caseValue} />
-                    }
-                </label>
-              </div>
-            ))
-          }
-      </div>
-    </div>
+    }
+    <ColorPicker
+      color={color}
+      onColorChange={onColorChange}
+    />
   </SettingsTitle>
 ));

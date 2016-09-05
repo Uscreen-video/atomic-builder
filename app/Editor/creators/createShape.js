@@ -3,15 +3,6 @@ import { Record } from 'immutable';
 class Shape extends Record({ // eslint-disable-line new-cap
 })
 {
-  color(value, extendObject) {
-    return {
-      type: 'color',
-      description: 'Some description',
-      title: 'Colors:',
-      value,
-      ...extendObject
-    };
-  }
   link(value, extendObject) {
     return {
       type: 'link',
@@ -34,7 +25,7 @@ class Shape extends Record({ // eslint-disable-line new-cap
     return {
       type: 'background',
       description: 'Some description',
-      title: 'Background image:',
+      title: 'Background:',
       value,
       ...extendObject
     };

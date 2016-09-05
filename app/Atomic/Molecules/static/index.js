@@ -7,7 +7,14 @@ export default molecule({
   props: {
     type: 'static',
     settings: {
-      colors: Shape.color({ background: 'transparent', color: '' }),
+      backgroundImage: Shape.background({
+        url: '',
+        x: 0,
+        y: 0,
+        repeat: 'no-repeat',
+        size: 'auto',
+        color: 'transparent'
+      }),
       spacing: Shape.spacing({
         margin: { top: 0, right: 0, bottom: 0, left: 0 },
         padding: { top: 0, right: 0, bottom: 0, left: 0 }
